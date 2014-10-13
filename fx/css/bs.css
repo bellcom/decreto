@@ -1,0 +1,248 @@
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+body {
+    padding-top: 61px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+    font-family: 'Asap', sans-serif;
+}
+
+.navbar-brand {
+    text-indent: -9999px;
+    background: url('../img/logo.png') no-repeat;
+    width: 245px;
+    height: 60px;
+}
+
+.navbar-nav {
+    float: right;
+}
+
+button.signup {
+    background-color: #ec7139;
+    border-color: #ec7139;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.login {
+    text-indent: -9999px;
+    background: url('../img/lock.png') center no-repeat;
+}
+.spacer {
+    padding: 60px 0;
+}
+.orange {
+    color: #ec7139;
+}
+.orange-bg {
+    background-color: #ec7139;
+}
+.orange-bg h2 {
+    color: #fff;
+}
+.gray-bg {
+    color: #fff;
+    background-color: #364045;
+}
+
+
+/* <parallax> */
+
+#parralax-banner-2 {
+    background: url(../img/people.jpg) -1200px 900px;
+    height: 400px;
+    position: relative;
+}
+#parralax-banner-3 {
+    background: url(../img/people.jpg) -1200px 800px;
+    height: 400px;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* <parallax> */
+
+/* <buzz> */
+.buzz {
+    padding: 40px 0 70px 0;
+}
+.buzz h3 {
+    color: #ec7139;
+}
+/* </buzz> */
+
+/* <download> */
+
+.download {
+    background: url(../img/top-banner.png) center no-repeat;
+    padding: 20px 0 0 0;
+}
+.download .wrapper {
+    background: url(../img/tablet.png) -200px 50px no-repeat;
+    padding-bottom: -20px;
+}
+.download h2 {
+    padding-top: 30px;
+}
+.download .col-md-6:nth-child(2) img {
+    max-width: 150%;
+}
+
+/* </download> */
+
+/* <description> */
+
+.description .col-md-4 {
+    position: relative;
+    top: -50px;
+    height: 350px;
+    overflow-y: hidden;
+    margin-bottom: -50px;
+}
+
+/* </description> */
+
+/* <features> */
+
+.features .col-md-3 {
+    padding: 0;
+}
+.features li {
+    text-align: center;
+    background-color: #424b4f;
+    border: 2px solid #364045;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 3px;
+    padding: 5px 10px 5px 10px;
+}
+ul.text-left li {
+    text-align: left;
+}
+li.price {
+    background-color: #364045;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+li.price small {
+    font-weight: normal;
+    font-size: 0.6em;
+}
+li.na {
+    text-indent: -9999px;
+}
+.features .white {
+    background-color: #fff;
+}
+.white li {
+    background-color: #c0c0c0;
+    border-color: #fff;
+}
+.white li.heading {
+    background-color: #fff;
+}
+.white li.price {
+    background-color: #fff;
+    border: none;
+    color: #000;
+    height: 50px;
+}
+.features .heading {
+    font-size: 1.6em;
+    font-weight: bold;
+    background-color: #364045;
+}
+.features .white .heading {
+    color: #000;
+}
+.features .heading strong {
+    display: block;
+    color: #aad6cf;
+    font-size: 0.8em;
+}
+.features .glyphicon-ok {
+    color: #ec7139;
+}
+
+/* </features> */
+
+/* <signup> */
+
+#signup {
+    margin-top: 30px;
+}
+#signup h2 {
+    margin-top: 30px;
+}
+#signup .text-center p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#signup button {
+    background-color: #ec7139;
+    border-color: #ec7139;
+    color: #fff;
+}
+#signup label {
+    background: url('../img/unchecked.png') no-repeat;
+    padding: 17px 0 18px 60px;
+}
+#signup label.checked {
+    background: url('../img/checked.png') no-repeat;
+}
+
+#signup input[type="radio"] {
+    display: none;
+}
+#signup-address,
+#signup-password {
+    display: none;
+}
+
+/* </signup> */
+
+/* <bottom> */
+
+address {
+    font-style: normal;
+    background-image: url('../img/pin.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    text-align: center;
+}
+address p {
+    padding-top: 120px;
+}
+
+.support {
+    color: #fff;
+    padding: 20px 0 10px  0;
+    font-size: 1.4em;
+}
+.support a {
+    color: #000;
+}
+
+footer .container {
+    padding-top: 10px;
+}
+footer p {
+    background: url('../img/logo-white.png') no-repeat;
+    padding: 60px 0 0 60px;
+    color: #737e84;
+}
+footer p small {
+    padding-top: 20px;
+    display: block;
+    text-align: right;
+}
+
+/* </bottom> */
