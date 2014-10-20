@@ -1,0 +1,721 @@
+<?php
+/**
+ * @file
+ * meetingeditor.module
+ *
+ * Meeting editor module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function meetingeditor_menu() {
+  $items['admin/content/meetingeditor'] = array(
+    'title' => 'Meeting editor',
+    'description' => 'Edit meetings',
+    'page callback' => 'meetingeditor_overview',
+    'access arguments' => array('edit own content'),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['node/%/meetingedit'] = array(
+    'title' => 'Meeting editor',
+    'description' => 'Edit meetings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('meetingeditor_form'),
+    'access arguments' => array('edit own content'),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/content/meetingeditor/add'] = array(
+    'title' => 'Meeting editor',
+    'description' => 'Edit meetings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('meetingeditor_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Page callback for overview.
+ */
+function meetingeditor_overview() {
+  return l(t('Add'), 'admin/content/meetingeditor/add') . 'Meeting overview will be here';
+}
+
+/**
+ * Create new meeting.
+ */
+function meetingeditor_form($form, &$form_state, $no_js_use = FALSE) {
+  drupal_add_js(drupal_get_path('module', 'meetingeditor') . '/js/meetingeditor_titles.js');
+
+  if (is_numeric(arg(1))) {
+    $form['#meeting'] = meetingeditor_get_meeting(arg(1));
+  }
+
+  $form['meeting_nid'] = array(
+    '#type' => 'hidden',
+    '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['nid'] : '',
+  );
+
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#required' => TRUE,
+    '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['title'] : '',
+  );
+
+  $fields = field_info_fields();
+  $types = list_allowed_values($fields['field_os2web_meetings_type']);
+
+  $form['type'] = array(
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => $types,
+  );
+
+  $form['start'] = array(
+    '#type' => 'date_popup',
+    '#title' => 'Start',
+    '#required' => TRUE,
+    '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['field_os2web_meetings_date'][LANGUAGE_NONE][0]['value'] : '',
+  );
+
+  $form['committee'] = array(
+    '#type' => 'select',
+    '#title' => t('Committee'),
+    // @todo get current users committees
+    '#options' => array(),
+  );
+
+  meetingeditor_point_form($form, $form_state, $no_js_use);
+
+  meetingeditor_order_points($form, $form_state);
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+
+  return $form;
+}
+
+/**
+ * This part of the form, serves as an overview.
+ */
+function meetingeditor_order_points(&$form, &$form_state) {
+  $form['bullet_points']['bullet_points_fieldset']['order'] = array(
+    '#type' => 'fieldset',
+    '#weight' => -10,
+    '#attributes' => array('class' => array('meeting-points')),
+  );
+
+  // Item buttons.
+  for ($i = 0; $i < $form_state['pnum_bullet_points']; $i++) {
+    $form['bullet_points']['bullet_points_fieldset']['order'][$i] = array(
+      '#title' => '<span class="ph-point-title-' . $i . '"></span>',
+      '#type' => 'fieldset',
+    );
+
+    if ($i !== 0) {
+      $form['bullet_points']['bullet_points_fieldset']['order'][$i]['move_up'] = array(
+        '#type' => 'submit',
+        '#value' => 'Move up',
+        '#name' => 'move-up' . $i,
+        '#bullet_point' => $i,
+        '#submit' => array('meetingeditor_move_point'),
+        '#limit_validation_errors' => array(),
+        '#ajax' => array(
+          'callback' => 'meetingeditor_add_bullet_point',
+          'wrapper' => 'bullet-points-fieldset-wrapper',
+        ),
+      );
+    }
+    if ($i !== ($form_state['pnum_bullet_points'] - 1)) {
+      $form['bullet_points']['bullet_points_fieldset']['order'][$i]['move_down'] = array(
+        '#type' => 'submit',
+        '#value' => 'Move down',
+        '#name' => 'move-down' . $i,
+        '#bullet_point' => $i,
+        '#submit' => array('meetingeditor_move_point'),
+        '#limit_validation_errors' => array(),
+        '#ajax' => array(
+          'callback' => 'meetingeditor_add_bullet_point',
+          'wrapper' => 'bullet-points-fieldset-wrapper',
+        ),
+      );
+    }
+
+    // Sub item buttons.
+    for ($p = 0; $p < $form_state['pnum_bullet_points_attach'][$i]; $p++) {
+      $form['bullet_points']['bullet_points_fieldset']['order'][$i][$p] = array(
+        '#title' => '<span class="ph-point-attach-title-' . $i . '-' . $p . '"></span>',
+        '#type' => 'fieldset',
+      );
+
+      if ($p !== 0) {
+        $form['bullet_points']['bullet_points_fieldset']['order'][$i][$p]['move_up'] = array(
+          '#type' => 'submit',
+          '#value' => 'Move up',
+          '#name' => 'move-up' . $i . $p,
+          '#bullet_point' => $i,
+          '#bullet_point_attach' => $p,
+          '#submit' => array('meetingeditor_move_point'),
+          '#limit_validation_errors' => array(),
+          '#ajax' => array(
+            'callback' => 'meetingeditor_add_bullet_point',
+            'wrapper' => 'bullet-points-fieldset-wrapper',
+          ),
+        );
+      }
+      if ($p !== ($form_state['pnum_bullet_points_attach'][$i] - 1)) {
+        $form['bullet_points']['bullet_points_fieldset']['order'][$i][$p]['move_down'] = array(
+          '#type' => 'submit',
+          '#value' => 'Move down',
+          '#name' => 'move-down' . $i . $p,
+          '#bullet_point' => $i,
+          '#bullet_point_attach' => $p,
+          '#submit' => array('meetingeditor_move_point'),
+          '#limit_validation_errors' => array(),
+          '#ajax' => array(
+            'callback' => 'meetingeditor_add_bullet_point',
+            'wrapper' => 'bullet-points-fieldset-wrapper',
+          ),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Submit handler for movint a point.
+ */
+function meetingeditor_move_point($form, &$form_state) {
+  $i = $form_state['clicked_button']['#bullet_point'];
+  $p = isset($form_state['clicked_button']['#bullet_point_attach']) ? $form_state['clicked_button']['#bullet_point_attach'] : '';
+
+  // If $p is numeric, we're moving an attachment (point item).
+  if (is_numeric($p)) {
+    if (strstr($form_state['clicked_button']['#name'], 'move-up')) {
+      $new_index = $p - 1;
+    }
+    else {
+      $new_index = $p + 1;
+    }
+    // Copy the data in the index beeing overridden.
+    $tmp = $form_state['input']['bullet_points_fieldset']['points'][$i]['attachments'][$new_index];
+
+    // Swap the point attahcments.
+    $form_state['input']['bullet_points_fieldset']['points'][$i]['attachments'][$new_index]
+      = $form_state['input']['bullet_points_fieldset']['points'][$i]['attachments'][$p];
+    $form_state['input']['bullet_points_fieldset']['points'][$i]['attachments'][$p] = $tmp;
+  }
+  // Moving a point.
+  else {
+    if (strstr($form_state['clicked_button']['#name'], 'move-up')) {
+      $new_index = $i - 1;
+    }
+    else {
+      $new_index = $i + 1;
+    }
+
+    // Copy the data in the index beeing overridden.
+    $tmp = $form_state['input']['bullet_points_fieldset']['points'][$new_index];
+
+    // Swap points.
+    $form_state['input']['bullet_points_fieldset']['points'][$new_index]
+      = $form_state['input']['bullet_points_fieldset']['points'][$i];
+    $form_state['input']['bullet_points_fieldset']['points'][$i] = $tmp;
+
+    // Rebuild count.
+    $form_state['pnum_bullet_points_attach'][$i]
+      = count($form_state['input']['bullet_points_fieldset']['points'][$i]['attachments']);
+    $form_state['pnum_bullet_points_attach'][$new_index]
+      = count($form_state['input']['bullet_points_fieldset']['points'][$new_index]['attachments']);
+  }
+
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Load meeting for use in editor.
+ */
+function meetingeditor_get_meeting($nid) {
+  if ($nid) {
+    $meeting = node_load($nid);
+
+    $meeting_array = array(
+      '#entity' => (array) $meeting,
+    );
+
+    if ($bullet_point_field = field_get_items('node', $meeting, 'field_os2web_meetings_bullets')) {
+      foreach ($bullet_point_field as $point_delta => $field) {
+        $point = node_load($field['target_id']);
+        $meeting_array['#points'][$point_delta] = (array) $point;
+
+        if ($bullet_attach_field = field_get_items('node', $point, 'field_os2web_meetings_attach')) {
+          foreach ($bullet_attach_field as $attach_delta => $attachment) {
+            $meeting_array['#points'][$point_delta]['#attachments'][$attach_delta] = (array) node_load($attachment['target_id']);
+          }
+        }
+      }
+    }
+
+    return $meeting_array;
+  }
+}
+
+/**
+ * Form definition form bullet points.
+ */
+function meetingeditor_point_form(&$form, &$form_state, $no_js_use) {
+  $form['bullet_points']['bullet_points_fieldset'] = array(
+    '#type' => 'fieldset',
+    '#tree' => TRUE,
+    '#title' => t('Points'),
+    '#prefix' => '<div id="bullet-points-fieldset-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  if (empty($form_state['pnum_bullet_points'])) {
+    $form_state['pnum_bullet_points'] = 1;
+
+    if (isset($form['#meeting']) || isset($form['#meeting']['#points'])) {
+      $form_state['pnum_bullet_points'] = count($form['#meeting']['#points']);
+    }
+  }
+
+  // If delete point is pressed.
+  if (isset($form_state['#remove_point'])) {
+    $remove_bullet = $form_state['#remove_point'];
+
+    // Remove the point from the form state.
+    unset($form_state['input']['bullet_points_fieldset']['points'][$remove_bullet]);
+
+    // Reorder remaining points.
+    $form_state['input']['bullet_points_fieldset']['points']
+      = array_values($form_state['input']['bullet_points_fieldset']['points']);
+
+    // Remove the point from the attachment count.
+    unset($form_state['pnum_bullet_points_attach'][$remove_bullet]);
+
+    // Reorder remaining counts.
+    $form_state['pnum_bullet_points_attach'] = array_values($form_state['pnum_bullet_points_attach']);
+
+    // Fix point count.
+    $form_state['pnum_bullet_points'] = count($form_state['input']['bullet_points_fieldset']['points']);
+
+    unset($form_state['#remove_point']);
+  }
+
+  // Build point form items.
+  for ($i = 0; $i < $form_state['pnum_bullet_points']; $i++) {
+    $form['bullet_points']['bullet_points_fieldset']['points'][$i]['point_nid'] = array(
+      '#type' => 'hidden',
+      '#default_value' => isset($form['#meeting']['#points'][$i]) ? $form['#meeting']['#points'][$i]['nid'] : '',
+    );
+
+    $form['bullet_points']['bullet_points_fieldset']['points'][$i]['title'] = array(
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#title' => t('Point title'),
+      '#attributes' => array('class' => array('js-point-title')),
+      '#default_value' => isset($form['#meeting']['#points'][$i]) ? $form['#meeting']['#points'][$i]['title'] : '',
+    );
+
+    $fid = FALSE;
+
+    if (!empty($form['#meeting']['#points'][$i]['field_os2web_meetings_enclosures'])) {
+      $fid = $form['#meeting']['#points'][$i]['field_os2web_meetings_enclosures'][LANGUAGE_NONE][0]['fid'];
+    }
+    $form['bullet_points']['bullet_points_fieldset']['points'][$i]['enclosures'] = array(
+      '#title' => 'File',
+      '#type' => 'managed_file',
+      '#default_value' => $fid,
+    );
+
+    $form['bullet_points']['bullet_points_fieldset']['points'][$i]['remove'] = array(
+      '#type' => 'submit',
+      '#value' => t('Delete point'),
+      '#name' => 'delete-point-' . $i,
+      '#bullet_point' => $i,
+      '#submit' => array('meetingeditor_remove_one_bullet_point'),
+      '#limit_validation_errors' => array(),
+      '#ajax' => array(
+        'callback' => 'meetingeditor_remove_bullet_point',
+        'wrapper' => 'bullet-points-fieldset-wrapper',
+      ),
+    );
+  }
+
+  meetingeditor_point_attachment_form($form, $form_state);
+
+  $form['bullet_points']['bullet_points_fieldset']['add_bullet_point'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add Point'),
+    '#submit' => array('meetingeditor_add_one_bullet_point'),
+    '#limit_validation_errors' => array(),
+    '#ajax' => array(
+      'callback' => 'meetingeditor_add_bullet_point',
+      'wrapper' => 'bullet-points-fieldset-wrapper',
+    ),
+  );
+
+  if ($no_js_use) {
+    if (!empty($form['bullet_points_fieldset']['remove_name']['#ajax'])) {
+      unset($form['bullet_points_fieldset']['remove_name']['#ajax']);
+    }
+    unset($form['bullet_points_fieldset']['add_bullet_point']['#ajax']);
+  }
+}
+
+/**
+ * Form callback for bullet point attachments.
+ */
+function meetingeditor_point_attachment_form(&$form, &$form_state) {
+  for ($i = 0; $i < $form_state['pnum_bullet_points']; $i++) {
+    if (empty($form_state['pnum_bullet_points_attach'][$i])) {
+      $form_state['pnum_bullet_points_attach'][$i] = 1;
+
+      if (isset($form['#meeting']['#points'][$i]['#attachments'])) {
+        $form_state['pnum_bullet_points_attach'][$i] = count($form['#meeting']['#points'][$i]['#attachments']);
+      }
+    }
+
+    $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'] = array(
+      '#type' => 'fieldset',
+      '#prefix' => '<div id="bullet-points-' . $i . '-fieldset-wrapper">',
+      '#suffix' => '</div>',
+    );
+
+    // If the remove point item button is pressed.
+    if (isset($form_state['#remove_point_attachment']) && isset($form_state['#remove_point_attachment'][$i])) {
+      $remove_attach_id = $form_state['#remove_point_attachment'][$i];
+
+      // Remove the item.
+      unset($form_state['input']['bullet_points_fieldset']['points'][$i]['attachments'][$remove_attach_id]);
+      // Reorder the other items.
+      $form_state['input']['bullet_points_fieldset']['points'][$i]['attachments']
+        = array_values($form_state['input']['bullet_points_fieldset']['points'][$i]['attachments']);
+
+      // Fix the count.
+      $form_state['pnum_bullet_points_attach'][$i] = count($form_state['input']['bullet_points_fieldset']['points'][$i]['attachments']);
+
+      // Don't delete this point anymore.
+      unset($form_state['#remove_point_attachment']);
+
+      // The point should allways display one subpoint, in this case it will
+      // just be empty.
+      if ($form_state['pnum_bullet_points_attach'][$i] === 0) {
+        $form_state['pnum_bullet_points_attach'][$i] = 1;
+      }
+    }
+
+    // Build sub point form items.
+    for ($p = 0; $p < $form_state['pnum_bullet_points_attach'][$i]; $p++) {
+      $attach_nid = isset($form['#meeting']['#points'][$i]['#attachments'][$p]) ? $form['#meeting']['#points'][$i]['#attachments'][$p]['nid'] : '';
+      $attach_title = isset($form['#meeting']['#points'][$i]['#attachments'][$p]) ? $form['#meeting']['#points'][$i]['#attachments'][$p]['title'] : '';
+      $attach_body = isset($form['#meeting']['#points'][$i]['#attachments'][$p]) ? $form['#meeting']['#points'][$i]['#attachments'][$p]['field_os2web_meetings_bpa_body'][LANGUAGE_NONE][0]['value'] : '';
+
+      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['attach_nid'] = array(
+        '#type' => 'hidden',
+        '#default_value' => $attach_nid,
+      );
+
+      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['delete_bpa'] = array(
+        '#type' => 'submit',
+        '#name' => 'remove-sub-point' . $i . '-' . $p,
+        '#bullet_point' => $i,
+        '#bullet_point_attach' => $p,
+        '#value' => t('Remove sub point'),
+        '#submit' => array('meetingeditor_remove_one_bullet_point_attachment'),
+        '#limit_validation_errors' => array(),
+        '#ajax' => array(
+          'callback' => 'meetingeditor_remove_bullet_point',
+          'wrapper' => 'bullet-points-fieldset-wrapper',
+        ),
+      );
+
+      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['title'] = array(
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#title' => t('Sub point title'),
+        '#attributes' => array('class' => array('js-point-attach-title')),
+        '#default_value' => $attach_title,
+      );
+
+      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['body'] = array(
+        '#type' => 'text_format',
+        '#required' => TRUE,
+        '#title' => 'Contents',
+        '#attributes' => array('multiple' => 'multiple'),
+        '#format' => 'filtered_html',
+        '#default_value' => $attach_body,
+      );
+
+      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['add_bullet_point'] = array(
+        '#type' => 'submit',
+        '#name' => 'add-point-item-' . $i,
+        '#value' => t('Add Point item'),
+        '#bullet_point' => $i,
+        '#submit' => array('meetingeditor_add_one_bullet_point_attachment'),
+        '#limit_validation_errors' => array(),
+        '#ajax' => array(
+          'callback' => 'meetingeditor_add_bullet_point',
+          'wrapper' => 'bullet-points-fieldset-wrapper',
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function meetingeditor_element_info_alter(&$type) {
+  // Our process callback must run immediately after filter_process_format().
+  $filter_process_format_location = array_search('filter_process_format', $type['text_format']['#process']);
+  $replacement = array('filter_process_format', 'meetingeditor_filter_process_format');
+  array_splice($type['text_format']['#process'], $filter_process_format_location, 1, $replacement);
+}
+
+/**
+ * Callback for hiding format switcher.
+ */
+function meetingeditor_filter_process_format($element) {
+  $element['format']['format']['#access'] = FALSE;
+  $element['format']['guidelines']['#access'] = FALSE;
+  $element['format']['help']['#access'] = FALSE;
+  $element['format']['#type'] = 'container';
+  $element['format']['#attributes']['class'][] = 'element-hidden';
+  return $element;
+}
+
+/**
+ * AJAX submit handler for add bullet point.
+ */
+function meetingeditor_add_bullet_point($form, $form_state) {
+  return $form['bullet_points']['bullet_points_fieldset'];
+}
+
+/**
+ * Submit handler for add bullet point.
+ */
+function meetingeditor_add_one_bullet_point($form, &$form_state) {
+  if (isset($form['#meeting'])) {
+    $form_state['values']['meeting_nid'] = $form['#meeting']['#entity']['nid'];
+  }
+
+  if (!isset($form_state['pnum_bullet_points'])) {
+    $form_state['pnum_bullet_points'] = 1;
+  }
+
+  $form_state['pnum_bullet_points']++;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Submit handler for add bullet point.
+ */
+function meetingeditor_add_one_bullet_point_attachment($form, &$form_state) {
+  if (isset($form['#meeting'])) {
+    $form_state['values']['meeting_nid'] = $form['#meeting']['#entity']['nid'];
+  }
+
+  // Get bullet point delta.
+  $i = $form_state['clicked_button']['#bullet_point'];
+
+  if (!isset($form_state['pnum_bullet_points_attach'][$i])) {
+    $form_state['pnum_bullet_points_attach'][$i] = 1;
+  }
+
+  $form_state['pnum_bullet_points_attach'][$i]++;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * AJAX submit handler for removing points.
+ */
+function meetingeditor_remove_bullet_point($form, $form_state) {
+  return $form['bullet_points']['bullet_points_fieldset'];
+}
+
+/**
+ * Submit handler for removing bullet point.
+ */
+function meetingeditor_remove_one_bullet_point($form, &$form_state) {
+  if (isset($form['#meeting'])) {
+    $form_state['values']['meeting_nid'] = $form['#meeting']['#entity']['nid'];
+  }
+
+  $i = $form_state['clicked_button']['#bullet_point'];
+
+  $form_state['#remove_point'] = $i;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Submit handler for removing bullet point.
+ */
+function meetingeditor_remove_one_bullet_point_attachment($form, &$form_state) {
+  if (isset($form['#meeting'])) {
+    $form_state['values']['meeting_nid'] = $form['#meeting']['#entity']['nid'];
+  }
+
+  $i = $form_state['clicked_button']['#bullet_point'];
+  $p = $form_state['clicked_button']['#bullet_point_attach'];
+
+  $form_state['#remove_point_attachment'][$i] = $p;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Add meeting submit handler.
+ */
+function meetingeditor_form_submit(&$form, &$form_state) {
+  if (isset($form_state['values']['meeting_nid'])) {
+    $form['#meeting'] = meetingeditor_get_meeting($form_state['values']['meeting_nid']);
+  }
+
+  $meeting['title'] = $form_state['values']['title'];
+  $meeting['start'] = $form_state['values']['start'];
+
+  $meeting['nid'] = isset($form['#meeting']) ? $form['#meeting']['#entity']['nid'] : FALSE;
+
+  $points = array();
+
+  // Create nodes, we work our way from the inside out.
+  // First create bullet point attachments, then bullet points
+  // and lastly the meeting itself.
+  foreach ($form_state['values']['bullet_points_fieldset']['points'] as $point_id => $point) {
+    $attachments = array();
+
+    foreach ($point['attachments'] as $attach_id => $attachment) {
+      $attachments[] = meetingeditor_create_attachment($attachment);
+    }
+
+    $point_nid = isset($form['#meeting']['#points'][$point_id]) ? $form['#meeting']['#points'][$point_id]['nid'] : FALSE;
+    $point['nid'] = $point_nid;
+    $points[] = meetingeditor_create_point($point, $attachments);
+  }
+
+  $meeting_nid = meetingeditor_create_meeting($meeting, $points);
+
+  drupal_goto('node/' . $meeting_nid);
+}
+
+/**
+ * Save meeting.
+ */
+function meetingeditor_create_meeting($meeting, $points) {
+  $node = new stdClass();
+
+  if ($meeting['nid']) {
+    $node = node_load($meeting['nid']);
+  }
+  global $user;
+
+  $node->title = $meeting['title'];
+  $node->type = 'os2web_meetings_meeting';
+
+  node_object_prepare($node);
+
+  $node->language = LANGUAGE_NONE;
+  $node->uid = $user->uid;
+  $node->status = 1;
+
+  $node->field_os2web_meetings_date[$node->language][0] = array(
+    'value' => $meeting['start'],
+  );
+
+  $node->field_os2web_meetings_bullets[$node->language] = array();
+  foreach ($points as $point) {
+    // Only add the point if it's a new node. Otherwise, we just preserve
+    // the current, to avoid duplicates.
+    if ($point) {
+      $node->field_os2web_meetings_bullets[$node->language][]['target_id'] = $point;
+    }
+  }
+
+  node_save($node);
+  return $node->nid;
+}
+
+/**
+ * Save bullet point.
+ */
+function meetingeditor_create_point($point, $attachments) {
+  $node = new stdClass();
+
+  if ($point['point_nid']) {
+    $node = node_load($point['point_nid']);
+  }
+
+  global $user;
+
+  $node->title = $point['title'];
+  $node->type = 'os2web_meetings_bullet';
+
+  node_object_prepare($node);
+
+  $node->language = LANGUAGE_NONE;
+  $node->uid = $user->uid;
+  $node->status = 1;
+
+  $node->field_os2web_meetings_attach[$node->language] = array();
+  foreach ($attachments as $attachment) {
+    // @see meetingeditor_create_meeting().
+    if ($attachment) {
+      $node->field_os2web_meetings_attach[$node->language][]['target_id'] = $attachment;
+    }
+  }
+
+  if (isset($point['enclosures'])) {
+    $file = file_load($point['enclosures']);
+
+    if ($file && $file->status != FILE_STATUS_PERMANENT) {
+      $node->field_os2web_meetings_enclosures[$node->language] = array();
+
+      // Move the file, into the Drupal file system.
+      if ($file = file_move($file, 'public://')) {
+        $file->status = FILE_STATUS_PERMANENT;
+        $file->display = 1;
+        $file = file_save($file);
+      }
+      $node->field_os2web_meetings_enclosures[$node->language][] = (array) $file;
+    }
+    elseif (!$file) {
+      $node->field_os2web_meetings_enclosures[$node->language] = array();
+    }
+  }
+
+  node_save($node);
+  return $node->nid;
+}
+
+/**
+ * Save bullet point attachment.
+ */
+function meetingeditor_create_attachment(array $attachment) {
+  $node = new stdClass();
+
+  if ($attachment['attach_nid']) {
+    $node = node_load($attachment['attach_nid']);
+  }
+
+  global $user;
+
+  $node->title = $attachment['title'];
+  $node->type = 'os2web_meetings_bullet_attach';
+
+  node_object_prepare($node);
+
+  $node->language = LANGUAGE_NONE;
+  $node->uid = $user->uid;
+  $node->status = 1;
+
+  $node->field_os2web_meetings_bpa_body[$node->language][0] = $attachment['body'];
+
+  node_save($node);
+  return $node->nid;
+}

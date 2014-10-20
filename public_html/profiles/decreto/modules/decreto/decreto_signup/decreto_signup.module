@@ -1,0 +1,181 @@
+<?php
+/**
+ * @file
+ * decreto_signup.module
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function decreto_signup_block_info() {
+
+  $blocks['decreto_signup'] = array(
+    'info' => t('Sign-up'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function decreto_signup_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'decreto_signup':
+      $block['subject'] = t('Sign-up');
+      $block['content'] = drupal_get_form('decreto_signup_form');
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Signup form callback.
+ */
+function decreto_signup_form() {
+  $form = array();
+
+  $form['type'] = array(
+    '#type' => 'radios',
+    '#options' => array(
+      'small' => 'Lille · 1 bruger',
+      'medium' => 'Mellem · 2-10 brugere',
+      'large' => 'Stor · Frit antal brugere',
+    ),
+    '#default_value' => 'medium',
+    '#attributes' => array(
+      'decreto_radio' => TRUE,
+      'small' => array('#description' => 'Gratis'),
+      'medium' => array('#description' => 'DKK 99,-/mdr'),
+      'large' => array('#description' => 'DKK 149,-/mdr'),
+    ),
+    '#prefix' => '<h2>Vælg pakke</h2>',
+  );
+
+  $form['company'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#attributes' => array('placeholder' => 'Company'),
+    '#prefix' => '<h2>Kontaktoplysninger</h2>',
+  );
+
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#attributes' => array('placeholder' => 'Name'),
+  );
+
+  $form['mail'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#attributes' => array(
+      'placeholder' => 'E-mail',
+      'class' => array('form-group'),
+    ),
+  );
+
+  $form['phone'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#attributes' => array('placeholder' => 'Phone'),
+  );
+
+  $signup_postscript = 'Tekst';
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#required' => TRUE,
+    '#ajax' => array(
+      'callback' => 'decreto_signup_form_ajax',
+      'wrapper' => 'decreto_signup_form',
+    ),
+    '#value' => 'Registrer bestilling',
+    '#prefix' => '<div class="signup-postscript"><p>' . $signup_postscript . '</p>',
+    '#suffix' => '</div>',
+  );
+
+  $form['#prefix'] = '<div id="decreto_signup_form">';
+  $form['#suffix'] = '</div>';
+
+  return $form;
+}
+
+/**
+ * Signup form ajax callback.
+ */
+function decreto_signup_form_ajax($form, &$form_state) {
+  if (!form_get_errors()) {
+    $signup_finished = '
+<div class="text-center spacer"><h2>Tak for tilmendingen</h2><p>Du vil modtage en mail med yderliger instruktioner om hvad der nu skal ske for at dine møder At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+';
+    $commands[] = ajax_command_invoke('#decreto_signup_form', 'slideUp', array(30));
+    $commands[] = ajax_command_invoke('#decreto_signup_form', 'slideDown', array());
+    $commands[] = ajax_command_html('#decreto_signup_form', $signup_finished);
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+
+  return $form;
+}
+
+/**
+ * Signup form validate.
+ */
+function decreto_signup_form_validate(&$form, &$form_state) {
+  $company = $form_state['values']['company'];
+  if (strlen($company) < 4) {
+    form_set_error('company', t('The company you have entered can`t be right.'));
+  }
+
+  $name = $form_state['values']['name'];
+  if (count(explode(' ', $name)) < 2 || strlen($name) < 5) {
+    form_set_error('name', t('The name you have entered can`t be right.'));
+  }
+
+  $mail = $form_state['values']['mail'];
+  if (db_query("SELECT mail FROM {users} WHERE LOWER(:name) = LOWER(mail)",
+    array(':name' => $mail))->fetchField()) {
+    form_set_error('mail', t('This e-mail has already been taken by another user.'));
+  }
+
+  if (!valid_email_address($mail)) {
+    form_set_error('mail', t('The e-mail you have entered is not valid.'));
+  }
+
+  $phone = $form_state['values']['phone'];
+  if ($phone !== '' && (!is_numeric($phone) || intval($phone) != $phone || $phone <= 0) || strlen($phone) != 8) {
+    form_set_error('phone', t('The phonenumber you have entered is not valid'));
+  }
+}
+/**
+ * Signup form submit.
+ */
+function decreto_signup_form_submit(&$form, &$form_state) {
+  $password = user_password(8);
+
+  $name = $form_state['values']['name'];
+  $mail = $form_state['values']['mail'];
+  $phone = $form_state['values']['phone'];
+  $company = $form_state['values']['company'];
+
+  $fields = array(
+    'name' => $mail,
+    'field_name' => array(LANGUAGE_NONE => array(array('value' => $name))),
+    'field_phone' => array(LANGUAGE_NONE => array(array('value' => $phone))),
+    'field_company' => array(LANGUAGE_NONE => array(array('value' => $company))),
+    'mail' => $mail,
+    'pass' => $password,
+    'status' => 1,
+    'init' => 'mail address',
+    'roles' => array(
+      DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+    ),
+  );
+
+  $account = user_save('', $fields);
+
+  $account->password = $fields['pass'];
+
+  drupal_mail('user', 'register_no_approval_required', $mail, NULL, array('account' => $account), variable_get('site_mail', 'noreply@example.com'));
+}
