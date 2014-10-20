@@ -1,3 +1,4 @@
 name = Meeting editor
 description = Meeting editor for os2web style meetings
 core = 7.x
+dependencies[] = composer_manager
