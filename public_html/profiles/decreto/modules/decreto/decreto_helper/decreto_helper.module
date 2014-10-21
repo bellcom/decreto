@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * decreto_helper.module
+ */
+
+/**
+ * Get users company.
+ */
+function decreto_helper_get_company($account = FALSE) {
+  if (!$account) {
+    global $user;
+    $account = user_load($user->uid);
+  }
+
+  if ($company_reference_field = field_get_items('user', $account, 'field_company_reference')) {
+    return $company_reference_field[0]['target_id'];
+  }
+  return FALSE;
+}
+
+/**
+ * Get companys users.
+ */
+function decreto_helper_get_company_members($company_tid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'user')
+     ->fieldCondition('field_company_reference', 'target_id', $company_tid);
+  $result = $query->execute();
+
+  if (isset($result['user'])) {
+    return array_keys($result['user']);
+  }
+  return FALSE;
+}

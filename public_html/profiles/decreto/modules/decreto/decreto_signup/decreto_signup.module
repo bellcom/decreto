@@ -5,10 +5,22 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function decreto_signup_menu() {
+  $items['firstlogin'] = array(
+    'title' => 'Welcome to decreto',
+    'description' => 'Welcome to decreto',
+    'page callback' => 'decreto_signup_first_login',
+    'access callback' => 'user_is_logged_in',
+  );
+  return $items;
+}
+
+/**
  * Implements hook_block_info().
  */
 function decreto_signup_block_info() {
-
   $blocks['decreto_signup'] = array(
     'info' => t('Sign-up'),
     'cache' => DRUPAL_NO_CACHE,
@@ -148,6 +160,7 @@ function decreto_signup_form_validate(&$form, &$form_state) {
     form_set_error('phone', t('The phonenumber you have entered is not valid'));
   }
 }
+
 /**
  * Signup form submit.
  */
@@ -178,4 +191,211 @@ function decreto_signup_form_submit(&$form, &$form_state) {
   $account->password = $fields['pass'];
 
   drupal_mail('user', 'register_no_approval_required', $mail, NULL, array('account' => $account), variable_get('site_mail', 'noreply@example.com'));
+}
+
+/**
+ * Implements hook_theme().
+ */
+function decreto_signup_theme() {
+  return array(
+    'decreto_first_login' => array(
+      'template' => 'decreto_first_login',
+    ),
+  );
+}
+
+/**
+ * First login, welcome page.
+ */
+function decreto_signup_first_login() {
+  global $user;
+
+  $variables = array();
+  $variables['terms'] = 'Terms and conditions';
+  $variables['user'] = user_load($user->uid);
+  $variables['first_login_form'] = drupal_render(drupal_get_form('decreto_signup_first_login_form', $variables));
+
+  return theme('decreto_first_login', $variables);
+}
+
+/**
+ * First login form.
+ */
+function decreto_signup_first_login_form($form, $form_state, $variables) {
+  if (!isset($form_state['values'])) {
+    if ($company_field = field_get_items('user', $variables['user'], 'field_company')) {
+      $form_state['values']['company'] = $company_field[0]['value'];
+    }
+  }
+
+  if (isset($form_state['step'])) {
+    return drupal_get_form('decreto_signup_' . $form_state['step']);
+  }
+
+  $form['company']['company'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Company'),
+    '#default_value' => $form_state['values']['company'],
+  );
+
+  $form['company']['check'] = array(
+    '#type' => 'submit',
+    '#value' => t('Check'),
+    '#submit' => array('decreto_signup_search_company'),
+    '#ajax' => array(
+      'wrapper' => 'js-company-search',
+      'callback' => 'decreto_signup_search_company_js',
+    ),
+    '#limit_validation_errors' => array('company-company'),
+  );
+
+  if (!isset($form_state['company_info'])) {
+    $form_state['company_info'] = t('Press "Check" to validate company name.');
+  }
+
+  $form['company']['cvr'] = array(
+    '#type' => 'item',
+    '#prefix' => '<div id="js-company-search">',
+    '#suffix' => $form_state['company_info'] . "</div>",
+  );
+
+  $form['company']['confirm'] = array(
+    '#type' => 'checkbox',
+    '#required' => TRUE,
+    '#title' => t('This company information is correct.'),
+  );
+
+  $form['conditions'] = array(
+    '#type' => 'checkbox',
+    '#required' => TRUE,
+    '#title' => t('I accept the terms and conditions'),
+    '#suffix' => '<p>' . $variables['terms'] . '</p>',
+  );
+
+  $form['continue'] = array(
+    '#type' => 'submit',
+    '#value' => t('Continue'),
+  );
+
+  return $form;
+}
+
+/**
+ * Validate callback for first login form.
+ */
+function decreto_signup_first_login_form_validate(&$form, &$form_state) {
+  if (!isset($form_state['company'])) {
+    form_set_error('company', t('Please check company.'));
+  }
+}
+
+/**
+ * Submit callback for first login form.
+ */
+function decreto_signup_first_login_form_submit(&$form, &$form_state) {
+  $cvr = $form_state['company']['cvr'];
+  $name = $form_state['company']['name'];
+
+  // Check if a company is already created, with the specified cvr.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+    ->fieldCondition('field_cvr', 'value', $cvr);
+  $result = $query->execute();
+
+  // Let the user request a login for the organisation.
+  if (isset($result['taxonomy_term'])) {
+    $form_state['step'] = 'company_exists';
+    $form_state['rebuild'] = TRUE;
+    return;
+  }
+
+  $company = new StdClass();
+
+  $vocab = taxonomy_vocabulary_machine_name_load('companies');
+
+  $company->name = $name;
+  $company->field_cvr[LANGUAGE_NONE][]['value'] = $cvr;
+
+  $company->vid = $vocab->vid;
+  taxonomy_term_save($company);
+
+  global $user;
+  $account = user_load($user->uid);
+
+  $edit['field_company_reference'][LANGUAGE_NONE][]['target_id'] = $company->tid;
+
+  user_save($account, $edit);
+
+  // @todo:
+  // This should probarbly be done from the decreto_org module.
+  drupal_goto('organisation');
+}
+
+/**
+ * Form callback, company exists.
+ */
+function decreto_signup_company_exists($form, $form_state) {
+  $form = array();
+
+  $form['text'] = array(
+    '#markup' => '<p>The company you have specified, has already been registered.</p>',
+  );
+
+  $form['request_access'] = array(
+    '#type' => 'submit',
+    '#value' => t('Request access'),
+  );
+
+  return $form;
+}
+
+/**
+ * Company exists submit.
+ */
+function decreto_signup_company_exists_submit(&$form, &$form_state) {
+
+  drupal_set_message('A message has been sent to the company administrator, with your request.');
+}
+
+/**
+ * AJAX callback for search for company.
+ */
+function decreto_signup_search_company_js($form, $form_state) {
+  return $form['company']['cvr'];
+}
+/**
+ * Search for a company.
+ */
+function decreto_signup_search_company($form, &$form_state) {
+  $company = $form_state['values']['company'];
+
+  $cvrapi = _decreto_signup_cvrapi($company);
+
+  $company_info = '<p>' . $cvrapi['name'] . '<br />';
+  $company_info .= $cvrapi['vat'] . '<br />';
+  $company_info .= $cvrapi['address'] . '<br />';
+  $company_info .= $cvrapi['city'] . '<br /></p>';
+
+  $form_state['company_info'] = $company_info;
+  $form_state['company']['cvr'] = $cvrapi['vat'];
+  $form_state['company']['name'] = $cvrapi['name'];
+
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * CVR api helper.
+ */
+function _decreto_signup_cvrapi($search) {
+  $options = array(
+    'http' => array(
+      'header' => 'User-agent: decreto',
+    ),
+  );
+
+  $context = stream_context_create($options);
+
+  $cvrapi = (array) json_decode(file_get_contents('http://cvrapi.dk/api?search=' . $search . '&country=dk', FALSE, $context));
+
+  return $cvrapi;
 }

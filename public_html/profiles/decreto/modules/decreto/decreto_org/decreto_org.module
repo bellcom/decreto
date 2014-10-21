@@ -1,0 +1,227 @@
+<?php
+/**
+ * @file
+ * decreto_org.module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function decreto_org_menu() {
+  $items['organisation'] = array(
+    'title' => 'Organisation',
+    'description' => 'Organisation overview',
+    'page callback' => 'decreto_org_home',
+    'access callback' => 'user_is_logged_in',
+  );
+  $items['organisation/committee'] = array(
+    'title' => 'Committee',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('decreto_org_committee_form'),
+    // @todo: permissions.
+    'access callback' => 'user_is_logged_in',
+  );
+  $items['organisation/committee/%/delete'] = array(
+    'title' => 'Delete committee',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('decreto_org_delete_committee_form'),
+    // @todo: permissions.
+    'access callback' => 'user_is_logged_in',
+  );
+  return $items;
+}
+
+/**
+ * Page callback for organisation overview.
+ */
+function decreto_org_home() {
+  global $user;
+  $account = user_load($user->uid);
+
+  if ($company_reference_field = field_get_items('user', $account, 'field_company_reference')) {
+    foreach ($company_reference_field as $field) {
+      $company = taxonomy_term_load($field['target_id']);
+
+      $markup = '<p>' . $company->name . '</p>';;
+
+      if ($committees_field = field_get_items('taxonomy_term', $company, 'field_committees')) {
+        foreach ($committees_field as $delta => $field) {
+          if ($committee = taxonomy_term_load($field['target_id'])) {
+            $markup .= '<p><a href="/organisation/committee/' . $committee->tid . '">' . $committee->name . '</a></p>';
+          }
+        }
+      }
+    }
+  }
+
+  $markup .= '<p><a href="/organisation/committee/create">Create committee</a></p>';
+
+  return $markup;
+}
+
+/**
+ * Page callback for creating committee.
+ */
+function decreto_org_committee_form() {
+  if (is_numeric(arg(2))) {
+    drupal_set_title(t('Edit committee'));
+    $committee = taxonomy_term_load(arg(2));
+  }
+  else {
+    drupal_set_title(t('Create committee'));
+  }
+
+  $committee_name = isset($committee) ? $committee->name : '';
+  $committee_tid = isset($committee) ? $committee->tid : '';
+
+  $form['committee_tid'] = array(
+    '#type' => 'hidden',
+    '#value' => $committee_tid,
+  );
+
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Committee name'),
+    '#default_value' => $committee_name,
+  );
+
+  $company_id = decreto_helper_get_company();
+  $company_members = decreto_helper_get_company_members($company_id);
+
+  $member_options = array();
+
+  foreach ($company_members as $member) {
+    $member_account = user_load($member);
+    $member_options[$member] = $member_account->field_name[LANGUAGE_NONE][0]['value'];
+  }
+
+  $committee_members = decreto_org_get_committee_members($committee_tid);
+
+  $form['members'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Members'),
+    '#options' => $member_options,
+    '#default_value' => $committee_members,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+
+  if ($committee_tid) {
+    $form['delete'] = array(
+      '#type' => 'submit',
+      '#value' => t('Delete'),
+      '#submit' => array('decreto_org_delete_committee'),
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Get members of committee.
+ */
+function decreto_org_get_committee_members($committee_tid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'user')
+     ->fieldCondition('field_committee_reference', 'target_id', $committee_tid);
+  $result = $query->execute();
+
+  if (isset($result['user'])) {
+    return array_keys($result['user']);
+  }
+  return array();
+}
+
+/**
+ * Submit callback for committee form.
+ */
+function decreto_org_committee_form_submit($form, &$form_state) {
+  // Create / update committee.
+  $committee = new StdClass();
+
+  if ($form_state['values']['committee_tid']) {
+    $committee = taxonomy_term_load($form_state['values']['committee_tid']);
+    $skip_company_attach = TRUE;
+  }
+
+  $vocab = taxonomy_vocabulary_machine_name_load('os2web_meetings_tax_committee');
+
+  global $user;
+  $committee->name = $form_state['values']['name'];
+  $committee->vid = $vocab->vid;
+  $committee->uid = $user->uid;
+
+  taxonomy_term_save($committee);
+
+  $company_id = decreto_helper_get_company();
+  $company_members = decreto_helper_get_company_members($company_id);
+
+  foreach ($company_members as $member) {
+    $is_in_committee = FALSE;
+    $member_account = user_load($member);
+    $edit['field_committee_reference'] = $member_account->field_committee_reference;
+
+    if ($committee_field = field_get_items('user', $member_account, 'field_committee_reference')) {
+      foreach ($committee_field as $delta => $committee_ref) {
+        if ($committee_ref['target_id'] == $committee->tid) {
+          $is_in_committee = $delta;
+        }
+      }
+    }
+
+    if (in_array($member, $form_state['values']['members']) && $is_in_committee === FALSE) {
+      $edit['field_committee_reference'][LANGUAGE_NONE][]['target_id'] = $committee->tid;
+    }
+    if (!in_array($member, $form_state['values']['members']) && $is_in_committee !== FALSE) {
+      unset($edit['field_committee_reference'][LANGUAGE_NONE][$is_in_committee]);
+    }
+    user_save($member_account, $edit);
+  }
+
+  // Attach the committee to the company.
+  if (!isset($skip_company_attach)) {
+    $company_id = decreto_helper_get_company();
+    $company = taxonomy_term_load($company_id);
+
+    $company->field_committees[LANGUAGE_NONE][]['target_id'] = $committee->tid;
+
+    taxonomy_term_save($company);
+    drupal_set_message(t('The committee was saved'));
+    drupal_goto('organisation/committee/' . $committee->tid);
+  }
+  else {
+    drupal_set_message(t('The committee was updated'));
+  }
+}
+
+/**
+ * Delete committee edit form submit handler.
+ */
+function decreto_org_delete_committee($form, &$form_state) {
+  drupal_goto('organisation/committee/' . $form_state['values']['committee_tid'] . '/delete');
+}
+
+/**
+ * Delete committee form callback.
+ */
+function decreto_org_delete_committee_form() {
+  $form['committee_tid'] = array(
+    '#type' => 'hidden',
+    '#value' => arg(2),
+  );
+  $question = t("Do you really wan't to delete this commitee?");
+  $description = '<p>' . t("All content related to this committee will be preserved, but loose the attachment to the committee.") . '</p>';
+
+  return confirm_form($form, $question, '', $description);
+}
+
+/**
+ * Delete committee form submit handler.
+ */
+function decreto_org_delete_committee_form_submit($form, $form_state) {
+  taxonomy_term_delete($form_state['values']['committee_tid']);
+  drupal_goto('organisation');
+}
