@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         files: {
           "./css/style.css": "./less/style.less",
           "./css/editor.css": "./less/editor.less",
-          "./css/ie.css": "./less/ie.less",
+          "./css/ie.css": "./less/ie.less"
         }
       },
     },
@@ -48,16 +48,7 @@ module.exports = function(grunt) {
       },
       // Watch less files and run "less" on changes
       less: {
-        files: [
-          './less/*.less',
-          './less/**/*.less',
-          './less/**/**/*.less',
-          './less/**/**/**/*.less',
-          './less/**/**/**/**/*.less',
-          './less/**/**/**/**/**/*.less',
-          './less/**/**/**/**/**/**/*.less',
-          './less/**/**/**/**/**/**/**/*.less',
-        ],
+        files: "./less/*.less",
         tasks: ["less"]
       },
       // Watch template files, only used to reload page on template changes

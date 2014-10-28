@@ -73,12 +73,8 @@
  * @ingroup themeable
  */
 ?>
-
-
 <!-- Begin - sidebar -->
 <div class="sidebar sidebar-left" data-sidebar-direction="left">
-
-
     <!-- Begin - form -->
     <ul class="sidebar-form">
         <li>
@@ -91,12 +87,8 @@
         </li>
     </ul>
     <!-- End - form -->
-
-
     <!-- Begin - navigation -->
     <ul class="sidebar-navigation">
-
-
         <!-- Begin - organisation -->
         <li class="sidebar-dropdown">
             <a href="#">
@@ -110,8 +102,6 @@
             </ul>
         </li>
         <!-- End - organisation -->
-
-
         <!-- Begin - messages -->
         <li class="sidebar-dropdown">
             <a href="#">
@@ -144,8 +134,6 @@
             </ul>
         </li>
         <!-- End - messages -->
-
-
         <!-- Begin - contacts -->
         <li class="sidebar-dropdown">
             <a href="#">
@@ -159,32 +147,24 @@
             </ul>
         </li>
         <!-- End - contacts -->
-
-
         <!-- Begin - administration -->
         <li class="sidebar-dropdown">
             <a href="#">
                 <span class="icon fa fa-tachometer"></span>
                 Administration
             </a>
-
             <ul class="sidebar-dropdown-menu">
                 <li><a href="#"><span class="icon fa fa-user"></span>Min bruger</a></li>
-                <li><a href="#"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
-
+                <li><a href="/organisation"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
+                <li><a href="/organisation/users"><span class="icon fa fa-suitcase"></span>Brugere</a></li>
                 <li><a href="#"><span class="icon fa fa-signal"></span>Opgradér</a></li>
             </ul>
         </li>
         <!-- End - administration -->
-
-
     </ul>
     <!-- End - navigation -->
-
-
 </div>
 <!-- End - sidebar -->
-
 
 <!-- Begin - wrapper -->
 <div id="wrapper">
