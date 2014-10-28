@@ -14,21 +14,46 @@ function decreto_org_menu() {
     'page callback' => 'decreto_org_home',
     'access callback' => 'user_is_logged_in',
   );
+  // Committee stuff.
   $items['organisation/committee'] = array(
     'title' => 'Committee',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('decreto_org_committee_form'),
-    // @todo: permissions.
-    'access callback' => 'user_is_logged_in',
+    'access callback' => 'decreto_org_user_is_admin',
   );
   $items['organisation/committee/%/delete'] = array(
     'title' => 'Delete committee',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('decreto_org_delete_committee_form'),
-    // @todo: permissions.
+    'access callback' => 'decreto_org_user_is_admin',
+  );
+  // User stuff.
+  $items['organisation/users'] = array(
+    'title' => 'Users',
+    'page callback' => 'decreto_org_users',
     'access callback' => 'user_is_logged_in',
   );
+  $items['organisation/users/add'] = array(
+    'title' => 'Add',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('decreto_org_add_user_form'),
+    'access callback' => 'decreto_org_user_is_admin',
+  );
+  $items['organisation/users/%/remove'] = array(
+    'title' => 'Remove user',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('decreto_org_remove_user_form'),
+    'access callback' => 'decreto_org_user_is_admin',
+  );
   return $items;
+}
+
+/**
+ * Access callback for organisation.
+ */
+function decreto_org_user_is_admin() {
+  // @todo: permissions.
+  return TRUE;
 }
 
 /**
@@ -40,9 +65,10 @@ function decreto_org_home() {
 
   if ($company_reference_field = field_get_items('user', $account, 'field_company_reference')) {
     foreach ($company_reference_field as $field) {
+      // @todo: use decreto_org_get_company_committees
       $company = taxonomy_term_load($field['target_id']);
 
-      $markup = '<p>' . $company->name . '</p>';;
+      $markup = '<strong>' . t('Your company') . ':</strong><p>' . $company->name . '</p>';;
 
       if ($committees_field = field_get_items('taxonomy_term', $company, 'field_committees')) {
         foreach ($committees_field as $delta => $field) {
@@ -54,9 +80,192 @@ function decreto_org_home() {
     }
   }
 
-  $markup .= '<p><a href="/organisation/committee/create">Create committee</a></p>';
+  if (decreto_org_user_is_admin()) {
+    $markup .= '<p><a href="/organisation/committee/create">Create committee</a></p>';
+  }
 
   return $markup;
+}
+
+/**
+ * Fetch company's committees.
+ */
+function decreto_org_get_company_committees($company_tid) {
+  $company = taxonomy_term_load($company_tid);
+
+  $committees = array();
+
+  if ($committees_field = field_get_items('taxonomy_term', $company, 'field_committees')) {
+    foreach ($committees_field as $delta => $field) {
+      if ($committee = taxonomy_term_load($field['target_id'])) {
+        $committees[$committee->tid] = $committee;
+      }
+    }
+  }
+
+  return $committees;
+}
+
+/**
+ * Page callback, organisation users.
+ */
+function decreto_org_users() {
+  global $user;
+  $markup = '<strong>' . t("Your company's users") . ':</strong><br />';
+
+  $company_id = decreto_helper_get_company();
+  $company_members = decreto_helper_get_company_members($company_id);
+
+  foreach ($company_members as $member) {
+    $member_account = user_load($member);
+    $markup .= $member_account->field_name[LANGUAGE_NONE][0]['value'] . ' ';
+    if ($member != $user->uid) {
+      $markup .= l(t('remove'), 'organisation/users/' . $member . '/remove');
+    }
+    $markup .= '<br />';
+  }
+
+  if (decreto_org_user_is_admin()) {
+    $markup .= '<p><a href="/organisation/users/add">Add user</a></p>';
+  }
+
+  return $markup;
+}
+
+/**
+ * Form callback, add user to organisation.
+ */
+function decreto_org_add_user_form() {
+  $form['mail'] = array(
+    '#title' => t('E-mail'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+  );
+
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+    '#required' => TRUE,
+  );
+
+  $committees = decreto_org_get_company_committees(decreto_helper_get_company());
+  $committee_options = array();
+
+  foreach ($committees as $tid => $committee) {
+    $committee_options[$tid] = $committee->name;
+  }
+
+  $form['committees'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Committees'),
+    '#options' => $committee_options,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Opret'),
+  );
+
+  return $form;
+}
+
+/**
+ * Validation for adding user to organisation.
+ */
+function decreto_org_add_user_form_validate(&$form, &$form_state) {
+  $mail = $form_state['values']['mail'];
+  if (!valid_email_address($mail)) {
+    form_set_error('mail', t('The e-mail you have entered is not valid'));
+  }
+
+  if (count(explode(' ', $form_state['values']['name'])) < 2) {
+    form_set_error('name', t('The name you have entered is not valid, must contain first- and lastname.'));
+  }
+
+  if (db_query("SELECT mail FROM {users} WHERE LOWER(:mail) = LOWER(mail)",
+    array(':mail' => $mail))->fetchField()) {
+    form_set_error('mail', t('This e-mail has already been taken by another user.'));
+  }
+}
+
+/**
+ * Submit callback for adding a user to the organisation.
+ */
+function decreto_org_add_user_form_submit(&$form, &$form_state) {
+  $mail = $form_state['values']['mail'];
+  $name = $form_state['values']['name'];
+  $committees = $form_state['values']['committees'];
+  $company_id = decreto_helper_get_company();
+
+  $edit_committees = array();
+  foreach ($committees as $committee_id => $checked) {
+    if ($checked) {
+      $edit_committees[]['target_id'] = $committee_id;
+    }
+  }
+
+  $password = user_password(8);
+  $fields = array(
+    'name' => $mail,
+    'field_name' => array(LANGUAGE_NONE => array(array('value' => $name))),
+    'field_company_reference' => array(LANGUAGE_NONE => array(array('target_id' => $company_id))),
+    'field_committee_reference' => array(LANGUAGE_NONE => $edit_committees),
+    'mail' => $mail,
+    'pass' => $password,
+    'status' => 1,
+    'init' => 'mail address',
+    'roles' => array(
+      DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+    ),
+  );
+
+  $account = user_save('', $fields);
+
+  $account->password = $fields['pass'];
+
+  drupal_mail('user', 'register_no_approval_required', $mail, NULL, array('account' => $account), variable_get('site_mail', 'noreply@example.com'));
+  drupal_set_message(t('A mail has been sent to the specified e-mail address'));
+  drupal_goto('organisation/users');
+}
+
+/**
+ * Form callback for removing user from organisation.
+ */
+function decreto_org_remove_user_form() {
+  $form['user_uid'] = array(
+    '#type' => 'hidden',
+    '#value' => arg(2),
+  );
+  $account = user_load(arg(2));
+  $name = $account->field_name[LANGUAGE_NONE][0]['value'];
+  $question = t("Do you really wan't to remove %name from the organisation?", array('%name' => $name));
+  $description = '<p>' . t("Something about the users data") . '</p>';
+
+  return confirm_form($form, $question, '', $description);
+}
+
+/**
+ * Submit callback for removing user.
+ */
+function decreto_org_remove_user_form_submit(&$form, &$form_state) {
+  $company_id = decreto_helper_get_company();
+
+  decreto_org_remove_user_from_company($company_id, $form_state['values']['user_uid']);
+}
+
+/**
+ * Remove the user from the organisation.
+ */
+function decreto_org_remove_user_from_company($company_tid, $uid) {
+  $account = user_load($uid);
+  $edit['field_company_reference'] = $account->field_company_reference;
+
+  foreach ($edit['field_company_reference'][LANGUAGE_NONE] as $delta => $data) {
+    if ($data['target_id'] == $company_tid) {
+      unset($edit['field_company_reference'][LANGUAGE_NONE][$delta]);
+    }
+  }
+  user_save($account, $edit);
 }
 
 /**
@@ -194,6 +403,7 @@ function decreto_org_committee_form_submit($form, &$form_state) {
   }
   else {
     drupal_set_message(t('The committee was updated'));
+    drupal_goto('organisation');
   }
 }
 
