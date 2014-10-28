@@ -146,8 +146,8 @@ function decreto_signup_form_validate(&$form, &$form_state) {
   }
 
   $mail = $form_state['values']['mail'];
-  if (db_query("SELECT mail FROM {users} WHERE LOWER(:name) = LOWER(mail)",
-    array(':name' => $mail))->fetchField()) {
+  if (db_query("SELECT mail FROM {users} WHERE LOWER(:mail) = LOWER(mail)",
+    array(':mail' => $mail))->fetchField()) {
     form_set_error('mail', t('This e-mail has already been taken by another user.'));
   }
 
