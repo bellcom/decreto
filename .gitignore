@@ -1,3 +1,7 @@
-logs/
-tmp/
-sessions/
+logs
+sessions
+tmp
+**/.idea
+.idea
+**/.DS_Store
+.DS_Store

@@ -25,6 +25,14 @@ regions[page_bottom]    = 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 stylesheets[all][] = css/style.css
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+
+scripts[] = 'js/modernizr.js'
+scripts[] = 'js/TweenMax.js'
+scripts[] = 'js/sidebar.js'
+scripts[] = 'js/main.js'
 
 
 ; For information on choosing the desired method, please read the Drupal

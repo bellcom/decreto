@@ -73,96 +73,220 @@
  * @ingroup themeable
  */
 ?>
-<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-  <div class="container">
-    <div class="navbar-header">
-      <?php if ($logo && FALSE): ?>
-      <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-      </a>
-      <?php endif; ?>
 
-      <?php if (!empty($site_name)): ?>
-      <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-      <?php endif; ?>
 
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+<!-- Begin - sidebar -->
+<div class="sidebar sidebar-left" data-sidebar-direction="left">
 
-    <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-      <div class="navbar-collapse collapse">
-        <nav role="navigation">
-          <?php if (!empty($primary_nav)): ?>
-            <?php print render($primary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($secondary_nav)): ?>
-            <?php print render($secondary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($page['navigation'])): ?>
-            <?php print render($page['navigation']); ?>
-          <?php endif; ?>
-        </nav>
-      </div>
-    <?php endif; ?>
-  </div>
-</header>
 
-<div class="main-container container">
+    <!-- Begin - form -->
+    <ul class="sidebar-form">
+        <li>
+            <form method="get" action="">
+                <input type="text" name="q" class="sidebar-search-input" placeholder="Search something...">
+                <button type="submit" class="sidebar-search-button">
+                    <span class="icon fa fa-search"></span>
+                </button>
+            </form>
+        </li>
+    </ul>
+    <!-- End - form -->
 
-  <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
-    <?php endif; ?>
 
-    <?php print render($page['header']); ?>
-  </header> <!-- /#page-header -->
+    <!-- Begin - navigation -->
+    <ul class="sidebar-navigation">
 
-  <div class="row">
 
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>  <!-- /#sidebar-first -->
-    <?php endif; ?>
+        <!-- Begin - organisation -->
+        <li class="sidebar-dropdown">
+            <a href="#">
+                <span class="icon fa fa-heart"></span>
+                Demo Bestyrelse A/S
+            </a>
 
-    <section<?php print $content_column_class; ?>>
-      <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-      <?php endif; ?>
-      <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if (!empty($title)): ?>
-        <h1 class="page-header"><?php print $title; ?></h1>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-      <?php endif; ?>
-      <?php if (!empty($page['help'])): ?>
-        <?php print render($page['help']); ?>
-      <?php endif; ?>
-      <?php if (!empty($action_links)): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
-      <?php print render($page['content']); ?>
-    </section>
+            <ul class="sidebar-dropdown-menu">
+                <li class="active"><a href="#"><span class="icon fa fa-calendar"></span>Kalender</a></li>
+                <li><a href="#"><span class="icon fa fa-trash-o"></span>Papirkurv</a></li>
+            </ul>
+        </li>
+        <!-- End - organisation -->
 
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>  <!-- /#sidebar-second -->
-    <?php endif; ?>
 
-  </div>
+        <!-- Begin - messages -->
+        <li class="sidebar-dropdown">
+            <a href="#">
+                <span class="icon fa fa-envelope"></span>
+                Beskeder
+                <span class="badge badge-primary">1.052</span>
+            </a>
+
+            <ul class="sidebar-dropdown-menu">
+                <li>
+                    <a href="#">
+                        <span class="icon fa fa-inbox"></span>
+                        Indbakke
+                        <span class="badge badge-secondary">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon fa fa-share"></span>
+                        Sendte
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon fa fa-trash-o"></span>
+                        Slettede
+                        <span class="badge badge-secondary">1.049</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- End - messages -->
+
+
+        <!-- Begin - contacts -->
+        <li class="sidebar-dropdown">
+            <a href="#">
+                <span class="icon fa fa-flag"></span>
+                Kontakter
+            </a>
+
+            <ul class="sidebar-dropdown-menu">
+                <li><a href="#"><span class="icon fa fa-users"></span>Medlemmer</a></li>
+                <li><a href="#"><span class="icon fa fa-paper-plane-o"></span>Eksterne kontakter</a></li>
+            </ul>
+        </li>
+        <!-- End - contacts -->
+
+
+        <!-- Begin - administration -->
+        <li class="sidebar-dropdown">
+            <a href="#">
+                <span class="icon fa fa-tachometer"></span>
+                Administration
+            </a>
+
+            <ul class="sidebar-dropdown-menu">
+                <li><a href="#"><span class="icon fa fa-user"></span>Min bruger</a></li>
+                <li><a href="#"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
+
+                <li><a href="#"><span class="icon fa fa-signal"></span>Opgradér</a></li>
+            </ul>
+        </li>
+        <!-- End - administration -->
+
+
+    </ul>
+    <!-- End - navigation -->
+
+
 </div>
-<footer class="footer container">
-  <?php print render($page['footer']); ?>
-</footer>
+<!-- End - sidebar -->
+
+
+<!-- Begin - wrapper -->
+<div id="wrapper">
+
+    <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+      <div class="container">
+        <div class="navbar-header">
+          <?php if ($logo && FALSE): ?>
+          <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          </a>
+          <?php endif; ?>
+
+          <span class="btn btn-primary" data-toggle-sidebar="sidebar-left">ad</span>
+
+          <?php if (!empty($site_name)): ?>
+          <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+          <?php endif; ?>
+
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
+          <div class="navbar-collapse collapse">
+            <nav role="navigation">
+              <?php if (!empty($primary_nav)): ?>
+                <?php print render($primary_nav); ?>
+              <?php endif; ?>
+              <?php if (!empty($secondary_nav)): ?>
+                <?php print render($secondary_nav); ?>
+              <?php endif; ?>
+              <?php if (!empty($page['navigation'])): ?>
+                <?php print render($page['navigation']); ?>
+              <?php endif; ?>
+            </nav>
+          </div>
+        <?php endif; ?>
+      </div>
+    </header>
+
+
+
+    <div class="main-container container">
+
+      <header role="banner" id="page-header">
+        <?php if (!empty($site_slogan)): ?>
+          <p class="lead"><?php print $site_slogan; ?></p>
+        <?php endif; ?>
+
+        <?php print render($page['header']); ?>
+      </header> <!-- /#page-header -->
+
+      <div class="row">
+
+        <?php if (!empty($page['sidebar_first'])): ?>
+          <aside class="col-sm-3" role="complementary">
+            <?php print render($page['sidebar_first']); ?>
+          </aside>  <!-- /#sidebar-first -->
+        <?php endif; ?>
+
+        <section<?php print $content_column_class; ?>>
+          <?php if (!empty($page['highlighted'])): ?>
+            <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+          <?php endif; ?>
+          <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+          <a id="main-content"></a>
+          <?php print render($title_prefix); ?>
+          <?php if (!empty($title)): ?>
+            <h1 class="page-header"><?php print $title; ?></h1>
+          <?php endif; ?>
+          <?php print render($title_suffix); ?>
+          <?php print $messages; ?>
+          <?php if (!empty($tabs)): ?>
+            <?php print render($tabs); ?>
+          <?php endif; ?>
+          <?php if (!empty($page['help'])): ?>
+            <?php print render($page['help']); ?>
+          <?php endif; ?>
+          <?php if (!empty($action_links)): ?>
+            <ul class="action-links"><?php print render($action_links); ?></ul>
+          <?php endif; ?>
+          <?php print render($page['content']); ?>
+        </section>
+
+        <?php if (!empty($page['sidebar_second'])): ?>
+          <aside class="col-sm-3" role="complementary">
+            <?php print render($page['sidebar_second']); ?>
+          </aside>  <!-- /#sidebar-second -->
+        <?php endif; ?>
+
+      </div>
+    </div>
+    <footer class="footer container">
+      <?php print render($page['footer']); ?>
+    </footer>
+
+
+</div>
+<!-- End - wrapper -->
