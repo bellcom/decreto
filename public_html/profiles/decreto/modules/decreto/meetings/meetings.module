@@ -1,0 +1,73 @@
+<?php
+/**
+ * @file
+ * meetings.module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function meetings_menu() {
+  $items['meetings'] = array(
+    'title' => 'Meetings',
+    'page callback' => 'meetings_overview',
+    'access callback' => 'user_is_logged_in',
+  );
+  return $items;
+}
+
+/**
+ * Meetings overview page.
+ */
+function meetings_overview() {
+  $meetings = meetings_get_users_meetings();
+
+  $rows = array();
+  foreach ($meetings as $meeting) {
+    $rows[] = array(
+      $meeting->title,
+      l(t('edit'), 'node/' . $meeting->nid . '/meetingedit') . ', ' .
+      l(t('delete'), 'node/' . $meeting->nid . '/delete'),
+    );
+  }
+
+  $meetings_table = theme('table', array(
+      'header' => array(
+        t('Title'),
+        t('Actions'),
+      ),
+      'rows' => $rows,
+    )
+  );
+
+  $variables = array('meetings_table' => $meetings_table);
+  return theme('page-meetings-overview', $variables);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function meetings_theme() {
+  return array(
+    'page-meetings-overview' => array(
+      'template' => 'page-meetings-overview',
+    ),
+  );
+}
+
+/**
+ * Fetch an array of the users meetings.
+ */
+function meetings_get_users_meetings() {
+  if ($committees = decreto_org_get_users_committees()) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->fieldCondition('field_os2web_meetings_committee', 'tid', array_keys($committees), 'IN');
+    $result = $query->execute();
+
+    if (isset($result['node'])) {
+      return node_load_multiple(array_keys($result['node']));
+    }
+  }
+  return array();
+}

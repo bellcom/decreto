@@ -108,7 +108,7 @@
                 Kontakter
             </a>
             <ul class="sidebar-dropdown-menu">
-                <li><a href="#"><span class="icon fa fa-users"></span>Medlemmer</a></li>
+                <li><a href="/contacts/members"><span class="icon fa fa-users"></span>Medlemmer</a></li>
             </ul>
         </li>
         <!-- End - contacts -->

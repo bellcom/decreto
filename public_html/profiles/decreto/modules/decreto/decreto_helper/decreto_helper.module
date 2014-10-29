@@ -22,12 +22,16 @@ function decreto_helper_get_company($account = FALSE) {
 /**
  * Get companys users.
  */
-function decreto_helper_get_company_members($company) {
+function decreto_helper_get_company_members($company = NULL) {
   if (is_object($company)) {
     $company_tid = $company->tid;
   }
-  if (is_numeric($company)) {
+  elseif (is_numeric($company)) {
     $company_tid = $company;
+  }
+  else {
+    $company = decreto_helper_get_company();
+    $company_tid = $company->tid;
   }
 
   $query = new EntityFieldQuery();

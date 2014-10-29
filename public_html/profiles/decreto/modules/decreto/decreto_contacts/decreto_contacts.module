@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * decreto_contacts.module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function decreto_contacts_menu() {
+  $items['contacts/members'] = array(
+    'title' => 'Members',
+    'page callback' => 'decreto_contacts_members',
+    'access callback' => 'user_is_logged_in',
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback for contacts/members.
+ */
+function decreto_contacts_members() {
+  $company_members = decreto_helper_get_company_members();
+  $rows = array();
+
+  foreach ($company_members as $member) {
+    $account = user_load($member);
+    $rows[] = array(
+      $account->field_name[LANGUAGE_NONE][0]['value'],
+      decreto_contacts_members_member_committees($account),
+    );
+  }
+
+  $header = array(t('Navn'), t('Committees'));
+  return theme('table', array('header' => $header, 'rows' => $rows));
+}
+
+/**
+ * Return commaseperated list of committees for the user.
+ */
+function decreto_contacts_members_member_committees($account) {
+  if ($committees = decreto_org_get_users_committees($account)) {
+    $tmp = array();
+
+    foreach ($committees as $committee) {
+      $tmp[] = $committee->name;
+    }
+    return implode(', ', $tmp);
+  }
+  return '';
+}

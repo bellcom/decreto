@@ -109,6 +109,35 @@ function decreto_org_get_company_committees($company) {
 }
 
 /**
+ * Fetch users committees.
+ */
+function decreto_org_get_users_committees($account = FALSE) {
+  if (!$account) {
+    global $user;
+    $account = user_load($user->uid);
+  }
+
+  $company_committees = decreto_org_get_company_committees(decreto_helper_get_company());
+
+  if ($committee_reference_field = field_get_items('user', $account, 'field_committee_reference')) {
+    foreach ($committee_reference_field as $field) {
+      $user_committees[$field['target_id']] = $field['target_id'];
+    }
+
+    $int = array_intersect(array_keys($company_committees), array_keys($user_committees));
+    foreach ($company_committees as $committee) {
+
+      if (!in_array($committee->tid, $int)) {
+        unset($company_committees[$committee->tid]);
+      }
+    }
+
+    return $company_committees;
+  }
+  return FALSE;
+}
+
+/**
  * Page callback, organisation users.
  */
 function decreto_org_users() {
@@ -388,20 +417,6 @@ function decreto_org_committee_form() {
   return $form;
 }
 
-/**
- * Get members of committee.
- */
-function decreto_org_get_committee_members($committee_tid) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'user')
-     ->fieldCondition('field_committee_reference', 'target_id', $committee_tid);
-  $result = $query->execute();
-
-  if (isset($result['user'])) {
-    return array_keys($result['user']);
-  }
-  return array();
-}
 
 /**
  * Submit callback for committee form.
@@ -457,12 +472,11 @@ function decreto_org_committee_form_submit($form, &$form_state) {
 
     taxonomy_term_save($company);
     drupal_set_message(t('The committee was saved'));
-    drupal_goto('organisation/committee/' . $committee->tid);
   }
   else {
     drupal_set_message(t('The committee was updated'));
-    drupal_goto('organisation');
   }
+  drupal_goto('organisation');
 }
 
 /**
@@ -492,4 +506,19 @@ function decreto_org_delete_committee_form() {
 function decreto_org_delete_committee_form_submit($form, $form_state) {
   taxonomy_term_delete($form_state['values']['committee_tid']);
   drupal_goto('organisation');
+}
+
+/**
+ * Get members of committee.
+ */
+function decreto_org_get_committee_members($committee_tid) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'user')
+     ->fieldCondition('field_committee_reference', 'target_id', $committee_tid);
+  $result = $query->execute();
+
+  if (isset($result['user'])) {
+    return array_keys($result['user']);
+  }
+  return array();
 }
