@@ -14,7 +14,7 @@ function meetingeditor_menu() {
     'title' => 'Meeting editor',
     'description' => 'Edit meetings',
     'page callback' => 'meetingeditor_overview',
-    'access arguments' => array('edit own content'),
+    'access callback' => TRUE,
     'type' => MENU_LOCAL_TASK,
   );
   $items['node/%/meetingedit'] = array(
@@ -22,7 +22,7 @@ function meetingeditor_menu() {
     'description' => 'Edit meetings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('meetingeditor_form'),
-    'access arguments' => array('edit own content'),
+    'access callback' => TRUE,
     'type' => MENU_LOCAL_TASK,
   );
   $items['admin/content/meetingeditor/add'] = array(
@@ -81,11 +81,18 @@ function meetingeditor_form($form, &$form_state, $no_js_use = FALSE) {
     '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['field_os2web_meetings_date'][LANGUAGE_NONE][0]['value'] : '',
   );
 
+  $committee_options = array();
+  if ($committees = decreto_org_get_users_committees()) {
+    foreach ($committees as $committee) {
+      $committee_options[$committee->tid] = $committee->name;
+    }
+  }
+
   $form['committee'] = array(
     '#type' => 'select',
     '#title' => t('Committee'),
-    // @todo get current users committees
-    '#options' => array(),
+    '#required' => TRUE,
+    '#options' => $committee_options,
   );
 
   meetingeditor_point_form($form, $form_state, $no_js_use);

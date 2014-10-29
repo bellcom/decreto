@@ -44,6 +44,36 @@ function decreto_signup_block_view($delta = '') {
 }
 
 /**
+ * Implements hook_user_login().
+ */
+function decreto_signup_user_login(&$edit, $account) {
+  if ($account->access == 0) {
+    drupal_goto('firstlogin');
+  }
+
+  if (!$company_field = field_get_items('user', $account, 'field_company_reference')) {
+    $_SESSION['no_company'] = TRUE;
+    drupal_goto('firstlogin');
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function decreto_signup_init() {
+  if (isset($_SESSION['no_company']) && $_SESSION['no_company']) {
+    $paths = array(
+      'firstlogin',
+      'user/logout',
+      'system/ajax',
+    );
+    if (!in_array(current_path(), $paths)) {
+      drupal_goto('firstlogin');
+    }
+  }
+}
+
+/**
  * Signup form callback.
  */
 function decreto_signup_form() {
@@ -209,10 +239,16 @@ function decreto_signup_theme() {
  */
 function decreto_signup_first_login() {
   global $user;
+  $account = user_load($user->uid);
+
+  // If the users has a company ref, redirect to organisation page.
+  if ($company_field = field_get_items('user', $account, 'field_company_reference')) {
+    drupal_goto('organisation');
+  }
 
   $variables = array();
   $variables['terms'] = 'Terms and conditions';
-  $variables['user'] = user_load($user->uid);
+  $variables['user'] = $account;
   $variables['first_login_form'] = drupal_render(drupal_get_form('decreto_signup_first_login_form', $variables));
 
   return theme('decreto_first_login', $variables);
@@ -229,7 +265,7 @@ function decreto_signup_first_login_form($form, $form_state, $variables) {
   }
 
   if (isset($form_state['step'])) {
-    return drupal_get_form('decreto_signup_' . $form_state['step']);
+    return drupal_get_form('decreto_signup_' . $form_state['step'], $form_state['company']);
   }
 
   $form['company']['company'] = array(
@@ -328,14 +364,16 @@ function decreto_signup_first_login_form_submit(&$form, &$form_state) {
 
   // @todo:
   // This should probarbly be done from the decreto_org module.
+  unset($_SESSION['no_company']);
   drupal_goto('organisation');
 }
 
 /**
  * Form callback, company exists.
  */
-function decreto_signup_company_exists($form, $form_state) {
+function decreto_signup_company_exists($form, $form_state, $company_info) {
   $form = array();
+  $form_state['company'] = $company_info;
 
   $form['text'] = array(
     '#markup' => '<p>The company you have specified, has already been registered.</p>',
@@ -353,8 +391,20 @@ function decreto_signup_company_exists($form, $form_state) {
  * Company exists submit.
  */
 function decreto_signup_company_exists_submit(&$form, &$form_state) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+     ->fieldCondition('field_cvr', 'value', $form_state['company']['cvr']);
+  $result = $query->execute();
+
+  global $user;
+  if (isset($result['taxonomy_term'])) {
+    $company = taxonomy_term_load(key($result['taxonomy_term']));
+    $company->field_access_request[LANGUAGE_NONE][]['target_id'] = $user->uid;
+    taxonomy_term_save($company);
+  }
 
   drupal_set_message('A message has been sent to the company administrator, with your request.');
+  // @todo: Send email notification
 }
 
 /**
@@ -363,6 +413,7 @@ function decreto_signup_company_exists_submit(&$form, &$form_state) {
 function decreto_signup_search_company_js($form, $form_state) {
   return $form['company']['cvr'];
 }
+
 /**
  * Search for a company.
  */

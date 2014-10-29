@@ -21,6 +21,8 @@ function decreto_theme_preprocess_page(&$variables) {
     $signup_form = module_invoke('decreto_signup', 'block_view', 'decreto_signup');
     $variables['signup_form'] = drupal_render($signup_form);
   }
+  $company = decreto_helper_get_company();
+  $variables['company_name'] = $company->name;
 }
 
 /**

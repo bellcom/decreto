@@ -14,7 +14,7 @@ function decreto_helper_get_company($account = FALSE) {
   }
 
   if ($company_reference_field = field_get_items('user', $account, 'field_company_reference')) {
-    return $company_reference_field[0]['target_id'];
+    return taxonomy_term_load($company_reference_field[0]['target_id']);
   }
   return FALSE;
 }
@@ -22,7 +22,18 @@ function decreto_helper_get_company($account = FALSE) {
 /**
  * Get companys users.
  */
-function decreto_helper_get_company_members($company_tid) {
+function decreto_helper_get_company_members($company = NULL) {
+  if (is_object($company)) {
+    $company_tid = $company->tid;
+  }
+  elseif (is_numeric($company)) {
+    $company_tid = $company;
+  }
+  else {
+    $company = decreto_helper_get_company();
+    $company_tid = $company->tid;
+  }
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'user')
      ->fieldCondition('field_company_reference', 'target_id', $company_tid);

@@ -92,58 +92,23 @@
         <!-- Begin - organisation -->
         <li class="sidebar-dropdown">
             <a href="#">
-                <span class="icon fa fa-heart"></span>
-                Demo Bestyrelse A/S
+                <span class="icon fa fa-building"></span>
+                <?php print $company_name; ?>
             </a>
-
             <ul class="sidebar-dropdown-menu">
+                <li><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
                 <li class="active"><a href="#"><span class="icon fa fa-calendar"></span>Kalender</a></li>
-                <li><a href="#"><span class="icon fa fa-trash-o"></span>Papirkurv</a></li>
             </ul>
         </li>
         <!-- End - organisation -->
-        <!-- Begin - messages -->
-        <li class="sidebar-dropdown">
-            <a href="#">
-                <span class="icon fa fa-envelope"></span>
-                Beskeder
-                <span class="badge badge-primary">1.052</span>
-            </a>
-
-            <ul class="sidebar-dropdown-menu">
-                <li>
-                    <a href="#">
-                        <span class="icon fa fa-inbox"></span>
-                        Indbakke
-                        <span class="badge badge-secondary">3</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon fa fa-share"></span>
-                        Sendte
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon fa fa-trash-o"></span>
-                        Slettede
-                        <span class="badge badge-secondary">1.049</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- End - messages -->
         <!-- Begin - contacts -->
         <li class="sidebar-dropdown">
             <a href="#">
-                <span class="icon fa fa-flag"></span>
+                <span class="icon fa fa-book"></span>
                 Kontakter
             </a>
-
             <ul class="sidebar-dropdown-menu">
-                <li><a href="#"><span class="icon fa fa-users"></span>Medlemmer</a></li>
-                <li><a href="#"><span class="icon fa fa-paper-plane-o"></span>Eksterne kontakter</a></li>
+                <li><a href="/contacts/members"><span class="icon fa fa-users"></span>Medlemmer</a></li>
             </ul>
         </li>
         <!-- End - contacts -->
@@ -154,10 +119,9 @@
                 Administration
             </a>
             <ul class="sidebar-dropdown-menu">
-                <li><a href="#"><span class="icon fa fa-user"></span>Min bruger</a></li>
+                <li><a href="/user"><span class="icon fa fa-user"></span>Min bruger</a></li>
                 <li><a href="/organisation"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
-                <li><a href="/organisation/users"><span class="icon fa fa-suitcase"></span>Brugere</a></li>
-                <li><a href="#"><span class="icon fa fa-signal"></span>Opgradér</a></li>
+                <li><a href="/organisation/users"><span class="icon fa fa-users"></span>Medlemmer</a></li>
             </ul>
         </li>
         <!-- End - administration -->
@@ -210,8 +174,6 @@
         <?php endif; ?>
       </div>
     </header>
-
-
 
     <div class="main-container container">
 
