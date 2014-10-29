@@ -93,7 +93,9 @@
         <li class="sidebar-dropdown">
             <a href="#">
                 <span class="icon fa fa-building"></span>
-                <?php print $company_name; ?>
+                <?php if (isset($company_name)) : ?>
+                  <?php print $company_name; ?>
+                <?php endif; ?>
             </a>
             <ul class="sidebar-dropdown-menu">
                 <li><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
