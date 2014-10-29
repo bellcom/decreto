@@ -81,7 +81,7 @@ function decreto_org_home() {
   }
 
   if (decreto_org_user_is_admin()) {
-    $markup .= '<p><a href="/organisation/committee/create">Create committee</a></p>';
+    $markup .= '<p><a class="btn btn-primary" href="/organisation/committee/create">Create committee</a></p>';
   }
 
   return $markup;
@@ -90,8 +90,10 @@ function decreto_org_home() {
 /**
  * Fetch company's committees.
  */
-function decreto_org_get_company_committees($company_tid) {
-  $company = taxonomy_term_load($company_tid);
+function decreto_org_get_company_committees($company) {
+  if (is_numeric($company)) {
+    $company = taxonomy_term_load($company_tid);
+  }
 
   $committees = array();
 
@@ -111,22 +113,46 @@ function decreto_org_get_company_committees($company_tid) {
  */
 function decreto_org_users() {
   global $user;
-  $markup = '<strong>' . t("Your company's users") . ':</strong><br />';
+  $markup = '<h2>' . t("Your company's users") . '</h2>';
 
-  $company_id = decreto_helper_get_company();
-  $company_members = decreto_helper_get_company_members($company_id);
+  $company = decreto_helper_get_company();
+  $company_members = decreto_helper_get_company_members($company);
 
   foreach ($company_members as $member) {
     $member_account = user_load($member);
-    $markup .= $member_account->field_name[LANGUAGE_NONE][0]['value'] . ' ';
+    $name = $member_account->field_name[LANGUAGE_NONE][0]['value'];
+
+    $actions = '';
     if ($member != $user->uid) {
-      $markup .= l(t('remove'), 'organisation/users/' . $member . '/remove');
+      $actions = l(t('remove'), 'organisation/users/' . $member . '/remove');
     }
-    $markup .= '<br />';
+    $rows[] = array(
+      $name,
+      $actions,
+    );
   }
 
+  $header = array(t('Name'), t('Actions'));
+  $markup .= theme('table', array('header' => $header, 'rows' => $rows));
+
   if (decreto_org_user_is_admin()) {
-    $markup .= '<p><a href="/organisation/users/add">Add user</a></p>';
+    $markup .= '<p><a class="btn btn-primary" href="/organisation/users/add">Add user</a></p>';
+  }
+
+  if ($requested_access_field = field_get_items('taxonomy_term', $company, 'field_access_request')) {
+    $markup .= '<h2>' . t("Requested access") . '</h2>';
+    $header = array(t('Name'), t('Actions'));
+    $rows = array();
+
+    foreach ($requested_access_field as $access_request) {
+      $account = user_load($access_request['target_id']);
+      $rows[] = array(
+        $account->field_name[LANGUAGE_NONE][0]['value'],
+        l(t('grant access'), 'organisation/users/add/' . $account->uid) . ', ' . l(t('ignore'), ''),
+      );
+    }
+
+    $markup .= theme('table', array('header' => $header, 'rows' => $rows));
   }
 
   return $markup;
@@ -136,16 +162,29 @@ function decreto_org_users() {
  * Form callback, add user to organisation.
  */
 function decreto_org_add_user_form() {
+  $exitsing = FALSE;
+  if (is_numeric(arg(3)) && $account = user_load(arg(3))) {
+    $exitsing = TRUE;
+    $form['user_uid'] = array(
+      '#value' => arg(3),
+      '#access' => FALSE,
+    );
+  }
+
   $form['mail'] = array(
     '#title' => t('E-mail'),
     '#type' => 'textfield',
     '#required' => TRUE,
+    '#default_value' => isset($account) ? $account->mail : '',
+    '#disabled' => $exitsing,
   );
 
   $form['name'] = array(
     '#type' => 'textfield',
     '#title' => t('Name'),
     '#required' => TRUE,
+    '#default_value' => isset($account) ? $account->field_name[LANGUAGE_NONE][0]['value'] : '',
+    '#disabled' => $exitsing,
   );
 
   $committees = decreto_org_get_company_committees(decreto_helper_get_company());
@@ -163,7 +202,7 @@ function decreto_org_add_user_form() {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Opret'),
+    '#value' => t('Add'),
   );
 
   return $form;
@@ -182,7 +221,7 @@ function decreto_org_add_user_form_validate(&$form, &$form_state) {
     form_set_error('name', t('The name you have entered is not valid, must contain first- and lastname.'));
   }
 
-  if (db_query("SELECT mail FROM {users} WHERE LOWER(:mail) = LOWER(mail)",
+  if (!isset($form['user_uid']) && db_query("SELECT mail FROM {users} WHERE LOWER(:mail) = LOWER(mail)",
     array(':mail' => $mail))->fetchField()) {
     form_set_error('mail', t('This e-mail has already been taken by another user.'));
   }
@@ -194,8 +233,10 @@ function decreto_org_add_user_form_validate(&$form, &$form_state) {
 function decreto_org_add_user_form_submit(&$form, &$form_state) {
   $mail = $form_state['values']['mail'];
   $name = $form_state['values']['name'];
+
   $committees = $form_state['values']['committees'];
-  $company_id = decreto_helper_get_company();
+  $company = decreto_helper_get_company();
+  $company_id = $company->tid;
 
   $edit_committees = array();
   foreach ($committees as $committee_id => $checked) {
@@ -204,27 +245,45 @@ function decreto_org_add_user_form_submit(&$form, &$form_state) {
     }
   }
 
-  $password = user_password(8);
-  $fields = array(
-    'name' => $mail,
-    'field_name' => array(LANGUAGE_NONE => array(array('value' => $name))),
-    'field_company_reference' => array(LANGUAGE_NONE => array(array('target_id' => $company_id))),
-    'field_committee_reference' => array(LANGUAGE_NONE => $edit_committees),
-    'mail' => $mail,
-    'pass' => $password,
-    'status' => 1,
-    'init' => 'mail address',
-    'roles' => array(
-      DRUPAL_AUTHENTICATED_RID => 'authenticated user',
-    ),
-  );
+  if (isset($form['user_uid'])) {
+    $account = user_load($form['user_uid']['#value']);
+    $edit = array(
+      'field_company_reference' => array(LANGUAGE_NONE => array(array('target_id' => $company_id))),
+      'field_committee_reference' => array(LANGUAGE_NONE => $edit_committees),
+    );
+    user_save($account, $edit);
 
-  $account = user_save('', $fields);
+    // Remove the access request from the company.
+    foreach ($company->field_access_request[LANGUAGE_NONE] as $delta => $request) {
+      if ($request['target_id'] == $account->uid) {
+        unset($company->field_access_request[LANGUAGE_NONE][$delta]);
+      }
+    }
+    taxonomy_term_save($company);
+  }
+  else {
+    $password = user_password(8);
+    $fields = array(
+      'name' => $mail,
+      'field_name' => array(LANGUAGE_NONE => array(array('value' => $name))),
+      'field_company_reference' => array(LANGUAGE_NONE => array(array('target_id' => $company_id))),
+      'field_committee_reference' => array(LANGUAGE_NONE => $edit_committees),
+      'mail' => $mail,
+      'pass' => $password,
+      'status' => 1,
+      'init' => 'mail address',
+      'roles' => array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+      ),
+    );
 
-  $account->password = $fields['pass'];
+    $account = user_save('', $fields);
 
-  drupal_mail('user', 'register_no_approval_required', $mail, NULL, array('account' => $account), variable_get('site_mail', 'noreply@example.com'));
-  drupal_set_message(t('A mail has been sent to the specified e-mail address'));
+    $account->password = $fields['pass'];
+
+    drupal_mail('user', 'register_no_approval_required', $mail, NULL, array('account' => $account), variable_get('site_mail', 'noreply@example.com'));
+    drupal_set_message(t('A mail has been sent to the specified e-mail address'));
+  }
   drupal_goto('organisation/users');
 }
 
@@ -365,8 +424,8 @@ function decreto_org_committee_form_submit($form, &$form_state) {
 
   taxonomy_term_save($committee);
 
-  $company_id = decreto_helper_get_company();
-  $company_members = decreto_helper_get_company_members($company_id);
+  $company = decreto_helper_get_company();
+  $company_members = decreto_helper_get_company_members($company);
 
   foreach ($company_members as $member) {
     $is_in_committee = FALSE;
@@ -392,8 +451,7 @@ function decreto_org_committee_form_submit($form, &$form_state) {
 
   // Attach the committee to the company.
   if (!isset($skip_company_attach)) {
-    $company_id = decreto_helper_get_company();
-    $company = taxonomy_term_load($company_id);
+    $company = decreto_helper_get_company();
 
     $company->field_committees[LANGUAGE_NONE][]['target_id'] = $committee->tid;
 
