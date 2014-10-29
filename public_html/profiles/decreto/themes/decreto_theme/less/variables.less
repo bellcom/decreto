@@ -1,4 +1,106 @@
 //
+// Custom variables
+// --------------------------------------------------
+
+// Paths
+@path-image:                            "../img/";
+
+// Extra brand variables
+@brand-secondary:                       #9cd7cc;
+@brand-tertiary:                        #32424c;
+
+// Font weight
+@font-weight-light: 	                200;
+@font-weight-semi-light:                300;
+@font-weight: 		                    400;
+@font-weight-semi-bold:                 500;
+@font-weight-bold: 	                    600;
+
+// Font sizes
+@font-size-extra-small:                 ceil(@font-size-base * 0.70); // ~10px
+@font-size-extra-large:                 ceil(@font-size-base * 1.50); // ~21px
+
+//== Additional states
+@state-primary-text:                    #fff;
+@state-primary-bg:                      @brand-primary;
+
+@state-secondary-text:                  #fff;
+@state-secondary-bg:                    @brand-secondary;
+
+@state-tertiary-text:                   #fff;
+@state-tertiary-bg:                     @brand-tertiary;
+
+//== Social link colouring
+@social-link-color-facebook: 		    #3B5998;
+@social-link-color-twitter: 		    #55acee;
+@social-link-color-instagram: 		    #3f729b;
+@social-link-color-linkedin: 		    #0976b4;
+@social-link-color-pinterest: 		    #cc2127;
+@social-link-color-vimeo: 		        #1ab7ea;
+@social-link-color-youtube:             #e52d27;
+
+//== Transitions
+@transition-time: 		                0.15s;
+
+
+//
+// Sidebar
+// --------------------------------------------------
+//== Main
+@sidebar-width:                                                     280px;
+@sidebar-background-color:                                          #303641;
+
+@sidebar-border-width:                                              1px;
+@sidebar-border-style:                                              solid;
+@sidebar-border-color:                                              #fff;
+@sidebar-border-rgba-color:                                         rgba( 255, 255, 255, .08 );
+
+//== List item
+@sidebar-list-item-background-color:                                transparent;
+@sidebar-list-item-background-color-rgba:                           rgba( 0, 0, 0, .04 );
+
+//== List item - active
+@sidebar-list-item-active-background-color:                         transparent;
+@sidebar-list-item-active-background-color-rgba:                    rgba( 0, 0, 0, .15 );
+
+//== Icon
+@sidebar-icon-font-size:                                            14px;
+
+//== Link
+@sidebar-link-icon-color:                                           @sidebar-link-font-color;
+@sidebar-link-font-color:                                           #aaabae;
+
+//== Link - hover
+@sidebar-link-hover-icon-color:                                     @sidebar-link-hover-font-color;
+@sidebar-link-hover-font-color:                                     #fff;
+
+@sidebar-link-hover-background-color:                               transparent;
+@sidebar-link-hover-background-color-rgba:                          rgba(255, 255, 255, .04);
+
+//== Link - active
+@sidebar-link-active-icon-color:                                    @sidebar-link-active-font-color;
+@sidebar-link-active-font-color:                                    #fff;
+
+//== Link - active - hover
+@sidebar-link-active-hover-font-color:                              @sidebar-link-active-font-color;
+@sidebar-link-active-hover-icon-color:                              @sidebar-link-active-hover-font-color;
+
+//== Badge
+@sidebar-badge-font-size:                                           @font-size-extra-small;
+@sidebar-badge-font-weight:                                         @font-weight-semi-bold;
+
+//== Badge - primary
+@sidebar-badge-primary-font-color:                                  #fff;
+@sidebar-badge-primary-background-color:                            @brand-primary;
+@sidebar-badge-primary-background-color-rgba:                       rgba( red(@sidebar-badge-primary-background-color), green(@sidebar-badge-primary-background-color), blue(@sidebar-badge-primary-background-color), 1);
+
+//== Badge - secondary
+@sidebar-badge-secondary-font-color:                                #fff;
+@sidebar-badge-secondary-background-color:                          @brand-secondary;
+@sidebar-badge-secondary-background-color-rgba:                     rgba( red(@sidebar-badge-secondary-background-color), green(@sidebar-badge-secondary-background-color), blue(@sidebar-badge-secondary-background-color), .2);
+
+
+//
 // Variables
 // --------------------------------------------------
 
@@ -14,7 +116,7 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #428bca;
+@brand-primary:         #f37744;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
