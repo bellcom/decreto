@@ -19,31 +19,31 @@ function decreto_org_menu() {
     'title' => 'Committee',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('decreto_org_committee_form'),
-    'access callback' => 'decreto_org_user_is_admin',
+    'access callback' => 'decreto_org_user_is_company_admin',
   );
   $items['organisation/committee/%/delete'] = array(
     'title' => 'Delete committee',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('decreto_org_delete_committee_form'),
-    'access callback' => 'decreto_org_user_is_admin',
+    'access callback' => 'decreto_org_user_is_company_admin',
   );
   // User stuff.
   $items['organisation/users'] = array(
-    'title' => 'Users',
+    'title' => 'Your companys users',
     'page callback' => 'decreto_org_users',
     'access callback' => 'user_is_logged_in',
   );
   $items['organisation/users/add'] = array(
-    'title' => 'Add',
+    'title' => 'Add user to company',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('decreto_org_add_user_form'),
-    'access callback' => 'decreto_org_user_is_admin',
+    'access callback' => 'decreto_org_user_is_company_admin',
   );
   $items['organisation/users/%/remove'] = array(
     'title' => 'Remove user',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('decreto_org_remove_user_form'),
-    'access callback' => 'decreto_org_user_is_admin',
+    'access callback' => 'decreto_org_user_is_company_admin',
   );
   return $items;
 }
@@ -51,9 +51,21 @@ function decreto_org_menu() {
 /**
  * Access callback for organisation.
  */
-function decreto_org_user_is_admin() {
-  // @todo: permissions.
-  return TRUE;
+function decreto_org_user_is_company_admin() {
+  global $user;
+  $account = user_load($user->uid);
+
+  if ($company_admin_field = field_get_items('user', $account, 'field_company_admin')) {
+    $company = decreto_helper_get_company();
+
+    foreach ($company_admin_field as $field) {
+      if ($field['target_id'] == $company->tid) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
 }
 
 /**
@@ -63,24 +75,17 @@ function decreto_org_home() {
   global $user;
   $account = user_load($user->uid);
 
-  if ($company_reference_field = field_get_items('user', $account, 'field_company_reference')) {
-    foreach ($company_reference_field as $field) {
-      // @todo: use decreto_org_get_company_committees
-      $company = taxonomy_term_load($field['target_id']);
+  if ($company = decreto_helper_get_company()) {
+    $markup = '<strong>' . t('Your company') . ':</strong><p>' . $company->name . '</p>';;
 
-      $markup = '<strong>' . t('Your company') . ':</strong><p>' . $company->name . '</p>';;
-
-      if ($committees_field = field_get_items('taxonomy_term', $company, 'field_committees')) {
-        foreach ($committees_field as $delta => $field) {
-          if ($committee = taxonomy_term_load($field['target_id'])) {
-            $markup .= '<p><a href="/organisation/committee/' . $committee->tid . '">' . $committee->name . '</a></p>';
-          }
-        }
+    if ($committees = decreto_org_get_company_committees($company)) {
+      foreach ($committees as $delta => $committee) {
+        $markup .= '<p><a href="/organisation/committee/' . $committee->tid . '">' . $committee->name . '</a></p>';
       }
     }
   }
 
-  if (decreto_org_user_is_admin()) {
+  if (decreto_org_user_is_company_admin()) {
     $markup .= '<p><a class="btn btn-primary" href="/organisation/committee/create">Create committee</a></p>';
   }
 
@@ -142,7 +147,7 @@ function decreto_org_get_users_committees($account = FALSE) {
  */
 function decreto_org_users() {
   global $user;
-  $markup = '<h2>' . t("Your company's users") . '</h2>';
+  $markup = '';
 
   $company = decreto_helper_get_company();
   $company_members = decreto_helper_get_company_members($company);
@@ -151,10 +156,13 @@ function decreto_org_users() {
     $member_account = user_load($member);
     $name = $member_account->field_name[LANGUAGE_NONE][0]['value'];
 
-    $actions = '';
-    if ($member != $user->uid) {
+    if ($member != $user->uid && decreto_org_user_is_company_admin()) {
       $actions = l(t('remove'), 'organisation/users/' . $member . '/remove');
     }
+    else {
+      $actions = '-';
+    }
+
     $rows[] = array(
       $name,
       $actions,
@@ -164,7 +172,7 @@ function decreto_org_users() {
   $header = array(t('Name'), t('Actions'));
   $markup .= theme('table', array('header' => $header, 'rows' => $rows));
 
-  if (decreto_org_user_is_admin()) {
+  if (decreto_org_user_is_company_admin()) {
     $markup .= '<p><a class="btn btn-primary" href="/organisation/users/add">Add user</a></p>';
   }
 
@@ -512,6 +520,7 @@ function decreto_org_delete_committee_form_submit($form, $form_state) {
  * Get members of committee.
  */
 function decreto_org_get_committee_members($committee_tid) {
+  error_log(__FILE__ . ' : ' . __LINE__ . ': ' .  print_r($committee_tid, 1));
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'user')
      ->fieldCondition('field_committee_reference', 'target_id', $committee_tid);

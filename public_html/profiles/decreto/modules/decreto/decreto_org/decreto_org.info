@@ -1,2 +1,5 @@
 name = Decreto organisation manager
+package = Decreto
 core = 7.x
+dependencies[] = decreto_user
+features[features_api][] = api:2
