@@ -18,3 +18,11 @@ function decreto_user_form_user_profile_form_alter(&$form, &$form_state, $form_i
     $form['field_company']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_user_login().
+ */
+function decreto_user_user_login(&$edit, $account) {
+  // Send the user to the dashboard.
+  $edit['redirect'] = 'dashboard';
+}
