@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Decreto user module.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function decreto_user_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  // Only users with the correct permissions should be able to change these
+  // options on the user.
+  if (!user_access('administer users')) {
+    $form['field_committee_admin']['#access'] = FALSE;
+    $form['field_committee_reference']['#access'] = FALSE;
+    $form['field_company_admin']['#access'] = FALSE;
+    $form['field_company_reference']['#access'] = FALSE;
+    $form['field_company']['#access'] = FALSE;
+  }
+}
