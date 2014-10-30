@@ -73,63 +73,66 @@
  * @ingroup themeable
  */
 ?>
-<!-- Begin - sidebar -->
-<div class="sidebar sidebar-left" data-sidebar-direction="left">
-    <!-- Begin - form -->
-    <ul class="sidebar-form">
-        <li>
-            <form method="get" action="">
-                <input type="text" name="q" class="sidebar-search-input" placeholder="Search something...">
-                <button type="submit" class="sidebar-search-button">
-                    <span class="icon fa fa-search"></span>
-                </button>
-            </form>
-        </li>
-    </ul>
-    <!-- End - form -->
-    <!-- Begin - navigation -->
-    <ul class="sidebar-navigation">
-        <!-- Begin - organisation -->
-        <li class="sidebar-dropdown">
-            <a href="#">
-                <span class="icon fa fa-building"></span>
-                <?php if (isset($company_name)) : ?>
-                  <?php print $company_name; ?>
-                <?php endif; ?>
-            </a>
-            <ul class="sidebar-dropdown-menu">
-                <li><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
-                <li class="active"><a href="#"><span class="icon fa fa-calendar"></span>Kalender</a></li>
-            </ul>
-        </li>
-        <!-- End - organisation -->
-        <!-- Begin - contacts -->
-        <li class="sidebar-dropdown">
-            <a href="#">
-                <span class="icon fa fa-book"></span>
-                Kontakter
-            </a>
-            <ul class="sidebar-dropdown-menu">
-                <li><a href="/contacts/members"><span class="icon fa fa-users"></span>Medlemmer</a></li>
-            </ul>
-        </li>
-        <!-- End - contacts -->
-        <!-- Begin - administration -->
-        <li class="sidebar-dropdown">
-            <a href="#">
-                <span class="icon fa fa-tachometer"></span>
-                Administration
-            </a>
-            <ul class="sidebar-dropdown-menu">
-                <li><a href="/user"><span class="icon fa fa-user"></span>Min bruger</a></li>
-                <li><a href="/organisation"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
-                <li><a href="/organisation/users"><span class="icon fa fa-users"></span>Medlemmer</a></li>
-            </ul>
-        </li>
-        <!-- End - administration -->
-    </ul>
-    <!-- End - navigation -->
-</div>
+
+<?php if ($user_is_logged_in): ?>
+  <!-- Begin - sidebar -->
+  <div class="sidebar sidebar-left" data-sidebar-direction="left">
+      <!-- Begin - form -->
+      <ul class="sidebar-form">
+          <li>
+              <form method="get" action="">
+                  <input type="text" name="q" class="sidebar-search-input" placeholder="Search something...">
+                  <button type="submit" class="sidebar-search-button">
+                      <span class="icon fa fa-search"></span>
+                  </button>
+              </form>
+          </li>
+      </ul>
+      <!-- End - form -->
+      <!-- Begin - navigation -->
+      <ul class="sidebar-navigation">
+          <!-- Begin - organisation -->
+          <li class="sidebar-dropdown">
+              <a href="#">
+                  <span class="icon fa fa-building"></span>
+                  <?php if (isset($company_name)) : ?>
+                    <?php print $company_name; ?>
+                  <?php endif; ?>
+              </a>
+              <ul class="sidebar-dropdown-menu">
+                  <li><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
+                  <li class="active"><a href="#"><span class="icon fa fa-calendar"></span>Kalender</a></li>
+              </ul>
+          </li>
+          <!-- End - organisation -->
+          <!-- Begin - contacts -->
+          <li class="sidebar-dropdown">
+              <a href="#">
+                  <span class="icon fa fa-book"></span>
+                  Kontakter
+              </a>
+              <ul class="sidebar-dropdown-menu">
+                  <li><a href="/contacts/members"><span class="icon fa fa-users"></span>Medlemmer</a></li>
+              </ul>
+          </li>
+          <!-- End - contacts -->
+          <!-- Begin - administration -->
+          <li class="sidebar-dropdown">
+              <a href="#">
+                  <span class="icon fa fa-tachometer"></span>
+                  Administration
+              </a>
+              <ul class="sidebar-dropdown-menu">
+                  <li><a href="/user"><span class="icon fa fa-user"></span>Min bruger</a></li>
+                  <li><a href="/organisation"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
+                  <li><a href="/organisation/users"><span class="icon fa fa-users"></span>Medlemmer</a></li>
+              </ul>
+          </li>
+          <!-- End - administration -->
+      </ul>
+      <!-- End - navigation -->
+  </div>
+<?php endif; ?>
 <!-- End - sidebar -->
 
 <!-- Begin - wrapper -->

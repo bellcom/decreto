@@ -16,12 +16,17 @@ function decreto_theme_preprocess_html(&$variables) {
  * Implements theme_preprocess_page().
  */
 function decreto_theme_preprocess_page(&$variables) {
+  $variables['user_is_logged_in'] = FALSE;
+
   // Add the signup form to variables, if we're on the frontpage.
   if (drupal_is_front_page()) {
     $signup_form = module_invoke('decreto_signup', 'block_view', 'decreto_signup');
     $variables['signup_form'] = drupal_render($signup_form);
   }
   if (user_is_logged_in()) {
+    // Frontpage is the dashboard, for users that are logged in.
+    $variables['user_is_logged_in'] = TRUE;
+    $variables['front_page'] = '/dashboard';
     $company = decreto_helper_get_company();
     $variables['company_name'] = $company->name;
   }
