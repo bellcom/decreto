@@ -24,7 +24,7 @@ class ComposerAutoloaderInitComposerManager
         spl_autoload_unregister(array('ComposerAutoloaderInitComposerManager', 'loadClassLoader'));
 
         $vendorDir = dirname(__DIR__);
-        $baseDir = dirname(dirname(dirname($vendorDir))).'/default/files/composer';
+        $baseDir = $vendorDir;
 
         $map = require __DIR__ . '/autoload_namespaces.php';
         foreach ($map as $namespace => $path) {
