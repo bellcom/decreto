@@ -25,7 +25,7 @@ function meetings_overview() {
   $rows = array();
   foreach ($meetings as $meeting) {
     $rows[] = array(
-      $meeting->title,
+      l($meeting->title, 'node/' . $meeting->nid),
       l(t('edit'), 'node/' . $meeting->nid . '/meetingedit') . ', ' .
       l(t('delete'), 'node/' . $meeting->nid . '/delete'),
     );
@@ -59,6 +59,13 @@ function meetings_theme() {
  * Fetch an array of the users meetings.
  */
 function meetings_get_users_meetings() {
+  return node_load_multiple(meetings_get_users_meetings_nids());
+}
+
+/**
+ * Fetch an array of the users meetings node ids.
+ */
+function meetings_get_users_meetings_nids() {
   if ($committees = decreto_org_get_users_committees()) {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
@@ -66,7 +73,7 @@ function meetings_get_users_meetings() {
     $result = $query->execute();
 
     if (isset($result['node'])) {
-      return node_load_multiple(array_keys($result['node']));
+      return array_keys($result['node']);
     }
   }
   return array();

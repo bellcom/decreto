@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Code for the Meeting calendar feature.
+ */
+
+include_once 'meeting_calendar.features.inc';
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function meeting_calendar_views_post_execute(&$view) {
+  if ($view->name == 'meeting_calendar') {
+    $users_meetings = meetings_get_users_meetings_nids();
+    foreach ($view->result as $delta => $result) {
+      if (!in_array($result->nid, $users_meetings)) {
+        unset($view->result[$delta]);
+      }
+    }
+  }
+}
