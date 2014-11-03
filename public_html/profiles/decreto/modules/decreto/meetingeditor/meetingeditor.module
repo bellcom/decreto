@@ -93,6 +93,7 @@ function meetingeditor_form($form, &$form_state, $no_js_use = FALSE) {
     '#title' => t('Committee'),
     '#required' => TRUE,
     '#options' => $committee_options,
+    '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['field_os2web_meetings_committee'][LANGUAGE_NONE][0]['tid'] : '',
   );
 
   meetingeditor_point_form($form, $form_state, $no_js_use);
@@ -465,7 +466,7 @@ function meetingeditor_point_attachment_form(&$form, &$form_state) {
         '#name' => 'remove-sub-point' . $i . '-' . $p,
         '#bullet_point' => $i,
         '#bullet_point_attach' => $p,
-        '#value' => t('Remove sub pOint'),
+        '#value' => t('Remove sub point'),
         '#submit' => array('meetingeditor_remove_one_bullet_point_attachment'),
         '#limit_validation_errors' => array(),
         '#ajax' => array(
@@ -635,6 +636,7 @@ function meetingeditor_form_submit(&$form, &$form_state) {
 
   $meeting['title'] = $form_state['values']['title'];
   $meeting['start'] = $form_state['values']['start'];
+  $meeting['committee'] = $form_state['values']['committee'];
 
   $meeting['nid'] = isset($form['#meeting']) ? $form['#meeting']['#entity']['nid'] : FALSE;
 
@@ -683,6 +685,8 @@ function meetingeditor_create_meeting($meeting, $points) {
   $node->field_os2web_meetings_date[$node->language][0] = array(
     'value' => $meeting['start'],
   );
+
+  $node->field_os2web_meetings_committee[$node->language][0]['tid'] = $meeting['committee'];
 
   $node->field_os2web_meetings_bullets[$node->language] = array();
   foreach ($points as $point) {
