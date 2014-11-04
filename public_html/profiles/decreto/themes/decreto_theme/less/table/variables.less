@@ -1,0 +1,71 @@
+// |--------------------------------------------------------------------------
+// | Table variables
+// |--------------------------------------------------------------------------
+// |
+// | Sets the margin and padding sizing.
+// |
+
+
+	// Table header
+	@table-header-background-color: 											@brand-primary;
+	@table-header-border-width: 												1px;
+	@table-header-font-family: 													@font-family-sans-serif;
+	@table-header-font-color: 													#fff;
+	@table-header-font-size: 													16px;
+	@table-header-font-weight: 													@font-weight-bold;
+
+	@table-header-link-font-color: 												@table-header-font-color;
+
+
+
+	// Table body
+	@table-body-font-family: 													@font-family-sans-serif;
+	@table-body-font-color: 													@text-color;
+	@table-body-font-size: 														@font-size-base;
+	@table-body-font-weight: 													@font-weight;
+	
+	@table-body-link-font-size: 												@table-body-font-size;
+	@table-body-link-font-weight: 												@font-weight;
+	@table-body-link-font-color: 												@gray-dark;
+	@table-body-link-hover-font-color: 											@gray-darker;
+
+
+	@table-body-empty-font-color: 												@gray-light;
+	@table-body-empty-font-size: 												@table-body-font-size;
+	@table-body-empty-font-weight: 												@font-weight-semi-light;
+
+
+	@table-body-success-font-color: 											@brand-success;
+	@table-body-danger-font-color: 												@brand-danger;
+	@table-body-info-font-color: 												@brand-info;
+
+
+	// Icon
+	@table-icon-base-font-color: 												@table-body-font-color;
+	@table-icon-base-hover-font-color: 											@table-icon-base-font-color;
+	@table-icon-checkmark-font-color: 											@table-body-success-font-color;
+	@table-icon-times-font-color: 												@table-body-danger-font-color;
+
+
+	// Active
+	@table-active-header-background-color: 										darken( @table-header-background-color, 5% );
+	@table-active-header-link-font-color: 										@table-header-font-color;
+	@table-active-header-font-color: 											@table-header-font-color;
+
+	@table-active-body-background-color: 										darken( @body-bg, 5% );
+	@table-active-body-link-font-color: 										@table-body-link-font-color;
+	@table-active-body-font-color: 												@table-body-font-color;
+
+
+	// Striped
+	@table-striped-primary-background-color: 									transparent;
+	@table-striped-secondary-background-color: 									darken( @body-bg, 3% );
+
+
+	// Bordered
+	@table-bordered-border-color: 												darken( @table-striped-secondary-background-color, 3% );
+	@table-bordered-border-width: 												1px;
+
+
+	// Sortable
+	@table-sortable-placeholder-background-color: 								@brand-tertiary;
