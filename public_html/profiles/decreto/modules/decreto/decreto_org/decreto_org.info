@@ -1,2 +1,14 @@
 name = Decreto organisation manager
 core = 7.x
+package = Decreto
+dependencies[] = decreto_user
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = field_access_request
+features[field_base][] = field_committees
+features[field_base][] = field_cvr
+features[field_instance][] = taxonomy_term-companies-field_access_request
+features[field_instance][] = taxonomy_term-companies-field_committees
+features[field_instance][] = taxonomy_term-companies-field_cvr

@@ -359,6 +359,7 @@ function decreto_signup_first_login_form_submit(&$form, &$form_state) {
   $account = user_load($user->uid);
 
   $edit['field_company_reference'][LANGUAGE_NONE][]['target_id'] = $company->tid;
+  $edit['field_company_admin'][LANGUAGE_NONE][]['target_id'] = $company->tid;
 
   user_save($account, $edit);
 
