@@ -86,7 +86,7 @@ function decreto_org_home() {
   }
 
   if (decreto_org_user_is_company_admin()) {
-    $markup .= '<p><a class="btn btn-primary" href="/organisation/committee/create">Create committee</a></p>';
+    $markup .= '<p><a class="btn btn-primary" href="/organisation/committee/create"><i class="fa fa-plus-circle"></i> Add committee</a></p>';
   }
 
   return $markup;
@@ -173,7 +173,7 @@ function decreto_org_users() {
   $markup .= theme('table', array('header' => $header, 'rows' => $rows));
 
   if (decreto_org_user_is_company_admin()) {
-    $markup .= '<p><a class="btn btn-primary" href="/organisation/users/add">Add user</a></p>';
+    $markup .= '<p><a class="btn btn-primary" href="/organisation/users/add"><i class="fa fa-plus-circle"></i> Add user</a></p>';
   }
 
   if ($requested_access_field = field_get_items('taxonomy_term', $company, 'field_access_request')) {
@@ -373,7 +373,7 @@ function decreto_org_committee_form() {
     $committee = taxonomy_term_load(arg(2));
   }
   else {
-    drupal_set_title(t('Create committee'));
+    drupal_set_title(t('Add committee'));
   }
 
   $committee_name = isset($committee) ? $committee->name : '';
