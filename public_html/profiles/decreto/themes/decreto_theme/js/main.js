@@ -26,7 +26,7 @@ jQuery(function($){
     sidebar_right.css('min-height', document_height);
     content.css('min-height', document_height);
 
-    jQuery('body').addClass('sidebar-open').addClass('sidebar-left-open');
+    //jQuery('body').addClass('sidebar-open').addClass('sidebar-left-open');
 
 
     // --------------------------------------------------

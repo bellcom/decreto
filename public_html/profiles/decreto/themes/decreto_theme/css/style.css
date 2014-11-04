@@ -266,7 +266,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.42857143;
   color: #333333;
@@ -6938,7 +6938,7 @@ table .checkbox input[type="checkbox"] {
 .header .header-navigation-bar .header-navigation > li > a {
   display: block;
   background-color: transparent;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #333333;
@@ -7639,21 +7639,58 @@ body.front footer p small {
   -o-transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out, background-color 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
-.table th {
+.table thead tr th {
   background-color: transparent;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #bac6ce;
   border-width: 0;
 }
-.table th a,
-.table th a:hover,
-.table th a:active {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.table thead tr th a,
+.table thead tr th a:hover,
+.table thead tr th a:active {
+  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #bac6ce;
+}
+.table tbody tr {
+  margin-bottom: 10px;
+}
+.table tbody tr td {
+  background-color: #ffffff;
+  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #333333;
+}
+.table tbody tr td a {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333333;
+  text-decoration: underline;
+  -webkit-transition: color 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
+}
+.table tbody tr td a:hover,
+.table tbody tr td a:focus {
+  color: #222222;
+}
+.table tbody tr td .table-cell-empty {
+  font-size: 12px;
+  font-weight: 300;
+  color: #777777;
+}
+.table tbody tr td .danger {
+  color: #d9534f;
+}
+.table tbody tr td .success {
+  color: #5cb85c;
+}
+.table tbody tr td .info {
+  color: #5bc0de;
 }
 body.admin-menu {
   margin-top: 28px !important;
