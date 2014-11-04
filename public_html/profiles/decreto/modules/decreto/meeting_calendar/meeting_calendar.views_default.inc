@@ -23,12 +23,18 @@ function meeting_calendar_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['link_display'] = 'page_1';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'month';
   $handler->display->display_options['style_plugin'] = 'calendar_style';
@@ -38,7 +44,7 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -47,7 +53,7 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Date */
+  /* Felt: Indhold: Date */
   $handler->display->display_options['fields']['field_os2web_meetings_date']['id'] = 'field_os2web_meetings_date';
   $handler->display->display_options['fields']['field_os2web_meetings_date']['table'] = 'field_data_field_os2web_meetings_date';
   $handler->display->display_options['fields']['field_os2web_meetings_date']['field'] = 'field_os2web_meetings_date';
@@ -64,11 +70,11 @@ function meeting_calendar_views_default_views() {
   );
   $handler->display->display_options['fields']['field_os2web_meetings_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_meetings_date']['delta_offset'] = '0';
-  /* Sort criterion: Content: Date -  start date (field_os2web_meetings_date) */
+  /* Sorteringskriterie: Indhold: Date -  startdato (field_os2web_meetings_date) */
   $handler->display->display_options['sorts']['field_os2web_meetings_date_value']['id'] = 'field_os2web_meetings_date_value';
   $handler->display->display_options['sorts']['field_os2web_meetings_date_value']['table'] = 'field_data_field_os2web_meetings_date';
   $handler->display->display_options['sorts']['field_os2web_meetings_date_value']['field'] = 'field_os2web_meetings_date_value';
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -96,18 +102,20 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['row_options']['colors']['legend'] = 'type';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
+  /* Kontekstuelt filter: Dato: Dato (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
   $handler->display->display_options['arguments']['date_argument']['use_fromto'] = 'no';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value' => 'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value',
   );
-  $handler->display->display_options['path'] = 'calendar-node-field-os2web-meetings-date/month';
+  $handler->display->display_options['path'] = 'calendar/month';
   $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'Month';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -136,11 +144,12 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
+  /* Kontekstuelt filter: Dato: Dato (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'week';
@@ -148,7 +157,7 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value' => 'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value',
   );
-  $handler->display->display_options['path'] = 'calendar-node-field-os2web-meetings-date/week';
+  $handler->display->display_options['path'] = 'calendar/week';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Week';
   $handler->display->display_options['menu']['weight'] = '2';
@@ -174,18 +183,19 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
+  /* Kontekstuelt filter: Dato: Dato (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'day';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value' => 'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value',
   );
-  $handler->display->display_options['path'] = 'calendar-node-field-os2web-meetings-date/day';
+  $handler->display->display_options['path'] = 'calendar/day';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Day';
   $handler->display->display_options['menu']['weight'] = '3';
@@ -211,7 +221,7 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -220,7 +230,7 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Date */
+  /* Felt: Indhold: Date */
   $handler->display->display_options['fields']['field_os2web_meetings_date']['id'] = 'field_os2web_meetings_date';
   $handler->display->display_options['fields']['field_os2web_meetings_date']['table'] = 'field_data_field_os2web_meetings_date';
   $handler->display->display_options['fields']['field_os2web_meetings_date']['field'] = 'field_os2web_meetings_date';
@@ -238,11 +248,12 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_os2web_meetings_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_os2web_meetings_date']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
+  /* Kontekstuelt filter: Dato: Dato (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'year';
@@ -250,7 +261,7 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value' => 'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value',
   );
-  $handler->display->display_options['path'] = 'calendar-node-field-os2web-meetings-date/year';
+  $handler->display->display_options['path'] = 'calendar/year';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Year';
   $handler->display->display_options['menu']['weight'] = '4';
@@ -276,11 +287,12 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
+  /* Kontekstuelt filter: Dato: Dato (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
   $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
@@ -305,14 +317,14 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Date: Date (node) */
+  /* Filterkriterie: Dato: Dato (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -321,6 +333,23 @@ function meeting_calendar_views_default_views() {
   $handler->display->display_options['filters']['date_filter']['add_delta'] = 'yes';
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value' => 'field_data_field_os2web_meetings_date.field_os2web_meetings_date_value',
+  );
+  $translatables['meeting_calendar'] = array(
+    t('Master'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('Month'),
+    t('Alle'),
+    t('Week'),
+    t('Day'),
+    t('Year'),
+    t('Block'),
+    t('Upcoming'),
+    t('Upcoming events block'),
   );
   $export['meeting_calendar'] = $view;
 

@@ -80,19 +80,21 @@
   <div class="sidebar sidebar-left">
       <!-- Begin - brand -->
       <ul class="sidebar-brand">
-          <li>
-              <?php if (isset($company_name)) : ?>
-                  <?php if (strlen($company_name) <= 10) : ?>
-                      <h2><?php print $company_name; ?></h2>
-                  <?php elseif (strlen($company_name) > 10 && strlen($company_name) <= 20) : ?>
-                      <h3><?php print $company_name; ?></h3>
-                  <?php else : ?>
-                      <h4><?php print $company_name; ?></h4>
-                  <?php endif; ?>
-              <?php else : ?>
-                  <img src="img/decreto_logo.png" alt=""/><!-- Decreto logo -->
-              <?php endif; ?>
-          </li>
+        <li>
+          <a href="/">
+            <?php if (isset($company_name)) : ?>
+                <?php if (strlen($company_name) <= 10) : ?>
+                    <h2><?php print $company_name; ?></h2>
+                <?php elseif (strlen($company_name) > 10 && strlen($company_name) <= 20) : ?>
+                    <h3><?php print $company_name; ?></h3>
+                <?php else : ?>
+                    <h4><?php print $company_name; ?></h4>
+                <?php endif; ?>
+            <?php else : ?>
+                <img src="img/decreto_logo.png" alt=""/><!-- Decreto logo -->
+            <?php endif; ?>
+          </a>
+        </li>
       </ul>
       <!-- End - brand -->
       <!-- Begin - form -->
@@ -119,7 +121,7 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                   <li><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
-                  <li class="active"><a href="#"><span class="icon fa fa-calendar"></span>Kalender</a></li>
+                  <li><a href="/calendar"><span class="icon fa fa-calendar"></span>Kalender</a></li>
               </ul>
           </li>
           <!-- End - organisation -->
