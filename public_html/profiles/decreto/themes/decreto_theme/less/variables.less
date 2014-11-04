@@ -44,11 +44,51 @@
 
 
 //
+// Header navigation
+// --------------------------------------------------
+//== Main
+@header-navigation-bar-height:                                         70px;
+@header-navigation-bar-background-color:                               #38414d;
+@header-navigation-bar-background-color-rgba:                          rgba(red(@header-navigation-bar-background-color), green(@header-navigation-bar-background-color), blue(@header-navigation-bar-background-color), 1);
+
+//== Logo
+@header-navigation-bar-logo-height:                                    35px;
+@header-navigation-bar-logo-width:                                     154px;
+
+//== Links - first layer - normal state
+@header-navigation-first-layer-link-font-family:                       @font-family-sans-serif;
+@header-navigation-first-layer-link-font-size:                         16px;
+@header-navigation-first-layer-link-font-weight:                       @font-weight-semi-bold;
+@header-navigation-first-layer-link-font-color:                        @text-color;
+@header-navigation-first-layer-link-background-color:                  transparent;
+@header-navigation-first-layer-link-padding:                           0 20px;
+@header-navigation-first-layer-dropdown-arrow-color:                   lighten( @header-navigation-first-layer-link-font-color, 30% );
+@header-navigation-first-layer-dropdown-arrow-size:                    5px;
+@header-navigation-first-layer-dropdown-arrow-bottom-start-position:   20%;
+@header-navigation-first-layer-dropdown-arrow-bottom-end-position:     0;
+
+//== Links - first layer - hover state
+@header-navigation-first-layer-link-hover-font-color:                  @brand-primary;
+@header-navigation-first-layer-link-hover-background-color:            @header-navigation-first-layer-link-background-color;
+@header-navigation-first-layer-dropdown-hover-arrow-color:             @header-navigation-first-layer-link-hover-font-color;
+
+//== Links - first layer - active state
+@header-navigation-first-layer-link-active-font-color:                 #fff;
+@header-navigation-first-layer-link-active-background-color:           @brand-primary;
+@header-navigation-first-layer-dropdown-active-arrow-color:            @header-navigation-first-layer-link-active-font-color;
+
+//== Links - first layer - active AND hover state
+@header-navigation-first-layer-link-active-hover-font-color:           @header-navigation-first-layer-link-active-font-color;
+@header-navigation-first-layer-link-active-hover-background-color:     @header-navigation-first-layer-link-active-background-color;
+@header-navigation-first-layer-dropdown-active-hover-arrow-color:      @header-navigation-first-layer-link-active-hover-font-color;
+
+
+//
 // Sidebar
 // --------------------------------------------------
 //== Main
 @sidebar-width:                                                     280px;
-@sidebar-background-color:                                          #303641;
+@sidebar-background-color:                                          #38414d;
 
 @sidebar-border-width:                                              1px;
 @sidebar-border-style:                                              solid;
@@ -66,9 +106,14 @@
 //== Icon
 @sidebar-icon-font-size:                                            14px;
 
+//== Brand
+@sidebar-brand-height:                                              @header-navigation-bar-height;
+@sidebar-brand-background-color:                                    @brand-primary;
+@sidebar-brand-font-color:                                          #fff;
+
 //== Link
 @sidebar-link-icon-color:                                           @sidebar-link-font-color;
-@sidebar-link-font-color:                                           #aaabae;
+@sidebar-link-font-color:                                           #bfc0c5;
 
 //== Link - hover
 @sidebar-link-hover-icon-color:                                     @sidebar-link-hover-font-color;
@@ -128,7 +173,7 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #f6f6f6;
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 

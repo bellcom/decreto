@@ -1,1 +1,250 @@
-// Insert your styling here.
+// Header
+.header {
+
+    // Sticky
+    &.header-sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: @zindex-navbar-fixed;
+    }
+
+    // Navigation bar
+    .header-navigation-bar {
+        height: @header-navigation-bar-height;
+        line-height: @header-navigation-bar-height;
+        background-color: @header-navigation-bar-background-color;
+        background-color: @header-navigation-bar-background-color-rgba;
+
+        // Sidebar toggle
+        .sidebar-toggle {
+            color: #fff;
+        }
+
+        // Lets all elements inherit the height and line height
+        .container,
+        .row,
+        .navigation-bar-content {
+            height: inherit;
+            line-height: inherit;
+        }
+
+        // Logo
+        .header-logo {
+            display: block;
+            min-height: 100%;
+            height: inherit;
+            line-height: inherit;
+            width: @header-navigation-bar-logo-width;
+
+            // Link
+            a {
+                display: block;
+                height: 100%;
+                width: 100%;
+                min-height: @header-navigation-bar-logo-height;
+                line-height: inherit;
+                .img-retina( "@{path-image}logo-1x.png", "@{path-image}logo-2x.png", @header-navigation-bar-logo-width, @header-navigation-bar-logo-height );
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+        }
+
+        // Navigation
+        .header-navigation {
+            height: inherit;
+            line-height: inherit;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            // First layer list indexes
+            > li {
+                float: left;
+
+                // Link
+                > a {
+                    display: block;
+                    background-color: @header-navigation-first-layer-link-background-color;
+                    font-family: @header-navigation-first-layer-link-font-family;
+                    font-weight: @header-navigation-first-layer-link-font-weight;
+                    font-size: @header-navigation-first-layer-link-font-size;
+                    color: @header-navigation-first-layer-link-font-color;
+                    padding: @header-navigation-first-layer-link-padding;
+                    text-decoration: none;
+                }
+
+                // Hover state
+                &:hover {
+
+                    // Link
+                    > a {
+                        background-color: @header-navigation-first-layer-link-hover-background-color;
+                        color: @header-navigation-first-layer-link-hover-font-color;
+                    }
+                }
+
+                // Active
+                &.active {
+
+                    // Link
+                    > a {
+                        background-color: @header-navigation-first-layer-link-active-background-color;
+                        color: @header-navigation-first-layer-link-active-font-color;
+                    }
+
+                    // Hover state
+                    &:hover {
+
+                        // Link
+                        > a {
+                            background-color: @header-navigation-first-layer-link-active-hover-background-color;
+                            color: @header-navigation-first-layer-link-active-hover-font-color;
+                        }
+                    }
+                }
+            }
+
+            // Navigation dropdown
+            > li.header-navigation-dropdown {
+                position: relative;
+
+                // Link
+                > a {
+
+                    // Before and after
+                    &:before,
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        left: 50%;
+                        bottom: @header-navigation-first-layer-dropdown-arrow-bottom-start-position;
+                        height: 1px;
+                        width: @header-navigation-first-layer-dropdown-arrow-size;
+                        background-color: @header-navigation-first-layer-dropdown-arrow-color;
+                        .transition( all @transition-time ease-in-out );
+                    }
+
+                    // Before
+                    &:before {
+                        margin-left: -4px;
+                        -webkit-transform:	rotate(45deg);
+                        -moz-transform:		rotate(45deg);
+                        transform:			rotate(45deg);
+                    }
+
+                    // After
+                    &:after {
+                        margin-left: -1px;
+                        -webkit-transform:	rotate(-45deg);
+                        -moz-transform:		rotate(-45deg);
+                        transform:			rotate(-45deg);
+                    }
+                }
+
+                // Hover state
+                &:hover {
+
+                    // Link
+                    > a {
+
+                        // Before and after
+                        &:before,
+                        &:after {
+                            bottom: @header-navigation-first-layer-dropdown-arrow-bottom-end-position;
+                            opacity: 0;
+                            background-color: @header-navigation-first-layer-dropdown-hover-arrow-color;
+                        }
+                    }
+                }
+
+                // Active
+                &.active {
+
+                    // Link
+                    > a {
+
+                        // Before and after
+                        &:before,
+                        &:after {
+                            background-color: @header-navigation-first-layer-dropdown-active-arrow-color;
+                        }
+                    }
+
+                    // Hover state
+                    &:hover {
+
+                        // Link
+                        > a {
+
+                            // Before and after
+                            &:before,
+                            &:after {
+                                background-color: @header-navigation-first-layer-dropdown-active-hover-arrow-color;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Link (all - also in dropdowns)
+            a {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+// Content alignment
+.header {
+
+    // Navigation bar
+    .header-navigation-bar {
+
+        // Left
+        .align-content-left {
+            text-align: left;
+
+            // Logo
+            .header-logo {
+                .pull-left();
+            }
+
+            // Navigation
+            .header-navigation {
+                .pull-left();
+            }
+        }
+
+        // Center
+        .align-content-center {
+            text-align: center;
+
+            // Logo
+            .header-logo {
+                margin: auto;
+            }
+
+            // Navigation
+            .header-navigation {
+                .pull-right();
+            }
+        }
+
+        // Right
+        .align-content-right {
+            text-align: right;
+
+            // Logo
+            .header-logo {
+                .pull-right();
+            }
+
+            // Navigation
+            .header-navigation {
+                .pull-right();
+            }
+        }
+    }
+}
