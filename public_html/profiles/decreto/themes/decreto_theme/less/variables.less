@@ -47,8 +47,31 @@
 
 
 //
+// Form helper
+// --------------------------------------------------
+
+//== Input
+@form-helper-input-font-weight:             @font-weight-semi-light;
+
+//== Help block
+@form-helper-help-block-font-size: 			@font-size-small;
+@form-helper-help-block-font-color: 		@gray-light;
+@form-helper-help-block-font-weight: 		@font-weight;
+
+//== Required
+@form-helper-required-font-color: 			@brand-danger;
+
+//== Has error
+@form-helper-has-error-border-color: 		@form-helper-required-font-color;
+
+//== Label
+@form-helper-label-font-weight: 			@font-weight-semi-bold;
+
+
+//
 // Header navigation
 // --------------------------------------------------
+
 //== Main
 @header-navigation-bar-height:                                         70px;
 @header-navigation-bar-background-color:                               #38414d;
@@ -285,9 +308,9 @@
 @line-height-large:         1.33;
 @line-height-small:         1.5;
 
-@border-radius-base:        4px;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
+@border-radius-base:        2px;
+@border-radius-large:       2px;
+@border-radius-small:       2px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -364,9 +387,9 @@
 @input-bg-disabled:              @gray-lighter;
 
 //** Text color for `<input>`s
-@input-color:                    @gray;
+@input-color:                    @text-color;
 //** `<input>` border color
-@input-border:                   #ccc;
+@input-border:                   #d7d9da;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
@@ -377,13 +400,13 @@
 @input-border-radius-small:      @border-radius-small;
 
 //** Border color for inputs on focus
-@input-border-focus:             #66afe9;
+@input-border-focus:             @brand-info;
 
 //** Placeholder text color
 @input-color-placeholder:        #999;
 
 //** Default `.form-control` height
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 8);
 //** Large `.form-control` height
 @input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 //** Small `.form-control` height
