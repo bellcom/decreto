@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * os2web_meetings_light.features.field_instance.inc
+ * os2web_meetings.features.field_instance.inc
  */
 
 /**
@@ -614,12 +614,11 @@ function os2web_meetings_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'ec_date_view',
+          'format_type' => 'long',
           'fromto' => 'value',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
         'weight' => 0,

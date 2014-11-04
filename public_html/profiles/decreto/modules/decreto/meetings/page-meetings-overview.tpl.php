@@ -4,5 +4,5 @@
  * page-meetings-overview.tpl.php
  */
 ?>
-<a href="/admin/content/meetingeditor/add"><?php print t('Create new'); ?></a>
+<a href="/meetings/meetingeditor/add"><?php print t('Create new'); ?></a>
 <?php print $meetings_table; ?>

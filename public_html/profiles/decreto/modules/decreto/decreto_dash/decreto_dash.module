@@ -55,5 +55,7 @@ function decreto_dash_get_user_blocks() {
   $upcoming = render(views_embed_view('meeting_calendar', 'upcoming'));
   $blocks[] = '<h3>Kommende møder</h3>' . $upcoming;
 
+  $blocks[] = '<h3>Driftstatus</h3><div class="alert alert-success" role="alert">Alt er godt.</div>';
+
   return $blocks;
 }

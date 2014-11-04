@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * os2web_meetings_light.features.taxonomy.inc
+ * os2web_meetings.features.taxonomy.inc
  */
 
 /**
