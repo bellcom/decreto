@@ -9,7 +9,7 @@
  */
 function meetings_menu() {
   $items['meetings'] = array(
-    'title' => 'Meetings',
+    'title' => 'Your meetings',
     'page callback' => 'meetings_overview',
     'access callback' => 'user_is_logged_in',
   );

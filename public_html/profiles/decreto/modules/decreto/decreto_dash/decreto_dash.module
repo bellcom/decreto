@@ -49,11 +49,11 @@ function decreto_dash_theme() {
 function decreto_dash_get_user_blocks() {
   $blocks = array();
 
-  $upcoming = render(views_embed_view('meeting_calendar', 'upcoming'));
-  $blocks[] = '<h3>Kommende møder</h3>' . $upcoming;
-
   $calendar = render(views_embed_view('meeting_calendar', 'block'));
   $blocks[] = '<h3>Kalender</h3>' . $calendar;
+
+  $upcoming = render(views_embed_view('meeting_calendar', 'upcoming'));
+  $blocks[] = '<h3>Kommende møder</h3>' . $upcoming;
 
   return $blocks;
 }

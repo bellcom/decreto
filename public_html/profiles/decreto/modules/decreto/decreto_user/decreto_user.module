@@ -26,3 +26,12 @@ function decreto_user_user_login(&$edit, $account) {
   // Send the user to the dashboard.
   $edit['redirect'] = 'dashboard';
 }
+
+/**
+ * Implements hook_init().
+ */
+function decreto_user_init() {
+  if (user_is_logged_in() && drupal_is_front_page()) {
+    drupal_goto('dashboard');
+  }
+}

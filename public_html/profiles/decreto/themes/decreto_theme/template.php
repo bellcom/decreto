@@ -26,7 +26,6 @@ function decreto_theme_preprocess_page(&$variables) {
   if (user_is_logged_in()) {
     // Frontpage is the dashboard, for users that are logged in.
     $variables['user_is_logged_in'] = TRUE;
-    $variables['front_page'] = '/dashboard';
     if ($company = decreto_helper_get_company()) {
       $variables['company_name'] = $company->name;
     }
