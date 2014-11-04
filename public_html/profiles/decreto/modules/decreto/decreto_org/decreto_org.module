@@ -78,15 +78,18 @@ function decreto_org_home() {
   if ($company = decreto_helper_get_company()) {
     $markup = '<strong>' . t('Your company') . ':</strong><p>' . $company->name . '</p>';;
 
+    if (decreto_org_user_is_company_admin()) {
+      $markup .= '<p><a class="btn btn-primary" href="/organisation/committee/create"><i class="fa fa-plus-circle"></i> ' . t('Add committee') . '</a></p>';
+    }
     if ($committees = decreto_org_get_company_committees($company)) {
       foreach ($committees as $delta => $committee) {
-        $markup .= '<p><a href="/organisation/committee/' . $committee->tid . '">' . $committee->name . '</a></p>';
+        $rows[] = array('<a href="/organisation/committee/' . $committee->tid . '">' . $committee->name . '</a>');
       }
     }
-  }
 
-  if (decreto_org_user_is_company_admin()) {
-    $markup .= '<p><a class="btn btn-primary" href="/organisation/committee/create"><i class="fa fa-plus-circle"></i> Add committee</a></p>';
+    $header = array(t('Title'));
+
+    $markup .= theme('table', array('header' => $header, 'rows' => $rows));
   }
 
   return $markup;
@@ -168,29 +171,31 @@ function decreto_org_users() {
       $actions,
     );
   }
+  if (decreto_org_user_is_company_admin()) {
+  }
+
+  if (decreto_org_user_is_company_admin()) {
+    $markup .= '<p><a class="btn btn-primary" href="/organisation/users/add"><i class="fa fa-plus-circle"></i> ' . t('Add user') . '</a></p>';
+
+    if ($requested_access_field = field_get_items('taxonomy_term', $company, 'field_access_request')) {
+      $markup .= '<h2>' . t("Requested access") . '</h2>';
+      $header = array(t('Name'), t('Actions'));
+      $rows = array();
+
+      foreach ($requested_access_field as $access_request) {
+        $account = user_load($access_request['target_id']);
+        $rows[] = array(
+          $account->field_name[LANGUAGE_NONE][0]['value'],
+          l(t('grant access'), 'organisation/users/add/' . $account->uid) . ', ' . l(t('ignore'), ''),
+        );
+      }
+
+      $markup .= theme('table', array('header' => $header, 'rows' => $rows));
+    }
+  }
 
   $header = array(t('Name'), t('Actions'));
   $markup .= theme('table', array('header' => $header, 'rows' => $rows));
-
-  if (decreto_org_user_is_company_admin()) {
-    $markup .= '<p><a class="btn btn-primary" href="/organisation/users/add"><i class="fa fa-plus-circle"></i> Add user</a></p>';
-  }
-
-  if ($requested_access_field = field_get_items('taxonomy_term', $company, 'field_access_request')) {
-    $markup .= '<h2>' . t("Requested access") . '</h2>';
-    $header = array(t('Name'), t('Actions'));
-    $rows = array();
-
-    foreach ($requested_access_field as $access_request) {
-      $account = user_load($access_request['target_id']);
-      $rows[] = array(
-        $account->field_name[LANGUAGE_NONE][0]['value'],
-        l(t('grant access'), 'organisation/users/add/' . $account->uid) . ', ' . l(t('ignore'), ''),
-      );
-    }
-
-    $markup .= theme('table', array('header' => $header, 'rows' => $rows));
-  }
 
   return $markup;
 }
@@ -411,7 +416,7 @@ function decreto_org_committee_form() {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Save'),
+    '#value' => t('Add'),
   );
 
   if ($committee_tid) {
