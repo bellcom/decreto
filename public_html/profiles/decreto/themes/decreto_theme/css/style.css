@@ -266,7 +266,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.42857143;
   color: #333333;
@@ -1422,8 +1422,8 @@ table {
   background-color: transparent;
 }
 caption {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   color: #777777;
   text-align: left;
 }
@@ -1441,7 +1441,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 14px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #dddddd;
@@ -6938,7 +6938,7 @@ table .checkbox input[type="checkbox"] {
 .header .header-navigation-bar .header-navigation > li > a {
   display: block;
   background-color: transparent;
-  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #333333;
@@ -7352,13 +7352,6 @@ body.front {
     width: 970px;
   }
 }
-body.front h1,
-body.front h2,
-body.front h3,
-body.front h4,
-body.front h5 {
-  font-family: 'Asap', sans-serif;
-}
 body.front .navbar-brand {
   text-indent: -9999px;
   background: url('../img/logo.png') no-repeat;
@@ -7639,9 +7632,12 @@ body.front footer p small {
   -o-transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out, background-color 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
+.table thead {
+  border: 0;
+}
 .table thead tr th {
   background-color: transparent;
-  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #bac6ce;
@@ -7650,17 +7646,17 @@ body.front footer p small {
 .table thead tr th a,
 .table thead tr th a:hover,
 .table thead tr th a:active {
-  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #bac6ce;
 }
 .table tbody tr {
-  margin-bottom: 10px;
+  border-top: 8px solid #f2f5f7;
 }
 .table tbody tr td {
   background-color: #ffffff;
-  font-family: "Asap", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #333333;
@@ -7697,4 +7693,11 @@ body.admin-menu {
 }
 body.admin-menu .header-sticky {
   top: 28px;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Asap', sans-serif;
 }
