@@ -1,0 +1,86 @@
+// Table
+.table {
+
+    // Table header
+    thead {
+
+        tr {
+
+            th {
+                background-color: @table-header-background-color;
+                font-family: @table-header-font-family;
+                font-size: @table-header-font-size;
+                font-weight: @table-header-font-weight;
+                color: @table-header-font-color;
+                border-width: @table-header-border-width;
+
+                // Link
+                a {
+
+                    // Normal, hover and active state
+                    &,
+                    &:hover,
+                    &:active {
+                        font-family: @table-header-font-family;
+                        font-size: @table-header-font-size;
+                        font-weight: @table-header-font-weight;
+                        color: @table-header-link-font-color;
+                    }
+                }
+            }
+        }
+    }
+
+    // Table body
+    tbody {
+
+        tr {
+            margin-bottom: 10px;
+
+            td {
+                background-color: @table-body-background-color;
+                font-family: @table-body-font-family;
+                font-size: @table-body-font-size;
+                font-weight: @table-body-font-weight;
+                color: @table-body-font-color;
+
+                // Link
+                a {
+                    font-size: @table-body-link-font-size;
+                    font-weight: @table-body-link-font-weight;
+                    color: @table-body-link-font-color;
+                    text-decoration: underline;
+                    .transition( color @transition-time ease-in-out );
+
+                    // Hover and focus
+                    &:hover,
+                    &:focus {
+                        color: @table-body-link-hover-font-color;
+                    }
+                }
+
+                // Empty
+                .table-cell-empty {
+                    font-size: @table-body-empty-font-size;
+                    font-weight: @table-body-empty-font-weight;
+                    color: @table-body-empty-font-color;
+                }
+
+                // Danger
+                .danger {
+                    color: @table-body-danger-font-color;
+                }
+
+                // Success
+                .success {
+                    color: @table-body-success-font-color;
+                }
+
+                // Info
+                .info {
+                    color: @table-body-info-font-color;
+                }
+            }
+        }
+    }
+}

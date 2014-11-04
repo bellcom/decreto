@@ -1,0 +1,29 @@
+
+
+	// Table striped
+	.table-striped {
+
+
+		// Table body
+		> tbody {
+
+
+			// Table row
+			> tr {
+
+
+				td {
+					background-color: @table-striped-primary-background-color;
+				}
+
+
+				&:nth-child( odd ) {
+
+
+					td {
+						background-color: @table-striped-secondary-background-color;
+					}
+				}
+			}
+		}
+	}

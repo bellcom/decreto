@@ -1,0 +1,27 @@
+// Table
+.table {
+
+	// Table header
+	th {
+		background-color: @table-header-background-color;
+		font-family: @table-header-font-family;
+		font-size: @table-header-font-size;
+		font-weight: @table-header-font-weight;
+		color: @table-header-font-color;
+		border-width: @table-header-border-width;
+
+		// Link
+		a {
+
+			// Normal, hover and active state
+			&,
+			&:hover,
+			&:active {
+				font-family: @table-header-font-family;
+				font-size: @table-header-font-size;
+				font-weight: @table-header-font-weight;
+				color: @table-header-link-font-color;
+			}
+		}
+	}
+}

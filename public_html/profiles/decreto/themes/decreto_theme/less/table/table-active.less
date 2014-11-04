@@ -1,0 +1,51 @@
+
+// Table
+.table {
+
+    // Header
+    > thead {
+
+        // Row
+        > tr {
+
+            // Active state (ex. used in sorting)
+            > th.active,
+            &.active > th {
+                background-color: @table-active-header-background-color;
+                color: @table-active-header-font-color;
+
+                // Link
+                > a {
+                    color: @table-active-header-link-font-color;
+
+                    // Image (probably the arrow)
+                    img {
+                        display: inline;
+                        margin-left: 6px;
+                        margin-top: -3px;
+                    }
+                }
+            }
+        }
+    }
+
+    // Body
+    > tbody {
+
+        // Row
+        > tr {
+
+            // Active state (ex. used in sorting)
+            > td.active,
+            &.active > th {
+                background-color: @table-active-body-background-color;
+                color: @table-active-body-font-color;
+
+                // Link
+                > a {
+                    color: @table-active-body-link-font-color;
+                }
+            }
+        }
+    }
+}
