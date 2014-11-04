@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * os2web_meetings_light.features.field_base.inc
+ * os2web_meetings.features.field_base.inc
  */
 
 /**

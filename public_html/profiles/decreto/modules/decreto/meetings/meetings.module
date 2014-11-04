@@ -25,15 +25,17 @@ function meetings_overview() {
   $rows = array();
   foreach ($meetings as $meeting) {
     $rows[] = array(
-      l($meeting->title, 'node/' . $meeting->nid),
-      l(t('edit'), 'node/' . $meeting->nid . '/meetingedit', array('attributes' => array('class' => 'btn btn-xs btn-success'))) .
-      l(t('delete'), 'node/' . $meeting->nid . '/delete', array('attributes' => array('class' => 'btn btn-xs btn-danger'))),
+      '<i class="fa fa-file-text-o"></i> ' . l($meeting->title, 'node/' . $meeting->nid),
+      format_date(strtotime($meeting->field_os2web_meetings_date[LANGUAGE_NONE][0]['value']), 'long'),
+      l(t('edit'), 'node/' . $meeting->nid . '/meetingedit') . ', ' .
+      l(t('delete'), 'node/' . $meeting->nid . '/delete'),
     );
   }
 
   $meetings_table = theme('table', array(
       'header' => array(
         t('Title'),
+        t('Date'),
         t('Actions'),
       ),
       'rows' => $rows,
@@ -69,7 +71,8 @@ function meetings_get_users_meetings_nids() {
   if ($committees = decreto_org_get_users_committees()) {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-      ->fieldCondition('field_os2web_meetings_committee', 'tid', array_keys($committees), 'IN');
+      ->fieldCondition('field_os2web_meetings_committee', 'tid', array_keys($committees), 'IN')
+      ->fieldOrderBy('field_os2web_meetings_date', 'value');
     $result = $query->execute();
 
     if (isset($result['node'])) {

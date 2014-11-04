@@ -25,7 +25,7 @@ function meetingeditor_menu() {
     'access callback' => TRUE,
     'type' => MENU_LOCAL_TASK,
   );
-  $items['admin/content/meetingeditor/add'] = array(
+  $items['meetings/meetingeditor/add'] = array(
     'title' => 'Meeting editor',
     'description' => 'Edit meetings',
     'page callback' => 'drupal_get_form',
@@ -347,7 +347,7 @@ function meetingeditor_point_form(&$form, &$form_state, $no_js_use) {
       $fid = igorw\get_in($form, $pos);
 
       $form['bullet_points']['bullet_points_fieldset']['points'][$i]['enclosures'][$e] = array(
-        '#title' => 'File',
+        '#title' => t('File'),
         '#type' => 'managed_file',
         '#default_value' => $fid,
       );
@@ -486,7 +486,7 @@ function meetingeditor_point_attachment_form(&$form, &$form_state) {
       $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['body'] = array(
         '#type' => 'text_format',
         '#required' => TRUE,
-        '#title' => 'Contents',
+        '#title' => t('Content'),
         '#attributes' => array('multiple' => 'multiple'),
         '#format' => 'filtered_html',
         '#default_value' => $attach_body,
@@ -495,7 +495,7 @@ function meetingeditor_point_attachment_form(&$form, &$form_state) {
       $form['bullet_points']['bullet_points_fieldset']['points'][$i]['add_bullet_point'] = array(
         '#type' => 'submit',
         '#name' => 'add-point-item-' . $i,
-        '#value' => t('Add Point item'),
+        '#value' => t('Add sub point'),
         '#bullet_point' => $i,
         '#submit' => array('meetingeditor_add_one_bullet_point_attachment'),
         '#limit_validation_errors' => array(),

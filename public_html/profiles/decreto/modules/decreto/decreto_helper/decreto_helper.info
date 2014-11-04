@@ -1,2 +1,5 @@
 name = Decreto helper
 core = 7.x
+version = "7.x-1.1"
+package = Decreto
+project = decreto

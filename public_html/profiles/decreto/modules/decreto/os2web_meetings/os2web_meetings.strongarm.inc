@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * os2web_meetings_light.strongarm.inc
+ * os2web_meetings.strongarm.inc
  */
 
 /**
