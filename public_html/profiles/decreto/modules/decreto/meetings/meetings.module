@@ -26,8 +26,8 @@ function meetings_overview() {
   foreach ($meetings as $meeting) {
     $rows[] = array(
       l($meeting->title, 'node/' . $meeting->nid),
-      l(t('edit'), 'node/' . $meeting->nid . '/meetingedit') . ', ' .
-      l(t('delete'), 'node/' . $meeting->nid . '/delete'),
+      l(t('edit'), 'node/' . $meeting->nid . '/meetingedit', array('attributes' => array('class' => 'btn btn-xs btn-success'))) .
+      l(t('delete'), 'node/' . $meeting->nid . '/delete', array('attributes' => array('class' => 'btn btn-xs btn-danger'))),
     );
   }
 
