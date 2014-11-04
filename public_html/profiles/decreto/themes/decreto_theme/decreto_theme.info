@@ -30,7 +30,6 @@ stylesheets[all][] = css/style.css
 ;;;;;;;;;;;;;;;;;;;;;
 
 scripts[] = 'js/modernizr.js'
-scripts[] = 'js/TweenMax.js'
 scripts[] = 'js/sidebar.js'
 scripts[] = 'js/main.js'
 

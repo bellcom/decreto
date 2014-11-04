@@ -1,1 +1,65 @@
-// Insert your styling here.
+// Body
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    overflow-y: auto;
+    overflow-x: hidden !important;
+
+    // Wrapper
+    #wrapper {
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+
+        // Before and after
+        &:before,
+        &:after {
+            content: " ";
+            display: table
+        }
+
+        // After
+        &:after {
+            clear: both
+        }
+
+        // Content
+        #content {
+            background-color: @body-bg;
+            position: absolute;
+            padding: @grid-gutter-width;
+            padding-top: (@header-navigation-bar-height + @grid-gutter-width);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 500;
+        }
+    }
+}
+
+//
+.sidebar-left-open {
+
+    // Content
+    #content {
+        left: @sidebar-width;
+    }
+}
+
+//
+.sidebar-right-open {
+
+    // Content
+    #content {
+        right: @sidebar-width;
+    }
+}
