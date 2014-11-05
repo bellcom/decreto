@@ -9,7 +9,7 @@
  */
 function decreto_theme_preprocess_html(&$variables) {
   drupal_add_js('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('type' => 'external'));
-  drupal_add_css('//fonts.googleapis.com/css?family=Asap:700|Open+Sans:400,700', array('type' => 'external'));
+  drupal_add_css('//fonts.googleapis.com/css?family=Asap:700|Open+Sans:200,300,400,500,600,700', array('type' => 'external'));
   drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array('type' => 'external'));
 }
 

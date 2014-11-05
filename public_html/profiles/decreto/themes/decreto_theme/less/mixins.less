@@ -25,9 +25,28 @@
 }
 
 // Background size
-.background-size( @size ) {
+.background-size(@size) {
   -webkit-background-size: @size;
   -moz-background-size: @size;
   -o-background-size: @size;
   background-size: @size;
+}
+
+// 3D button
+.btn-3d(@background-color; @box-shadow-color: darken(@background-color, 12%);) {
+
+  @box-shadow-color-hover: darken(@box-shadow-color, 14%);
+  @box-shadow-color-active: darken(@box-shadow-color, 16%);
+
+  .box-shadow(~'0 2px 0 @{box-shadow-color}');
+
+  // Hover state
+  &:hover {
+    .box-shadow(~'0 2px 0 @{box-shadow-color-hover}');
+  }
+
+  // Active state
+  &:active {
+    .box-shadow(~'0 2px 0 @{box-shadow-color-active}');
+  }
 }
