@@ -278,10 +278,10 @@ function meetingeditor_get_meeting($nid) {
  */
 function meetingeditor_point_form(&$form, &$form_state, $no_js_use) {
   $form['bullet_points']['bullet_points_fieldset'] = array(
-    '#type' => 'fieldset',
+    '#type' => 'div',
     '#tree' => TRUE,
     '#title' => t('Points'),
-    '#prefix' => '<div id="bullet-points-fieldset-wrapper">',
+    '#prefix' => '<div id="bullet-points-fieldset-wrapper" class="well">',
     '#suffix' => '</div>',
   );
 
