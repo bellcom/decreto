@@ -176,16 +176,10 @@
       <!-- End - header -->
 
       <!-- Begin - content -->
-      <div class="container decreto-skin">
+      <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="box">
-
-                  <?php if (!empty($page['sidebar_first'])): ?>
-                    <aside class="col-sm-3" role="complementary">
-                      <?php print render($page['sidebar_first']); ?>
-                    </aside>  <!-- /#sidebar-first -->
-                  <?php endif; ?>
+                <div class="boxed-content">
 
                   <section<?php print $content_column_class; ?>>
 

@@ -246,10 +246,12 @@ var sidebar = {
         var config = sidebar.config,
             config_sidebar = config.sidebar,
             body = jQuery('body'),
-            content_object = jQuery('#content'),
-            navigation_object = jQuery('.header'),
+            header_object = jQuery('.header'),
             sidebar_object = jQuery(config_sidebar.left.identifier),
-            animation_css = {
+            sidebar_animation_css = {
+                left: 0
+            },
+            navigation_animation_css = {
                 left: sidebar_object.outerWidth(true)
             },
             callback_function = function() {
@@ -262,10 +264,10 @@ var sidebar = {
             };
 
         // Animate sidebar
-        sidebar.animated_toggle(content_object, animation_css, callback_function);
+        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
 
         // Animate navigation
-        sidebar.animated_toggle(navigation_object, animation_css, callback_function);
+        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
 
     },
 
@@ -276,10 +278,13 @@ var sidebar = {
         var config = sidebar.config,
             config_sidebar = config.sidebar,
             body = jQuery('body'),
-            content_object = jQuery('#content'),
-            navigation_object = jQuery('.header'),
+            header_object = jQuery('.header'),
             sidebar_object = jQuery(config_sidebar.right.identifier),
-            animation_css = {
+            sidebar_planner_object = jQuery('#edit-bullet-points-fieldset-order'),
+            sidebar_animation_css = {
+                right: 0
+            },
+            navigation_animation_css = {
                 right: sidebar_object.outerWidth(true)
             },
             callback_function = function() {
@@ -292,10 +297,13 @@ var sidebar = {
             };
 
         // Animate sidebar
-        sidebar.animated_toggle(content_object, animation_css, callback_function);
+        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
+
+        // Animate sidebar planner
+        sidebar.animated_toggle(sidebar_planner_object, sidebar_animation_css, callback_function);
 
         // Animate navigation
-        sidebar.animated_toggle(navigation_object, animation_css, callback_function);
+        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
 
     },
 
@@ -335,9 +343,12 @@ var sidebar = {
         var config = sidebar.config,
             config_sidebar = config.sidebar,
             body = jQuery('body'),
-            content_object = jQuery('#content'),
-            navigation_object = jQuery('.header'),
-            animation_css = {
+            header_object = jQuery('.header'),
+            sidebar_object = jQuery(config_sidebar.left.identifier),
+            sidebar_animation_css = {
+                left: -sidebar_object.outerWidth(true)
+            },
+            navigation_animation_css = {
                 left: 0
             },
             callback_function = function() {
@@ -350,10 +361,10 @@ var sidebar = {
             };
 
         // Animate sidebar
-        sidebar.animated_toggle(content_object, animation_css, callback_function);
+        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
 
         // Animate navigation
-        sidebar.animated_toggle(navigation_object, animation_css, callback_function);
+        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
 
     },
 
@@ -364,9 +375,13 @@ var sidebar = {
         var config = sidebar.config,
             config_sidebar = config.sidebar,
             body = jQuery('body'),
-            content_object = jQuery('#content'),
-            navigation_object = jQuery('.header'),
-            animation_css = {
+            header_object = jQuery('.header'),
+            sidebar_object = jQuery(config_sidebar.right.identifier),
+            sidebar_planner_object = jQuery('#edit-bullet-points-fieldset-order'),
+            sidebar_animation_css = {
+                right: -sidebar_object.outerWidth(true)
+            },
+            navigation_animation_css = {
                 right: 0
             },
             callback_function = function() {
@@ -379,10 +394,13 @@ var sidebar = {
             };
 
         // Animate sidebar
-        sidebar.animated_toggle(content_object, animation_css, callback_function);
+        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
+
+        // Animate sidebar planner
+        sidebar.animated_toggle(sidebar_planner_object, sidebar_animation_css, callback_function);
 
         // Animate navigation
-        sidebar.animated_toggle(navigation_object, animation_css, callback_function);
+        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
 
     },
 

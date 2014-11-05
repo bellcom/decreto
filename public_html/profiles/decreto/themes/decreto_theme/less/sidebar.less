@@ -1,6 +1,6 @@
 // Sidebar
 .sidebar {
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: @sidebar-width;
     top: 0;
@@ -10,14 +10,14 @@
 
     // Sidebar left
     &.sidebar-left {
-        left: 0;
+        left: -@sidebar-width;
         right: auto;
     }
 
     // Sidebar right
     &.sidebar-right {
         left: auto;
-        right: 0;
+        right: -@sidebar-width;
     }
 
     // Unordered list (all)
@@ -369,8 +369,8 @@
 .sidebar-left-open {
 
     // Content
-    #content {
-        left: @sidebar-width;
+    .sidebar-left {
+        left: 0;
     }
 }
 
@@ -378,7 +378,7 @@
 .sidebar-right-open {
 
     // Content
-    #content {
-        right: @sidebar-width;
+    .sidebar-right {
+        right: 0;
     }
 }

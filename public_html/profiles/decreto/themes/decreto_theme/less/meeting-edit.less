@@ -1,11 +1,99 @@
 .meeting-points {
-  height: 70%;
-  left: 1%;
+  top: 0;
+  right: -@sidebar-width;
   overflow-y: auto;
   position: fixed;
-  top: 15%;
-  width: 20%;
+  width: 280px;
   z-index: 200;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+
+  // Points container
+  > .panel-body {
+    padding: 0;
+    margin: 0;
+
+    // All panels
+    .panel {
+      border: 0;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    span {
+      color: @sidebar-link-font-color;
+    }
+
+    // Single point container
+    > .panel {
+      min-height: 40px;
+
+      .panel-heading,
+      .panel-body,
+      .panel-title {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+      }
+
+      // Add border
+      .panel-heading,
+      .panel-body {
+        border-bottom-width: @sidebar-border-width;
+        border-bottom-style: @sidebar-border-style;
+        border-bottom-color: @sidebar-border-color;
+        border-bottom-color: @sidebar-border-rgba-color; // RBGA
+      }
+
+      // Parent point (ex. point 1)
+      > .panel-heading {
+        min-height: 40px;
+        line-height: 40px;
+
+        span {
+          font-size: 14px;
+          font-weight: bold;
+          margin: 0;
+          padding-left: 20px;
+        }
+      }
+
+      // Sub points container (ex. point 1.1, 1.2)
+      > .panel-body {
+        background-color: @sidebar-list-item-active-background-color-rgba;
+
+        // Sub point
+        > .panel {
+          height: 40px;
+          line-height: 40px;
+
+          .panel-heading,
+          .panel-body,
+          .panel-title {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            background-color: transparent;
+            line-height: 40px;
+          }
+
+          // Sub point title (ex. point 1.1)
+          > .panel-heading {
+            span {
+              font-size: 14px;
+              color: #eee;
+              padding-left: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
 
   fieldset {
     position: relative;
@@ -13,22 +101,43 @@
 
   button {
     position: absolute;
-    top: 4px;
-    right: 2px;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
 
+    &,
+    &:hover,
+    &:active,
+    &:focus,
+    &.disabled,
+    &[disabled] {
+      border: 0;
+      background-color: @sidebar-link-hover-background-color;
+      background-color: @sidebar-link-hover-background-color-rgba;
+      border-left-width: @sidebar-border-width;
+      border-left-style: @sidebar-border-style;
+      border-left-color: @sidebar-border-color;
+      border-left-color: @sidebar-border-rgba-color; // RBGA
+    }
+
+    // Move up
     &[id*='move-up'] {
+      color: #fff;
       right: 40px;
-      width: 36px;
       .glyphicon-chevron-up();
+
       &:before {
         .add-glyphicon();
         padding-right: 100px;
       }
     }
 
+    // Move down
     &[id*='move-down'] {
-      right: 1px;
-      width: 36px;
+      color: #fff;
+      right: 0;
       .glyphicon-chevron-down();
       &:before {
         .add-glyphicon();
@@ -40,9 +149,35 @@
   .panel {
     margin-bottom: 0;
   }
+}
 
-  .panel-body {
-    padding: 1px;
 
+.sidebar-right-open {
+
+  .meeting-points {
+    right: 0;
+  }
+}
+
+
+
+
+
+#bullet-points-fieldset-wrapper {
+
+  .panel {
+    margin-top: 30px;
+    margin-bottom: 80px;
+
+    .text-format-wrapper {
+      margin-bottom: 40px;
+    }
+
+    .btn.btn-danger.form-submit {
+      float: right;
+    }
+    .form-type-textfield {
+      padding-top: 20px;
+    }
   }
 }

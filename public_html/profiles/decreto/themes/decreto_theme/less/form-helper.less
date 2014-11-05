@@ -1,0 +1,76 @@
+// Form control
+.form-control {
+    font-weight: @form-helper-input-font-weight;
+
+    // Normal, hover and focus
+    &,
+    &:hover,
+    &:focus {
+        .transition(border-color @transition-time ease-in-out);
+        .box-shadow(none);
+    }
+
+    // Disabled and readonly
+    &[disabled],
+    &[readonly] {
+
+        // Normal, hover and focus
+        &,
+        &:hover,
+        &:focus {
+            border-color: @input-border;
+            .user-select(none);
+        }
+    }
+}
+
+// Has error
+.has-error {
+
+    // Form control
+    .form-control {
+
+        // Normal, hover and focus
+        &,
+        &:hover,
+        &:focus {
+            border-color: @form-helper-has-error-border-color;
+            .transition(border-color @transition-time ease-in-out);
+            .box-shadow(none);
+        }
+
+        // Disabled and readonly
+        &[disabled],
+        &[readonly] {
+
+            // Normal, hover and focus
+            &,
+            &:hover,
+            &:focus {
+                border-color: @form-helper-has-error-border-color;
+            }
+        }
+    }
+}
+
+// Required (*)
+.form-required {
+    color: @form-helper-required-font-color;
+}
+
+// Form group
+.form-item,
+.form-group {
+
+    // Label
+    label {
+        font-weight: @form-helper-label-font-weight;
+    }
+}
+
+// Help block
+.help-block {
+    font-size: @form-helper-help-block-font-size;
+    font-weight: @form-helper-help-block-font-weight;
+    color: @form-helper-help-block-font-color;
+}
