@@ -7058,8 +7058,6 @@ body.front {
   font-family: 'Open Sans', sans-serif;
   /* <parallax> */
   /* <parallax> */
-  /* <buzz> */
-  /* </buzz> */
   /* <download> */
   /* </download> */
   /* <description> */
@@ -7121,12 +7119,6 @@ body.front #parralax-banner-3 {
   height: 400px;
   position: relative;
   margin-top: 30px;
-}
-body.front .buzz {
-  padding: 40px 0 70px 0;
-}
-body.front .buzz h3 {
-  color: #ec7139;
 }
 body.front .download {
   background: url(../img/top-banner.png) center no-repeat;
@@ -7470,6 +7462,40 @@ body.front footer p small {
   font-size: 11px;
   font-weight: 400;
   color: #777777;
+}
+.buzz-boxes {
+  padding: 100px 0;
+}
+.buzz-boxes .row {
+  margin-bottom: 20px;
+}
+.buzz-boxes .buzz-box {
+  position: relative;
+}
+.buzz-boxes .buzz-box .buzz-box-icon-container {
+  position: absolute;
+  top: 0;
+}
+.buzz-boxes .buzz-box .buzz-box-icon-container .buzz-icon {
+  width: 75px;
+}
+.buzz-boxes .buzz-box .buzz-box-content-container {
+  margin-left: 90px;
+}
+.buzz-boxes .buzz-box .buzz-box-content-container h1,
+.buzz-boxes .buzz-box .buzz-box-content-container h2,
+.buzz-boxes .buzz-box .buzz-box-content-container h3,
+.buzz-boxes .buzz-box .buzz-box-content-container h4,
+.buzz-boxes .buzz-box .buzz-box-content-container h5,
+.buzz-boxes .buzz-box .buzz-box-content-container h6 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  padding: 0;
+  color: #f37744;
+  font-weight: 700;
+}
+.buzz-boxes .buzz-box .buzz-box-content-container p {
+  font-size: 15px;
 }
 h1,
 h2,
