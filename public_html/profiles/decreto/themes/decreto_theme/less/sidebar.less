@@ -2,7 +2,6 @@
 .sidebar {
     position: fixed;
     height: 100%;
-    width: @sidebar-width;
     top: 0;
     bottom: 0;
     z-index: 0;
@@ -10,14 +9,16 @@
 
     // Sidebar left
     &.sidebar-left {
-        left: -@sidebar-width;
-        right: auto;
+        left: 0;
+        width: @sidebar-left-width;
+        margin-left: -@sidebar-left-width;
     }
 
     // Sidebar right
     &.sidebar-right {
-        left: auto;
-        right: -@sidebar-width;
+        right: 0;
+        width: @sidebar-right-width;
+        margin-right: -@sidebar-right-width;
     }
 
     // Unordered list (all)
@@ -365,20 +366,38 @@
     }
 }
 
-// Sidebar left
-.sidebar-left-open {
+// Sidebar open
+.sidebar-open {
 
-    // Content
-    .sidebar-left {
-        left: 0;
+    // Open - sidebar left
+    &.sidebar-left-open {
+
+        // Header sticky, navbar fixed top and content
+        .header-sticky,
+        .navbar-fixed-top,
+        #content {
+            margin-left: @sidebar-left-width;
+        }
+
+        // Sidebar left
+        .sidebar-left {
+            margin-left: 0;
+        }
     }
-}
 
-// Sidebar right
-.sidebar-right-open {
+    // Open - sidebar right
+    &.sidebar-right-open {
 
-    // Content
-    .sidebar-right {
-        right: 0;
+        // Header sticky, navbar fixed top and content
+        .header-sticky,
+        .navbar-fixed-top,
+        #content {
+            margin-left: @sidebar-right-width;
+        }
+
+        // Sidebar right
+        .sidebar-right {
+            margin-right: 0;
+        }
     }
 }

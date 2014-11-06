@@ -1,5 +1,5 @@
-name = Decreto-theme
-description = A Bootstrap Sub-theme.
+name = Decreto theme
+description = Used when the user is logged in.
 core = 7.x
 base theme = bootstrap
 
@@ -31,6 +31,7 @@ stylesheets[all][] = css/style.css
 
 scripts[] = 'js/modernizr.js'
 scripts[] = 'js/sidebar.js'
+scripts[] = 'js/owl.carousel.js'
 scripts[] = 'js/main.js'
 
 
