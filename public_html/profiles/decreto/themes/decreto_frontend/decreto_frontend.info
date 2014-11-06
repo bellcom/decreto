@@ -29,9 +29,16 @@ stylesheets[all][] = css/style.css
 ;; Scripts
 ;;;;;;;;;;;;;;;;;;;;;
 
-scripts[] = 'js/modernizr.js'
-scripts[] = 'js/owl.carousel.js'
+scripts[] = 'vendor/bootstrap.js'
+scripts[] = 'vendor/skrollr.min.js'
+scripts[] = 'vendor/hover-intent.min.js'
+scripts[] = 'vendor/owl.carousel.js'
+
 scripts[] = 'js/main.js'
+
+scripts[] = 'vendor/modernizr.js'
+scripts[] = 'vendor/modernizr.js'
+scripts[] = 'vendor/modernizr.js'
 
 
 ; For information on choosing the desired method, please read the Drupal

@@ -6890,9 +6890,10 @@ table .checkbox input[type="checkbox"] {
   z-index: 1030;
 }
 .header .header-navigation-bar {
-  height: 70px;
-  line-height: 70px;
-  background-color: #38414d;
+  height: 120px;
+  line-height: 120px;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 .header .header-navigation-bar .sidebar-toggle {
   color: #fff;
@@ -6908,13 +6909,13 @@ table .checkbox input[type="checkbox"] {
   min-height: 100%;
   height: inherit;
   line-height: inherit;
-  width: 154px;
+  width: 234px;
 }
 .header .header-navigation-bar .header-logo a {
   display: block;
   height: 100%;
   width: 100%;
-  min-height: 35px;
+  min-height: 55px;
   line-height: inherit;
   background-image: url("../img/logo-1x.png");
   background-position: center center;
@@ -6923,7 +6924,7 @@ table .checkbox input[type="checkbox"] {
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .header .header-navigation-bar .header-logo a {
     background-image: url("../img/logo-2x.png");
-    background-size: 154px 35px;
+    background-size: 234px 55px;
   }
 }
 .header .header-navigation-bar .header-navigation {
@@ -7047,15 +7048,13 @@ body #wrapper {
   overflow: hidden;
 }
 body #wrapper #content {
-  padding-top: 100px;
+  padding-top: 150px;
 }
 .boxed-content {
   background-color: #fff;
   border-bottom: 1px solid #e2e8ec;
 }
-body.front {
-  padding-top: 61px;
-  font-family: 'Open Sans', sans-serif;
+body {
   /* <parallax> */
   /* <parallax> */
   /* <download> */
@@ -7069,82 +7068,73 @@ body.front {
   /* <bottom> */
 }
 @media (min-width: 992px) {
-  body.front .container {
+  body .container {
     width: 970px;
   }
 }
-body.front .navbar-brand {
-  text-indent: -9999px;
-  background: url('../img/logo.png') no-repeat;
-  width: 245px;
-  height: 60px;
-}
-body.front .navbar-nav {
-  float: right;
-}
-body.front button.signup {
+body button.signup {
   background-color: #ec7139;
   border-color: #ec7139;
   color: #fff;
   padding-left: 20px;
   padding-right: 20px;
 }
-body.front .login {
+body .login {
   text-indent: -9999px;
   background: url('../img/lock.png') center no-repeat;
 }
-body.front .spacer {
+body .spacer {
   padding: 60px 0;
 }
-body.front .orange {
+body .orange {
   color: #ec7139;
 }
-body.front .orange-bg {
+body .orange-bg {
   background-color: #ec7139;
 }
-body.front .orange-bg h2 {
+body .orange-bg h2 {
   color: #fff;
 }
-body.front .gray-bg {
+body .gray-bg {
   color: #fff;
   background-color: #364045;
 }
-body.front #parralax-banner-2 {
+body #parralax-banner-2 {
   background: url(../img/people.jpg) -1200px 900px;
   height: 400px;
   position: relative;
 }
-body.front #parralax-banner-3 {
+body #parralax-banner-3 {
   background: url(../img/people.jpg) -1200px 800px;
   height: 400px;
   position: relative;
   margin-top: 30px;
 }
-body.front .download {
+body .download {
   background: url(../img/top-banner.png) center no-repeat;
   padding: 20px 0 0 0;
 }
-body.front .download .wrapper {
+body .download .wrapper {
   background: url(../img/tablet.png) -200px 50px no-repeat;
   padding-bottom: -20px;
 }
-body.front .download h2 {
+body .download h2 {
   padding-top: 30px;
 }
-body.front .download .col-md-6:nth-child(2) img {
+body .download .col-md-6:nth-child(2) img {
   max-width: 150%;
 }
-body.front .description .col-md-4 {
+body .description .col-md-4 {
   position: relative;
   top: -50px;
   height: 350px;
   overflow-y: hidden;
   margin-bottom: -50px;
 }
-body.front .features .col-md-3 {
+body .features .col-md-3 {
   padding: 0;
 }
-body.front .features li {
+body .features li {
   text-align: center;
   background-color: #424b4f;
   border: 2px solid #364045;
@@ -7153,88 +7143,88 @@ body.front .features li {
   border-bottom-width: 3px;
   padding: 5px 10px 5px 10px;
 }
-body.front ul.text-left li {
+body ul.text-left li {
   text-align: left;
 }
-body.front li.price {
+body li.price {
   background-color: #364045;
   font-size: 1.6em;
   font-weight: bold;
 }
-body.front li.price small {
+body li.price small {
   font-weight: normal;
   font-size: 0.6em;
 }
-body.front li.na {
+body li.na {
   text-indent: -9999px;
 }
-body.front .features .white {
+body .features .white {
   background-color: #fff;
 }
-body.front .white li {
+body .white li {
   background-color: #c0c0c0;
   border-color: #fff;
 }
-body.front .white li.heading {
+body .white li.heading {
   background-color: #fff;
 }
-body.front .white li.price {
+body .white li.price {
   background-color: #fff;
   border: none;
   color: #000;
   height: 50px;
 }
-body.front .features .heading {
+body .features .heading {
   font-size: 1.6em;
   font-weight: bold;
   background-color: #364045;
 }
-body.front .features .white .heading {
+body .features .white .heading {
   color: #000;
 }
-body.front .features .heading strong {
+body .features .heading strong {
   display: block;
   color: #aad6cf;
   font-size: 0.8em;
 }
-body.front .features .glyphicon-ok {
+body .features .glyphicon-ok {
   color: #ec7139;
 }
-body.front #signup {
+body #signup {
   margin-top: 30px;
 }
-body.front #signup h2 {
+body #signup h2 {
   margin-top: 30px;
 }
-body.front #signup button {
+body #signup button {
   background-color: #ec7139;
   border-color: #ec7139;
   color: #fff;
 }
-body.front #signup label {
+body #signup label {
   background: url('../img/unchecked.png') no-repeat;
   padding: 17px 0 18px 60px;
 }
-body.front #signup label.checked {
+body #signup label.checked {
   background: url('../img/checked.png') no-repeat;
 }
-body.front #signup input[type="radio"] {
+body #signup input[type="radio"] {
   display: none;
 }
-body.front #signup-address,
-body.front #signup-password {
+body #signup-address,
+body #signup-password {
   display: none;
 }
-body.front #signup .form-item {
+body #signup .form-item {
   margin-bottom: 15px;
 }
-body.front #signup .form-item label {
+body #signup .form-item label {
   font-weight: 600;
 }
-body.front #signup .signup-postscript {
+body #signup .signup-postscript {
   text-align: center;
 }
-body.front #signup .signup-postscript p {
+body #signup .signup-postscript p {
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -7243,12 +7233,12 @@ body.front #signup .signup-postscript p {
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  body.front #signup .signup-postscript p {
+  body #signup .signup-postscript p {
     float: left;
     width: 66.66666667%;
   }
 }
-body.front address {
+body address {
   font-style: normal;
   background-image: url('../img/pin.png');
   background-position: center;
@@ -7256,26 +7246,26 @@ body.front address {
   background-color: #fff;
   text-align: center;
 }
-body.front address p {
+body address p {
   padding-top: 120px;
 }
-body.front .support {
+body .support {
   color: #fff;
   padding: 20px 0 10px  0;
   font-size: 1.4em;
 }
-body.front .support a {
+body .support a {
   color: #000;
 }
-body.front footer .container {
+body footer .container {
   padding-top: 10px;
 }
-body.front footer p {
+body footer p {
   background: url('../img/logo-white.png') no-repeat;
   padding: 60px 0 0 60px;
   color: #737e84;
 }
-body.front footer p small {
+body footer p small {
   padding-top: 20px;
   display: block;
   text-align: right;
@@ -7500,6 +7490,13 @@ h3,
 h4,
 h5 {
   font-family: 'Asap', sans-serif;
+}
+#wrapper {
+  background-color: #f2f5f7;
+  padding-bottom: 80px;
+}
+#wrapper #content {
+  padding-top: 120px;
 }
 /* 
  * 	Core Owl Carousel CSS File

@@ -4,9 +4,10 @@ jQuery(function($){
 
 
     // --------------------------------------------------
-    // Enable Owl Carousel
+    // Owl Carousel
     // --------------------------------------------------
 
+    // Enable Owl Carousel
     jQuery(".owl-carousel").owlCarousel({
 
         slideSpeed: 300,
@@ -19,30 +20,31 @@ jQuery(function($){
 
 
 
-    /**
-     * Parallax function
-     *
-     * @param  jQuery $
-     * @param  object document
-     * @param  object window
-     */
-    (function($, document, window) {
-        var $window = $(window);
+    // --------------------------------------------------
+    // Skrollr
+    // --------------------------------------------------
 
-        $('section[data-type="background"]').each(function(){
-            var $scroll = $(this);
-            var offset = $scroll.css('backgroundPosition').split(' ');
-            offset[0] = parseInt(offset[0], 10);
-            offset[1] = parseInt(offset[1], 10);
+    // Only enable skrollr on non-touch devices
+    if ( ! Modernizr.touch ) {
 
-            $(window).scroll(function() {
-                var yPos = -($window.scrollTop() / $scroll.data('speed'));
-                var coords = offset[0] + 'px ' + (offset[1]+yPos) + 'px';
+        // Create skrollr object
+        skrollr.init({
 
-                $scroll.css({ backgroundPosition: coords });
-            });
+            mobileDeceleration:                         1,
+            edgeStrategy:                               "set",
+            forceHeight:                                false,
+            smoothScrolling:                            true,
+            smoothScrollingDuration:                    200,
+            easing: {
+                WTF:                                    Math.random,
+                inverted:                               function( p ) {
+                    return 1-p;
+                }
+            }
+
         });
-    })(jQuery, document, window);
+
+    }
 
     // Radio
     (function($, document, window) {
