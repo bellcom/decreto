@@ -7,7 +7,8 @@ jQuery(function($){
     // -------------------------------------------------
 
     // Get height
-    var sidebar_left = jQuery('.sidebar-left'),
+    var body_object = jQuery('body'),
+        sidebar_left = jQuery('.sidebar-left'),
         sidebar_right = jQuery('.sidebar-right'),
         content = jQuery('#content'),
         sidebar_planner = jQuery('#edit-bullet-points-fieldset-order'),
@@ -30,16 +31,19 @@ jQuery(function($){
 
     //jQuery('body').addClass('sidebar-open').addClass('sidebar-left-open');
 
+    // User is logged in
+    if(body_object.hasClass('logged-in')) {
 
+        // Sidebar content exists - open right sidebar
+        if(sidebar_planner.length != 0) {
+            body_object.addClass('sidebar-open').addClass('sidebar-right-open');
+        }
 
-    // Sidebar content exists - open right sidebar
-    if(sidebar_planner.length != 0) {
-        jQuery('body').addClass('sidebar-open').addClass('sidebar-right-open');
-    }
+        // Open left sidebar
+        else {
+            body_object.addClass('sidebar-open').addClass('sidebar-left-open');
+        }
 
-    // Open left sidebar
-    else {
-        jQuery('body').addClass('sidebar-open').addClass('sidebar-left-open');
     }
 
 
@@ -48,5 +52,18 @@ jQuery(function($){
     // --------------------------------------------------
     sidebar.init();
 
+
+    // --------------------------------------------------
+    // Enable Owl Carousel
+    // --------------------------------------------------
+
+    jQuery(".owl-carousel").owlCarousel({
+
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        autoPlay: 3000,
+
+    });
 
 });

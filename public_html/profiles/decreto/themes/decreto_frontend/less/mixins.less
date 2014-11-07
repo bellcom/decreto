@@ -1,0 +1,52 @@
+// Add glyphicon
+.add-glyphicon(){
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  line-height: 1;
+  padding-right: 5px;
+}
+
+// Tap highlight
+.tap-highlight(@rgba-background-color: rgba(255, 255, 255, .1); @hexa-background-color: transparent;) {
+  -webkit-tap-highlight-color: @hexa-background-color; /* For some Androids */
+  -webkit-tap-highlight-color: @rgba-background-color;
+}
+
+// Line height
+.line-height( @font-size ) {
+  line-height: floor( ( @font-size * @line-height-base ) );
+}
+
+// Transform style
+.transform-style( @style ) {
+  -webkit-transform-style: @style;
+  -ms-transform-style: @style;
+  transform-style: @style;
+}
+
+// Background size
+.background-size(@size) {
+  -webkit-background-size: @size;
+  -moz-background-size: @size;
+  -o-background-size: @size;
+  background-size: @size;
+}
+
+// 3D button
+.btn-3d(@background-color; @box-shadow-color: darken(@background-color, 12%);) {
+
+  @box-shadow-color-hover: darken(@box-shadow-color, 14%);
+  @box-shadow-color-active: darken(@box-shadow-color, 16%);
+
+  .box-shadow(~'0 2px 0 @{box-shadow-color}');
+
+  // Hover state
+  &:hover {
+    .box-shadow(~'0 2px 0 @{box-shadow-color-hover}');
+  }
+
+  // Active state
+  &:active {
+    .box-shadow(~'0 2px 0 @{box-shadow-color-active}');
+  }
+}

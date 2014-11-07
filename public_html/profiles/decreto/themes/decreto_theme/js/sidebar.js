@@ -15,14 +15,15 @@ var sidebar = {
 
     // Set default configurations
     config: {
-        // Default animation options
-        animation: {
-            duration: 400,
-            easing: 'easeOutSine',
-        },
 
         // Sidebar configurations
         sidebar: {
+
+            // Default animation options
+            animation: {
+                duration: 400,
+                easing: 'easeOutSine',
+            },
 
             // Main (base)
             main: {
@@ -41,6 +42,18 @@ var sidebar = {
                 open: {
                     raw: 'sidebar-left-open',
                     identifier: '.sidebar-left-open'
+                },
+                content_show_css: {
+                    'margin-left': '280px'
+                },
+                content_hide_css: {
+                    'margin-left': 0
+                },
+                sidebar_show_css: {
+                    'margin-left': 0
+                },
+                sidebar_hide_css: {
+                    'margin-left': '-280px'
                 }
             },
 
@@ -51,6 +64,18 @@ var sidebar = {
                 open: {
                     raw: 'sidebar-right-open',
                     identifier: '.sidebar-right-open'
+                },
+                content_show_css: {
+                    'margin-right': '320px'
+                },
+                content_hide_css: {
+                    'margin-right': 0
+                },
+                sidebar_show_css: {
+                    'margin-right': 0
+                },
+                sidebar_hide_css: {
+                    'margin-right': '-320px'
                 }
             }
         },
@@ -58,6 +83,8 @@ var sidebar = {
         // Navigation
         navigation: {
             animation: {
+                duration: 400,
+                easing: 'easeOutSine',
                 pre: {
                     opacity: .1,
                     height: 0,
@@ -117,14 +144,8 @@ var sidebar = {
             // Attribute
             var attribute = jQuery(this).attr('data-toggle-sidebar');
 
-            // Toggle sidebar left
-            if (attribute == 'left') sidebar.sidebar_left_toggle();
-
-            // Toggle sidebar right
-            else if (attribute == 'right') sidebar.sidebar_right_toggle();
-
-            // None of the above - abort
-            else return false;
+            // Start toggling
+            sidebar.sidebar_toggle(attribute);
 
             // Prevent URL hashing
             event.preventDefault();
@@ -157,250 +178,185 @@ var sidebar = {
     // | button closes the modal on click.
     // |
 
-    // Toggle - sidebar left
-    sidebar_left_toggle: function () {
+    // Toggle - sidebar
+    sidebar_toggle: function(attribute) {
 
-        // Get configurations
+        // Validate attribute
+        if (attribute != 'left' && attribute != 'right') return false;
+
+        // Get default options
         var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body');
+            sidebar_general_config = config.sidebar,
+            sidebar_config = sidebar.sidebar_get_config(attribute),
+            body_object = jQuery('body');
 
-        // A sidebar is open - close it
-        if (body.hasClass(config_sidebar.main.open.raw)) {
-
-            // Sidebar left is not the open sidebar - so open it
-            if ( ! body.hasClass(config_sidebar.left.open.raw)) {
-
-                // Close the open sidebar
-                sidebar.sidebar_close();
-
-                // Open sidebar left
-                sidebar.sidebar_left_open();
-
-            }
-
-            // Sidebar left is the open sidebar - close it
-            else {
-
-                // Close the open sidebar
-                sidebar.sidebar_close();
-
-            }
-
+        // Close - it's currently open
+        if (body_object.hasClass(sidebar_config.open.raw)) {
+            sidebar.sidebar_close(sidebar_config);
         }
 
-        // Open sidebar left - it's currently closed
-        else sidebar.sidebar_left_open();
+        // Open - it's currently close
+        else {
+            sidebar.sidebar_open(sidebar_config);
+        }
 
     },
 
-    // Toggle - sidebar right
-    sidebar_right_toggle: function () {
+    // Sidebar - open
+    sidebar_open: function(sidebar_config) {
 
-        // Get configurations
+        // Get default options
         var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body');
+            sidebar_general_config = config.sidebar,
+            content_css = sidebar_config.content_show_css,
+            sidebar_css = sidebar_config.sidebar_show_css,
+            body_object = jQuery('body'),
+            sidebar_object = jQuery(sidebar_config.identifier),
+            callback = function() {
 
-        // A sidebar is open - close it
-        if (body.hasClass(config_sidebar.main.open.raw)) {
+                // Add open class to body
+                body_object
+                    .addClass(sidebar_general_config.main.open.raw)
+                    .addClass(sidebar_config.open.raw);
 
-            // Sidebar right is not the open sidebar - so open it
-            if ( ! body.hasClass(config_sidebar.right.open.raw)) {
+            };
 
-                // Close the open sidebar
-                sidebar.sidebar_close();
+        // Sidebar does not exist - throw error
+        if (sidebar_object.length == 0) {
 
-                // Open sidebar right
-                sidebar.sidebar_right_open();
+            // Alert error
+            alert('Sidebar does not exist.');
 
-            }
-
-            // Sidebar right is the open sidebar - close it
-            else {
-
-                // Close the open sidebar
-                sidebar.sidebar_close();
-
-            }
+            // Abort
+            return false;
 
         }
 
-        // Open sidebar right - it's currently closed
-        else sidebar.sidebar_right_open();
+        // Toggle sidebar (and content)
+        sidebar.sidebar_toggle_animated(sidebar_object, sidebar_css, content_css, callback);
+
+    },
+
+    // Sidebar - close
+    sidebar_close: function(sidebar_config) {
+
+        // Get default options
+        var config = sidebar.config,
+            sidebar_general_config = config.sidebar,
+            content_css = sidebar_config.content_hide_css,
+            sidebar_css = sidebar_config.sidebar_hide_css,
+            body_object = jQuery('body'),
+            sidebar_object = jQuery(sidebar_config.identifier),
+            callback = function() {
+
+                // Remove all open class' to body
+                body_object
+                    .removeClass(sidebar_general_config.main.open.raw)
+                    .removeClass(sidebar_config.open.raw);
+
+            };
+
+        // Sidebar does not exist - throw error
+        if (sidebar_object.length == 0) {
+
+            // Alert error
+            alert('Sidebar does not exist.');
+
+            // Abort
+            return false;
+
+        }
+
+        // Toggle sidebar (and content)
+        sidebar.sidebar_toggle_animated(sidebar_object, sidebar_css, content_css, callback);
 
     },
 
     // |-------------------------------------------
-    // | Sidebar (open)
+    // | Sidebar (helpers)
     // |-------------------------------------------
     // |
     // | Creates a modal with one button. The
     // | button closes the modal on click.
     // |
 
-    // Open - sidebar left
-    sidebar_left_open: function () {
+    // Sidebar - get correct configurations
+    sidebar_get_config: function(attribute) {
 
-        // Get configurations
+        // Get default options
         var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body'),
-            header_object = jQuery('.header'),
-            sidebar_object = jQuery(config_sidebar.left.identifier),
-            sidebar_animation_css = {
-                left: 0
-            },
-            navigation_animation_css = {
-                left: sidebar_object.outerWidth(true)
-            },
-            callback_function = function() {
+            sidebar_general_config = config.sidebar;
 
-                // Add open class to body
-                body
-                    .addClass(config_sidebar.main.open.raw)
-                    .addClass(config_sidebar.left.open.raw);
+        // Sidebar left
+        if (attribute == 'left') {
+            return sidebar_general_config.left;
+        }
 
-            };
+        // Sidebar right
+        else if (attribute == 'right') {
+            return sidebar_general_config.right;
+        }
 
-        // Animate sidebar
-        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
-
-        // Animate navigation
-        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
-
-    },
-
-    // Open - sidebar right
-    sidebar_right_open: function () {
-
-        // Get configurations
-        var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body'),
-            header_object = jQuery('.header'),
-            sidebar_object = jQuery(config_sidebar.right.identifier),
-            sidebar_planner_object = jQuery('#edit-bullet-points-fieldset-order'),
-            sidebar_animation_css = {
-                right: 0
-            },
-            navigation_animation_css = {
-                right: sidebar_object.outerWidth(true)
-            },
-            callback_function = function() {
-
-                // Add open class to body
-                body
-                    .addClass(config_sidebar.main.open.raw)
-                    .addClass(config_sidebar.right.open.raw);
-
-            };
-
-        // Animate sidebar
-        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
-
-        // Animate sidebar planner
-        sidebar.animated_toggle(sidebar_planner_object, sidebar_animation_css, callback_function);
-
-        // Animate navigation
-        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
-
-    },
-
-    // |-------------------------------------------
-    // | Sidebar (close)
-    // |-------------------------------------------
-    // |
-    // | Creates a modal with one button. The
-    // | button closes the modal on click.
-    // |
-
-    // Close all sidebars
-    sidebar_close: function () {
-
-        // Get configurations
-        var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body');
-
-        // A sidebar is open
-        if(body.hasClass(config_sidebar.main.open.raw)) {
-
-            // Sidebar left
-            if(body.hasClass(config_sidebar.left.open.raw)) sidebar.sidebar_left_close();
-
-            // Sidebar right
-            if(body.hasClass(config_sidebar.right.open.raw)) sidebar.sidebar_right_close();
-
+        // None of the above
+        else {
+            return false;
         }
 
     },
 
-    // Close - sidebar left
-    sidebar_left_close: function () {
+    // Sidebar - toggle with animation
+    sidebar_toggle_animated: function (sidebar_object, sidebar_css, content_css, callback) {
 
-        // Get configurations
+        // Get default options
         var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body'),
-            header_object = jQuery('.header'),
-            sidebar_object = jQuery(config_sidebar.left.identifier),
-            sidebar_animation_css = {
-                left: -sidebar_object.outerWidth(true)
-            },
-            navigation_animation_css = {
-                left: 0
-            },
-            callback_function = function() {
+            animation_config = config.sidebar.animation,
+            content_object = jQuery('#content'),
+            header_object = jQuery('.header-sticky');
 
-                // Remove open class from body
-                body
-                    .removeClass(config_sidebar.main.open.raw)
-                    .removeClass(config_sidebar.left.open.raw);
+        // Sidebar - animate
+        sidebar_object
+            .animate(
+            // CSS
+            sidebar_css,
+            {
+                // Duration - animation
+                duration: animation_config.duration, // how fast we are animating
 
-            };
+                // Easing - animation transition
+                easing: animation_config.easing,
 
-        // Animate sidebar
-        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
+                // Animation complete - run callback
+                complete: callback
+            }
+        );
 
-        // Animate navigation
-        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
+        // Content - animate
+        content_object
+            .animate(
+            // CSS
+            content_css,
+            {
+                // Duration - animation
+                duration: animation_config.duration, // how fast we are animating
 
-    },
+                // Easing - animation transition
+                easing: animation_config.easing
+            }
+        );
 
-    // Close - sidebar right
-    sidebar_right_close: function () {
+        // Header - animate
+        header_object
+            .animate(
+            // CSS
+            content_css,
+            {
+                // Duration - animation
+                duration: animation_config.duration, // how fast we are animating
 
-        // Get configurations
-        var config = sidebar.config,
-            config_sidebar = config.sidebar,
-            body = jQuery('body'),
-            header_object = jQuery('.header'),
-            sidebar_object = jQuery(config_sidebar.right.identifier),
-            sidebar_planner_object = jQuery('#edit-bullet-points-fieldset-order'),
-            sidebar_animation_css = {
-                right: -sidebar_object.outerWidth(true)
-            },
-            navigation_animation_css = {
-                right: 0
-            },
-            callback_function = function() {
-
-                // Remove open class from body
-                body
-                    .removeClass(config_sidebar.main.open.raw)
-                    .removeClass(config_sidebar.right.open.raw);
-
-            };
-
-        // Animate sidebar
-        sidebar.animated_toggle(sidebar_object, sidebar_animation_css, callback_function);
-
-        // Animate sidebar planner
-        sidebar.animated_toggle(sidebar_planner_object, sidebar_animation_css, callback_function);
-
-        // Animate navigation
-        sidebar.animated_toggle(header_object, navigation_animation_css, callback_function);
+                // Easing - animation transition
+                easing: animation_config.easing
+            }
+        );
 
     },
 
@@ -520,7 +476,7 @@ var sidebar = {
 
         // Get configurations
         var config = sidebar.config
-            animation_config = config.animation;
+            animation_config = config.navigation.animation;
 
         // Perform animation
         scope.animate(

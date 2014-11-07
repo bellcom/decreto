@@ -35,3 +35,12 @@ function decreto_user_init() {
     drupal_goto('dashboard');
   }
 }
+
+/**
+ * Implements hook_custom_theme().
+ */
+function decreto_user_custom_theme() {
+  if (user_is_anonymous()) {
+    return 'decreto_frontend';
+  }
+}
