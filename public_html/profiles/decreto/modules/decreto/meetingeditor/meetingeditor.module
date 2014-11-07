@@ -63,6 +63,7 @@ function meetingeditor_form($form, &$form_state, $no_js_use = FALSE) {
     '#title' => t('Title'),
     '#required' => TRUE,
     '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['title'] : '',
+    '#prefix' => '<div class="meeting-details">',
   );
 
   $fields = field_info_fields();
@@ -94,6 +95,7 @@ function meetingeditor_form($form, &$form_state, $no_js_use = FALSE) {
     '#required' => TRUE,
     '#options' => $committee_options,
     '#default_value' => isset($form['#meeting']) ? $form['#meeting']['#entity']['field_os2web_meetings_committee'][LANGUAGE_NONE][0]['tid'] : '',
+    '#suffix' => '</div>',
   );
 
   meetingeditor_point_form($form, $form_state, $no_js_use);
@@ -328,6 +330,7 @@ function meetingeditor_point_form(&$form, &$form_state, $no_js_use) {
       '#title' => t('Point title'),
       '#attributes' => array('class' => array('js-point-title')),
       '#default_value' => isset($form['#meeting']['#points'][$i]) ? $form['#meeting']['#points'][$i]['title'] : '',
+      '#prefix' => '<div class="point-form">',
     );
 
     $fid = FALSE;
@@ -376,6 +379,7 @@ function meetingeditor_point_form(&$form, &$form_state, $no_js_use) {
         'callback' => 'meetingeditor_remove_bullet_point',
         'wrapper' => 'bullet-points-fieldset-wrapper',
       ),
+      '#suffix' => '</div>',
     );
   }
 
@@ -472,6 +476,7 @@ function meetingeditor_point_attachment_form(&$form, &$form_state) {
           'callback' => 'meetingeditor_remove_bullet_point',
           'wrapper' => 'bullet-points-fieldset-wrapper',
         ),
+        '#prefix' => '<div class="subpoint-form">',
       );
 
       $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['title'] = array(
@@ -491,7 +496,7 @@ function meetingeditor_point_attachment_form(&$form, &$form_state) {
         '#default_value' => $attach_body,
       );
 
-      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['add_bullet_point'] = array(
+      $form['bullet_points']['bullet_points_fieldset']['points'][$i]['attachments'][$p]['add_bpa'] = array(
         '#type' => 'submit',
         '#name' => 'add-point-item-' . $i,
         '#value' => t('Add sub point'),
@@ -502,6 +507,7 @@ function meetingeditor_point_attachment_form(&$form, &$form_state) {
           'callback' => 'meetingeditor_add_bullet_point',
           'wrapper' => 'bullet-points-fieldset-wrapper',
         ),
+        '#suffix' => '</div>',
       );
     }
   }
