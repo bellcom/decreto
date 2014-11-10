@@ -93,14 +93,15 @@ function decreto_signup_form() {
       'medium' => array('#description' => 'DKK 99,-/mdr'),
       'large' => array('#description' => 'DKK 149,-/mdr'),
     ),
-    '#prefix' => '<h2>Vælg pakke</h2>',
+    '#prefix' => '<div class="col-md-6"><h3>Vælg pakke</h3>',
+    '#suffix' => '</div>',
   );
 
   $form['company'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
     '#attributes' => array('placeholder' => 'Company'),
-    '#prefix' => '<h2>Kontaktoplysninger</h2>',
+    '#prefix' => '<div class="col-md-6"><h3>Kontaktoplysninger</h3>',
   );
 
   $form['name'] = array(
@@ -122,9 +123,10 @@ function decreto_signup_form() {
     '#type' => 'textfield',
     '#required' => TRUE,
     '#attributes' => array('placeholder' => 'Phone'),
+    '#suffix' => '</div>',
   );
 
-  $signup_postscript = 'Tekst';
+  $signup_postscript = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
   $form['submit'] = array(
     '#type' => 'submit',
@@ -134,7 +136,8 @@ function decreto_signup_form() {
       'wrapper' => 'decreto_signup_form',
     ),
     '#value' => 'Registrer bestilling',
-    '#prefix' => '<div class="signup-postscript"><p>' . $signup_postscript . '</p>',
+    '#attributes' => array('class' => array('btn', 'btn-primary', 'margin-top-m')),
+    '#prefix' => '<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 padding-top-l text-center"><p>' . $signup_postscript . '</p>',
     '#suffix' => '</div>',
   );
 

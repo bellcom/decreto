@@ -1,9 +1,9 @@
 <!-- Begin - sign up form -->
-<section class="container" id="signup">
-    <div class="row">
-        <div class="col-md-12">
+<div class="padding-y-xl" id="signup">
+    <div class="container">
+        <div class="row">
             <?php print $signup_form; ?>
         </div>
     </div>
-</section>
+</div>
 <!-- End - sign up form -->
