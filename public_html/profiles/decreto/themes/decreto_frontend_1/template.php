@@ -7,7 +7,7 @@
 /**
  * Implements theme_preprocess_html().
  */
-function decreto_frontend_preprocess_html(&$variables) {
+function decreto_frontend_1_preprocess_html(&$variables) {
   drupal_add_js('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('type' => 'external'));
   drupal_add_css('//fonts.googleapis.com/css?family=Asap:700|Open+Sans:200,300,400,500,600,700', array('type' => 'external'));
   drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array('type' => 'external'));
@@ -40,7 +40,7 @@ function decreto_theme_form_element($variables) {
 /**
  * Implements theme_preprocess_page().
  */
-function decreto_frontend_preprocess_page(&$variables) {
+function decreto_frontend_1_preprocess_page(&$variables) {
   $variables['user_is_logged_in'] = FALSE;
 
   // Add the signup form to variables, if we're on the frontpage.

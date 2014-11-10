@@ -1,149 +1,181 @@
 <!-- Begin - buzz boxes -->
-<section class="container buzz-boxes">
-  <div class="row">
+<div class="buzz-boxes padding-y-xxl" id="buzzbox">
+  <div class="container">
+    
+      <!-- Begin - first row -->
+      <div class="row">
+      
+          <!-- Begin - available -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-left">
 
+              <!-- Begin - icon -->
+              <div class="buzz-box-icon-container">
+                  <img src="<?php print $image_path . 'buzz-box-icons/available.png'; ?>" class="buzz-icon" alt=""/>
+              </div>
+              <!-- End - icon -->
 
-    <!-- Begin - buzz box -->
-    <div class="col-md-6 buzz-box">
+              <!-- Begin - content -->
+              <div class="buzz-box-content-container">
 
-      <!-- Begin - icon -->
-      <div class="buzz-box-icon-container">
-        <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/buzz-icon-available.png" class="buzz-icon">'; ?>
+                  <!-- Begin - headline -->
+                  <h3>Altid tilgængelig</h3>
+                  <!-- End - headline -->
+
+                  <!-- Begin - text -->
+                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <!-- End - text -->
+
+              </div>
+              <!-- End - content -->
+
+          </div>
+          <!-- End - available -->
+
+          <!-- Begin - green tech -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-1">
+
+              <!-- Begin - icon -->
+              <div class="buzz-box-icon-container">
+                  <img src="<?php print $image_path . 'buzz-box-icons/green-tech.png'; ?>" class="buzz-icon" alt=""/>
+              </div>
+              <!-- End - icon -->
+
+              <!-- Begin - content -->
+              <div class="buzz-box-content-container">
+
+                  <!-- Begin - headline -->
+                  <h3>Grøn teknologi</h3>
+                  <!-- End - headline -->
+
+                  <!-- Begin - text -->
+                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <!-- End - text -->
+
+              </div>
+              <!-- End - content -->
+
+          </div>
+          <!-- End - green tech -->
+      
       </div>
-      <!-- End - icon -->
+      <!-- End - first row -->
 
-      <!-- Begin - content -->
-      <div class="buzz-box-content-container">
-        <h3 class="headline-semibold">Altid tilgængelig</h3>
-        <p>
-          Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.
-        </p>
+      <!-- Begin - second row -->
+      <div class="row">
+
+          <!-- Begin - support -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-left animation-delay-0-2">
+
+              <!-- Begin - icon -->
+              <div class="buzz-box-icon-container">
+                  <img src="<?php print $image_path . 'buzz-box-icons/support.png'; ?>" class="buzz-icon" alt=""/>
+              </div>
+              <!-- End - icon -->
+
+              <!-- Begin - content -->
+              <div class="buzz-box-content-container">
+
+                  <!-- Begin - headline -->
+                  <h3>Support på dansk</h3>
+                  <!-- End - headline -->
+
+                  <!-- Begin - text -->
+                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <!-- End - text -->
+
+              </div>
+              <!-- End - content -->
+
+          </div>
+          <!-- End - support -->
+
+          <!-- Begin - security -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-3">
+
+              <!-- Begin - icon -->
+              <div class="buzz-box-icon-container">
+                  <img src="<?php print $image_path . 'buzz-box-icons/security.png'; ?>" class="buzz-icon" alt=""/>
+              </div>
+              <!-- End - icon -->
+
+              <!-- Begin - content -->
+              <div class="buzz-box-content-container">
+
+                  <!-- Begin - headline -->
+                  <h3>Sikkerhed</h3>
+                  <!-- End - headline -->
+
+                  <!-- Begin - text -->
+                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <!-- End - text -->
+
+              </div>
+              <!-- End - content -->
+
+          </div>
+          <!-- End - security -->
+
       </div>
-      <!-- End - content -->
+      <!-- End - second row -->
 
-    </div>
-    <!-- End - buzz box -->
+      <!-- Begin - third row -->
+      <div class="row">
 
+          <!-- Begin - integration -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-left animation-delay-0-4">
 
-    <!-- Begin - buzz box -->
-    <div class="col-md-6 buzz-box">
+              <!-- Begin - icon -->
+              <div class="buzz-box-icon-container">
+                  <img src="<?php print $image_path . 'buzz-box-icons/integration.png'; ?>" class="buzz-icon" alt=""/>
+              </div>
+              <!-- End - icon -->
 
-      <!-- Begin - icon -->
-      <div class="buzz-box-icon-container">
-        <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/buzz-icon-green-tech.png" class="buzz-icon">'; ?>
+              <!-- Begin - content -->
+              <div class="buzz-box-content-container">
+
+                  <!-- Begin - headline -->
+                  <h3>Integration</h3>
+                  <!-- End - headline -->
+
+                  <!-- Begin - text -->
+                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <!-- End - text -->
+
+              </div>
+              <!-- End - content -->
+
+          </div>
+          <!-- End - integration -->
+
+          <!-- Begin - overview -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-5">
+
+              <!-- Begin - icon -->
+              <div class="buzz-box-icon-container">
+                  <img src="<?php print $image_path . 'buzz-box-icons/overview.png'; ?>" class="buzz-icon" alt=""/>
+              </div>
+              <!-- End - icon -->
+
+              <!-- Begin - content -->
+              <div class="buzz-box-content-container">
+
+                  <!-- Begin - headline -->
+                  <h3>Overblik</h3>
+                  <!-- End - headline -->
+
+                  <!-- Begin - text -->
+                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <!-- End - text -->
+
+              </div>
+              <!-- End - content -->
+
+          </div>
+          <!-- End - overview -->
+
       </div>
-      <!-- End - icon -->
-
-      <!-- Begin - content -->
-      <div class="buzz-box-content-container">
-        <h3 class="headline-semibold">Grøn teknologi</h3>
-        <p>
-          Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.
-        </p>
-      </div>
-      <!-- End - content -->
-
-    </div>
-    <!-- End - buzz box -->
-
-
+      <!-- End - third row -->
+      
   </div>
-  <div class="row">
-
-
-    <!-- Begin - buzz box -->
-    <div class="col-md-6 buzz-box">
-
-      <!-- Begin - icon -->
-      <div class="buzz-box-icon-container">
-        <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/buzz-icon-support.png" class="buzz-icon">'; ?>
-      </div>
-      <!-- End - icon -->
-
-      <!-- Begin - content -->
-      <div class="buzz-box-content-container">
-        <h3 class="headline-semibold">Support på dansk</h3>
-        <p>
-          Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.
-        </p>
-      </div>
-      <!-- End - content -->
-
-    </div>
-    <!-- End - buzz box -->
-
-
-    <!-- Begin - buzz box -->
-    <div class="col-md-6 buzz-box">
-
-      <!-- Begin - icon -->
-      <div class="buzz-box-icon-container">
-        <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/buzz-icon-security.png" class="buzz-icon">'; ?>
-      </div>
-      <!-- End - icon -->
-
-      <!-- Begin - content -->
-      <div class="buzz-box-content-container">
-        <h3 class="headline-semibold">Sikkerhed</h3>
-        <p>
-          Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.
-        </p>
-      </div>
-      <!-- End - content -->
-
-    </div>
-    <!-- End - buzz box -->
-
-
-  </div>
-  <div class="row">
-
-
-    <!-- Begin - buzz box -->
-    <div class="col-md-6 buzz-box">
-
-      <!-- Begin - icon -->
-      <div class="buzz-box-icon-container">
-        <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/buzz-icon-integration.png" class="buzz-icon">'; ?>
-      </div>
-      <!-- End - icon -->
-
-      <!-- Begin - content -->
-      <div class="buzz-box-content-container">
-        <h3>Integration</h3>
-        <p>
-          Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.
-        </p>
-      </div>
-      <!-- End - content -->
-
-
-    </div>
-    <!-- End - buzz box -->
-
-
-    <!-- Begin - buzz box -->
-    <div class="col-md-6 buzz-box">
-
-      <!-- Begin - icon -->
-      <div class="buzz-box-icon-container">
-        <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/buzz-icon-overview.png" class="buzz-icon">'; ?>
-      </div>
-      <!-- End - icon -->
-
-      <!-- Begin - content -->
-      <div class="buzz-box-content-container">
-        <h3>Overblik</h3>
-        <p>
-          Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.
-        </p>
-      </div>
-      <!-- End - content -->
-
-    </div>
-    <!-- End - buzz box -->
-
-
-  </div>
-</section>
+</div>
 <!-- End - buzz boxes -->

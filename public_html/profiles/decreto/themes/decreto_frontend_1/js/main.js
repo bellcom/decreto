@@ -1,8 +1,6 @@
 // Document ready
 jQuery(function($){
 
-
-
     // --------------------------------------------------
     // Owl Carousel
     // --------------------------------------------------
@@ -17,8 +15,33 @@ jQuery(function($){
 
     });
 
+    // --------------------------------------------------
+    // Attach footer
+    // --------------------------------------------------
 
+    // Attach footer function
+    function attach_footer() {
 
+        // Get height of footer
+        var footer_height                           =   $( ".footer" ).outerHeight( true ); // Height with border and padding
+
+        // Append the footer to the #wrapper
+        $( "#wrapper" ).css( "margin-bottom", footer_height );
+
+    }
+
+    // Only attach footer if not touch
+    if ( ! Modernizr.touch ) {
+
+        // Attach footer
+        attach_footer();
+
+        // Window is resized
+        $( window ).resize( function() {
+            attach_footer();
+        });
+
+    }
 
     // --------------------------------------------------
     // Skrollr

@@ -7044,231 +7044,10 @@ body {
 }
 body #wrapper {
   position: relative;
-  width: 100%;
-  overflow: hidden;
 }
 body #wrapper #content {
-  padding-top: 150px;
-}
-.boxed-content {
-  background-color: #fff;
-  border-bottom: 1px solid #e2e8ec;
-}
-body {
-  /* <parallax> */
-  /* <parallax> */
-  /* <download> */
-  /* </download> */
-  /* <description> */
-  /* </description> */
-  /* <features> */
-  /* </features> */
-  /* <signup> */
-  /* </signup> */
-  /* <bottom> */
-}
-@media (min-width: 992px) {
-  body .container {
-    width: 970px;
-  }
-}
-body button.signup {
-  background-color: #ec7139;
-  border-color: #ec7139;
-  color: #fff;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-body .login {
-  text-indent: -9999px;
-  background: url('../img/lock.png') center no-repeat;
-}
-body .spacer {
-  padding: 60px 0;
-}
-body .orange {
-  color: #ec7139;
-}
-body .orange-bg {
-  background-color: #ec7139;
-}
-body .orange-bg h2 {
-  color: #fff;
-}
-body .gray-bg {
-  color: #fff;
-  background-color: #364045;
-}
-body #parralax-banner-2 {
-  background: url(../img/people.jpg) -1200px 900px;
-  height: 400px;
-  position: relative;
-}
-body #parralax-banner-3 {
-  background: url(../img/people.jpg) -1200px 800px;
-  height: 400px;
-  position: relative;
-  margin-top: 30px;
-}
-body .download {
-  background: url(../img/top-banner.png) center no-repeat;
-  padding: 20px 0 0 0;
-}
-body .download .wrapper {
-  background: url(../img/tablet.png) -200px 50px no-repeat;
-  padding-bottom: -20px;
-}
-body .download h2 {
-  padding-top: 30px;
-}
-body .download .col-md-6:nth-child(2) img {
-  max-width: 150%;
-}
-body .description .col-md-4 {
-  position: relative;
-  top: -50px;
-  height: 350px;
-  overflow-y: hidden;
-  margin-bottom: -50px;
-}
-body .features .col-md-3 {
-  padding: 0;
-}
-body .features li {
-  text-align: center;
-  background-color: #424b4f;
-  border: 2px solid #364045;
-  border-left: none;
-  border-right: none;
-  border-bottom-width: 3px;
-  padding: 5px 10px 5px 10px;
-}
-body ul.text-left li {
-  text-align: left;
-}
-body li.price {
-  background-color: #364045;
-  font-size: 1.6em;
-  font-weight: bold;
-}
-body li.price small {
-  font-weight: normal;
-  font-size: 0.6em;
-}
-body li.na {
-  text-indent: -9999px;
-}
-body .features .white {
-  background-color: #fff;
-}
-body .white li {
-  background-color: #c0c0c0;
-  border-color: #fff;
-}
-body .white li.heading {
-  background-color: #fff;
-}
-body .white li.price {
-  background-color: #fff;
-  border: none;
-  color: #000;
-  height: 50px;
-}
-body .features .heading {
-  font-size: 1.6em;
-  font-weight: bold;
-  background-color: #364045;
-}
-body .features .white .heading {
-  color: #000;
-}
-body .features .heading strong {
-  display: block;
-  color: #aad6cf;
-  font-size: 0.8em;
-}
-body .features .glyphicon-ok {
-  color: #ec7139;
-}
-body #signup {
-  margin-top: 30px;
-}
-body #signup h2 {
-  margin-top: 30px;
-}
-body #signup button {
-  background-color: #ec7139;
-  border-color: #ec7139;
-  color: #fff;
-}
-body #signup label {
-  background: url('../img/unchecked.png') no-repeat;
-  padding: 17px 0 18px 60px;
-}
-body #signup label.checked {
-  background: url('../img/checked.png') no-repeat;
-}
-body #signup input[type="radio"] {
-  display: none;
-}
-body #signup-address,
-body #signup-password {
-  display: none;
-}
-body #signup .form-item {
-  margin-bottom: 15px;
-}
-body #signup .form-item label {
-  font-weight: 600;
-}
-body #signup .signup-postscript {
-  text-align: center;
-}
-body #signup .signup-postscript p {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  body #signup .signup-postscript p {
-    float: left;
-    width: 66.66666667%;
-  }
-}
-body address {
-  font-style: normal;
-  background-image: url('../img/pin.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #fff;
-  text-align: center;
-}
-body address p {
   padding-top: 120px;
-}
-body .support {
-  color: #fff;
-  padding: 20px 0 10px  0;
-  font-size: 1.4em;
-}
-body .support a {
-  color: #000;
-}
-body footer .container {
-  padding-top: 10px;
-}
-body footer p {
-  background: url('../img/logo-white.png') no-repeat;
-  padding: 60px 0 0 60px;
-  color: #737e84;
-}
-body footer p small {
-  padding-top: 20px;
-  display: block;
-  text-align: right;
+  background-color: #f2f5f7;
 }
 .no-touch .btn,
 .no-touch .btn:hover,
@@ -7452,6 +7231,24 @@ body footer p small {
   font-size: 12px;
   font-weight: 400;
   color: #777777;
+}
+html body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+html.no-touch #wrapper {
+  position: relative;
+  z-index: 500;
+}
+html.no-touch .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  margin: 0;
 }
 .buzz-boxes {
   padding: 100px 0;

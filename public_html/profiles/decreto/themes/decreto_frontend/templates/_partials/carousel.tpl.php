@@ -1,5 +1,5 @@
 <!-- Begin - slider -->
-<section class="container-fluid orange-bg description">
+<section class="container-fluid background-color-primary">
   <div class="container">
 
     <!-- Begin - owl carousel -->

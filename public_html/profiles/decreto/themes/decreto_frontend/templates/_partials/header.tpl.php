@@ -2,23 +2,21 @@
 <header class="header header-sticky">
 
     <!-- Begin - navigation bar -->
-    <nav class="header-navigation-bar" data-40="height: 120px; line-height: 120px; " data-200="height: 80px; line-height: 80px;">
+    <nav class="header-navigation-bar" data-40="min-height: 120px; line-height: 120px; " data-200="min-height: 80px; line-height: 80px;">
         <div class="container">
             <div class="row">
-
 
                 <!-- Begin - left -->
                 <div class="col-md-4 navigation-bar-content align-content-left">
 
                     <!-- Begin - logo -->
                     <div class="header-logo">
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Gå til toppen af siden"></a>
+                        <a href="#banner" data-toggle="tooltip" data-placement="bottom" title="Gå til toppen af siden"></a>
                     </div>
                     <!-- End - logo -->
 
                 </div>
                 <!-- End - left -->
-
 
                 <!-- Begin - right -->
                 <div class="col-md-8 navigation-bar-content align-content-right">
@@ -26,7 +24,9 @@
                     <!-- Begin - navigation -->
                     <ul class="header-navigation">
                         <li>
-                            <a href="#product">Produkter</a>
+                            <a href="#product">
+                                Produkter
+                            </a>
                         </li>
                         <li>
                             <a href="#prices">Priser</a>
@@ -37,14 +37,14 @@
                         <li>
                             <a href="#support">Support</a>
                         </li>
-                        <li class="signup">
-                            <button type="button" class="signup btn btn-default navbar-btn" onclick="window.location.href='#signup'">
+                        <li>
+                            <a class="btn btn-primary" href="#signup">
                                 Bestil
-                            </button>
+                            </a>
                         </li>
-                        <li class="login">
-                            <a href="/user">
-                                Log ind
+                        <li>
+                            <a href="/user" data-toggle="tooltip" data-placement="bottom" title="Log ind">
+                                <span class="icon icon-lock"></span>
                             </a>
                         </li>
                     </ul>
@@ -52,7 +52,6 @@
 
                 </div>
                 <!-- End - right -->
-
 
             </div>
         </div>
