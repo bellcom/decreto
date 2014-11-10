@@ -19,16 +19,17 @@
 
         <div class="banner-background banner-background-1 parallax-background" data-stellar-background-ratio="0.5"></div>
 
-<div class="padding-y-xl">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <h1>Køb din online dagsorden herunder</h1>
-                <h3 class="text-muted">Lorem ipsum dolor sit amet Gratis hvis du er eneste bruger consectetur adipisicing elit, sed do eiusmod 2-10 brugere samt frit antal tempor</h3>
+        <div class="padding-y-xl">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h1>Køb din online dagsorden herunder</h1>
+                        <h3 class="text-muted">Lorem ipsum dolor sit amet Gratis hvis du er eneste bruger consectetur adipisicing elit, sed do eiusmod 2-10 brugere samt frit antal tempor</h3>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
         <?php include "_partials/price-table.tpl.php"; ?>
         <?php include "_partials/signup-form.tpl.php"; ?>
 

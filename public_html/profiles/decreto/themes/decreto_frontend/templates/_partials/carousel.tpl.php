@@ -1,87 +1,61 @@
-<!-- Begin - slider -->
-<section class="container-fluid background-color-primary">
+<!-- Begin - owl carousel -->
+<div class="container-fluid owl-carousel owl-theme">
 
-    <!-- Begin - owl carousel -->
-    <div class="owl-carousel owl-theme">
+    <!-- Begin - slide -->
+    <div>
 
-      <!-- Begin - slide -->
-      <div class="item">
-  <div class="container">
-        <div class="row">
+        <div class="owl-carousel-content background-color-primary" style="margin-top: 70px;">
+            <div class="container" style="position: relative;">
+                <div class="row">
 
-          <div class="owl-content-text-container col-md-8">
+                    <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/phone.png" style="width: 230px;position:absolute;right: 0;top: -70px;">'; ?>
 
-            <h1>Slide 1</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
+                    <div class="col-md-8" style="padding-top: 40px; padding-bottom: 40px;">
+                        <h1 style="margin-top: 0;">Adipisicing elitsed do</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
 
-          </div>
+                    <div class="owl-content-image-container col-md-4">
+                    </div>
 
-          <div class="owl-content-image-container col-md-4">
-            <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/phone.png" class="owl-item-image owl-item-image-phone">'; ?>
-          </div>
-
+                </div>
+            </div>
         </div>
-  </div>
-      </div>
-      <!-- End - slide -->
-
-      <!-- Begin - slide -->
-      <div class="item">
-  <div class="container">
-        <div class="row">
-
-          <div class="owl-content-text-container col-md-8">
-
-            <h1>Slide 1</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
-
-          </div>
-
-          <div class="owl-content-image-container col-md-4">
-            <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/phone.png" class="owl-item-image owl-item-image-phone">'; ?>
-          </div>
-
-        </div>
-  </div>
-      </div>
-      <!-- End - slide -->
-
-      <!-- Begin - slide -->
-      <div class="item">
-  <div class="container">
-
-        <div class="owl-content-text-container col-md-8">
-
-          <h1>Slide 1</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </p>
-
-        </div>
-
-        <div class="owl-content-image-container col-md-4">
-          <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/phone.png" class="owl-item-image owl-item-image-phone">'; ?>
-        </div>
-
-      </div>
-  </div>
-      <!-- End - slide -->
-
     </div>
-    <!-- End - owl carousel -->
+    <!-- End - slide -->
 
-</section>
-<!-- End - slider -->
+    <!-- Begin - slide -->
+    <div>
+
+        <div class="owl-carousel-content background-color-primary" style="margin-top: 70px;">
+            <div class="container" style="position: relative;">
+                <div class="row">
+
+                    <?php print '<img src="' . base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/phone.png" style="width: 230px;position:absolute;right: 0;top: -70px;">'; ?>
+
+                    <div class="col-md-8" style="padding-top: 40px; padding-bottom: 40px;">
+                        <h1 style="margin-top: 0;">Adipisicing elitsed do</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
+
+                    <div class="owl-content-image-container col-md-4">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End - slide -->
+
+</div>
+<!-- End - owl carousel -->
