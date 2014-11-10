@@ -1,12 +1,12 @@
 <!-- Begin - slider -->
 <section class="container-fluid background-color-primary">
-  <div class="container">
 
     <!-- Begin - owl carousel -->
     <div class="owl-carousel owl-theme">
 
       <!-- Begin - slide -->
       <div class="item">
+  <div class="container">
         <div class="row">
 
           <div class="owl-content-text-container col-md-8">
@@ -26,11 +26,13 @@
           </div>
 
         </div>
+  </div>
       </div>
       <!-- End - slide -->
 
       <!-- Begin - slide -->
       <div class="item">
+  <div class="container">
         <div class="row">
 
           <div class="owl-content-text-container col-md-8">
@@ -50,11 +52,13 @@
           </div>
 
         </div>
+  </div>
       </div>
       <!-- End - slide -->
 
       <!-- Begin - slide -->
       <div class="item">
+  <div class="container">
 
         <div class="owl-content-text-container col-md-8">
 
@@ -73,11 +77,11 @@
         </div>
 
       </div>
+  </div>
       <!-- End - slide -->
 
     </div>
     <!-- End - owl carousel -->
 
-  </div>
 </section>
 <!-- End - slider -->
