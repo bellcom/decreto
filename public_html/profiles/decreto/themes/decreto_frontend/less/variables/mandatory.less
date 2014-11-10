@@ -1,0 +1,76 @@
+// --------------------------------------------------
+// Colouring
+// --------------------------------------------------
+
+//== Brand colors
+@brand-secondary:   #9cd7cc;
+@brand-tertiary:    #364045;
+
+//== State - primary
+@state-primary-text:    #ffffff;
+@state-primary-bg:      @brand-primary;
+
+//== State - secondary
+@state-secondary-text:  #fff;
+@state-secondary-bg:    @brand-secondary;
+
+//== State - tertiary
+@state-tertiary-text:   #fff;
+@state-tertiary-bg:     @brand-tertiary;
+
+//== Button - secondary
+@btn-secondary-color:     #fff;
+@btn-secondary-bg:        @brand-secondary;
+@btn-secondary-border:    darken(@btn-secondary-bg, 5%);
+
+//== Button - tertiary
+@btn-tertiary-color:     #fff;
+@btn-tertiary-bg:        @brand-tertiary;
+@btn-tertiary-border:    darken(@btn-tertiary-bg, 5%);
+
+//== Social link colouring
+@social-link-color-facebook: 		#3B5998;
+@social-link-color-twitter: 		#55acee;
+@social-link-color-instagram: 		#3f729b;
+@social-link-color-linkedin: 		#0976b4;
+@social-link-color-pinterest: 		#cc2127;
+@social-link-color-vimeo: 		    #1ab7ea;
+@social-link-color-youtube:         #e52d27;
+
+
+// --------------------------------------------------
+// Font
+// --------------------------------------------------
+
+// Font weight
+@font-weight-light: 	    200;
+@font-weight-semi-light:    300;
+@font-weight: 		        400;
+@font-weight-semi-bold:     500;
+@font-weight-bold: 	        600;
+
+// Headings
+@headings-font-weight-light: 	    400;
+@headings-font-weight-semi-light:   400;
+@headings-font-weight: 		        400;
+@headings-font-weight-semi-bold:    700;
+@headings-font-weight-bold: 	    700;
+
+
+// --------------------------------------------------
+// Miscellaneous
+// --------------------------------------------------
+
+//== Transitions
+@transition-time-short:     0.15s;
+@transition-time:           0.25s;
+@transition-time-long:      0.4s;
+
+//== Paths
+@path-image:   "../img/";
+
+//== Media queries
+@media-query-mobile:            ~"screen and (max-width: @{screen-xs-max})";
+@media-query-tablet:            ~"screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
+@media-query-desktop:           ~"screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
+@media-query-large-desktop:     ~"screen and (min-width: @{screen-lg-min})";

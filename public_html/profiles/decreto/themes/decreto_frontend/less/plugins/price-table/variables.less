@@ -1,0 +1,112 @@
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+//== Base
+@price-table-border-width:                                              0;
+@price-table-border-style:                                              solid;
+@price-table-list-item-height:                                          36px;
+@price-table-list-item-padding:                                         20px;
+
+//== Header
+@price-table-header-height:                                             120px;
+@price-table-header-font-family:                                        @headings-font-family;
+@price-table-header-font-size:                                          @font-size-h2;
+@price-table-header-font-weight:                                        @headings-font-weight-semi-bold;
+
+@price-table-header-small-font-size:                                    @font-size-h4;
+@price-table-header-small-font-weight:                                  @price-table-header-font-weight;
+
+//== Feature description
+@price-table-feature-description-font-family:                           @font-family-sans-serif;
+@price-table-feature-description-font-size:                             @font-size-base;
+@price-table-feature-description-font-weight:                           @font-weight;
+
+//== Product feature
+@price-table-product-feature-font-family:                               @price-table-feature-description-font-family;
+@price-table-product-feature-font-size:                                 @price-table-feature-description-font-size;
+@price-table-product-feature-font-weight:                               @price-table-feature-description-font-weight;
+
+//== Price
+@price-table-product-price-list-item-height:                            100px;
+
+@price-table-product-price-font-family:                                 @headings-font-family;
+@price-table-product-price-font-size:                                   @font-size-h2;
+@price-table-product-price-font-weight:                                 @headings-font-weight-semi-bold;
+
+@price-table-product-price-small-font-size:                             @font-size-base;
+@price-table-product-price-small-font-weight:                           @price-table-product-price-font-weight;
+
+
+//== Theme - feature
+@price-table-feature-background-color:                                  @brand-tertiary;
+@price-table-feature-header-font-color:                                 #fff;
+@price-table-feature-header-small-font-color:                           @brand-secondary;
+
+// Odd
+@price-table-feature-row-odd-background-color:                          @price-table-feature-background-color;
+@price-table-feature-row-odd-background-color-rgba:                     rgba(red(@price-table-feature-row-odd-background-color), green(@price-table-feature-row-odd-background-color), blue(@price-table-feature-row-odd-background-color), .95);
+
+@price-table-feature-row-odd-feature-decription-font-color:             #fff;
+
+@price-table-feature-row-odd-border-color:                              darken(@price-table-feature-row-odd-background-color, 10%);
+
+// Even
+@price-table-feature-row-even-background-color:                         #485054;
+@price-table-feature-row-even-background-color-rgba:                    rgba(red(@price-table-feature-row-even-background-color), green(@price-table-feature-row-even-background-color), blue(@price-table-feature-row-even-background-color), .95);
+
+@price-table-feature-row-even-feature-decription-font-color:            @price-table-feature-row-odd-feature-decription-font-color;
+
+@price-table-feature-row-even-border-color:                             lighten(@price-table-feature-row-even-background-color, 10%);
+
+
+//== Theme - default
+@price-table-default-background-color:                                  #323b40;
+@price-table-default-header-font-color:                                 #fff;
+@price-table-default-header-small-font-color:                           @brand-secondary;
+
+// Odd
+@price-table-default-row-odd-background-color:                          @price-table-default-background-color;
+@price-table-default-row-odd-background-color-rgba:                     rgba(red(@price-table-default-row-odd-background-color), green(@price-table-default-row-odd-background-color), blue(@price-table-default-row-odd-background-color), .95);
+
+@price-table-default-row-odd-product-feature-font-color:                @brand-primary;
+@price-table-default-row-odd-product-price-font-color:                  #fff;
+@price-table-default-row-odd-product-price-small-font-color:            @price-table-default-row-odd-product-price-font-color;
+
+@price-table-default-row-odd-border-color:                              darken(@price-table-default-row-odd-background-color, 10%);
+
+// Even
+@price-table-default-row-even-background-color:                         #485054;
+@price-table-default-row-even-background-color-rgba:                    rgba(red(@price-table-default-row-even-background-color), green(@price-table-default-row-even-background-color), blue(@price-table-default-row-even-background-color), .95);
+
+@price-table-default-row-even-product-feature-font-color:               @price-table-default-row-odd-product-feature-font-color;
+@price-table-default-row-even-product-price-font-color:                 @price-table-default-row-odd-product-price-font-color;
+@price-table-default-row-even-product-price-small-font-color:           @price-table-default-row-odd-product-price-small-font-color;
+
+@price-table-default-row-even-border-color:                             lighten(@price-table-default-row-even-background-color, 10%);
+
+
+//== Theme - highlight
+@price-table-highlight-background-color:                                #ffffff;
+@price-table-highlight-header-font-color:                               @text-color;
+@price-table-highlight-header-small-font-color:                         @brand-secondary;
+
+// Odd
+@price-table-highlight-row-odd-background-color:                        @price-table-highlight-background-color;
+@price-table-highlight-row-odd-background-color-rgba:                   rgba(red(@price-table-highlight-row-odd-background-color), green(@price-table-highlight-row-odd-background-color), blue(@price-table-highlight-row-odd-background-color), .95);
+
+@price-table-highlight-row-odd-product-feature-font-color:              @brand-primary;
+@price-table-highlight-row-odd-product-price-font-color:                @text-color;
+@price-table-highlight-row-odd-product-price-small-font-color:          @price-table-highlight-row-odd-product-price-font-color;
+
+@price-table-highlight-row-odd-border-color:                            darken(@price-table-highlight-row-odd-background-color, 10%);
+
+// Even
+@price-table-highlight-row-even-background-color:                       #d7d9da;
+@price-table-highlight-row-even-background-color-rgba:                  rgba(red(@price-table-highlight-row-even-background-color), green(@price-table-highlight-row-even-background-color), blue(@price-table-highlight-row-even-background-color), .95);
+
+@price-table-highlight-row-even-product-feature-font-color:             @price-table-highlight-row-odd-product-feature-font-color;
+@price-table-highlight-row-even-product-price-font-color:               @price-table-highlight-row-odd-product-price-font-color;
+@price-table-highlight-row-even-product-price-small-font-color:         @price-table-highlight-row-odd-product-price-small-font-color;
+
+@price-table-highlight-row-even-border-color:                           lighten(@price-table-highlight-row-even-background-color, 10%);

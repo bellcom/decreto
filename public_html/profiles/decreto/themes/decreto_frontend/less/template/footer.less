@@ -1,0 +1,28 @@
+// Footer
+.footer {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #364045;
+
+    // Logo
+    .footer-logo {
+        display: inline-block;
+        height: @header-logo-height;
+        width: @header-logo-width;
+        .img-retina("@{path-image}footer/logo-1x.png", "@{path-image}footer/logo-2x.png", @header-logo-width, @header-logo-height);
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    // Headlines and paragraph
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        color: #737e84;
+    }
+}

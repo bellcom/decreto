@@ -1,0 +1,206 @@
+// --------------------------------------------------
+// Theming
+// --------------------------------------------------
+
+// Price table
+.price-table {
+
+    // Theme - feature
+    .price-table-feature-list {
+        background-color: @price-table-feature-background-color;
+
+        // Unordered list
+        ul {
+            z-index: 50;
+
+            // List item
+            li {
+
+                // Header
+                &.price-table-header {
+
+                    // Paragraph
+                    p {
+                        color: @price-table-feature-header-font-color;
+
+                        // Small
+                        small {
+                            color: @price-table-feature-header-small-font-color;
+                        }
+                    }
+                }
+
+                // Odd
+                &:nth-child(odd) {
+                    background-color: @price-table-feature-row-odd-background-color;
+                    background-color: @price-table-feature-row-odd-background-color-rgba;
+                    border-color: @price-table-feature-row-odd-border-color;
+
+                    // Feature description
+                    &.price-table-feature-description {
+                        color: @price-table-feature-row-odd-feature-decription-font-color;
+                    }
+                }
+
+                // Even
+                &:nth-child(even) {
+                    background-color: @price-table-feature-row-even-background-color;
+                    background-color: @price-table-feature-row-even-background-color-rgba;
+                    border-color: @price-table-feature-row-even-border-color;
+
+                    // Feature description
+                    &.price-table-feature-description {
+                        color: @price-table-feature-row-even-feature-decription-font-color;
+                    }
+                }
+            }
+        }
+    }
+
+    // Product list
+    .price-table-product-list {
+
+        // Theme - default
+        & {
+            background-color: @price-table-default-background-color;
+
+            // Unordered list
+            ul {
+                z-index: 50;
+
+                // List item
+                li {
+
+                    // Header
+                    &.price-table-header {
+
+                        // Paragraph
+                        p {
+                            color: @price-table-default-header-font-color;
+
+                            // Small
+                            small {
+                                color: @price-table-default-header-small-font-color;
+                            }
+                        }
+                    }
+
+                    // Odd
+                    &:nth-child(odd) {
+                        background-color: @price-table-default-row-odd-background-color;
+                        background-color: @price-table-default-row-odd-background-color-rgba;
+                        border-color: @price-table-default-row-odd-border-color;
+
+                        // Product feature
+                        &.price-table-product-feature {
+                            color: @price-table-default-row-odd-product-feature-font-color;
+                        }
+
+                        // Product price
+                        &.price-table-product-price {
+                            color: @price-table-default-row-odd-product-price-font-color;
+
+                            small {
+                                color: @price-table-default-row-odd-product-price-small-font-color;
+                            }
+                        }
+                    }
+
+                    // Even
+                    &:nth-child(even) {
+                        background-color: @price-table-default-row-even-background-color;
+                        background-color: @price-table-default-row-even-background-color-rgba;
+                        border-color: @price-table-default-row-even-border-color;
+
+                        // Product feature
+                        &.price-table-product-feature {
+                            color: @price-table-default-row-even-product-feature-font-color;
+                        }
+
+                        // Product price
+                        &.price-table-product-price {
+                            color: @price-table-default-row-even-product-price-font-color;
+
+                            small {
+                                color: @price-table-default-row-even-product-price-small-font-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Theme - highlight
+        &.price-table-highlight {
+            position: relative;
+            z-index: 100;
+            .box-shadow(0 0 0 10px rgba(0, 0, 0, .15));
+            padding: 0 10px;
+            background-color: @price-table-highlight-background-color;
+
+            // Unordered list
+            ul {
+
+                // List item
+                li {
+
+                    // Header
+                    &.price-table-header {
+
+                        // Paragraph
+                        p {
+                            color: @price-table-highlight-header-font-color;
+
+                            // Small
+                            small {
+                                color: @price-table-highlight-header-small-font-color;
+                            }
+                        }
+                    }
+
+                    // Odd
+                    &:nth-child(odd) {
+                        background-color: @price-table-highlight-row-odd-background-color;
+                        background-color: @price-table-highlight-row-odd-background-color-rgba;
+                        border-color: @price-table-highlight-row-odd-border-color;
+
+                        // Product feature
+                        &.price-table-product-feature {
+                            color: @price-table-highlight-row-odd-product-feature-font-color;
+                        }
+
+                        // Product price
+                        &.price-table-product-price {
+                            color: @price-table-highlight-row-odd-product-price-font-color;
+
+                            small {
+                                color: @price-table-highlight-row-odd-product-price-small-font-color;
+                            }
+                        }
+                    }
+
+                    // Even
+                    &:nth-child(even) {
+                        background-color: @price-table-highlight-row-even-background-color;
+                        background-color: @price-table-highlight-row-even-background-color-rgba;
+                        border-color: @price-table-highlight-row-even-border-color;
+
+                        // Product feature
+                        &.price-table-product-feature {
+                            color: @price-table-highlight-row-even-product-feature-font-color;
+                        }
+
+                        // Product price
+                        &.price-table-product-price {
+                            color: @price-table-highlight-row-even-product-price-font-color;
+
+                            small {
+                                color: @price-table-highlight-row-even-product-price-small-font-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

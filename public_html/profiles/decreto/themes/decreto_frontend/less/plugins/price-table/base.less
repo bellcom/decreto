@@ -1,0 +1,170 @@
+// --------------------------------------------------
+// Styling
+// --------------------------------------------------
+
+// Price table
+.price-table {
+    overflow: hidden;
+
+    // Un-ordered list
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        // List item
+        li {
+            overflow: hidden;
+            border-bottom-style: @price-table-border-style;
+            border-bottom-width: @price-table-border-width;
+            padding-left: @price-table-list-item-padding;
+            padding-right: @price-table-list-item-padding;
+        }
+    }
+
+    // Feature list and product list
+    // - removes padding added by ex. col-md-*
+    .price-table-feature-list,
+    .price-table-product-list {
+        padding: 0;
+    }
+
+    // Feature description and product feature
+    .price-table-feature-description,
+    .price-table-product-feature {
+        height: @price-table-list-item-height;
+        line-height: @price-table-list-item-height;
+    }
+
+    // Header
+    .price-table-header {
+        height: @price-table-header-height;
+
+        // Paragraph
+        p {
+            font-family: @price-table-header-font-family;
+            font-size: @price-table-header-font-size;
+            font-weight: @price-table-header-font-weight;
+            .price-table-header-content-distance-calculator();
+            line-height: @price-table-header-font-size;
+
+            // Small
+            small {
+                display: block;
+                font-size: @price-table-header-small-font-size;
+                font-weight: @price-table-header-small-font-weight;
+                line-height: @price-table-header-small-font-size;
+            }
+        }
+    }
+
+    // Feature list
+    .price-table-feature-list {
+
+        // Un-ordered list
+        ul {
+
+            // List item
+            li {
+
+                // Feature description
+                &.price-table-feature-description {
+                    font-family: @price-table-feature-description-font-family;
+                    font-size: @price-table-feature-description-font-size;
+                    font-weight: @price-table-feature-description-font-weight;
+                }
+            }
+        }
+    }
+
+    // Product list
+    .price-table-product-list {
+
+        // Un-ordered list
+        ul {
+
+            // List item
+            li {
+
+                // Header, product feature and -price
+                &.price-table-header,
+                &.price-table-product-feature,
+                &.price-table-product-price {
+                    text-align: center;
+                }
+
+                // Product feature
+                &.price-table-product-feature {
+                    font-family: @price-table-product-feature-font-family;
+                    font-size: @price-table-product-feature-font-size;
+                    font-weight: @price-table-product-feature-font-weight;
+                }
+
+                // Product price
+                &.price-table-product-price {
+                    font-family: @price-table-product-price-font-family;
+                    font-size: @price-table-product-price-font-size;
+                    font-weight: @price-table-product-price-font-weight;
+
+                    height: @price-table-product-price-list-item-height;
+                    line-height: @price-table-product-price-list-item-height;
+
+                    small {
+                        font-size: @price-table-product-price-small-font-size;
+                        font-weight: @price-table-product-price-small-font-weight;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+
+// Mobile
+@media @media-query-mobile {
+
+    // Price table
+    .price-table {
+
+        // Feature list
+        .price-table-feature-list {
+            display: none;
+        }
+
+        // Product list
+        .price-table-product-list {
+
+            // Un-ordered list
+            ul {
+
+                // List item
+                li {
+
+                    // Product feature
+                    &.price-table-product-feature {
+                        height: (@price-table-list-item-height * 2);
+                        line-height: @price-table-product-feature-font-size;
+
+                        //
+                        &:before {
+                            content: attr(data-feature) ":";
+
+                            display: block;
+
+                            margin-top: (((@price-table-list-item-height * 2) - (@price-table-product-feature-font-size + 20px)) / 2);
+
+
+                            font-size: @price-table-product-feature-font-size;
+                            line-height: @price-table-product-feature-font-size;
+                            font-weight: bold;
+                            color: #3a3a3a;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

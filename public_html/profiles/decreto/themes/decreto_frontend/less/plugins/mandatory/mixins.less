@@ -1,0 +1,19 @@
+// Line height
+.line-height(@font-size) {
+	line-height: floor((@font-size * @line-height-base));
+}
+
+// Line height
+.transform-style(@style) {
+	-webkit-transform-style: @style;
+	-ms-transform-style: @style;
+	transform-style: @style;
+}
+
+// Background size
+.background-size(@size) {
+	-webkit-background-size: @size;
+	-moz-background-size: @size;
+	-o-background-size: @size;
+	background-size: @size;
+}

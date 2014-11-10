@@ -1,0 +1,39 @@
+// Button
+.btn {
+
+	// Icon
+	.icon {
+		display: inline;
+		margin: 0;
+		margin-right: 5px;
+		color: rgba(255, 255, 255, .5);
+		font-size: @font-size-base;
+	}
+
+	// Remove outline
+	&,
+	&:hover,
+	&:focus,
+	&:active {
+		outline: none;
+	}
+
+	// Two buttons next to eachother
+	+ .btn {
+		margin-left: 4px;
+	}
+}
+
+// --------------------------------------------------
+// Color
+// --------------------------------------------------
+
+// Color - secondary
+.btn-secondary {
+	.button-variant(@btn-secondary-color; @btn-secondary-bg; @btn-secondary-border);
+}
+
+// Color - tertiary
+.btn-tertiary {
+	.button-variant(@btn-tertiary-color; @btn-tertiary-bg; @btn-tertiary-border);
+}
