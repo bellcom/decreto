@@ -40,7 +40,7 @@
 
                         <!-- Begin - order -->
                         <li class="header-nav-button">
-                            <a class="btn btn-primary" href="#" data-scroll-to="#order">Bestil</a>
+                            <a class="btn btn-primary" href="#" data-scroll-to="#signup">Bestil</a>
                         </li>
                         <!-- End - order -->
 

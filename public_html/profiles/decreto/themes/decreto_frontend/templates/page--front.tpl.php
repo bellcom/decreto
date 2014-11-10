@@ -17,11 +17,11 @@
         <?php include "_partials/buzz-boxes.tpl.php"; ?>
         <?php include "_partials/carousel.tpl.php"; ?>
 
-        <div class="banner-background banner-background-1 parallax-background" data-stellar-background-ratio="0.7"></div>
+        <div class="banner-background banner-background-1 parallax-background" data-stellar-background-ratio="0.5"></div>
 
         <?php include "_partials/price-table.tpl.php"; ?>
 
-        <div class="banner-background banner-background-2 parallax-background" data-stellar-background-ratio="0.7"></div>
+        <div class="banner-background banner-background-2 parallax-background" data-stellar-background-ratio="0.5"></div>
 
         <?php include "_partials/contact-information.tpl.php"; ?>
         <?php include "_partials/signup-form.tpl.php"; ?>

@@ -149,7 +149,19 @@ jQuery(function($){
 
 
 
+    // --------------------------------------------------
+    // Owl carousel (banner)
+    // --------------------------------------------------
 
+    // Enable owl carousel
+    $(".owl-carousel").owlCarousel({
+        items: 1,
+        loop: true,
+        smartSpeed: 700,
+        autoplay: true,
+        autoplayHoverPause: true,
+        autoplayTimeout: 3000,
+    });
 
 
 
@@ -229,20 +241,6 @@ jQuery(function($){
         });
 
     }
-
-    // --------------------------------------------------
-    // Owl Carousel
-    // --------------------------------------------------
-
-    // Enable Owl Carousel
-    jQuery(".owl-carousel").owlCarousel({
-
-        slideSpeed: 300,
-        paginationSpeed: 400,
-        singleItem: true,
-        autoPlay: 3000,
-
-    });
 
     // --------------------------------------------------
     // Attach footer

@@ -13,7 +13,7 @@
         <!-- End - headline -->
   
         <!-- Begin - link button -->
-        <a class="btn btn-primary btn-lg" href="#">
+        <a class="btn btn-primary btn-lg" href="#" data-scroll-to="#signup">
           Download demo
         </a>
         <!-- End - link button -->
