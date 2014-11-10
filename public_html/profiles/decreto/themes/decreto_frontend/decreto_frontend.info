@@ -39,6 +39,7 @@ scripts[] = 'vendor/appear.js'
 scripts[] = 'vendor/hover-intent.min.js'
 scripts[] = 'vendor/owl.carousel.js'
 scripts[] = 'vendor/scroll-to.js'
+scripts[] = 'vendor/stellar-parallax.min.js'
 
 ; JS
 scripts[] = 'js/main.js'

@@ -57,19 +57,25 @@ jQuery(function($){
 
     });
 
+    // --------------------------------------------------
+    // Parallax (Stellar)
+    // --------------------------------------------------
 
+    // Only enable Parallax on non-touch devices
+    if ( ! Modernizr.touch ) {
 
+        // Enable Stellar
+        $.stellar({
+            horizontalOffset:                           50
+        });
 
-
-
-
-
+    }
 
     // --------------------------------------------------
     // Appear
     // --------------------------------------------------
 
-
+    // Appear function
     function animation_appear() {
 
         // Remove animations on mobile devices

@@ -11224,6 +11224,15 @@ body.admin-menu {
     margin-bottom: -60px;
   }
 }
+.banner-background {
+  height: 300px;
+}
+.banner-background.banner-background-1 {
+  background-image: url('../img/banner-background/1.jpg');
+}
+.banner-background.banner-background-2 {
+  background-image: url('../img/banner-background/2.jpg');
+}
 .buzz-boxes .buzz-box {
   position: relative;
   margin-bottom: 30px;
