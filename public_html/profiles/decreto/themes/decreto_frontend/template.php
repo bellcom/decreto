@@ -30,9 +30,10 @@ function decreto_frontend_form_element($variables) {
         $description = $element['#attributes'][$o]['#description'];
         $checked = ($o == $element['#default_value']) ? 'checked' : '';
         return '<div class="radio">
-        <label class="' . $checked . '">
+        <label class="bold">
           <input type="radio" name="' . $name . '" id="' . $id . '" value="' . $o . '" ' . $checked . '>
-          ' . $title . ', <span class="orange">' . $description . '</span>
+          <span class="gui-input"></span>
+          ' . $title . ', <span class="font-color-primary">' . $description . '</span>
         </label>
       </div>';
     }

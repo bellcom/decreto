@@ -20,9 +20,6 @@
                         </p>
                     </div>
 
-                    <div class="owl-content-image-container col-md-4">
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -46,9 +43,6 @@
                         <p>
                             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                         </p>
-                    </div>
-
-                    <div class="owl-content-image-container col-md-4">
                     </div>
 
                 </div>

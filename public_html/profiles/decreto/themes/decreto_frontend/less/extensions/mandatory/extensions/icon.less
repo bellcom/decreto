@@ -1,0 +1,78 @@
+// |--------------------------------------------------------------------------
+// | Variables
+// |--------------------------------------------------------------------------
+// |
+
+    // --------------------------------------------------
+    // Sizing
+    // --------------------------------------------------
+
+    @mandatory-icon-font-size-xxs:                  8px;
+    @mandatory-icon-font-size-xs:                   12px;
+    @mandatory-icon-font-size-s:                    16px;
+    @mandatory-icon-font-size:                      20px;
+    @mandatory-icon-font-size-l:                    32px;
+    @mandatory-icon-font-size-xl:                   45px;
+    @mandatory-icon-font-size-xxl:                  60px;
+
+// |--------------------------------------------------------------------------
+// | Icon
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | Sizing
+// | - xxs
+// | - xs
+// | - s
+// | - *
+// | - l
+// | - xl
+// | - xxl
+// |
+
+    // --------------------------------------------------
+    // Sizing
+    // --------------------------------------------------
+
+    // Icon
+    .icon {
+        font-size: @mandatory-icon-font-size;
+        .line-height(@mandatory-icon-font-size);
+
+        // Extra extra small
+        &.icon-xxs {
+            font-size: @mandatory-icon-font-size-xxs;
+            .line-height(@mandatory-icon-font-size-xxs);
+        }
+
+        // Extra small
+        &.icon-xs {
+            font-size: @mandatory-icon-font-size-xs;
+            .line-height(@mandatory-icon-font-size-xs);
+        }
+
+        // Small
+        &.icon-s {
+            font-size: @mandatory-icon-font-size-s;
+            .line-height(@mandatory-icon-font-size-s);
+        }
+
+        // Large
+        &.icon-l {
+            font-size: @mandatory-icon-font-size-l;
+            .line-height(@mandatory-icon-font-size-l);
+        }
+
+        // Extra large
+        &.icon-xl {
+            font-size: @mandatory-icon-font-size-xl;
+            .line-height(@mandatory-icon-font-size-xl);
+        }
+
+        // Extra extra large
+        &.icon-xxl {
+            font-size: @mandatory-icon-font-size-xxl;
+            .line-height(@mandatory-icon-font-size-xxl);
+        }
+    }

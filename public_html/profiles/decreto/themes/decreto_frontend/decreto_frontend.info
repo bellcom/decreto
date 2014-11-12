@@ -33,13 +33,12 @@ stylesheets[all][] = 'css/stylesheet.css'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Vendor scripts
-scripts[] = 'vendor/bootstrap.js'
+scripts[] = 'vendor/mandatory/vendors.js'
+scripts[] = 'vendor/mandatory/mandatory.js'
+
 scripts[] = 'vendor/skrollr.min.js'
-scripts[] = 'vendor/appear.js'
-scripts[] = 'vendor/hover-intent.min.js'
 scripts[] = 'vendor/owl.carousel.js'
 scripts[] = 'vendor/scroll-to.js'
-scripts[] = 'vendor/stellar-parallax.min.js'
 
 ; JS
 scripts[] = 'js/main.js'

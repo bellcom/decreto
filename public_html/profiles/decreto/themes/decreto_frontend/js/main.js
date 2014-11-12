@@ -3,12 +3,6 @@ jQuery(function($){
 
     $ = jQuery;
 
-
-
-
-
-
-
     // Variables
     var header = $(".header"),
         header_height = header.outerHeight(true),
@@ -58,96 +52,25 @@ jQuery(function($){
     });
 
     // --------------------------------------------------
-    // Parallax (Stellar)
+    // Base
     // --------------------------------------------------
 
-    // Only enable Parallax on non-touch devices
-    if ( ! Modernizr.touch ) {
+    // Enable mandatory base
+    mandatory.init();
 
-        // Enable Stellar
-        $.stellar({
-            horizontalOffset:                           50
-        });
+    // --------------------------------------------------
+    // Parallax
+    // --------------------------------------------------
 
-    }
+    // Enable parallax
+    mandatory.enable_parallax();
 
     // --------------------------------------------------
     // Appear
     // --------------------------------------------------
 
-    // Appear function
-    function animation_appear() {
-
-        // Remove animations on mobile devices
-        if (!Modernizr.touch) {
-
-            $(".appear").appear();
-
-            $(".animation").appear({
-                force_process: true
-            });
-
-            $(".animation").on("appear", function (data) {
-
-                var item = $(this),
-                    delay = 0;
-
-                // Get delay
-                if (item.hasClass("animation-delay-0-1")) delay = 100;
-                if (item.hasClass("animation-delay-0-2")) delay = 200;
-                if (item.hasClass("animation-delay-0-3")) delay = 300;
-                if (item.hasClass("animation-delay-0-4")) delay = 400;
-                if (item.hasClass("animation-delay-0-5")) delay = 500;
-                if (item.hasClass("animation-delay-0-6")) delay = 600;
-                if (item.hasClass("animation-delay-0-7")) delay = 700;
-                if (item.hasClass("animation-delay-0-8")) delay = 800;
-                if (item.hasClass("animation-delay-0-9")) delay = 900;
-                if (item.hasClass("animation-delay-1-0")) delay = 1000;
-
-                if (item.hasClass("animation-delay-1-1")) delay = 1100;
-                if (item.hasClass("animation-delay-1-2")) delay = 1200;
-                if (item.hasClass("animation-delay-1-3")) delay = 1300;
-                if (item.hasClass("animation-delay-1-4")) delay = 1400;
-                if (item.hasClass("animation-delay-1-5")) delay = 1500;
-                if (item.hasClass("animation-delay-1-6")) delay = 1600;
-                if (item.hasClass("animation-delay-1-7")) delay = 1700;
-                if (item.hasClass("animation-delay-1-8")) delay = 1800;
-                if (item.hasClass("animation-delay-1-9")) delay = 1900;
-                if (item.hasClass("animation-delay-2-0")) delay = 2000;
-
-
-                // Add animation after the given delay
-                setTimeout(function () {
-
-                    item
-                        .addClass("animation-start");
-
-                }, delay);
-
-            });
-
-        }
-
-
-        else {
-
-            // Remove all animation types
-            $(".animation")
-                .removeClass("animation")
-                .removeClass("animation-appear-from-top")
-                .removeClass("animation-appear-from-right")
-                .removeClass("animation-appear-from-left")
-                .removeClass("animation-appear-from-bottom")
-                .removeClass("animation-appear-from-center");
-
-        }
-
-    }
-
-    animation_appear();
-
-
-
+    // Enable appear
+    mandatory.enable_appear();
 
     // --------------------------------------------------
     // Owl carousel (banner)
@@ -221,7 +144,7 @@ jQuery(function($){
     // --------------------------------------------------
 
     // Only enable skrollr on non-touch devices
-    if ( ! Modernizr.touch ) {
+    if ( ! Modernizr.touch) {
 
         // Create skrollr object
         skrollr.init({
@@ -241,56 +164,5 @@ jQuery(function($){
         });
 
     }
-
-    // --------------------------------------------------
-    // Attach footer
-    // --------------------------------------------------
-
-    // Attach footer function
-    function attach_footer() {
-
-        // Get height of footer
-        var footer_height = $(".footer").outerHeight(true); // Height with border and padding
-
-        // Append the footer to the #wrapper
-        $("#wrapper").css("margin-bottom", footer_height);
-
-    }
-
-    // Only attach footer if not touch
-    if ( ! Modernizr.touch) {
-
-        // Attach footer
-        attach_footer();
-
-        // Window is resized
-        $(window).resize(function() {
-            attach_footer();
-        });
-
-    }
-
-    // --------------------------------------------------
-    // Enable Bootstrap tooltips
-    // --------------------------------------------------
-
-    // Only enable on non-touch devices
-    if ( ! Modernizr.touch ) {
-        $( "[data-toggle=tooltip]" ).tooltip();
-    }
-
-    // --------------------------------------------------
-    // Disable form autocomplete
-    // --------------------------------------------------
-
-    // Disable only on non-touch devices - autocomplete,
-    // can be a big help on touch devices.
-    if( ! Modernizr.touch ) {
-        $( "form" ).attr( "autocomplete", "off" );
-    }
-
-    // --------------------------------------------------
-    // Sticky header
-    // --------------------------------------------------
 
 });

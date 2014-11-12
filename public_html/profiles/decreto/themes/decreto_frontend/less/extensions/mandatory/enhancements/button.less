@@ -1,0 +1,80 @@
+// |--------------------------------------------------------------------------
+// | Button
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | Colouring
+// | - secondary
+// | - tertiary
+// |
+// | Icon
+// |
+// | Remove outline
+// |
+// | + 1
+// |
+
+	// --------------------------------------------------
+	// Colouring
+	// --------------------------------------------------
+
+	// Button
+	.btn {
+
+		// Color - secondary
+		&.btn-secondary {
+			.button-variant(@btn-secondary-color; @btn-secondary-bg; @btn-secondary-border);
+		}
+
+		// Color - tertiary
+		&.btn-tertiary {
+			.button-variant(@btn-tertiary-color; @btn-tertiary-bg; @btn-tertiary-border);
+		}
+	}
+
+	// --------------------------------------------------
+	// Icon
+	// --------------------------------------------------
+
+	// Button
+	.btn {
+
+		// Icon
+		.icon {
+			display: inline;
+			margin: 0;
+			margin-right: 5px;
+			color: rgba(255, 255, 255, .5);
+			font-size: @font-size-base;
+		}
+	}
+
+	// --------------------------------------------------
+	// Remove outline
+	// --------------------------------------------------
+
+	// Button
+	.btn {
+
+		// Remove outline
+		&,
+		&:hover,
+		&:focus,
+		&:active {
+			outline: none;
+		}
+	}
+
+	// --------------------------------------------------
+	// + 1
+	// --------------------------------------------------
+
+	// Button
+	.btn {
+
+		// Additional
+		+ .btn {
+			margin-left: 4px;
+		}
+	}

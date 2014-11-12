@@ -1,0 +1,397 @@
+// |--------------------------------------------------------------------------
+// | Variables
+// |--------------------------------------------------------------------------
+// |
+
+    // --------------------------------------------------
+    // Input text
+    // --------------------------------------------------
+
+    @mandatory-form-input-border-width:                 2px;
+
+    // --------------------------------------------------
+    // GUI radio and checkbox
+    // --------------------------------------------------
+
+    // Radio
+    @mandatory-form-gui-radio-background-color:         @input-bg;
+
+    @mandatory-form-gui-radio-border-width:             2px;
+    @mandatory-form-gui-radio-border-color:             @input-border;
+    @mandatory-form-gui-radio-hover-border-color:       @input-border-focus;
+    @mandatory-form-gui-radio-checked-border-color:     @input-border-focus;
+
+    @mandatory-form-gui-radio-dot-color:                @mandatory-form-gui-radio-border-color;
+    @mandatory-form-gui-radio-hover-dot-color:          @mandatory-form-gui-radio-hover-border-color;
+    @mandatory-form-gui-radio-checked-dot-color:        @mandatory-form-gui-radio-checked-border-color;
+
+    @mandatory-form-gui-radio-size-small:               @input-height-small;
+    @mandatory-form-gui-radio-size-small-dot-margin:    1px; // Distance to border
+    @mandatory-form-gui-radio-size:                     @input-height-base;
+    @mandatory-form-gui-radio-size-dot-margin:          2px; // Distance to border
+    @mandatory-form-gui-radio-size-large:               @input-height-large;
+    @mandatory-form-gui-radio-size-large-dot-margin:    4px; // Distance to border
+
+    // Checkbox
+    @mandatory-form-gui-checkbox-background-color:      @input-bg;
+    @mandatory-form-gui-checkbox-border-radius:         @input-border-radius;
+
+    @mandatory-form-gui-checkbox-border-width:          2px;
+    @mandatory-form-gui-checkbox-border-color:          @input-border;
+    @mandatory-form-gui-checkbox-hover-border-color:    @input-border-focus;
+    @mandatory-form-gui-checkbox-checked-border-color:  @input-border;
+
+    @mandatory-form-gui-checkbox-dot-size:              8px; // Width & height
+    @mandatory-form-gui-checkbox-dot-margin:            4px; // Distance to border
+    @mandatory-form-gui-checkbox-dot-color:             @mandatory-form-gui-checkbox-border-color;
+    @mandatory-form-gui-checkbox-hover-dot-color:       @mandatory-form-gui-checkbox-hover-border-color;
+    @mandatory-form-gui-checkbox-checked-dot-color:     @brand-success;
+
+    @mandatory-form-gui-checkbox-size-small:            @input-height-small;
+    @mandatory-form-gui-checkbox-size-small-dot-margin: 3px; // Distance to border
+    @mandatory-form-gui-checkbox-size:                  @input-height-base;
+    @mandatory-form-gui-checkbox-size-dot-margin:       3px; // Distance to border
+    @mandatory-form-gui-checkbox-size-large:            @input-height-large;
+    @mandatory-form-gui-checkbox-size-large-dot-margin: 4px; // Distance to border
+
+
+// |--------------------------------------------------------------------------
+// | Form
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | - Input text
+// | - GUI radio and checkbox
+// |
+
+    // --------------------------------------------------
+    // Input text
+    // --------------------------------------------------
+
+    // Form control
+    .form-control {
+        border-width: @mandatory-form-input-border-width;
+
+        // Normal, hover, focus and active state
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            .box-shadow(none);
+        }
+    }
+
+    // --------------------------------------------------
+    // GUI radio and checkbox
+    // --------------------------------------------------
+
+    // Inline elements
+    .form-inline,
+    .radio-inline,
+    .checkbox-inline {
+
+        // Radio and checkbox
+        .radio,
+        .checkbox {
+            display: inline-block;
+
+            // Additional
+            + .radio,
+            + .checkbox {
+                margin-top: 0;
+                margin-left: 15px;
+            }
+        }
+    }
+
+    // Radio
+    .radio {
+        line-height: @mandatory-form-gui-radio-size;
+
+        // GUI input
+        .gui-input {
+            background-color: @mandatory-form-gui-radio-background-color;
+            border-radius: 100%;
+            border-width: @mandatory-form-gui-radio-border-width;
+            border-style: solid;
+            border-color: @mandatory-form-gui-radio-border-color;
+            height: @mandatory-form-gui-radio-size;
+            width: @mandatory-form-gui-radio-size;
+
+            // Before
+            &:before {
+                position: absolute;
+
+                top: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-dot-margin;
+                bottom: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-dot-margin;
+                left: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-dot-margin;
+                right: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-dot-margin;
+
+                border-radius: 100%;
+                background-color: @mandatory-form-gui-radio-dot-color;
+            }
+        }
+
+        // Small
+        &.radio-small {
+            line-height: @mandatory-form-gui-radio-size-small;
+
+            // GUI input
+            .gui-input {
+                height: @mandatory-form-gui-radio-size-small;
+                width: @mandatory-form-gui-radio-size-small;
+
+                // Before
+                &:before {
+                    top: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-small-dot-margin;
+                    bottom: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-small-dot-margin;
+                    left: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-small-dot-margin;
+                    right: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-small-dot-margin;
+                }
+            }
+        }
+
+        // Large
+        &.radio-large {
+            line-height: @mandatory-form-gui-radio-size-large;
+
+            // GUI input
+            .gui-input {
+                height: @mandatory-form-gui-radio-size-large;
+                width: @mandatory-form-gui-radio-size-large;
+
+                // Before
+                &:before {
+                    top: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-large-dot-margin;
+                    bottom: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-large-dot-margin;
+                    left: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-large-dot-margin;
+                    right: @mandatory-form-gui-radio-border-width + @mandatory-form-gui-radio-size-large-dot-margin;
+                }
+            }
+        }
+
+        // Input
+        input {
+
+            // Hover and focus
+            &:hover,
+            &:focus {
+
+                // Additional
+                + .gui-input {
+
+                    // Before
+                    &:before {
+                        background-color: @mandatory-form-gui-radio-hover-dot-color;
+                    }
+                }
+
+                // Hover, focus and checked
+                &,
+                &:checked {
+
+                    // Additional
+                    + .gui-input {
+                        border-color: @mandatory-form-gui-radio-hover-border-color;
+                    }
+                }
+            }
+
+            // Checked input
+            &:checked {
+
+                // Additional
+                + .gui-input {
+                    border-color: @mandatory-form-gui-radio-checked-border-color;
+
+                    // Before
+                    &:before {
+                        background-color: @mandatory-form-gui-radio-checked-dot-color;
+                    }
+                }
+            }
+        }
+    }
+
+    // Checkbox
+    .checkbox {
+        line-height: @mandatory-form-gui-checkbox-size;
+
+        // GUI input
+        .gui-input {
+            background-color: @mandatory-form-gui-checkbox-background-color;
+            border-width: @mandatory-form-gui-checkbox-border-width;
+            border-style: solid;
+            border-radius: @mandatory-form-gui-checkbox-border-radius;
+            height: @mandatory-form-gui-checkbox-size;
+            width: @mandatory-form-gui-checkbox-size;
+
+            // Before
+            &:before {
+                position: absolute;
+
+                top: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-dot-margin;
+                bottom: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-dot-margin;
+                left: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-dot-margin;
+                right: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-dot-margin;
+
+                top: 4px;
+                left: 3px;
+                width: 6px;
+                height: 3px;
+                border: solid #1abc9c;
+                border-width: 0 0 3px 3px;
+                .rotate(-45deg);
+            }
+        }
+
+        // Input
+        input {
+
+            // Hover and focus
+            &:hover,
+            &:focus {
+
+                // Hover, focus and checked
+                &,
+                &:checked {
+
+                    // Additional
+                    + .gui-input {
+                        border-color: @mandatory-form-gui-radio-hover-border-color;
+                    }
+                }
+            }
+
+            // Checked input
+            &:checked {
+
+                // Additional
+                + .gui-input {
+                    border-color: @mandatory-form-gui-checkbox-checked-border-color;
+
+                    // Before
+                    &:before {
+                        background-color: @mandatory-form-gui-checkbox-checked-dot-color;
+                    }
+                }
+            }
+        }
+
+        // Small
+        &.checkbox-small {
+            line-height: @mandatory-form-gui-checkbox-size-small;
+
+            // GUI input
+            .gui-input {
+                height: @mandatory-form-gui-checkbox-size-small;
+                width: @mandatory-form-gui-checkbox-size-small;
+
+                // Before
+                &:before {
+                    top: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-small-dot-margin;
+                    bottom: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-small-dot-margin;
+                    left: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-small-dot-margin;
+                    right: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-small-dot-margin;
+                }
+            }
+        }
+
+        // Large
+        &.checkbox-large {
+            line-height: @mandatory-form-gui-checkbox-size-large;
+
+            // GUI input
+            .gui-input {
+                height: @mandatory-form-gui-checkbox-size-large;
+                width: @mandatory-form-gui-checkbox-size-large;
+
+                // Before
+                &:before {
+                    top: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-large-dot-margin;
+                    bottom: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-large-dot-margin;
+                    left: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-large-dot-margin;
+                    right: @mandatory-form-gui-checkbox-border-width + @mandatory-form-gui-checkbox-size-large-dot-margin;
+                }
+            }
+        }
+    }
+
+    // Radio and checkbox
+    .radio,
+    .checkbox {
+        display: block;
+        position: relative;
+        vertical-align: middle;
+        cursor: hand;
+        cursor: pointer;
+        &:extend(.clearfix all);
+
+        // GUI input
+        .gui-input {
+            display: inline-block;
+            position: relative;
+            float: left;
+            top: 0;
+            margin-right: 5px;
+            outline: none;
+            .user-select(none);
+            .transition(all @transition-time ease-in-out);
+
+            // Before
+            &:before {
+                content: "";
+                display: none;
+            }
+        }
+
+        // Input
+        input {
+            position: absolute;
+            height: inherit;
+            width: inherit;
+            opacity: 0;
+            left: 0;
+
+            // Checked input
+            &:checked {
+
+                // Additional
+                + .gui-input {
+
+                    // Before
+                    &:before {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        // Additional
+        + .radio,
+        + .checkbox {
+            margin-top: 5px;
+        }
+    }
+
+    // IE8 (and lower)
+    .ie8 {
+
+        // Radio and checkbox
+        .radio,
+        .checkbox {
+
+            // Input
+            input {
+                position: static;
+                margin-right: 5px;
+                padding: 0;
+            }
+
+            // GUI input
+            .gui-input {
+                display: none;
+            }
+        }
+    }
