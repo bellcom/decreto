@@ -8,13 +8,13 @@
       
         <!-- Begin - headline -->
         <h1 class="margin-bottom-m">
-          Din online dagsorden til eiusmod temp incididunt aldrig været lettere
+          Din online dagsorden - alle bestyrelser i et overblik.
         </h1>
         <!-- End - headline -->
   
         <!-- Begin - link button -->
         <a class="btn btn-primary btn-lg" href="#" data-scroll-to="#signup">
-          Download demo
+          Bestil Decreto <span class="bold">gratis</span>
         </a>
         <!-- End - link button -->
   

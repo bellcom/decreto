@@ -22,7 +22,8 @@
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <p>Tilgå møder og dagsordner på farten - med Decreto er du altid opdateret.</p>
+                  <p>Lige meget om du bruger PC, Mac, tablets eller smartsphones, så er Decreto tilgængelig og tilpasset din enhed.</p>
                   <!-- End - text -->
 
               </div>
@@ -48,7 +49,8 @@
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <p>Decreto er en hostet løsning, der ikke kræver investeringer i en dedikeret server eller eget driftsmiljø.</p>
+                  <p>Løsningen har desuden miljømæssige fordele via de reducerede omkostninger til produktion af mødematerialer.</p>
                   <!-- End - text -->
 
               </div>
@@ -80,7 +82,8 @@
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <p>Vi tilbyder hjælp, vejledning og support i brugen af Decreto. Supporten ydes af dansktalende og veluddannet personale, som dagligt tester, udvikler og afprøver Decreto.</p>
+                  <p>Via vores FAQ kan du desuden nemt finde svar på de mest indkommen spørgsmål.</p>
                   <!-- End - text -->
 
               </div>
@@ -106,7 +109,7 @@
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <p>Dokumenter opbevares fortroligt. Kontakter samt tidligere mødedata kan altid findes i Decreto.</p>
                   <!-- End - text -->
 
               </div>
@@ -138,7 +141,7 @@
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <p>Decreto giver dig mulighed for integration med en række eksterne dagsordensystemer.</p>
                   <!-- End - text -->
 
               </div>
@@ -164,7 +167,8 @@
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Sed iaculis molestie dui, sit amet iaculis tortor ultricies id. Maecenas non diam enim.</p>
+                  <p>Hjælper mødedeltagere til at forberede og deltage i fokuserede og effektive møder.</p>
+                  <p>Decreto søgefunktionalitet gør det endvidere muligt at søge på tværs af alle møder, billag og dokumenter.</p>
                   <!-- End - text -->
 
               </div>
