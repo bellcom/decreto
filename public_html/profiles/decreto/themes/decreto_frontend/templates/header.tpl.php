@@ -17,7 +17,7 @@
                 <!-- End - content -->
 
                 <!-- Begin - content -->
-                <div class="col-md-8 header-navbar-content">
+                <div class="col-md-8 header-navbar-content hidden-xs">
 
                     <!-- Begin - navigation -->
                     <ul class="header-nav header-right header-md-left">
@@ -39,10 +39,16 @@
                         <!-- End - support -->
 
                         <!-- Begin - order -->
-                        <li class="header-nav-button">
-                            <a class="btn btn-primary" href="#" data-scroll-to="#signup">Bestil</a>
-                        </li>
+                        <li class="header-nav-button"><a class="btn btn-primary" href="#" data-scroll-to="#signup">Bestil</a></li>
                         <!-- End - order -->
+
+                        <!-- Begin - sign in -->
+                        <li class="header-nav-link">
+                            <a href="/user" data-toggle="tooltip" data-placement="bottom" title="Log ind">
+                                <img src="<?php print $image_path . "header/icon-lock.png"; ?>" alt=""/>
+                            </a>
+                        </li>
+                        <!-- End - sign in -->
 
                     </ul>
                     <!-- End - navigation -->

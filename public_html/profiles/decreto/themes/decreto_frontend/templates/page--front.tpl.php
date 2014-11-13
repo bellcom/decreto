@@ -39,10 +39,6 @@
         <div class="banner-background banner-background-2 background-parallax" data-stellar-background-ratio="0.5"></div>
 
         <?php include "_partials/contact-information.tpl.php"; ?>
-
-        <!-- <section class="container-fluid" id="parralax-banner-2" data-speed="6" data-type="background"></section> -->
-        <!-- <section class="container-fluid" id="parralax-banner-3" data-speed="8" data-type="background"></section> -->
-
         <?php include "_partials/banner-support.tpl.php"; ?>
 
     </div>

@@ -7422,7 +7422,7 @@ h6 {
 .background-color-tertiary {
   background-color: #364045;
 }
-.background-overlay {
+.background-overlay-dark {
   background-color: rgba(37, 32, 31, 0.8);
   position: relative;
   top: 0;
@@ -11317,7 +11317,7 @@ body.toolbar #wrapper {
 }
 .banner-top {
   overflow: hidden;
-  background-color: #9cd7cc;
+  background: url('../img/banner/people.jpg') center center no-repeat;
 }
 .banner-top p {
   font-size: 22px;
