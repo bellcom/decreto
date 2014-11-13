@@ -93,7 +93,7 @@
           <!-- End - support -->
 
           <!-- Begin - overview -->
-          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-5">
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-3">
 
               <!-- Begin - icon -->
               <div class="buzz-box-icon-container">
@@ -152,7 +152,7 @@
           <!-- End - integration -->
 
           <!-- Begin - security -->
-          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-3">
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-5">
 
               <!-- Begin - icon -->
               <div class="buzz-box-icon-container">

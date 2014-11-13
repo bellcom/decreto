@@ -1,0 +1,239 @@
+// |--------------------------------------------------------------------------
+// | Template
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | - Header
+// | - Footer
+// | - Banner top
+// | - Banner background
+// | - Contact information
+// | - Buzz boxes
+// | - Bootstrap element altering
+// | -- form group
+// |
+
+    // --------------------------------------------------
+    // Header
+    // --------------------------------------------------
+
+    // Header
+    .header {
+
+        // Icon
+        .icon {
+            display: block;
+            line-height: inherit;
+            height: inherit;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: #0000BB;
+
+            // Lock
+            &.icon-lock {
+                width: 24px;
+                .img-retina("@{path-image}header/icon-lock-1x.png", "@{path-image}header/icon-lock-2x.png", 24px, 25px);
+            }
+        }
+    }
+
+    // Wrapper
+    #wrapper {
+
+        // Content
+        #content {
+            padding-top: @header-navigation-bar-height;
+        }
+    }
+
+    // --------------------------------------------------
+    // Footer
+    // --------------------------------------------------
+
+    // Footer
+    .footer {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background-color: #364045;
+
+        // Logo
+        .footer-logo {
+            display: inline-block;
+            height: @header-logo-height;
+            width: @header-logo-width;
+            .img-retina("@{path-image}footer/logo-1x.png", "@{path-image}footer/logo-2x.png", @header-logo-width, @header-logo-height);
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        // Headlines and paragraph
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            color: #737e84;
+        }
+    }
+
+    // --------------------------------------------------
+    // Banner top
+    // --------------------------------------------------
+
+    // Banner top
+    .banner-top {
+        overflow: hidden;
+        background-color: @brand-secondary;
+
+        // Headlines
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+        }
+
+        // Paragraph
+        p {
+            font-size: @font-size-large;
+            font-weight: @font-weight-semi-light;
+        }
+
+        // Image
+        img {
+            display: block;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+
+    // Banner
+    .banner {
+        overflow: hidden;
+        background: @brand-secondary url('@{path-image}banner/background.jpg') center top no-repeat;
+    }
+
+    @media @media-query-desktop {
+
+        // Banner
+        .banner {
+            overflow-y: visible;
+
+            // Laptop
+            .banner-laptop {
+                position: relative;
+                margin-bottom: -60px;
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Banner background
+    // --------------------------------------------------
+
+    // Banner background
+    .banner-background {
+        height: 300px;
+
+        // Background 1
+        &.banner-background-1 {
+            background-image: url('@{path-image}banner-background/1.jpg');
+        }
+
+        // Background 2
+        &.banner-background-2 {
+            background-image: url('@{path-image}banner-background/2.jpg');
+        }
+    }
+
+    // --------------------------------------------------
+    // Contact information
+    // --------------------------------------------------
+
+    // Contact information
+    .contact-information {
+
+        // Headline
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 7px 0;
+        }
+
+        // Mobile
+        @media @media-query-mobile {
+
+            // Box
+            .contact-information-box {
+                margin-bottom: 20px;
+
+                // Last child
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Buzz boxes
+    // --------------------------------------------------
+
+    // Buzz boxes
+    .buzz-boxes {
+
+        // Buzz box
+        .buzz-box {
+            position: relative;
+            margin-bottom: 30px;
+
+            // Icon container
+            .buzz-box-icon-container {
+                position: absolute;
+                top: 0;
+
+                // Icon
+                .buzz-icon {
+                    width: 75px;
+                }
+            }
+
+            // Content container
+            .buzz-box-content-container {
+                margin-left: 90px;
+
+                // Headlines
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-top: 22px;
+                    margin-bottom: 10px;
+                    padding: 0;
+                    color: @brand-primary;
+                    font-weight: @headings-font-weight-semi-bold;
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Bootstrap element altering
+    // --------------------------------------------------
+
+    // Form group
+    .form-group {
+        margin-bottom: 8px; // - default Bootstrap value is 15px
+    }

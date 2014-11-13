@@ -25,11 +25,28 @@ var mandatory = {
     // Initialization
     init: function() {
 
-        // Functions that should ALWAYS be run
+        // Events
+        mandatory.events();
+
+        // Always
         mandatory.always();
 
     },
 
+    // Events - functions that should be run on certain events
+    events: function() {
+
+        // Window resizing
+        jQuery(window).resize( function() {
+
+            // Footer
+            mandatory.footer();
+
+        });
+
+    },
+
+    // Always - functions that need to be run at all times.
     always: function() {
 
         // Footer
@@ -51,28 +68,24 @@ var mandatory = {
     // | button closes the modal on click.
     // |
 
-    //
+    // Footer
     footer: function() {
 
         // Validate touch state - only non touch devices
         if (Modernizr.touch) return false;
 
-        // Footer attached to bottom
-        mandatory.footer_attached_to_bottom();
+        // Grab body object
+        var body_object = jQuery("body");
 
-        // Footer behind content
-        mandatory.footer_behind_content();
-
-        // Event - window resize
-        jQuery(window).resize(function() {
-
-            // Footer attached to bottom
+        // Footer - attached to bottom
+        if (body_object.hasClass("footer-attached")) {
             mandatory.footer_attached_to_bottom();
+        }
 
-            // Footer behind content
+        // Footer - behind content
+        else if (body_object.hasClass("footer-behind")) {
             mandatory.footer_behind_content();
-
-        });
+        }
 
     },
 
