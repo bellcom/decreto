@@ -11080,6 +11080,10 @@ body.toolbar #wrapper {
   padding-left: 20px;
   padding-right: 20px;
 }
+.price-table .price-table-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .price-table .price-table-feature-list,
 .price-table .price-table-product-list {
   padding: 0;
