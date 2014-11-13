@@ -1,5 +1,5 @@
 <!-- Begin - buzz boxes -->
-<div class="buzz-boxes padding-y-xxl" id="buzzbox">
+<div class="buzz-boxes padding-top-xxl padding-bottom-l" id="buzzbox">
   <div class="container">
     
       <!-- Begin - first row -->
@@ -92,12 +92,12 @@
           </div>
           <!-- End - support -->
 
-          <!-- Begin - security -->
-          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-3">
+          <!-- Begin - overview -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-5">
 
               <!-- Begin - icon -->
               <div class="buzz-box-icon-container">
-                  <img src="<?php print $image_path . 'buzz-box-icons/security.png'; ?>" class="buzz-icon" alt=""/>
+                  <img src="<?php print $image_path . 'buzz-box-icons/overview.png'; ?>" class="buzz-icon" alt=""/>
               </div>
               <!-- End - icon -->
 
@@ -105,18 +105,19 @@
               <div class="buzz-box-content-container">
 
                   <!-- Begin - headline -->
-                  <h3>Sikkerhed</h3>
+                  <h3>Overblik</h3>
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Dokumenter opbevares fortroligt. Kontakter samt tidligere mødedata kan altid findes i Decreto.</p>
+                  <p>Hjælper mødedeltagere til at forberede og deltage i fokuserede og effektive møder.</p>
+                  <p>Decreto søgefunktionalitet gør det endvidere muligt at søge på tværs af alle møder, billag og dokumenter.</p>
                   <!-- End - text -->
 
               </div>
               <!-- End - content -->
 
           </div>
-          <!-- End - security -->
+          <!-- End - overview -->
 
       </div>
       <!-- End - second row -->
@@ -150,12 +151,12 @@
           </div>
           <!-- End - integration -->
 
-          <!-- Begin - overview -->
-          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-5">
+          <!-- Begin - security -->
+          <div class="col-sm-6 buzz-box appear animation animation-appear-from-right animation-delay-0-3">
 
               <!-- Begin - icon -->
               <div class="buzz-box-icon-container">
-                  <img src="<?php print $image_path . 'buzz-box-icons/overview.png'; ?>" class="buzz-icon" alt=""/>
+                  <img src="<?php print $image_path . 'buzz-box-icons/security.png'; ?>" class="buzz-icon" alt=""/>
               </div>
               <!-- End - icon -->
 
@@ -163,19 +164,18 @@
               <div class="buzz-box-content-container">
 
                   <!-- Begin - headline -->
-                  <h3>Overblik</h3>
+                  <h3>Sikkerhed</h3>
                   <!-- End - headline -->
 
                   <!-- Begin - text -->
-                  <p>Hjælper mødedeltagere til at forberede og deltage i fokuserede og effektive møder.</p>
-                  <p>Decreto søgefunktionalitet gør det endvidere muligt at søge på tværs af alle møder, billag og dokumenter.</p>
+                  <p>Dokumenter opbevares fortroligt. Kontakter samt tidligere mødedata kan altid findes i Decreto.</p>
                   <!-- End - text -->
 
               </div>
               <!-- End - content -->
 
           </div>
-          <!-- End - overview -->
+          <!-- End - security -->
 
       </div>
       <!-- End - third row -->

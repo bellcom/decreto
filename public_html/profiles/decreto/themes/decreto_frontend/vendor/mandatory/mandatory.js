@@ -117,7 +117,7 @@ var mandatory = {
         if (Modernizr.touch) return false;
 
         // Set default options
-        if( ! options) var options = {};
+        if( ! options) var options = { verticalOffset: 0, horizontalOffset: "50" };
 
         // Enable Stellar
         jQuery.stellar(options);

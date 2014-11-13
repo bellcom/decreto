@@ -93,21 +93,24 @@ function decreto_signup_form() {
       'medium' => array('#description' => 'DKK 99,-/mdr'),
       'large' => array('#description' => 'DKK 149,-/mdr'),
     ),
-    '#prefix' => '<div class="col-md-6"><h3>Vælg pakke</h3>',
+    '#prefix' => '<div class="col-md-6"><h3 class="semi-bold margin-bottom-m">Vælg pakke</h3>',
     '#suffix' => '</div>',
   );
 
   $form['company'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
-    '#attributes' => array('placeholder' => 'Company'),
-    '#prefix' => '<div class="col-md-6"><h3>Kontaktoplysninger</h3>',
+    '#attributes' => array('placeholder' => 'Firma'),
+    '#prefix' => '<div class="col-md-6"><h3 class="semi-bold margin-bottom-m">Kontaktoplysninger</h3><div class="form-group">',
+    '#suffix' => '</div>',
   );
 
   $form['name'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
-    '#attributes' => array('placeholder' => 'Name'),
+    '#attributes' => array('placeholder' => 'Navn'),
+    '#prefix' => '<div class="form-group">',
+    '#suffix' => '</div>',
   );
 
   $form['mail'] = array(
@@ -115,15 +118,17 @@ function decreto_signup_form() {
     '#required' => TRUE,
     '#attributes' => array(
       'placeholder' => 'E-mail',
-      'class' => array('form-group'),
     ),
+    '#prefix' => '<div class="form-group">',
+    '#suffix' => '</div>',
   );
 
   $form['phone'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
-    '#attributes' => array('placeholder' => 'Phone'),
-    '#suffix' => '</div>',
+    '#attributes' => array('placeholder' => 'Telefon nr.'),
+    '#prefix' => '<div class="form-group">',
+    '#suffix' => '</div></div>',
   );
 
   $signup_postscript = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';

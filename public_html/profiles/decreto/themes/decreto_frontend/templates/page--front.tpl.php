@@ -13,7 +13,7 @@
     <!-- Begin - content -->
     <div id="content">
 
-        <?php include "_partials/banner.tpl.php"; ?>
+        <?php include "temp-banner.tpl.php"; ?>
         <?php include "_partials/buzz-boxes.tpl.php"; ?>
         <?php include "_partials/carousel.tpl.php"; ?>
 
