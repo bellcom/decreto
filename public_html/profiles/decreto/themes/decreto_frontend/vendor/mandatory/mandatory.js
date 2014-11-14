@@ -224,10 +224,18 @@ var mandatory = {
     enable_bootstrap_tooltips: function() {
 
         // Validate touch state - only non touch devices
-        if (Modernizr.touch) return false;
+        if (Modernizr.touch) {
+
+            // Hide tooltips
+            jQuery("[data-toggle=tooltip]").tooltip("hide");
+
+            // Abort
+            return false;
+
+        }
 
         // Enable tooltips
-        jQuery( "[data-toggle=tooltip]" ).tooltip();
+        jQuery("[data-toggle=tooltip]").tooltip();
 
     },
 

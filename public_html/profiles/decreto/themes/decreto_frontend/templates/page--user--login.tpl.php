@@ -40,7 +40,10 @@
                 <!-- End - form -->
 
                 <!-- Begin - button -->
-                <a href="/#signup" class="btn btn-default btn-block">Opret konto</a>
+                <a href="/#signup" class="btn btn-default btn-block">
+                    Opret konto
+                    <span class="icon fa fa-edit"></span>
+                </a>
                 <!-- End - button -->
 
             </div>

@@ -78,7 +78,7 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
         $form['pass']['#weight'] = 5;
 
         // Submit
-        $form['actions']['submit']['#value'] = "Log ind";
+        $form['actions']['submit']['#value'] = "Log ind <span class='icon fa fa-sign-in'></span>";
         $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
         $form['actions']['submit']['#weight'] = 10;
 
@@ -94,7 +94,7 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
         $form['name']['#weight'] = 0;
 
         // Submit
-        $form['actions']['submit']['#value'] = "Nulstil adgangskode";
+        $form['actions']['submit']['#value'] = "Nulstil adgangskode <span class='icon fa fa-lock'></span>";
         $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
         $form['actions']['submit']['#weight'] = 10;
 

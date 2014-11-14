@@ -11326,14 +11326,17 @@ body.toolbar #wrapper {
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
-.page-user .user-form-wrapper .btn span {
+.page-user .user-form-wrapper .btn .icon {
   line-height: 22px;
   float: right;
 }
 .page-user .user-form-wrapper .btn.btn-default {
-  color: #32424c;
   background: transparent;
   border-color: #ebebec;
+}
+.page-user .user-form-wrapper .btn.btn-default,
+.page-user .user-form-wrapper .btn.btn-default .icon {
+  color: #32424c;
 }
 .page-user .user-form-wrapper .btn.btn-default:hover,
 .page-user .user-form-wrapper .btn.btn-default:focus,
@@ -11341,9 +11344,12 @@ body.toolbar #wrapper {
   background: #fff;
 }
 .page-user .user-form-wrapper .btn.btn-primary {
-  color: #fff;
   background-color: #ec7139;
   border-color: #ebebec;
+}
+.page-user .user-form-wrapper .btn.btn-primary,
+.page-user .user-form-wrapper .btn.btn-primary .icon {
+  color: #fff;
 }
 .page-user .user-form-wrapper .btn.btn-primary:hover,
 .page-user .user-form-wrapper .btn.btn-primary:focus,

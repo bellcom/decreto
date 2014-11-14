@@ -134,16 +134,21 @@
                 .transition(all @transition-time ease-in-out);
 
                 // Icon
-                span {
+                .icon {
                     line-height: @line-height-computed;
                     float: right;
                 }
 
                 // Default
                 &.btn-default {
-                    color: @text-color;
                     background: transparent;
                     border-color: #ebebec;
+
+                    // Text and icon
+                    &,
+                    .icon {
+                        color: @text-color;
+                    }
 
                     // Hover, focus and active
                     &:hover,
@@ -155,9 +160,14 @@
 
                 // Primary
                 &.btn-primary {
-                    color: #fff;
                     background-color: @brand-primary;
                     border-color: #ebebec;
+
+                    // Text and icon
+                    &,
+                    .icon {
+                        color: #fff;
+                    }
 
                     // Hover, focus and active
                     &:hover,
