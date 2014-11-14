@@ -77,6 +77,14 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
         // Submit
         $form['actions']['submit']['#value'] = "Log ind";
         $form['actions']['submit']['#attributes'] = array("class" => array("btn", "btn-primary", "btn-block"));
+
+
+
+
     }
 
+}
+
+function decreto_frontend_form_required_marker($variables) {
+    return '';
 }
