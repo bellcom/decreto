@@ -79,7 +79,7 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
 
         // Submit
         $form['actions']['submit']['#value'] = "Log ind <span class='icon fa fa-sign-in'></span>";
-        $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
+        $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block', 'btn-loader'));
         $form['actions']['submit']['#weight'] = 10;
 
     }
@@ -95,7 +95,7 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
 
         // Submit
         $form['actions']['submit']['#value'] = "Nulstil adgangskode <span class='icon fa fa-lock'></span>";
-        $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
+        $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block', 'btn-loader'));
         $form['actions']['submit']['#weight'] = 10;
 
     }

@@ -6931,6 +6931,26 @@ table .checkbox input[type="checkbox"] {
 .alert-danger a {
   color: #843534;
 }
+@-webkit-keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
 html,
 html body {
   margin: 0;
@@ -7245,6 +7265,13 @@ html.no-touch body.footer-behind .footer {
 .icon.icon-xxl {
   font-size: 60px;
   line-height: 60px;
+}
+.icon-spin {
+  -webkit-animation: icon-spin 2s infinite linear;
+  animation: icon-spin 2s infinite linear;
+}
+.icon-spin.fa:before {
+  content: "\f1ce";
 }
 body {
   font-weight: 400;
@@ -11322,9 +11349,6 @@ body.toolbar #wrapper {
   border-style: solid;
   text-align: left;
   padding: 15px 25px;
-  -webkit-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
 }
 .page-user .user-form-wrapper .btn .icon {
   line-height: 22px;

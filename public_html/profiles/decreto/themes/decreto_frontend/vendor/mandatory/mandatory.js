@@ -44,6 +44,14 @@ var mandatory = {
 
         });
 
+        // Button clicked
+        jQuery(".btn-loader").on("click", function() {
+console.log('clicked');
+            // Enable button loader
+            mandatory.enable_button_loader(jQuery(this));
+
+        });
+
     },
 
     // Always - functions that need to be run at all times.
@@ -248,6 +256,14 @@ var mandatory = {
         // Disable autocomplete
         jQuery("form").attr("autocomplete", "off");
 
+    },
+
+    // Enable button loader
+    enable_button_loader: function(scope) {
+
+        // Add "icon-spin" class to icon
+        scope.find(".icon").addClass("icon-spin");
+        console.log('clicked-asd');
     }
 
 }

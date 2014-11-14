@@ -13,6 +13,9 @@
 // | - xl
 // | - xxl
 // |
+// | Animation
+// | - icon spin
+// |
 
     // --------------------------------------------------
     // Sizing
@@ -57,5 +60,24 @@
         &.icon-xxl {
             font-size: @mandatory-icon-font-size-xxl;
             line-height: @mandatory-icon-font-size-xxl;
+        }
+    }
+
+    // --------------------------------------------------
+    // Animation
+    // --------------------------------------------------
+
+    // Icon spin
+    .icon-spin {
+        -webkit-animation: icon-spin 2s infinite linear;
+        animation: icon-spin 2s infinite linear;
+
+        // Font awesome icon
+        &.fa {
+
+            // Before
+            &:before {
+                content: "\f1ce";
+            }
         }
     }
