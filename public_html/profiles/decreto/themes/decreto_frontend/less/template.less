@@ -69,7 +69,6 @@
                 background-color: #fff;
                 padding-top: 50px;
                 padding-bottom: 60px;
-                .transition(all @transition-time ease-in-out);
 
                 // Logo
                 .user-form-header-logo {
@@ -81,7 +80,6 @@
             .user-form-form {
                 position: relative;
                 padding-top: 70px;
-                .transition(all @transition-time ease-in-out);
 
                 // Form
                 form {
@@ -102,13 +100,13 @@
 
                 // Link
                 a {
-                    color: @text-color;
 
                     // Normal, hover, focus and active state
+                    &,
                     &:hover,
                     &:focus,
                     &:active {
-                        color: @brand-primary;
+                        color: @text-color;
                     }
                 }
 

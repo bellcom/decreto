@@ -76,15 +76,21 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
 
         // Submit
         $form['actions']['submit']['#value'] = "Log ind";
-        $form['actions']['submit']['#attributes'] = array("class" => array("btn", "btn-primary", "btn-block"));
+        $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
 
-
-
+        $form['forgotten_password'] = array(
+            '#type'         => 'link',
+            '#attributes'   => array('class' => array('btn', 'btn-default', 'btn-block')),
+            '#title'        => 'Opret konto',
+            '#href'         => 'user/password',
+        );
 
     }
-
 }
 
+/**
+ * Implements theme_form_required_marker().
+ */
 function decreto_frontend_form_required_marker($variables) {
     return '';
 }

@@ -8792,6 +8792,9 @@ fieldset[disabled] .btn.btn-tertiary.active {
 .btn + .btn {
   margin-left: 4px;
 }
+.btn.btn-block + .btn-block {
+  margin-left: 0;
+}
 .form-control {
   border-width: 2px;
 }
@@ -11279,9 +11282,6 @@ body.toolbar #wrapper {
   background-color: #fff;
   padding-top: 50px;
   padding-bottom: 60px;
-  -webkit-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
 }
 .page-user .user-form-wrapper .user-form-header .user-form-header-logo {
   width: 100%;
@@ -11289,9 +11289,6 @@ body.toolbar #wrapper {
 .page-user .user-form-wrapper .user-form-form {
   position: relative;
   padding-top: 70px;
-  -webkit-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
 }
 .page-user .user-form-wrapper .user-form-form form {
   margin: 0 -25px;
@@ -11304,13 +11301,11 @@ body.toolbar #wrapper {
   padding-top: 50px;
   padding-bottom: 20px;
 }
-.page-user .user-form-wrapper .user-form-footer a {
-  color: #32424c;
-}
+.page-user .user-form-wrapper .user-form-footer a,
 .page-user .user-form-wrapper .user-form-footer a:hover,
 .page-user .user-form-wrapper .user-form-footer a:focus,
 .page-user .user-form-wrapper .user-form-footer a:active {
-  color: #ec7139;
+  color: #32424c;
 }
 .page-user .user-form-wrapper .user-form-footer p {
   font-size: 12px;
