@@ -4,6 +4,7 @@
 // |
 // | This file contains the following:
 // |
+// | - User form
 // | - Header
 // | - Footer
 // | - Banner top
@@ -13,6 +14,156 @@
 // | - Bootstrap element altering
 // | -- form group
 // |
+
+    @login-transition-time: 								@transition-time;
+
+    // Layout
+    @login-body-background-color: 							@body-bg;
+    @login-container-width: 								320px;
+    @login-container-padding: 								20px 0;
+
+    // Header
+    @login-header-background-color: 						#fff;
+    @login-header-padding: 									70px 0;
+
+    @login-header-description-font-color:					@text-color;
+    @login-header-description-font-size: 					@font-size-base;
+    @login-header-description-font-weight:					@font-weight;
+
+    // Form
+    @login-form-padding-top: 								50px;
+
+    @login-form-input-border-color: 						@input-border;
+    @login-form-input-border-color-focus: 					darken( @login-form-input-border-color, 8% );
+    @login-form-input-text-color: 							@input-color;
+    @login-form-input-background-color: 					#fff;
+
+    @login-form-submit-border-color: 						@login-form-input-border-color;
+    @login-form-submit-border-color-focus: 					@login-form-submit-border-color;
+    @login-form-submit-text-color: 							@login-form-input-text-color;
+    @login-form-submit-background-color: 					transparent;
+    @login-form-submit-hover-background-color:				#fff;
+
+
+    // --------------------------------------------------
+    // User form
+    // --------------------------------------------------
+
+    .page-user {
+
+        // Wrapper
+        .user-form-wrapper {
+            background-color: #f7f7f7;
+
+            // Container
+            .user-form-container {
+                width: 320px;
+                padding: 0 25px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            // Header
+            .user-form-header {
+                position: relative;
+                background-color: #fff;
+                padding-top: 50px;
+                padding-bottom: 60px;
+                .transition(all @transition-time ease-in-out);
+
+                // Logo
+                .user-form-header-logo {
+                    width: 100%;
+                }
+            }
+
+            // Form
+            .user-form-form {
+                position: relative;
+                padding-top: 70px;
+                .transition(all @transition-time ease-in-out);
+
+                // Form
+                form {
+                    margin: 0 -25px;
+
+                    // Form control
+                    .form-control {
+                        padding: 15px 25px;
+                        border-width: 1px;
+                    }
+                }
+            }
+
+            // Footer
+            .user-form-footer {
+                padding-top: 50px;
+                padding-bottom: 20px;
+
+                // Link
+                a {
+                    color: @text-color;
+
+                    // Normal, hover, focus and active state
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: @brand-primary;
+                    }
+                }
+
+                // Paragraph
+                p {
+                    font-size: @font-size-small;
+                    margin-top: 5px;
+                    color: #aeaeae;
+                }
+            }
+
+            // Button
+            .btn {
+                border-width: 1px;
+                border-style: solid;
+                text-align: left;
+                padding: 15px 25px;
+                .transition(all @transition-time ease-in-out);
+
+                // Icon
+                span {
+                    line-height: @line-height-computed;
+                    float: right;
+                }
+
+                // Default
+                &.btn-default {
+                    color: @text-color;
+                    background: transparent;
+                    border-color: #ebebec;
+
+                    // Hover, focus and active
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background: #fff;
+                    }
+                }
+
+                // Primary
+                &.btn-primary {
+                    color: #fff;
+                    background-color: @brand-primary;
+                    border-color: #ebebec;
+
+                    // Hover, focus and active
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background-color: darken(@brand-primary, 10%);
+                    }
+                }
+            }
+        }
+    }
 
     // --------------------------------------------------
     // Header

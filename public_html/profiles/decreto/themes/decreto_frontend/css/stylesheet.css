@@ -11265,6 +11265,91 @@ body.toolbar #wrapper {
 .price-table .price-table-product-list.price-table-highlight ul li:nth-child(even).price-table-product-price small {
   color: #32424c;
 }
+.page-user .user-form-wrapper {
+  background-color: #f7f7f7;
+}
+.page-user .user-form-wrapper .user-form-container {
+  width: 320px;
+  padding: 0 25px;
+  margin: 0 auto;
+  text-align: center;
+}
+.page-user .user-form-wrapper .user-form-header {
+  position: relative;
+  background-color: #fff;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.page-user .user-form-wrapper .user-form-header .user-form-header-logo {
+  width: 100%;
+}
+.page-user .user-form-wrapper .user-form-form {
+  position: relative;
+  padding-top: 70px;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.page-user .user-form-wrapper .user-form-form form {
+  margin: 0 -25px;
+}
+.page-user .user-form-wrapper .user-form-form form .form-control {
+  padding: 15px 25px;
+  border-width: 1px;
+}
+.page-user .user-form-wrapper .user-form-footer {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.page-user .user-form-wrapper .user-form-footer a {
+  color: #32424c;
+}
+.page-user .user-form-wrapper .user-form-footer a:hover,
+.page-user .user-form-wrapper .user-form-footer a:focus,
+.page-user .user-form-wrapper .user-form-footer a:active {
+  color: #ec7139;
+}
+.page-user .user-form-wrapper .user-form-footer p {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #aeaeae;
+}
+.page-user .user-form-wrapper .btn {
+  border-width: 1px;
+  border-style: solid;
+  text-align: left;
+  padding: 15px 25px;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.page-user .user-form-wrapper .btn span {
+  line-height: 22px;
+  float: right;
+}
+.page-user .user-form-wrapper .btn.btn-default {
+  color: #32424c;
+  background: transparent;
+  border-color: #ebebec;
+}
+.page-user .user-form-wrapper .btn.btn-default:hover,
+.page-user .user-form-wrapper .btn.btn-default:focus,
+.page-user .user-form-wrapper .btn.btn-default:active {
+  background: #fff;
+}
+.page-user .user-form-wrapper .btn.btn-primary {
+  color: #fff;
+  background-color: #ec7139;
+  border-color: #ebebec;
+}
+.page-user .user-form-wrapper .btn.btn-primary:hover,
+.page-user .user-form-wrapper .btn.btn-primary:focus,
+.page-user .user-form-wrapper .btn.btn-primary:active {
+  background-color: #dd5415;
+}
 .header .icon {
   display: block;
   line-height: inherit;

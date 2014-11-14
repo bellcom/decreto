@@ -1,8 +1,6 @@
 <!-- Begin - wrapper -->
 <div id="wrapper">
 
-    <?php include "headers/header.tpl.php"; ?>
-
     <!-- Begin - content -->
     <div id="content">
         <div class="container">
@@ -42,5 +40,3 @@
 
 </div>
 <!-- End - wrapper -->
-
-<?php include "footer/footer.tpl.php"; ?>

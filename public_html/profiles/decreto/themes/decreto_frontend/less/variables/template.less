@@ -1,0 +1,69 @@
+// |--------------------------------------------------------------------------
+// | User forms
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - main
+// | - login
+// | - request password
+// | - create account
+// |
+
+    @user-form-: #fff;
+
+// |--------------------------------------------------------------------------
+// | Header
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - main
+// | - logo
+// | - links
+// |
+
+    // --------------------------------------------------
+    // Main
+    // --------------------------------------------------
+
+    @header-navigation-bar-height:                                         120px;
+    @header-navigation-bar-background-color:                               #fff;
+    @header-navigation-bar-background-color-rgba:                          rgba(red(@header-navigation-bar-background-color), green(@header-navigation-bar-background-color), blue(@header-navigation-bar-background-color), .95);
+
+    // --------------------------------------------------
+    // Logo
+    // --------------------------------------------------
+
+    @header-navigation-bar-logo-height:                                    55px;
+    @header-navigation-bar-logo-width:                                     234px;
+
+    // --------------------------------------------------
+    // Links
+    // --------------------------------------------------
+
+    // First layer - normal state
+    @header-navigation-first-layer-link-font-family:                       @headings-font-family;
+    @header-navigation-first-layer-link-font-size:                         16px;
+    @header-navigation-first-layer-link-font-weight:                       @font-weight-semi-bold;
+    @header-navigation-first-layer-link-font-color:                        @text-color;
+    @header-navigation-first-layer-link-background-color:                  transparent;
+    @header-navigation-first-layer-link-padding:                           0 20px;
+    @header-navigation-first-layer-dropdown-arrow-color:                   lighten( @header-navigation-first-layer-link-font-color, 30% );
+    @header-navigation-first-layer-dropdown-arrow-size:                    5px;
+    @header-navigation-first-layer-dropdown-arrow-bottom-start-position:   20%;
+    @header-navigation-first-layer-dropdown-arrow-bottom-end-position:     0;
+
+    // First layer - hover state
+    @header-navigation-first-layer-link-hover-font-color:                  @brand-primary;
+    @header-navigation-first-layer-link-hover-background-color:            @header-navigation-first-layer-link-background-color;
+    @header-navigation-first-layer-dropdown-hover-arrow-color:             @header-navigation-first-layer-link-hover-font-color;
+
+    // First layer - active state
+    @header-navigation-first-layer-link-active-font-color:                 #fff;
+    @header-navigation-first-layer-link-active-background-color:           @brand-primary;
+    @header-navigation-first-layer-dropdown-active-arrow-color:            @header-navigation-first-layer-link-active-font-color;
+
+    // First layer - active AND hover state
+    @header-navigation-first-layer-link-active-hover-font-color:           @header-navigation-first-layer-link-active-font-color;
+    @header-navigation-first-layer-link-active-hover-background-color:     @header-navigation-first-layer-link-active-background-color;
+    @header-navigation-first-layer-dropdown-active-hover-arrow-color:      @header-navigation-first-layer-link-active-hover-font-color;
+

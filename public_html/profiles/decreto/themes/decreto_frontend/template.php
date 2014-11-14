@@ -56,3 +56,27 @@ function decreto_frontend_preprocess_page(&$variables) {
         $variables['signup_form'] = drupal_render($signup_form);
     }
 }
+
+/**
+ * Implements theme_form_alter().
+ */
+function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
+
+    if ($form_id == 'user_login_block' || $form_id == 'user_login') {
+
+        // Name
+        $form['name']['#title'] = '';
+        $form['name']['#description'] = '';
+        $form['name']['#attributes'] = array('placeholder' => 'Brugernavn');
+
+        // Password
+        $form['pass']['#title'] = '';
+        $form['pass']['#description'] = '';
+        $form['pass']['#attributes'] = array('placeholder' => 'Adgangskode');
+
+        // Submit
+        $form['actions']['submit']['#value'] = "Log ind";
+        $form['actions']['submit']['#attributes'] = array("class" => array("btn", "btn-primary", "btn-block"));
+    }
+
+}
