@@ -11295,7 +11295,11 @@ body.toolbar #wrapper {
 .price-table .price-table-product-list.price-table-highlight ul li:nth-child(even).price-table-product-price small {
   color: #32424c;
 }
-.page-user .user-form-wrapper {
+.page-user-login,
+.page-user-password,
+.page-user-create {
+  height: 100%;
+  width: 100%;
   background-color: #f7f7f7;
 }
 .page-user .user-form-wrapper .user-form-container {
