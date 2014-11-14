@@ -11286,16 +11286,21 @@ body.toolbar #wrapper {
 .page-user .user-form-wrapper .user-form-header .user-form-header-logo {
   width: 100%;
 }
-.page-user .user-form-wrapper .user-form-form {
+.page-user .user-form-wrapper .user-form-wrapper {
   position: relative;
   padding-top: 70px;
 }
-.page-user .user-form-wrapper .user-form-form form {
+.page-user .user-form-wrapper .user-form-wrapper .user-form-form {
   margin: 0 -25px;
 }
-.page-user .user-form-wrapper .user-form-form form .form-control {
+.page-user .user-form-wrapper .user-form-wrapper .user-form-form .form-control {
   padding: 15px 25px;
   border-width: 1px;
+  border-color: #ebebec;
+}
+.page-user .user-form-wrapper .user-form-wrapper .user-form-form .form-control:hover,
+.page-user .user-form-wrapper .user-form-wrapper .user-form-form .form-control:focus {
+  border-color: #dedee0;
 }
 .page-user .user-form-wrapper .user-form-footer {
   padding-top: 50px;

@@ -62,28 +62,41 @@ function decreto_frontend_preprocess_page(&$variables) {
  */
 function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
 
+    // Login
     if ($form_id == 'user_login_block' || $form_id == 'user_login') {
 
         // Name
         $form['name']['#title'] = '';
         $form['name']['#description'] = '';
         $form['name']['#attributes'] = array('placeholder' => 'Brugernavn');
+        $form['name']['#weight'] = 0;
 
         // Password
         $form['pass']['#title'] = '';
         $form['pass']['#description'] = '';
         $form['pass']['#attributes'] = array('placeholder' => 'Adgangskode');
+        $form['pass']['#weight'] = 5;
 
         // Submit
         $form['actions']['submit']['#value'] = "Log ind";
         $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
+        $form['actions']['submit']['#weight'] = 10;
 
-        $form['forgotten_password'] = array(
-            '#type'         => 'link',
-            '#attributes'   => array('class' => array('btn', 'btn-default', 'btn-block')),
-            '#title'        => 'Opret konto',
-            '#href'         => 'user/password',
-        );
+    }
+
+    // Reset password
+    if ($form_id == 'user_pass_block' || $form_id == 'user_pass') {
+
+        // Name
+        $form['name']['#title'] = '';
+        $form['name']['#description'] = '';
+        $form['name']['#attributes'] = array('placeholder' => 'Brugernavn eller e-mail adresse');
+        $form['name']['#weight'] = 0;
+
+        // Submit
+        $form['actions']['submit']['#value'] = "Nulstil adgangskode";
+        $form['actions']['submit']['#attributes'] = array('class' => array('btn', 'btn-primary', 'btn-block'));
+        $form['actions']['submit']['#weight'] = 10;
 
     }
 }

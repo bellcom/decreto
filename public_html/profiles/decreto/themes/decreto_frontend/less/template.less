@@ -76,19 +76,26 @@
                 }
             }
 
-            // Form
-            .user-form-form {
+            // Form wrapper
+            .user-form-wrapper {
                 position: relative;
                 padding-top: 70px;
 
                 // Form
-                form {
+                .user-form-form {
                     margin: 0 -25px;
 
                     // Form control
                     .form-control {
                         padding: 15px 25px;
                         border-width: 1px;
+                        border-color: #ebebec;
+
+                        // Hover and focus state
+                        &:hover,
+                        &:focus {
+                            border-color: #dedee0;
+                        }
                     }
                 }
             }

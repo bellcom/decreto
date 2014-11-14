@@ -36,7 +36,7 @@
             <div class="user-form-form">
 
                 <!-- Begin - form -->
-                <?php print drupal_render(drupal_get_form('user_login')); ?>
+                <?php print drupal_render(drupal_get_form('user_pass')); ?>
                 <!-- End - form -->
 
                 <!-- Begin - button -->
@@ -49,9 +49,9 @@
             <!-- Begin - footer -->
             <div class="user-form-footer">
 
-                <!-- Begin - forgot password -->
-                <a href="/user/password">Glemt din adgangskode?</a>
-                <!-- End - forgot password -->
+                <!-- Begin - sign in -->
+                <a href="/user/login">Vil du logge ind?</a>
+                <!-- End - sign in -->
 
                 <!-- Begin - copyright text -->
                 <p>Copyright &copy; 2014 - Decreto ApS</p>
