@@ -35,6 +35,7 @@ stylesheets[all][] = 'css/stylesheet.css'
 ; Vendor scripts
 scripts[] = 'vendor/mandatory/vendors.js'
 scripts[] = 'vendor/mandatory/mandatory.js'
+scripts[] = 'vendor/mandatory/header.js'
 
 scripts[] = 'vendor/skrollr.min.js'
 scripts[] = 'vendor/owl.carousel.js'

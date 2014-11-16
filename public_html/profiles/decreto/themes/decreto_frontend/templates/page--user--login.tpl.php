@@ -27,7 +27,7 @@
     <!-- End - header -->
 
     <!-- Begin - form wrapper -->
-    <div class="user-form-wrapper">
+    <div class="user-form-form-wrapper">
 
         <!-- Begin - container -->
         <div class="user-form-container">

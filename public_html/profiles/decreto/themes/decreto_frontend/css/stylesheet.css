@@ -7108,17 +7108,6 @@ html.no-touch body.footer-behind .footer {
   right: 0;
   z-index: 1030;
 }
-.header .header-nav {
-  min-height: inherit;
-  line-height: inherit;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.header .header-nav > li {
-  line-height: inherit;
-  float: left;
-}
 .header .header-logo {
   display: block;
   height: inherit;
@@ -7139,6 +7128,25 @@ html.no-touch body.footer-behind .footer {
   line-height: 120px;
   background-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.95);
+}
+.header .container,
+.header .container-fluid,
+.header .row,
+.header .header-navbar-content {
+  height: inherit;
+  min-height: inherit;
+  line-height: inherit;
+}
+.header .header-nav {
+  min-height: inherit;
+  line-height: inherit;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.header .header-nav > li {
+  line-height: inherit;
+  float: left;
 }
 .header .header-navbar .header-nav .header-nav-link > a {
   display: block;
@@ -7171,14 +7179,6 @@ html.no-touch body.footer-behind .footer {
 .header .header-navbar .header-nav .header-nav-button .btn {
   margin: 0;
   margin-top: -1px;
-}
-.header .container,
-.header .container-fluid,
-.header .row,
-.header .header-navbar-content {
-  height: inherit;
-  min-height: inherit;
-  line-height: inherit;
 }
 .header .header-left.header-logo,
 .header .header-left.header-nav {
@@ -11317,20 +11317,20 @@ body.toolbar #wrapper {
 .page-user .user-form-wrapper .user-form-header .user-form-header-logo {
   width: 100%;
 }
-.page-user .user-form-wrapper .user-form-wrapper {
+.page-user .user-form-wrapper .user-form-form-wrapper {
   position: relative;
   padding-top: 70px;
 }
-.page-user .user-form-wrapper .user-form-wrapper .user-form-form {
+.page-user .user-form-wrapper .user-form-form-wrapper .user-form-form {
   margin: 0 -25px;
 }
-.page-user .user-form-wrapper .user-form-wrapper .user-form-form .form-control {
+.page-user .user-form-wrapper .user-form-form-wrapper .user-form-form .form-control {
   padding: 15px 25px;
   border-width: 1px;
   border-color: #ebebec;
 }
-.page-user .user-form-wrapper .user-form-wrapper .user-form-form .form-control:hover,
-.page-user .user-form-wrapper .user-form-wrapper .user-form-form .form-control:focus {
+.page-user .user-form-wrapper .user-form-form-wrapper .user-form-form .form-control:hover,
+.page-user .user-form-wrapper .user-form-form-wrapper .user-form-form .form-control:focus {
   border-color: #dedee0;
 }
 .page-user .user-form-wrapper .user-form-footer {
