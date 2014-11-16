@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie7 no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>><![endif]-->
 <!--[if lte IE 8]><html class="ie8 no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>><!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> xmlns="http://www.w3.org/1999/html"><!--<![endif]-->
 <head>
 
     <title><?php print $head_title; ?></title>
@@ -14,18 +15,13 @@
     <?php print $head; ?>
 
     <!-- Begin - internal javascript files -->
-    <script src="<?php print base_path() . drupal_get_path('theme', 'decreto_frontend'); ?>/vendor/mandatory/jquery.min.js"></script>
-    <script src="<?php print base_path() . drupal_get_path('theme', 'decreto_frontend'); ?>/vendor/mandatory/modernizr.min.js"></script>
+    <script src="<?php print $vendor_path . "mandatory/jquery.min.js"; ?>"></script>
+    <script src="<?php print $vendor_path . "mandatory/modernizr.min.js"; ?>"></script>
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <!--[if lt IE 9]>
-        <script src="<?php print base_path() . drupal_get_path('theme', 'decreto_frontend'); ?>/vendor/mandatory/respond.min.js"></script>
-        <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="<?php print $vendor_path . "mandatory/html5shiv.min.js"; ?>"></script>
+        <script src="<?php print $vendor_path . "mandatory/respond.min.js"; ?>"></script>
+    <![endif]-->
 
     <!-- End - internal javascript files -->
 

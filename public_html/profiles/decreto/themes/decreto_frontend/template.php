@@ -58,6 +58,16 @@ function decreto_frontend_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements theme_preprocess_html().
+ */
+function decreto_frontend_preprocess_html(&$variables) {
+
+    // Vendor path
+    $variables['vendor_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
+
+}
+
+/**
  * Implements theme_form_alter().
  */
 function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
