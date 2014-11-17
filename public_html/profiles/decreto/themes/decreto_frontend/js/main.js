@@ -135,32 +135,4 @@ jQuery(function($){
 
     local_scroll();
 
-
-
-    // --------------------------------------------------
-    // Skrollr
-    // --------------------------------------------------
-
-    // Only enable skrollr on non-touch devices
-    if ( ! Modernizr.touch) {
-
-        // Create skrollr object
-        skrollr.init({
-
-            mobileDeceleration:                         1,
-            edgeStrategy:                               "set",
-            forceHeight:                                false,
-            smoothScrolling:                            true,
-            smoothScrollingDuration:                    200,
-            easing: {
-                WTF:                                    Math.random,
-                inverted:                               function( p ) {
-                                                            return 1-p;
-                                                        }
-            }
-
-        });
-
-    }
-
 });

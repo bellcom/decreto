@@ -48,6 +48,9 @@ function decreto_frontend_preprocess_html(&$variables) {
     // Vendor path
     $variables['vendor_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
 
+    // Stylesheet/CSS path
+    $variables['stylesheet_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/css/';
+
 }
 
 /**
