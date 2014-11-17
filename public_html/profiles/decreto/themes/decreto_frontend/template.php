@@ -41,6 +41,16 @@ function decreto_frontend_form_element($variables) {
 }
 
 /**
+ * Implements theme_preprocess_html().
+ */
+function decreto_frontend_preprocess_html(&$variables) {
+
+    // Vendor path
+    $variables['vendor_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
+
+}
+
+/**
  * Implements theme_preprocess_page().
  */
 function decreto_frontend_preprocess_page(&$variables) {
@@ -55,16 +65,6 @@ function decreto_frontend_preprocess_page(&$variables) {
         $signup_form = module_invoke('decreto_signup', 'block_view', 'decreto_signup');
         $variables['signup_form'] = drupal_render($signup_form);
     }
-}
-
-/**
- * Implements theme_preprocess_html().
- */
-function decreto_frontend_preprocess_html(&$variables) {
-
-    // Vendor path
-    $variables['vendor_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
-
 }
 
 /**

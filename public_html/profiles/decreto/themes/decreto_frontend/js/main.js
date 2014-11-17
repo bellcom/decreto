@@ -26,8 +26,6 @@ jQuery(function($){
 
             if(scroll_position >= element_position) {
 
-                console.log("activate " + link_href);
-
                 header
                     .find(".header-nav > .header-nav-link.active")
                     .removeClass("active");
