@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * page--user--password.tpl.php
+ * page--user--create.tpl.php
  */
 ?>
 
@@ -38,13 +38,6 @@
                 <!-- Begin - form -->
                 <?php print drupal_render(drupal_get_form('user_pass')); ?>
                 <!-- End - form -->
-
-                <!-- Begin - button -->
-                <a href="/user/create" class="btn btn-default btn-block btn-loader">
-                    Opret konto
-                    <span class="icon fa fa-edit"></span>
-                </a>
-                <!-- End - button -->
 
             </div>
             <!-- End - form -->

@@ -46,7 +46,7 @@ var mandatory = {
 
         // Button clicked
         jQuery(".btn-loader").on("click", function() {
-console.log('clicked');
+
             // Enable button loader
             mandatory.enable_button_loader(jQuery(this));
 
@@ -162,7 +162,7 @@ console.log('clicked');
             animation_delay_class = "animation-delay-";
 
         // Touch device - disallowed
-        if (Modernizr.touch) {
+        if (Modernizr.touch || ! Modernizr.cssanimations) {
 
             // Remove all types of animation classes
             jQuery(".animation")

@@ -10729,6 +10729,9 @@ body.admin-menu {
 body.toolbar #wrapper {
   margin-top: 30px;
 }
+.form-control.error {
+  border-color: #a94442;
+}
 /* 
  *  Owl Carousel - Animate Plugin
  */
@@ -11396,20 +11399,12 @@ body.toolbar #wrapper {
     padding-top: 40px;
   }
 }
-.header .icon {
-  display: block;
-  line-height: inherit;
-  height: inherit;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: #0000BB;
-}
-.header .icon.icon-lock {
+.header .icon-lock {
   width: 24px;
   background-image: url("../img/header/icon-lock-1x.png");
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .header .icon.icon-lock {
+  .header .icon-lock {
     background-image: url("../img/header/icon-lock-2x.png");
     background-size: 24px 25px;
   }

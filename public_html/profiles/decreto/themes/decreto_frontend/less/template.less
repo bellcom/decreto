@@ -15,36 +15,6 @@
 // | -- form group
 // |
 
-    @login-transition-time: 								@transition-time;
-
-    // Layout
-    @login-body-background-color: 							@body-bg;
-    @login-container-width: 								320px;
-    @login-container-padding: 								20px 0;
-
-    // Header
-    @login-header-background-color: 						#fff;
-    @login-header-padding: 									70px 0;
-
-    @login-header-description-font-color:					@text-color;
-    @login-header-description-font-size: 					@font-size-base;
-    @login-header-description-font-weight:					@font-weight;
-
-    // Form
-    @login-form-padding-top: 								50px;
-
-    @login-form-input-border-color: 						@input-border;
-    @login-form-input-border-color-focus: 					darken( @login-form-input-border-color, 8% );
-    @login-form-input-text-color: 							@input-color;
-    @login-form-input-background-color: 					#fff;
-
-    @login-form-submit-border-color: 						@login-form-input-border-color;
-    @login-form-submit-border-color-focus: 					@login-form-submit-border-color;
-    @login-form-submit-text-color: 							@login-form-input-text-color;
-    @login-form-submit-background-color: 					transparent;
-    @login-form-submit-hover-background-color:				#fff;
-
-
     // --------------------------------------------------
     // User form
     // --------------------------------------------------
@@ -223,20 +193,10 @@
     // Header
     .header {
 
-        // Icon
-        .icon {
-            display: block;
-            line-height: inherit;
-            height: inherit;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-color: #0000BB;
-
-            // Lock
-            &.icon-lock {
-                width: 24px;
-                .img-retina("@{path-image}header/icon-lock-1x.png", "@{path-image}header/icon-lock-2x.png", 24px, 25px);
-            }
+        // Lock
+        .icon-lock {
+            width: 24px;
+            .img-retina("@{path-image}header/icon-lock-1x.png", "@{path-image}header/icon-lock-2x.png", 24px, 25px);
         }
     }
 

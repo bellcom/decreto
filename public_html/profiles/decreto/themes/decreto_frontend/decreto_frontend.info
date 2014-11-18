@@ -37,7 +37,6 @@ scripts[] = 'vendor/mandatory/vendors.js'
 scripts[] = 'vendor/mandatory/mandatory.js'
 scripts[] = 'vendor/mandatory/header.js'
 
-scripts[] = 'vendor/skrollr.min.js'
 scripts[] = 'vendor/owl.carousel.js'
 scripts[] = 'vendor/scroll-to.js'
 

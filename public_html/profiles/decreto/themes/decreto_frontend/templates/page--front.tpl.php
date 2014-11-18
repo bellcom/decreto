@@ -55,7 +55,7 @@
                             <!-- Begin - sign in -->
                             <li class="header-nav-link">
                                 <a href="/user/login" data-toggle="tooltip" data-placement="bottom" title="Log ind">
-                                    <img src="<?php print $image_path . "header/icon-lock.png"; ?>" alt=""/>
+                                    <img src="<?php print $image_path . "header/icon-lock.png"; ?>" class="icon-lock" alt=""/>
                                 </a>
                             </li>
                             <!-- End - sign in -->
