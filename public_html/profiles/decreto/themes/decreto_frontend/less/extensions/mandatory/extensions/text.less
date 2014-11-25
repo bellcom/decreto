@@ -28,6 +28,8 @@
 // |
 // | - Positioning
 // |
+// | - Smoothing
+// |
 
     // --------------------------------------------------
     // Paragraph and other textual representations
@@ -71,7 +73,6 @@
     h5,
     h6 {
         font-weight: @headings-font-weight;
-        letter-spacing: -2px;
 
         // Light
         &.light {
@@ -292,5 +293,32 @@
         // Center aligned
         .text-center-touch {
             text-align: center;
+        }
+    }
+
+    // --------------------------------------------------
+    // Smoothing
+    // --------------------------------------------------
+
+    // Body
+    body {
+
+        // Body, link, paragraph, span and input
+        &,
+        a,
+        p,
+        span,
+        input {
+            .font-smoothing();
+        }
+
+        // Headlines
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            .font-smoothing();
         }
     }

@@ -314,57 +314,7 @@
 
 }
 
-// Non touch devices
-.no-touch {
 
-    // Unordered list (all)
-    ul {
-
-        // List item (all)
-        li {
-            .transition(background-color @transition-time ease-in-out);
-
-            // Link
-            a {
-
-                // Hover, focus and active state
-                &:hover,
-                &:focus,
-                &:active {
-                    background-color: @sidebar-link-hover-background-color;
-                    background-color: @sidebar-link-hover-background-color-rgba;
-                }
-            }
-        }
-    }
-}
-
-// Touch devices
-.touch {
-
-    // Sidebar
-    .sidebar {
-
-        // Unordered list (all)
-        ul {
-
-            // List item (all)
-            li {
-
-                // Link
-                a {
-
-                    // Hover, focus and active state
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        .tap-highlight(@sidebar-link-hover-background-color-rgba, @sidebar-link-hover-background-color);
-                    }
-                }
-            }
-        }
-    }
-}
 
 // Sidebar open
 .sidebar-open {

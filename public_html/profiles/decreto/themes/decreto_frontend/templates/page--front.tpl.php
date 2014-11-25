@@ -8,6 +8,48 @@
 <!-- Begin - wrapper -->
 <div id="wrapper">
 
+    <!-- Begin - sidebar -->
+    <div class="sidebar sidebar-left">
+        <ul>
+
+            <!-- Begin - logo -->
+            <li class="sidebar-logo">
+                <a href="#" data-scroll-to="#banner"><span class="sidebar-logo-image"></span></a>
+            </li>
+            <!-- End - logo -->
+
+            <!-- Begin - product -->
+            <li class="sidebar-nav-link"><a href="#" data-scroll-to="#buzzbox">Produktet</a></li>
+            <!-- End - product -->
+
+            <!-- Begin - prices -->
+            <li class="sidebar-nav-link"><a href="#" data-scroll-to="#prices">Priser</a></li>
+            <!-- End - prices -->
+
+            <!-- Begin - contact -->
+            <li class="sidebar-nav-link"><a href="#" data-scroll-to="#contact">Kontakt</a></li>
+            <!-- End - contact -->
+
+            <!-- Begin - support -->
+            <li class="sidebar-nav-link"><a href="#" data-scroll-to="#support">Support</a></li>
+            <!-- End - support -->
+
+            <!-- Begin - order -->
+            <li class="sidebar-nav-link"><a href="#" data-scroll-to="#signup">Bestil</a></li>
+            <!-- End - order -->
+
+            <!-- Begin - sign in -->
+            <li class="sidebar-nav-link"><a href="/user/login">Log ind</a></li>
+            <!-- End - sign in -->
+
+        </ul>
+    </div>
+    <!-- End - sidebar -->
+
+    <!-- Begin - sidebar overlay -->
+    <div class="sidebar-overlay"></div>
+    <!-- End - sidebar overlay -->
+
     <!-- Begin - header -->
     <header class="header header-sticky">
 
@@ -73,6 +115,48 @@
 
     </header>
     <!-- End - header -->
+
+    <!-- Begin - sidebar header -->
+    <header class="header header-sidebar header-sticky">
+
+        <!-- Begin - navbar -->
+        <section class="header-navbar">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Begin - content -->
+                    <div class="col-xs-4 header-navbar-content">
+
+                        <!-- Begin - navigation -->
+                        <ul class="header-nav">
+
+                            <!-- Begin - sidebar toggle -->
+                            <li class="header-nav-button"><a class="btn btn-faceless btn-sidebar-toggle" href="#" data-toggle-sidebar="left"><span class="icon fa fa-bars"></span></a></li>
+                            <!-- End - sidebar toggle -->
+
+                        </ul>
+                        <!-- End - navigation -->
+
+                    </div>
+                    <!-- End - content -->
+
+                    <!-- Begin - content -->
+                    <div class="col-xs-4 text-center header-navbar-content">
+
+                        <!-- Begin - logo -->
+                        <a class="header-logo" href="#" data-scroll-to="#banner" data-toggle="tooltip" data-placement="bottom" title="Gå til toppen af siden"></a>
+                        <!-- End - logo -->
+
+                    </div>
+                    <!-- End - content -->
+
+                </div>
+            </div>
+        </section>
+        <!-- End - navbar -->
+
+    </header>
+    <!-- End - sidebar header -->
 
     <!-- Begin - content -->
     <div id="content">
@@ -402,136 +486,136 @@
         <div class="background-color-tertiary price-table" id="prices">
             <div class="container">
                 <div class="row">
-                	<div class="price-table-content">
+                    <div class="price-table-content">
 
-        				<!-- Begin - feature list -->
-        				<div class="col-sm-3 price-table-column price-table-feature-list appear animation animation-appear-from-left animation-delay-0-6">
+                        <!-- Begin - feature list -->
+                        <div class="col-sm-3 price-table-column price-table-feature-list appear animation animation-appear-from-left animation-delay-0-6">
 
-        					<ul>
-        						<li class="price-table-header">
-        							<p>&nbsp;<small>Indhold</small></p>
-        						</li>
-        						<li class="price-table-feature-description">Mødeoprettelse</li>
-        						<li class="price-table-feature-description">Planlægger</li>
-        						<li class="price-table-feature-description">Brugere</li>
-        						<li class="price-table-feature-description">Opsigelse</li>
-        						<li class="price-table-feature-description">Virksomhed</li>
-        						<li class="price-table-feature-description">Notifikation</li>
-        						<li class="price-table-feature-description">Medlem</li>
-        					</ul>
+                            <ul>
+                                <li class="price-table-header">
+                                    <p>&nbsp;<small>Indhold</small></p>
+                                </li>
+                                <li class="price-table-feature-description">Mødeoprettelse</li>
+                                <li class="price-table-feature-description">Planlægger</li>
+                                <li class="price-table-feature-description">Brugere</li>
+                                <li class="price-table-feature-description">Opsigelse</li>
+                                <li class="price-table-feature-description">Virksomhed</li>
+                                <li class="price-table-feature-description">Notifikation</li>
+                                <li class="price-table-feature-description">Medlem</li>
+                            </ul>
 
-        				</div>
-        				<!-- End - feature list -->
+                        </div>
+                        <!-- End - feature list -->
 
-        				<!-- Begin - product list -->
-        				<div class="col-sm-3 price-table-product-list appear animation animation-appear-from-left animation-delay-0-4">
+                        <!-- Begin - product list -->
+                        <div class="col-sm-3 price-table-product-list appear animation animation-appear-from-left animation-delay-0-4">
 
-        					<ul>
-        						<li class="price-table-header">
-        							<p>Lille<small>1 bruger</small></p>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Møde oprettelse">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Planlægger">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Brugere">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Opsigelse">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Virksomhed">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Medlem">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Notifikation">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-price">
-        							<p>Gratis</p>
-        						</li>
-        					</ul>
+                            <ul>
+                                <li class="price-table-header">
+                                    <p>Lille<small>1 bruger</small></p>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Møde oprettelse">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Planlægger">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Brugere">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Opsigelse">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Virksomhed">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Medlem">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Notifikation">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-price">
+                                    <p>Gratis</p>
+                                </li>
+                            </ul>
 
-        				</div>
-        				<!-- End - product list -->
+                        </div>
+                        <!-- End - product list -->
 
-        				<!-- Begin - product list -->
-        				<div class="col-sm-3 price-table-product-list price-table-highlight appear animation animation-appear-from-left animation-delay-0-2">
+                        <!-- Begin - product list -->
+                        <div class="col-sm-3 price-table-product-list price-table-highlight appear animation animation-appear-from-left animation-delay-0-2">
 
-        					<ul>
-        						<li class="price-table-header">
-        							<p>Mellem<small>2-10 brugere</small></p>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Møde oprettelse">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Planlægger">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Brugere">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Opsigelse">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Virksomhed">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Medlem">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Notifikation">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-price">
-        							<p>99,- <small>kr./md.</small></p>
-        						</li>
-        					</ul>
+                            <ul>
+                                <li class="price-table-header">
+                                    <p>Mellem<small>2-10 brugere</small></p>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Møde oprettelse">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Planlægger">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Brugere">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Opsigelse">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Virksomhed">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Medlem">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Notifikation">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-price">
+                                    <p>99,- <small>kr./md.</small></p>
+                                </li>
+                            </ul>
 
-        				</div>
-        				<!-- End - product list -->
+                        </div>
+                        <!-- End - product list -->
 
-        				<!-- Begin - product list -->
-        				<div class="col-sm-3 price-table-product-list appear animation animation-appear-from-left">
+                        <!-- Begin - product list -->
+                        <div class="col-sm-3 price-table-product-list appear animation animation-appear-from-left">
 
-        					<ul>
-        						<li class="price-table-header">
-        							<p>Stor<small>Frit antal brugere</small></p>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Møde oprettelse">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Planlægger">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Brugere">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Opsigelse">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Virksomhed">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Medlem">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-feature" data-feature="Notifikation">
-        							<span class="icon icon-l fa fa-check"></span>
-        						</li>
-        						<li class="price-table-product-price">
-        							<p>149,- <small>kr./md.</small></p>
-        						</li>
-        					</ul>
+                            <ul>
+                                <li class="price-table-header">
+                                    <p>Stor<small>Frit antal brugere</small></p>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Møde oprettelse">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Planlægger">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Brugere">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Opsigelse">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Virksomhed">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Medlem">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-feature" data-feature="Notifikation">
+                                    <span class="icon icon-l fa fa-check"></span>
+                                </li>
+                                <li class="price-table-product-price">
+                                    <p>149,- <small>kr./md.</small></p>
+                                </li>
+                            </ul>
 
-        				</div>
-        				<!-- End - product list -->
+                        </div>
+                        <!-- End - product list -->
 
-        			</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -592,17 +676,13 @@
 
                     <!-- Begin - text -->
                     <div class="col-sm-offset-1 col-sm-7 padding-y-m">
-
-                        <h3 class="font-color-white" style="margin: 0;padding: 0;">
-                            For support og hjælp brug da vores
-                        </h3>
-
+                        <h3>For support og hjælp brug da vores</h3>
                     </div>
                     <!-- End - text -->
 
                     <!-- Begin - button -->
                     <div class="col-sm-4 padding-y-m text-center-xs text-right">
-                        <a class="btn btn-tertiary" href="#" style="margin-top: -4px;">
+                        <a class="btn btn-tertiary" href="#">
                             support forum
                         </a>
                     </div>

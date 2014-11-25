@@ -40,6 +40,7 @@ function decreto_user_init() {
  * Implements hook_custom_theme().
  */
 function decreto_user_custom_theme() {
+  // Use decreto_frontend theme, when not logged in
   if (user_is_anonymous()) {
     return 'decreto_frontend';
   }

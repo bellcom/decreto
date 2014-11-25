@@ -20,6 +20,7 @@
 // | - Disable form autocomplete
 // |
 
+// Mandatory
 var mandatory = {
 
     // Initialization

@@ -1,0 +1,51 @@
+//
+// Variables
+// --------------------------------------------------
+
+//== Sticky
+@header-sticky-zindex:                                  @zindex-navbar-fixed;
+
+//== Navbar
+@header-navbar-height:                                  120px;
+@header-navbar-background-color:                        #fff;
+@header-navbar-background-color-rgba:                   rgba(red(@header-navbar-background-color), green(@header-navbar-background-color), blue(@header-navbar-background-color), .95);
+
+@header-sidebar-navbar-height:                          70px;
+@header-sidebar-navbar-background-color:                #fff;
+@header-sidebar-navbar-background-color-rgba:           rgba(red(@header-sidebar-navbar-background-color), green(@header-sidebar-navbar-background-color), blue(@header-sidebar-navbar-background-color), .95);
+
+//== Logo
+@header-logo-height:                                    55px;
+@header-logo-width:                                     234px;
+@header-sidebar-logo-height:                            40px;
+@header-sidebar-logo-width:                             170px;
+
+//== Nav
+@header-nav-element-spacing:                            20px;
+
+//== Nav link - normal state
+@header-nav-link-font-family:                           @headings-font-family;
+@header-nav-link-font-size:                             16px;
+@header-nav-link-font-weight:                           @headings-font-weight;
+@header-nav-link-font-color:                            @text-color;
+@header-nav-link-text-decoration:                       none;
+@header-nav-link-background-color:                      transparent;
+@header-nav-link-padding:                               0 @header-nav-element-spacing;
+
+//== Nav link - hover state
+@header-nav-link-hover-font-color:                      @brand-primary;
+@header-nav-link-hover-background-color:                @header-nav-link-background-color;
+@header-nav-link-hover-text-decoration:                 none;
+
+//== Nav link - active state
+@header-nav-link-active-font-color:                     @header-nav-link-hover-font-color;
+@header-nav-link-active-background-color:               @header-nav-link-hover-background-color;
+@header-nav-link-active-text-decoration:                underline;
+
+//== Nav link - active and hover state
+@header-nav-link-active-hover-font-color:               @header-nav-link-active-font-color;
+@header-nav-link-active-hover-background-color:         @header-nav-link-active-background-color;
+@header-nav-link-active-hover-text-decoration:          @header-nav-link-active-text-decoration;
+
+//== Nav button
+@header-nav-button-padding:                             0 @header-nav-element-spacing;

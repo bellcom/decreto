@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 options: {
-                    compress: false,
+                    compress: true,
                     paths: ["./less"],
                     banner: "/* decreto_frontend ApS - http://github.com/decreto_frontend */"
                 },

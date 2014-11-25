@@ -3,7 +3,7 @@
 	line-height: floor((@font-size * @line-height-base));
 }
 
-// Line height
+// Transform style
 .transform-style(@style) {
 	-webkit-transform-style: @style;
 	-ms-transform-style: @style;
@@ -16,4 +16,18 @@
 	-moz-background-size: @size;
 	-o-background-size: @size;
 	background-size: @size;
+}
+
+// Font smoothing (see: http://maxvoltar.com/archive/-webkit-font-smoothing)
+.font-smoothing(@type: antialiased) {
+	-webkit-font-smoothing: @type;
+	-moz-font-smoothing: @type;
+	-ms-font-smoothing: @type;
+	-o-font-smoothing: @type;
+	font-smoothing: @type;
+}
+
+// Sidebar - link indentation
+.sidebar-nav-link-indentation(@indentation-level: 1;) {
+	padding-left: @sidebar-nav-link-icon-max-width + (@sidebar-nav-link-indentation * @indentation-level);
 }

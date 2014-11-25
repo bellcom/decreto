@@ -45,11 +45,23 @@ function decreto_frontend_form_element($variables) {
  */
 function decreto_frontend_preprocess_html(&$variables) {
 
+    drupal_add_js('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('type' => 'external'));
+
     // Vendor path
     $variables['vendor_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
 
     // Stylesheet/CSS path
     $variables['stylesheet_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/css/';
+
+    // Header
+    $variables['classes_array'][] = 'header-sticky'; // Sticky
+    $variables['classes_array'][] = 'header-sidebar-visible-xs'; // Header sidebar - mobile
+    $variables['classes_array'][] = 'header-sidebar-visible-sm'; // Header sidebar - tablet
+    $variables['classes_array'][] = 'header-visible-md'; // Header - desktop
+    $variables['classes_array'][] = 'header-visible-lg'; // Header - large desktop
+
+    // Sidebar - push content
+    $variables['classes_array'][] = 'sidebar-push';
 
 }
 
@@ -79,15 +91,21 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
     if ($form_id == 'user_login_block' || $form_id == 'user_login') {
 
         // Name
-        $form['name']['#title'] = '';
+        $form['name']['#title'] = t('Name');
+        $form['name']['#title_display'] = 'invisible';
         $form['name']['#description'] = '';
-        $form['name']['#attributes'] = array('placeholder' => 'Brugernavn');
+        $form['name']['#attributes'] = array('placeholder' => 'Brugernavn eller e-mail adresse');
+        $form['name']['#prefix'] = '<div class="form-group">';
+        $form['name']['#suffix'] = '</div>';
         $form['name']['#weight'] = 0;
 
         // Password
-        $form['pass']['#title'] = '';
+        $form['pass']['#title'] = t('Username or email address');
+        $form['pass']['#title_display'] = 'invisible';
         $form['pass']['#description'] = '';
         $form['pass']['#attributes'] = array('placeholder' => 'Adgangskode');
+        $form['pass']['#prefix'] = '<div class="form-group">';
+        $form['pass']['#suffix'] = '</div>';
         $form['pass']['#weight'] = 5;
 
         // Submit
@@ -102,8 +120,11 @@ function decreto_frontend_form_alter(&$form, &$form_state, $form_id) {
 
         // Name
         $form['name']['#title'] = '';
+        $form['name']['#title_display'] = 'invisible';
         $form['name']['#description'] = '';
         $form['name']['#attributes'] = array('placeholder' => 'Brugernavn eller e-mail adresse');
+        $form['name']['#prefix'] = '<div class="form-group">';
+        $form['name']['#suffix'] = '</div>';
         $form['name']['#weight'] = 0;
 
         // Submit

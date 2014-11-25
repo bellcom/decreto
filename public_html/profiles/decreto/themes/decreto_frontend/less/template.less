@@ -10,7 +10,9 @@
 // | - Banner top
 // | - Banner background
 // | - Contact information
+// | - Support banner
 // | - Buzz boxes
+// | - Support banner
 // | - Bootstrap element altering
 // | -- form group
 // |
@@ -60,20 +62,83 @@
                 position: relative;
                 padding-top: 70px;
 
+                // Messages
+                .alert {
+                    text-align: left;
+                    margin: 0 -25px;
+                    margin-bottom: 25px;
+                }
+
+                // Call-to-action buttons
+                .user-form-call-to-action-buttons {
+                    padding: 0;
+                    margin: 0 -25px;
+                    list-style: none;
+                    &:extend(.clearfix all);
+
+                    // List item
+                    li {
+                        padding-bottom: 50px;
+                        width: 25%;
+                        float: left;
+
+                        // Link
+                        a {
+                            display: inline-block;
+                            width: 46px;
+                            height: 46px;
+                            line-height: 44px;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-color: #ebebec;
+                            border-radius: 100%;
+                            .transition(all @transition-time ease-in-out);
+
+                            // Icon
+                            .icon {
+                                color: @text-color;
+                                font-size: 20px;
+                            }
+
+                            // Hover and focus state
+                            &:hover,
+                            &:focus {
+                                border-color: @brand-secondary;
+                                border-width: 4px;
+
+                                // Icon
+                                .icon {
+                                    color: @brand-primary;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 // Form
                 .user-form-form {
                     margin: 0 -25px;
 
+                    // Form group
+                    .form-group {
+                        margin-bottom: 25px;
+                    }
+
                     // Form control
                     .form-control {
+                        height: (ceil(@font-size-base * @line-height-base) + (15px * 2) + 2);
                         padding: 15px 25px;
                         border-width: 1px;
                         border-color: #ebebec;
 
-                        // Hover and focus state
-                        &:hover,
-                        &:focus {
+                        // Hover state
+                        &:hover {
                             border-color: #dedee0;
+                        }
+
+                        // Focus state
+                        &:focus {
+                            border-color: @brand-secondary;
                         }
                     }
                 }
@@ -106,10 +171,13 @@
 
             // Button
             .btn {
+                padding: 15px 25px;
+                font-size: @font-size-base;
+                line-height: @line-height-base;
+
                 border-width: 1px;
                 border-style: solid;
                 text-align: left;
-                padding: 15px 25px;
 
                 // Icon
                 .icon {
@@ -181,6 +249,20 @@
                 // Form wrapper
                 .user-form-wrapper {
                     padding-top: 40px;
+
+                    // Call-to-action buttons
+                    .user-form-call-to-action-buttons {
+
+                        // List item
+                        li {
+                            padding-bottom: 30px;
+                        }
+                    }
+
+                    // Form group
+                    .form-group {
+                        margin-bottom: 15px;
+                    }
                 }
             }
         }
@@ -196,22 +278,24 @@
         // Lock
         .icon-lock {
             width: 24px;
-            .img-retina("@{path-image}header/icon-lock-1x.png", "@{path-image}header/icon-lock-2x.png", 24px, 25px);
-        }
-    }
-
-    // Wrapper
-    #wrapper {
-
-        // Content
-        #content {
-            padding-top: @header-navigation-bar-height;
         }
     }
 
     // --------------------------------------------------
     // Footer
     // --------------------------------------------------
+
+    // Footer behind
+    // - same background color as the footer, when
+    // - footer is footer-behind. If not this can cause
+    // - visual problems in Safari.
+    .footer-behind {
+
+        // Wrapper
+        #wrapper {
+            background-color: #364045;
+        }
+    }
 
     // Footer
     .footer {
@@ -282,6 +366,7 @@
         background: @brand-secondary url('@{path-image}banner/background.jpg') center top no-repeat;
     }
 
+    // Desktop
     @media @media-query-desktop {
 
         // Banner
@@ -322,7 +407,7 @@
     // Contact information
     .contact-information {
 
-        // Headline
+        // Headlines
         h1,
         h2,
         h3,
@@ -344,6 +429,24 @@
                     margin-bottom: 0;
                 }
             }
+        }
+    }
+
+    // --------------------------------------------------
+    // Banner support
+    // --------------------------------------------------
+
+    // Banner support
+    .banner-support {
+
+        // Headlines
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #fff;
         }
     }
 

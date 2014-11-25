@@ -1,0 +1,389 @@
+// |--------------------------------------------------------------------------
+// | Header
+// |--------------------------------------------------------------------------
+// |
+// | Makes it a breeze to alter text layouts via HTML on the website.
+// | This file contains the following:
+// |
+// | Sticky
+// |
+// | Logo
+// |
+// | Navigation
+// | - all types
+// | -
+// | - inside navbar
+// |
+// | Element positioning
+// | Display modes
+// |
+
+    // --------------------------------------------------
+    // Sticky
+    // --------------------------------------------------
+
+    // Sticky
+    .header-sticky {
+
+        // Header
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: @header-sticky-zindex;
+        }
+    }
+
+    // --------------------------------------------------
+    // Logo
+    // --------------------------------------------------
+
+    // Header
+    .header {
+
+        // Logo
+        .header-logo {
+            display: block;
+            height: inherit;
+            width: @header-logo-width;
+            line-height: inherit;
+            .img-retina("@{path-image}header/logo-1x.png", "@{path-image}header/logo-2x.png", @header-logo-width, @header-logo-height);
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        // Header sidebar
+        &.header-sidebar {
+
+            // Logo
+            .header-logo {
+                width: @header-sidebar-logo-width;
+                .img-retina("@{path-image}header/logo-sidebar-1x.png", "@{path-image}header/logo-sidebar-2x.png", @header-sidebar-logo-width, @header-sidebar-logo-height);
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Navbar
+    // --------------------------------------------------
+
+    // Header
+    .header {
+
+        // Navbar
+        .header-navbar {
+            height: @header-navbar-height;
+            line-height: @header-navbar-height;
+            background-color: @header-navbar-background-color;
+            background-color: @header-navbar-background-color-rgba;
+        }
+
+        // Header sidebar
+        &.header-sidebar {
+
+            // Navbar
+            .header-navbar {
+                height: @header-sidebar-navbar-height;
+                line-height: @header-sidebar-navbar-height;
+                background-color: @header-sidebar-navbar-background-color;
+                background-color: @header-sidebar-navbar-background-color-rgba;
+            }
+        }
+
+        // Lets all elements inherit the height and line height
+        .container,
+        .container-fluid,
+        .row,
+        .header-navbar-content {
+            height: inherit;
+            min-height: inherit;
+            line-height: inherit;
+        }
+    }
+
+    // --------------------------------------------------
+    // Navigation
+    // --------------------------------------------------
+
+    // Header
+    .header {
+
+        // Navigation
+        .header-nav {
+            min-height: inherit;
+            line-height: inherit;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            // List item
+            > li {
+                line-height: inherit;
+                float: left;
+            }
+        }
+
+        // Navbar
+        .header-navbar {
+
+            // Navigation
+            .header-nav {
+
+                // Link
+                .header-nav-link {
+
+                    // Link
+                    > a {
+                        display: block;
+                        background-color: @header-nav-link-background-color;
+                        font-family: @header-nav-link-font-family;
+                        font-weight: @header-nav-link-font-weight;
+                        font-size: @header-nav-link-font-size;
+                        color: @header-nav-link-font-color;
+                        padding: @header-nav-link-padding;
+                        text-decoration: @header-nav-link-text-decoration;
+                    }
+
+                    // Hover state
+                    &:hover {
+
+                        // Link
+                        > a {
+                            background-color: @header-nav-link-hover-background-color;
+                            color: @header-nav-link-hover-font-color;
+                            text-decoration: @header-nav-link-hover-text-decoration;
+                        }
+                    }
+
+                    // Active
+                    &.active {
+
+                        // Link
+                        > a {
+                            background-color: @header-nav-link-active-background-color;
+                            color: @header-nav-link-active-font-color;
+                            text-decoration: @header-nav-link-active-text-decoration;
+                        }
+
+                        // Hover state
+                        &:hover {
+
+                            // Link
+                            > a {
+                                background-color: @header-nav-link-active-hover-background-color;
+                                color: @header-nav-link-active-hover-font-color;
+                                text-decoration: @header-nav-link-active-hover-text-decoration;
+                            }
+                        }
+                    }
+                }
+
+                // Button
+                .header-nav-button {
+                    padding: @header-nav-button-padding;
+
+                    // Button
+                    .btn {
+                        margin: 0;
+                        margin-top: -1px;
+
+                        // Sidebar toggle
+                        &.btn-sidebar-toggle {
+                            padding: 0;
+
+                            // Icon
+                            .icon {
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Element positioning
+    // --------------------------------------------------
+
+    // Header
+    .header {
+
+        // Position - left
+        .header-left {
+            .header-position-left();
+        }
+
+        // Position - center
+        .header-center {
+            .header-position-center();
+        }
+
+        // Position - right
+        .header-right {
+            .header-position-right();
+        }
+    }
+
+    // --------------------------------------------------
+    // Display modes
+    // --------------------------------------------------
+
+    // Body
+    body {
+
+        // Header and header sidebar
+        .header,
+        .header-sidebar {
+            display: none;
+        }
+
+        // Mobile
+        @media @media-query-mobile {
+
+            // Header - mobile
+            &.header-visible-xs {
+
+                // Header
+                .header {
+                    display: block;
+
+                    // Header sidebar
+                    &.header-sidebar {
+                        display: none;
+                    }
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-navbar-height;
+                }
+            }
+
+            // Header sidebar - mobile
+            &.header-sidebar-visible-xs {
+
+                // Header sidebar
+                .header-sidebar {
+                    display: block;
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-sidebar-navbar-height;
+                }
+            }
+        }
+
+        // Tablet
+        @media @media-query-tablet {
+
+            // Header - tablet
+            &.header-visible-sm {
+
+                // Header
+                .header {
+                    display: block;
+
+                    // Header sidebar
+                    &.header-sidebar {
+                        display: none;
+                    }
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-navbar-height;
+                }
+            }
+
+            // Header sidebar - tablet
+            &.header-sidebar-visible-sm {
+
+                // Header sidebar
+                .header-sidebar {
+                    display: block;
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-sidebar-navbar-height;
+                }
+            }
+        }
+
+        // Desktop
+        @media @media-query-desktop {
+
+            // Header - desktop
+            &.header-visible-md {
+
+                // Header
+                .header {
+                    display: block;
+
+                    // Header sidebar
+                    &.header-sidebar {
+                        display: none;
+                    }
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-navbar-height;
+                }
+            }
+
+            // Header sidebar - desktop
+            &.header-sidebar-visible-md {
+
+                // Header sidebar
+                .header-sidebar {
+                    display: block;
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-sidebar-navbar-height;
+                }
+            }
+        }
+
+        // Large desktop
+        @media @media-query-large-desktop {
+
+            // Header - large desktop
+            &.header-visible-lg {
+
+                // Header
+                .header {
+                    display: block;
+
+                    // Header sidebar
+                    &.header-sidebar {
+                        display: none;
+                    }
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-navbar-height;
+                }
+            }
+
+            // Header sidebar - large desktop
+            &.header-sidebar-visible-lg {
+
+                // Header sidebar
+                .header-sidebar {
+                    display: block;
+                }
+
+                // Content
+                #content {
+                    padding-top: @header-sidebar-navbar-height;
+                }
+            }
+        }
+    }

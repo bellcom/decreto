@@ -32,6 +32,35 @@
         <!-- Begin - container -->
         <div class="user-form-container">
 
+            <!-- Begin - call-to-action buttons -->
+            <ul class="user-form-call-to-action-buttons">
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Bestil">
+                        <span class="icon fa fa-shopping-cart"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Kontakt os">
+                        <span class="icon fa fa-envelope"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Support/forum">
+                        <span class="icon fa fa-question"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Del med andre">
+                        <span class="icon fa fa-share-alt"></span>
+                    </a>
+                </li>
+            </ul>
+            <!-- End - call-to-action buttons -->
+
+            <!-- Begin - messages -->
+            <?php print $messages; ?>
+            <!-- End - messages -->
+
             <!-- Begin - form -->
             <div class="user-form-form">
 
