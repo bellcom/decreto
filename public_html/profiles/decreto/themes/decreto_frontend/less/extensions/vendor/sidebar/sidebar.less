@@ -378,8 +378,7 @@
 
             // Fixed elements
             .sidebar-overlay,
-            &.header-sticky .header,
-            &.footer-behind .footer {
+            &.header-sticky .header {
                 left: @sidebar-left-width;
             }
         }
@@ -394,9 +393,60 @@
 
             // Fixed elements
             .sidebar-overlay,
-            &.header-sticky .header,
-            &.footer-behind .footer {
+            &.header-sticky .header {
                 right: @sidebar-right-width;
+            }
+        }
+    }
+
+    // Touch devices
+    .touch {
+
+        // Sidebar is open
+        .sidebar-open {
+
+            // Left
+            &.sidebar-left-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    margin-left: @sidebar-left-width;
+                }
+            }
+
+            // Right
+            &.sidebar-right-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    margin-right: @sidebar-right-width;
+                }
+            }
+        }
+    }
+
+    // Non touch devices
+    .no-touch {
+
+        // Sidebar is open
+        .sidebar-open {
+
+            // Left
+            &.sidebar-left-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    left: @sidebar-left-width;
+                }
+            }
+
+            // Right
+            &.sidebar-right-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    right: @sidebar-right-width;
+                }
             }
         }
     }
