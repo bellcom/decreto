@@ -264,7 +264,7 @@ var mandatory = {
 
         // Add "icon-spin" class to icon
         scope.find(".icon").addClass("icon-spin");
-        console.log('clicked-asd');
+
     }
 
 }
