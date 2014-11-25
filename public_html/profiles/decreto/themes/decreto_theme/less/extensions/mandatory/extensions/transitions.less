@@ -1,0 +1,64 @@
+// |--------------------------------------------------------------------------
+// | Transitions
+// |--------------------------------------------------------------------------
+// |
+// | Adds transitions for the following elements:
+// |
+// | Non touch
+// | - Button
+// | - Icon
+// | - Link
+// |
+
+    // --------------------------------------------------
+    // Button
+    // --------------------------------------------------
+
+    // Non touch devices
+    .no-touch {
+
+        // Button
+        .btn {
+
+            // Normal, hover and active state
+            &,
+            &:hover,
+            &:focus,
+            &:active {
+                .transition(~"border-color @{transition-time} ease-in-out, color @{transition-time} ease-in-out, background-color @{transition-time} ease-in-out");
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Icon
+    // --------------------------------------------------
+
+    // Non touch devices
+    .no-touch {
+
+        // Icon
+        .icon {
+            .transition(color @transition-time ease-in-out);
+        }
+    }
+
+    // --------------------------------------------------
+    // Link
+    // --------------------------------------------------
+
+    // Non touch devices
+    .no-touch {
+
+        // Links
+        a {
+
+            // Normal, hover and active state
+            &,
+            &:hover,
+            &:focus,
+            &:active {
+                .transition(color @transition-time ease-in-out);
+            }
+        }
+    }

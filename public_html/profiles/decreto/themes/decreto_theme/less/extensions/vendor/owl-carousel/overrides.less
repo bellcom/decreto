@@ -1,0 +1,113 @@
+@owl-spacer-height: 70px;
+
+// Theme
+.owl-theme {
+
+    // Content
+    .owl-carousel-content {
+        background-color: @brand-primary;
+        margin-top: @owl-spacer-height;
+
+        // Container
+        .container {
+            position: relative;
+        }
+
+        // Text
+        .owl-carousel-content-text {
+            padding-top: 40px;
+            padding-bottom: 90px;
+
+            // Headlines
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: #fec3a8;
+                margin-top: 0;
+            }
+
+            // Paragraph
+            p {
+                color: #fff;
+            }
+        }
+
+        // Phone
+        .owl-carousel-image-phone {
+            position: absolute;
+            top: -70px;
+            right: @grid-gutter-width;
+            width: 230px;
+        }
+    }
+
+    // Controls
+    .owl-controls {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        z-index: 1000;
+        margin-top: -40px;
+
+        // Nav
+        .owl-nav {
+            margin-top: 0;
+        }
+
+        // Dots
+        .owl-dots {
+
+            // Dot
+            .owl-dot {
+
+                span {
+                    width: 14px;
+                    height: 14px;
+                    background-color: #d95b21;
+                    .transition(background-color @transition-time ease-in-out);
+                    border-radius: 100%;
+                    margin: 0;
+                    margin-right: 6px;
+                }
+
+                // Hover and active
+                &:hover,
+                &.active {
+
+                    // Span
+                    span {
+                        background-color: #fb9769;
+                    }
+                }
+
+                // Last child
+                &:last-child {
+
+                    // Span
+                    span {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Mobile
+@media @media-query-mobile {
+    // Theme
+    .owl-theme {
+
+        // Content
+        .owl-carousel-content {
+
+            // Phone
+            .owl-carousel-image-phone {
+                display: none;
+            }
+        }
+    }
+}

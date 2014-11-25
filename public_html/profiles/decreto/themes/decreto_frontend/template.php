@@ -47,11 +47,10 @@ function decreto_frontend_preprocess_html(&$variables) {
 
     drupal_add_js('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('type' => 'external'));
 
-    // Vendor path
-    $variables['vendor_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
-
-    // Stylesheet/CSS path
-    $variables['stylesheet_path'] = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/css/';
+    // Paths
+    $variables['vendor_path']       = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/vendor/';
+    $variables['image_path']        = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/img/';
+    $variables['stylesheet_path']   = base_path() . drupal_get_path('theme', 'decreto_frontend') . '/css/';
 
     // Header
     $variables['classes_array'][] = 'header-sticky'; // Sticky
@@ -62,6 +61,9 @@ function decreto_frontend_preprocess_html(&$variables) {
 
     // Sidebar - push content
     $variables['classes_array'][] = 'sidebar-push';
+
+    // Footer
+    $variables['classes_array'][] = 'footer-behind';
 
 }
 

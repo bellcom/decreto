@@ -1,0 +1,295 @@
+// |--------------------------------------------------------------------------
+// | Colouring
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - brand colors
+// | - states
+// | - button
+// | - social links
+// |
+
+    // --------------------------------------------------
+    // Brand colors
+    // --------------------------------------------------
+
+    // Brand colors
+    @brand-secondary:               #9cd7cc;
+    @brand-tertiary:                #364045;
+
+    // --------------------------------------------------
+    // States
+    // --------------------------------------------------
+
+    // State - primary
+    @state-primary-text:            #ffffff;
+    @state-primary-bg:              @brand-primary;
+
+    // State - secondary
+    @state-secondary-text:          #fff;
+    @state-secondary-bg:            @brand-secondary;
+
+    // State - tertiary
+    @state-tertiary-text:           #fff;
+    @state-tertiary-bg:             @brand-tertiary;
+
+    // --------------------------------------------------
+    // Button
+    // --------------------------------------------------
+
+    // Button - secondary
+    @btn-secondary-color:           #fff;
+    @btn-secondary-bg:              @brand-secondary;
+    @btn-secondary-border:          darken(@btn-secondary-bg, 5%);
+
+    // Button - tertiary
+    @btn-tertiary-color:            #fff;
+    @btn-tertiary-bg:               @brand-tertiary;
+    @btn-tertiary-border:           darken(@btn-tertiary-bg, 5%);
+
+    // --------------------------------------------------
+    // Social links
+    // --------------------------------------------------
+
+    // Social link colouring
+    @social-link-color-facebook:    #3B5998;
+    @social-link-color-twitter:     #55acee;
+    @social-link-color-instagram:   #3f729b;
+    @social-link-color-linkedin:    #0976b4;
+    @social-link-color-pinterest:   #cc2127;
+    @social-link-color-vimeo: 	    #1ab7ea;
+    @social-link-color-youtube:     #e52d27;
+
+// |--------------------------------------------------------------------------
+// | Font
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - letter spacing
+// | -- headings
+// |
+// | - font weight
+// | -- headings
+// | -- normal text
+// |
+
+    // --------------------------------------------------
+    // Letter spacing
+    // --------------------------------------------------
+
+    // Headings
+    @headings-h1-letter-spacing:        -1px;
+    @headings-h2-letter-spacing:        -1px;
+    @headings-h3-letter-spacing:        0;
+    @headings-h4-letter-spacing:        @headings-h3-letter-spacing;
+    @headings-h5-letter-spacing:        @headings-h4-letter-spacing;
+    @headings-h6-letter-spacing:        @headings-h5-letter-spacing;
+
+    // --------------------------------------------------
+    // Font weight
+    // --------------------------------------------------
+
+    // Headings
+    @headings-font-weight-light: 	    400;
+    @headings-font-weight-semi-light:   400;
+    @headings-font-weight: 		        400;
+    @headings-font-weight-semi-bold:    700;
+    @headings-font-weight-bold: 	    700;
+
+    // Normal text
+    @font-weight-light: 	            200;
+    @font-weight-semi-light:            300;
+    @font-weight: 		                400;
+    @font-weight-semi-bold:             500;
+    @font-weight-bold: 	                600;
+
+    // --------------------------------------------------
+    // Font size
+    // --------------------------------------------------
+
+    // Headings
+    @headings-h1-line-height:           floor((@font-size-h1 * @line-height-base));
+    @headings-h2-line-height:           floor((@font-size-h2 * @line-height-base));
+    @headings-h3-line-height:           floor((@font-size-h3 * @line-height-base));
+    @headings-h4-line-height:           floor((@font-size-h4 * @line-height-base));
+    @headings-h5-line-height:           floor((@font-size-h5 * @line-height-base));
+    @headings-h6-line-height:           floor((@font-size-h6 * @line-height-base));
+
+    // Normal text
+    @line-height-small:                 floor((@font-size-small * @line-height-base));
+    @line-height-large:                 floor((@font-size-large * @line-height-base));
+
+// |--------------------------------------------------------------------------
+// | Margin and padding
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - xxs
+// | - xs
+// | - s
+// | - m
+// | - l
+// | - xl
+// | - xxl
+// |
+
+    // --------------------------------------------------
+    // Mobile
+    // --------------------------------------------------
+
+    @mandatory-margin-and-padding-xs-xxs:			2px;
+    @mandatory-margin-and-padding-xs-xs:			5px;
+    @mandatory-margin-and-padding-xs-s:				8px;
+    @mandatory-margin-and-padding-xs-m:				12px;
+    @mandatory-margin-and-padding-xs-l:				16px;
+    @mandatory-margin-and-padding-xs-xl:			24px;
+    @mandatory-margin-and-padding-xs-xxl:			32px;
+
+    // --------------------------------------------------
+    // Tablet
+    // --------------------------------------------------
+
+    @mandatory-margin-and-padding-sm-xxs:			3px;
+    @mandatory-margin-and-padding-sm-xs:			6px;
+    @mandatory-margin-and-padding-sm-s:				10px;
+    @mandatory-margin-and-padding-sm-m:				15px;
+    @mandatory-margin-and-padding-sm-l:				22px;
+    @mandatory-margin-and-padding-sm-xl:			30px;
+    @mandatory-margin-and-padding-sm-xxl:			40px;
+
+    // --------------------------------------------------
+    // Desktop
+    // --------------------------------------------------
+
+    @mandatory-margin-and-padding-md-xxs:			5px;
+    @mandatory-margin-and-padding-md-xs:			10px;
+    @mandatory-margin-and-padding-md-s:				15px;
+    @mandatory-margin-and-padding-md-m:				25px;
+    @mandatory-margin-and-padding-md-l:				40px;
+    @mandatory-margin-and-padding-md-xl:			60px;
+    @mandatory-margin-and-padding-md-xxl:			90px;
+
+    // --------------------------------------------------
+    // Large desktop
+    // --------------------------------------------------
+
+    @mandatory-margin-and-padding-lg-xxs:			5px;
+    @mandatory-margin-and-padding-lg-xs:			10px;
+    @mandatory-margin-and-padding-lg-s:				15px;
+    @mandatory-margin-and-padding-lg-m:				25px;
+    @mandatory-margin-and-padding-lg-l:				40px;
+    @mandatory-margin-and-padding-lg-xl:			60px;
+    @mandatory-margin-and-padding-lg-xxl:			90px;
+
+// |--------------------------------------------------------------------------
+// | Icon
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - sizing
+// |
+
+    // --------------------------------------------------
+    // Sizing
+    // --------------------------------------------------
+
+    @mandatory-icon-font-size-xxs:                  8px;
+    @mandatory-icon-font-size-xs:                   12px;
+    @mandatory-icon-font-size-s:                    16px;
+    @mandatory-icon-font-size:                      20px;
+    @mandatory-icon-font-size-l:                    32px;
+    @mandatory-icon-font-size-xl:                   45px;
+    @mandatory-icon-font-size-xxl:                  60px;
+
+// |--------------------------------------------------------------------------
+// | Form
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - Input text
+// | - GUI radio and checkbox
+// |
+
+    // --------------------------------------------------
+    // Input text
+    // --------------------------------------------------
+
+    @mandatory-form-input-border-width:                 2px;
+
+    // --------------------------------------------------
+    // GUI radio and checkbox
+    // --------------------------------------------------
+
+    // Radio
+    @mandatory-form-gui-radio-background-color:         @input-bg;
+
+    @mandatory-form-gui-radio-border-width:             2px;
+    @mandatory-form-gui-radio-border-color:             @input-border;
+    @mandatory-form-gui-radio-hover-border-color:       @input-border-focus;
+    @mandatory-form-gui-radio-checked-border-color:     @input-border-focus;
+
+    @mandatory-form-gui-radio-dot-color:                @mandatory-form-gui-radio-border-color;
+    @mandatory-form-gui-radio-hover-dot-color:          @mandatory-form-gui-radio-hover-border-color;
+    @mandatory-form-gui-radio-checked-dot-color:        @mandatory-form-gui-radio-checked-border-color;
+
+    @mandatory-form-gui-radio-size-small:               @input-height-small;
+    @mandatory-form-gui-radio-size-small-dot-margin:    1px; // Distance to border
+    @mandatory-form-gui-radio-size:                     @input-height-base;
+    @mandatory-form-gui-radio-size-dot-margin:          2px; // Distance to border
+    @mandatory-form-gui-radio-size-large:               @input-height-large;
+    @mandatory-form-gui-radio-size-large-dot-margin:    4px; // Distance to border
+
+    // Checkbox
+    @mandatory-form-gui-checkbox-background-color:      @input-bg;
+    @mandatory-form-gui-checkbox-border-radius:         @input-border-radius;
+
+    @mandatory-form-gui-checkbox-border-width:          2px;
+    @mandatory-form-gui-checkbox-border-color:          @input-border;
+    @mandatory-form-gui-checkbox-hover-border-color:    @input-border-focus;
+    @mandatory-form-gui-checkbox-checked-border-color:  @input-border;
+
+    @mandatory-form-gui-checkbox-dot-size:              8px; // Width & height
+    @mandatory-form-gui-checkbox-dot-margin:            4px; // Distance to border
+    @mandatory-form-gui-checkbox-dot-color:             @mandatory-form-gui-checkbox-border-color;
+    @mandatory-form-gui-checkbox-hover-dot-color:       @mandatory-form-gui-checkbox-hover-border-color;
+    @mandatory-form-gui-checkbox-checked-dot-color:     @brand-success;
+
+    @mandatory-form-gui-checkbox-size-small:            @input-height-small;
+    @mandatory-form-gui-checkbox-size-small-dot-margin: 3px; // Distance to border
+    @mandatory-form-gui-checkbox-size:                  @input-height-base;
+    @mandatory-form-gui-checkbox-size-dot-margin:       3px; // Distance to border
+    @mandatory-form-gui-checkbox-size-large:            @input-height-large;
+    @mandatory-form-gui-checkbox-size-large-dot-margin: 4px; // Distance to border
+
+// |--------------------------------------------------------------------------
+// | Miscellaneous
+// |--------------------------------------------------------------------------
+// |
+// | Contains the following variables:
+// | - transition time
+// | - paths
+// | - media queries
+// |
+
+    // --------------------------------------------------
+    // Transition time
+    // --------------------------------------------------
+
+    @transition-time-short:         0.15s;
+    @transition-time:               0.25s;
+    @transition-time-long:          0.4s;
+
+    // --------------------------------------------------
+    // Paths
+    // --------------------------------------------------
+
+    @path-image:                    "../img/";
+
+    // --------------------------------------------------
+    // Media queries
+    // --------------------------------------------------
+
+    @media-query-mobile:            ~"screen and (max-width: @{screen-xs-max})";
+    @media-query-tablet:            ~"screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
+    @media-query-desktop:           ~"screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
+    @media-query-large-desktop:     ~"screen and (min-width: @{screen-lg-min})";

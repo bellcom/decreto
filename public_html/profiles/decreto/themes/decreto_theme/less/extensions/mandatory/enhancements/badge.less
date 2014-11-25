@@ -1,0 +1,66 @@
+// |--------------------------------------------------------------------------
+// | Badge
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | Colouring
+// | - white
+// | - dark
+// | - primary
+// | - secondary
+// | - tertiary
+// |
+// | + 1
+// |
+
+	// --------------------------------------------------
+	// Colouring
+	// --------------------------------------------------
+
+	// Badge
+	.badge {
+
+		// White
+		&.badge-white {
+			color: @text-color;
+			background-color: #fff;
+		}
+
+		// Dark
+		&.badge-dark {
+			color: #fff;
+			background-color: @gray-dark;
+		}
+
+		// Primary
+		&.badge-primary {
+			color: @state-primary-text;
+			background-color: @state-primary-bg;
+		}
+
+		// Secondary
+		&.badge-secondary {
+			color: @state-secondary-text;
+			background-color: @state-secondary-bg;
+		}
+
+		// Tertiary
+		&.badge-tertiary {
+			color: @state-tertiary-text;
+			background-color: @state-tertiary-bg;
+		}
+	}
+
+	// --------------------------------------------------
+	// + 1
+	// --------------------------------------------------
+
+	// Badge
+	.badge {
+
+		// Additional
+		+ .badge {
+			margin-left: 4px;
+		}
+	}

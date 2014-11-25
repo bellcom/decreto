@@ -1,0 +1,108 @@
+// |--------------------------------------------------------------------------
+// | Layout
+// |--------------------------------------------------------------------------
+// |
+// | Makes it a breeze to alter text layouts via HTML on the website.
+// | This file contains the following:
+// |
+// | Page layout (base)
+// |
+// | - Footer
+// | -- Attached to bottom
+// | -- Behind content
+// |
+
+    // --------------------------------------------------
+    // Page layout (base)
+    // --------------------------------------------------
+
+    // HTML
+    html {
+
+        // HTML and body
+        &,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        // Body
+        body {
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            // Wrapper
+            #wrapper {
+                position: relative;
+                min-height: 100%;
+                overflow: hidden;
+
+                // Content
+                #content {
+                    position: relative;
+                    background-color: @body-bg;
+                }
+            }
+
+            // Footer
+            .footer {
+                position: relative;
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Footer
+    // --------------------------------------------------
+
+    // HTML
+    html {
+
+        // Non touch devices
+        &.no-touch {
+
+            // Body
+            body {
+
+                // Attached to bottom and footer behind
+                &.footer-attached,
+                &.footer-behind {
+
+                    // Footer
+                    .footer {
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: 0;
+                    }
+                }
+
+                // Attached to bottom
+                &.footer-attached {
+
+                    // Footer
+                    .footer {
+                        position: absolute;
+                    }
+                }
+
+                // Footer behind
+                &.footer-behind {
+
+                    // Content
+                    #content {
+                        z-index: 50;
+                    }
+
+                    // Footer
+                    .footer {
+                        position: fixed;
+                    }
+                }
+            }
+        }
+    }

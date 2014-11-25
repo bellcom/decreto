@@ -1,0 +1,121 @@
+// |--------------------------------------------------------------------------
+// | Background
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | - Colouring
+// | -- primary
+// | -- secondary
+// | -- tertiary
+// | - Overlay
+// | -- dark
+// | -- primary
+// | -- secondary
+// | -- tertiary
+// | - Cover
+// | - Parallax
+// |
+
+    // --------------------------------------------------
+    // Colouring
+    // --------------------------------------------------
+
+    // Color - primary
+    .background-color-primary {
+        background-color: @brand-primary;
+    }
+
+    // Color - secondary
+    .background-color-secondary {
+        background-color: @brand-secondary;
+    }
+
+    // Color - tertiary
+    .background-color-tertiary {
+        background-color: @brand-tertiary;
+    }
+
+    // --------------------------------------------------
+    // Overlay
+    // --------------------------------------------------
+
+    // Background overlay - dark
+    .background-overlay-dark {
+        background-color: rgba(37, 32, 31, .8);
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    // Background overlay - primary
+    .background-overlay-primary {
+        background-color: fade(@brand-primary, 80%);
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    // Background overlay - secondary
+    .background-overlay-secondary {
+        background-color: fade(@brand-secondary, 80%);
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    // Background overlay - tertiary
+    .background-overlay-tertiary {
+        background-color: fade(@brand-tertiary, 80%);
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    // --------------------------------------------------
+    // Cover
+    // --------------------------------------------------
+
+    // Background cover
+    .background-cover {
+        .background-size(cover);
+        overflow: hidden;
+    }
+
+    // --------------------------------------------------
+    // Parallax
+    // --------------------------------------------------
+
+    // Background parallax
+    .background-parallax {
+        background-repeat: no-repeat;
+        .background-size(cover);
+        overflow: hidden;
+    }
+
+    // No touch
+    .no-touch {
+
+        // Parallax background
+        .background-parallax {
+            background-attachment: fixed;
+            background-position: top center;
+        }
+    }
+
+    // Touch
+    .touch {
+
+        // Parallax background
+        .background-parallax {
+            background-position: center center;
+        }
+    }

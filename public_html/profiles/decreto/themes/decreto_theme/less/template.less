@@ -1,0 +1,506 @@
+// |--------------------------------------------------------------------------
+// | Template
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | - Header
+// | - Footer
+// |
+
+    // --------------------------------------------------
+    // Header
+    // --------------------------------------------------
+
+    // Header
+    .header {
+    }
+
+
+// Boxed content
+.boxed-content {
+    background-color: #fff;
+    border-bottom: 1px solid #e2e8ec;
+}
+
+
+
+
+
+
+// Table
+.table {
+
+    // Table header
+    thead {
+        border: 0;
+
+        tr {
+
+            th {
+                background-color: @table-header-background-color;
+                font-family: @table-header-font-family;
+                font-size: @table-header-font-size;
+                font-weight: @table-header-font-weight;
+                color: @table-header-font-color;
+                border-width: @table-header-border-width;
+                padding-top: 2px;
+                padding-bottom: 2px;
+
+                // Link
+                a {
+
+                    // Normal, hover and active state
+                    &,
+                    &:hover,
+                    &:active {
+                        font-family: @table-header-font-family;
+                        font-size: @table-header-font-size;
+                        font-weight: @table-header-font-weight;
+                        color: @table-header-link-font-color;
+                    }
+                }
+            }
+        }
+    }
+
+    // Table body
+    tbody {
+
+        tr {
+            border-top: 8px solid @body-bg;
+
+            td {
+                background-color: @table-body-background-color;
+                font-family: @table-body-font-family;
+                font-size: @table-body-font-size;
+                font-weight: @table-body-font-weight;
+                color: @table-body-font-color;
+
+                // Link
+                a {
+                    font-size: @table-body-link-font-size;
+                    font-weight: @table-body-link-font-weight;
+                    color: @table-body-link-font-color;
+                    text-decoration: underline;
+                    .transition( color @transition-time ease-in-out );
+
+                    // Hover and focus
+                    &:hover,
+                    &:focus {
+                        color: @table-body-link-hover-font-color;
+                    }
+                }
+
+                // Empty
+                .table-cell-empty {
+                    font-size: @table-body-empty-font-size;
+                    font-weight: @table-body-empty-font-weight;
+                    color: @table-body-empty-font-color;
+                }
+
+                // Danger
+                .danger {
+                    color: @table-body-danger-font-color;
+                }
+
+                // Success
+                .success {
+                    color: @table-body-success-font-color;
+                }
+
+                // Info
+                .info {
+                    color: @table-body-info-font-color;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Form control
+.form-control {
+    font-weight: @form-helper-input-font-weight;
+
+    // Normal, hover and focus
+    &,
+    &:hover,
+    &:focus {
+        .transition(border-color @transition-time ease-in-out);
+        .box-shadow(none);
+    }
+
+    // Disabled and readonly
+    &[disabled],
+    &[readonly] {
+
+        // Normal, hover and focus
+        &,
+        &:hover,
+        &:focus {
+            border-color: @input-border;
+            .user-select(none);
+        }
+    }
+}
+
+// Has error
+.has-error {
+
+    // Form control
+    .form-control {
+
+        // Normal, hover and focus
+        &,
+        &:hover,
+        &:focus {
+            border-color: @form-helper-has-error-border-color;
+            .transition(border-color @transition-time ease-in-out);
+            .box-shadow(none);
+        }
+
+        // Disabled and readonly
+        &[disabled],
+        &[readonly] {
+
+            // Normal, hover and focus
+            &,
+            &:hover,
+            &:focus {
+                border-color: @form-helper-has-error-border-color;
+            }
+        }
+    }
+}
+
+// Required (*)
+.form-required {
+    color: @form-helper-required-font-color;
+}
+
+// Form group
+.form-item,
+.form-group {
+
+    // Label
+    label {
+        font-weight: @form-helper-label-font-weight;
+    }
+}
+
+// Help block
+.help-block {
+    font-size: @form-helper-help-block-font-size;
+    font-weight: @form-helper-help-block-font-weight;
+    color: @form-helper-help-block-font-color;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn {
+    border: 0;
+
+    // Primary
+    &.btn-primary {
+        .btn-3d(@brand-primary);
+    }
+
+    // Secondary
+    &.btn-secondary {
+        .btn-3d(@brand-secondary);
+    }
+
+    // Tertiary
+    &.btn-tertiary {
+        .btn-3d(@brand-tertiary);
+    }
+
+    // Info
+    &.btn-info {
+        .btn-3d(@brand-info, #0091ea);
+    }
+
+    // Danger
+    &.btn-danger {
+        .btn-3d(@brand-danger, #c0392b);
+    }
+
+    // Warning
+    &.btn-warning {
+        .btn-3d(@brand-warning);
+    }
+
+    // Success
+    &.btn-success {
+        .btn-3d(@brand-success);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.meeting-points {
+    top: 0;
+    right: -@sidebar-right-width;
+    overflow-y: auto;
+    position: fixed;
+    width: @sidebar-right-width;
+    z-index: 200;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0;
+
+    // Points container
+    > .panel-body {
+        padding: 0;
+        margin: 0;
+
+        // All panels
+        .panel {
+            border: 0;
+            border-radius: 0;
+            background-color: transparent;
+        }
+
+        span {
+            //color: @sidebar-link-font-color;
+        }
+
+        // Single point container
+        > .panel {
+            min-height: 40px;
+
+            .panel-heading,
+            .panel-body,
+            .panel-title {
+                padding: 0;
+                margin: 0;
+                border: 0;
+                background-color: transparent;
+            }
+
+            // Add border
+            .panel-heading,
+            .panel-body {
+                //border-bottom-width: @sidebar-border-width;
+                //border-bottom-style: @sidebar-border-style;
+                //border-bottom-color: @sidebar-border-color;
+                //border-bottom-color: @sidebar-border-rgba-color; // RBGA
+            }
+
+            // Parent point (ex. point 1)
+            > .panel-heading {
+                min-height: 40px;
+                line-height: 40px;
+
+                span {
+                    font-size: 14px;
+                    font-weight: bold;
+                    margin: 0;
+                    padding-left: 20px;
+                }
+            }
+
+            // Sub points container (ex. point 1.1, 1.2)
+            > .panel-body {
+                //background-color: @sidebar-list-item-active-background-color-rgba;
+
+                // Sub point
+                > .panel {
+                    height: 40px;
+                    line-height: 40px;
+
+                    .panel-heading,
+                    .panel-body,
+                    .panel-title {
+                        padding: 0;
+                        margin: 0;
+                        border: 0;
+                        background-color: transparent;
+                        line-height: 40px;
+                    }
+
+                    // Sub point title (ex. point 1.1)
+                    > .panel-heading {
+                        span {
+                            font-size: 14px;
+                            color: #eee;
+                            padding-left: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    fieldset {
+        position: relative;
+    }
+
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 0;
+
+        &,
+        &:hover,
+        &:active,
+        &:focus,
+        &.disabled,
+        &[disabled] {
+            //border: 0;
+            //background-color: @sidebar-link-hover-background-color;
+            //background-color: @sidebar-link-hover-background-color-rgba;
+            //border-left-width: @sidebar-border-width;
+            //border-left-style: @sidebar-border-style;
+            //border-left-color: @sidebar-border-color;
+            //border-left-color: @sidebar-border-rgba-color; // RBGA
+        }
+
+        // Move up
+        &[id*='move-up'] {
+            color: #fff;
+            right: 40px;
+            //.glyphicon-chevron-up();
+
+            &:before {
+                //.add-glyphicon();
+                padding-right: 100px;
+            }
+        }
+
+        // Move down
+        &[id*='move-down'] {
+            color: #fff;
+            right: 0;
+            //.glyphicon-chevron-down();
+            &:before {
+                //.add-glyphicon();
+                padding-right: 100px;
+            }
+        }
+    }
+
+    .panel {
+        margin-bottom: 0;
+    }
+}
+
+
+.sidebar-right-open {
+
+    .meeting-points {
+        right: 0;
+    }
+}
+
+
+
+
+
+#bullet-points-fieldset-wrapper {
+
+    .panel {
+        margin-top: 30px;
+        margin-bottom: 80px;
+
+        .text-format-wrapper {
+            margin-bottom: 40px;
+        }
+
+        .btn.btn-danger.form-submit {
+            float: right;
+        }
+        .form-type-textfield {
+            padding-top: 20px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Applies small hotfixes, on content provided from other modules
+
+// Adminimal admin menu
+body.admin-menu {
+    margin-top: 28px !important; // 20px descided by module - but is actually 28px
+
+    .header-sticky {
+        top: 28px;
+    }
+}
+
+.form-item {
+    margin-bottom: 15px;
+}

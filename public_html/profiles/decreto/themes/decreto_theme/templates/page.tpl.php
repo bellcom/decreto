@@ -1,224 +1,151 @@
 <?php
 /**
  * @file
- * Default theme implementation to display a single Drupal page.
- *
- * The doctype, html, head and body tags are not in this template. Instead they
- * can be found in the html.tpl.php template in this directory.
- *
- * Available variables:
- *
- * General utility variables:
- * - $base_path: The base URL path of the Drupal installation. At the very
- *   least, this will always default to /.
- * - $directory: The directory the template is located in, e.g. modules/system
- *   or themes/bartik.
- * - $is_front: TRUE if the current page is the front page.
- * - $logged_in: TRUE if the user is registered and signed in.
- * - $is_admin: TRUE if the user has permission to access administration pages.
- *
- * Site identity:
- * - $front_page: The URL of the front page. Use this instead of $base_path,
- *   when linking to the front page. This includes the language domain or
- *   prefix.
- * - $logo: The path to the logo image, as defined in theme configuration.
- * - $site_name: The name of the site, empty when display has been disabled
- *   in theme settings.
- * - $site_slogan: The slogan of the site, empty when display has been disabled
- *   in theme settings.
- *
- * Navigation:
- * - $main_menu (array): An array containing the Main menu links for the
- *   site, if they have been configured.
- * - $secondary_menu (array): An array containing the Secondary menu links for
- *   the site, if they have been configured.
- * - $breadcrumb: The breadcrumb trail for the current page.
- *
- * Page content (in order of occurrence in the default page.tpl.php):
- * - $title_prefix (array): An array containing additional output populated by
- *   modules, intended to be displayed in front of the main title tag that
- *   appears in the template.
- * - $title: The page title, for use in the actual HTML content.
- * - $title_suffix (array): An array containing additional output populated by
- *   modules, intended to be displayed after the main title tag that appears in
- *   the template.
- * - $messages: HTML for status and error messages. Should be displayed
- *   prominently.
- * - $tabs (array): Tabs linking to any sub-pages beneath the current page
- *   (e.g., the view and edit tabs when displaying a node).
- * - $action_links (array): Actions local to the page, such as 'Add menu' on the
- *   menu administration interface.
- * - $feed_icons: A string of all feed icons for the current page.
- * - $node: The node object, if there is an automatically-loaded node
- *   associated with the page, and the node ID is the second argument
- *   in the page's path (e.g. node/12345 and node/12345/revisions, but not
- *   comment/reply/12345).
- *
- * Regions:
- * - $page['help']: Dynamic help text, mostly for admin pages.
- * - $page['highlighted']: Items for the highlighted content region.
- * - $page['content']: The main content of the current page.
- * - $page['sidebar_first']: Items for the first sidebar.
- * - $page['sidebar_second']: Items for the second sidebar.
- * - $page['header']: Items for the header region.
- * - $page['footer']: Items for the footer region.
- *
- * @see bootstrap_preprocess_page()
- * @see template_preprocess()
- * @see template_preprocess_page()
- * @see bootstrap_process_page()
- * @see template_process()
- * @see html.tpl.php
- *
- * @ingroup themeable
+ * page.tpl.php
  */
 ?>
 <!-- Begin - wrapper -->
 <div id="wrapper">
-  <?php if ($user_is_logged_in): ?>
-  <!-- Begin - sidebar -->
-  <div class="sidebar sidebar-left">
-      <!-- Begin - brand -->
-      <ul class="sidebar-brand">
-        <li>
-          <a href="/">
-            <?php if (isset($company_name)) : ?>
-                <?php if (strlen($company_name) <= 10) : ?>
-                    <h2><?php print $company_name; ?></h2>
-                <?php elseif (strlen($company_name) > 10 && strlen($company_name) <= 20) : ?>
-                    <h3><?php print $company_name; ?></h3>
-                <?php else : ?>
-                    <h4><?php print $company_name; ?></h4>
-                <?php endif; ?>
-            <?php else : ?>
-                <img src="img/decreto_logo.png" alt=""/><!-- Decreto logo -->
-            <?php endif; ?>
-          </a>
-        </li>
-      </ul>
-      <!-- End - brand -->
-      <!-- Begin - navigation -->
-      <ul class="sidebar-navigation">
-          <!-- Begin - organisation -->
-          <li class="sidebar-dropdown">
-              <a href="#">
-                  <span class="icon fa fa-building"></span>
-                  <?php if (isset($company_name)) : ?>
-                      <?php print $company_name; ?>
-                  <?php endif; ?>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                  <li><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
-                  <li><a href="/calendar"><span class="icon fa fa-calendar"></span>Kalender</a></li>
-              </ul>
-          </li>
-          <!-- End - organisation -->
-          <!-- Begin - contacts -->
-          <li class="sidebar-dropdown">
-              <a href="#">
-                  <span class="icon fa fa-book"></span>
-                  Kontakter
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                  <li><a href="/contacts/members"><span class="icon fa fa-users"></span>Medlemmer</a></li>
-              </ul>
-          </li>
-          <!-- End - contacts -->
-          <!-- Begin - administration -->
-          <li class="sidebar-dropdown">
-              <a href="#">
-                  <span class="icon fa fa-tachometer"></span>
-                  Administration
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                  <li><a href="/user"><span class="icon fa fa-user"></span>Min bruger</a></li>
-                  <li><a href="/organisation"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
-                  <li><a href="/organisation/users"><span class="icon fa fa-users"></span>Medlemmer</a></li>
-              </ul>
-          </li>
-          <!-- End - administration -->
-      </ul>
-      <!-- End - navigation -->
-  </div>
-  <!-- End - sidebar -->
-  <?php endif; ?>
 
-  <!-- Begin - content -->
-  <div id="content">
+    <!-- Begin - sidebar left -->
+    <div class="sidebar sidebar-left">
+        <ul>
 
-      <!-- Begin - header -->
-      <header class="header header-sticky">
-          <!-- Begin - navigation bar -->
-          <nav class="header-navigation-bar">
-              <div class="row">
-                  <!-- Begin - left -->
-                  <div class="col-md-4 navigation-bar-content align-content-left">
-                      <span class="btn btn-link sidebar-toggle" data-toggle-sidebar="left">
-                          <span class="icon fa fa-bars fa-2x"></span>
-                      </span>
-                  </div>
-                  <!-- End - left -->
-                  <!-- Begin - centered -->
-                  <div class="col-md-4 navigation-bar-content align-content-center">
-                  </div>
-                  <!-- End - centered -->
-                  <!-- Begin - right -->
-                  <div class="col-md-4 navigation-bar-content align-content-right">
-                      <span class="btn btn-link sidebar-toggle" data-toggle-sidebar="right">
-                          <span class="icon fa fa-bars fa-2x"></span>
-                      </span>
-                  </div>
-                  <!-- End - right -->
-              </div>
-          </nav>
-          <!-- End - navigation bar -->
-      </header>
-      <!-- End - header -->
-
-      <!-- Begin - content -->
-      <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div class="boxed-content">
-
-                  <section<?php print $content_column_class; ?>>
-
-                    <?php if (!empty($page['highlighted'])): ?>
-                      <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+            <!-- Begin - logo -->
+            <li class="sidebar-logo">
+                <a href="#" data-scroll-to="#banner">
+                    <?php if (isset($company_name)) : ?>
+                        <?php if (strlen($company_name) <= 10) : ?>
+                            <h2><?php print $company_name; ?></h2>
+                        <?php elseif (strlen($company_name) > 10 && strlen($company_name) <= 20) : ?>
+                            <h3><?php print $company_name; ?></h3>
+                        <?php else : ?>
+                            <h4><?php print $company_name; ?></h4>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <span class="sidebar-logo-image"></span><!-- Decreto logo -->
                     <?php endif; ?>
+                </a>
+            </li>
+            <!-- End - logo -->
 
-                    <a id="main-content"></a>
+            <!-- Begin - organisation -->
+            <li class="sidebar-nav-dropdown">
+                <a href="#">
+                    <span class="icon fa fa-building"></span>
+                    <?php if (isset($company_name)) : ?>
+                        <?php print $company_name; ?>
+                    <?php endif; ?>
+                </a>
+                <ul class="sidebar-nav-dropdown-menu">
+                    <li class="sidebar-nav-link"><a href="/meetings"><span class="icon fa fa-folder-open"></span>Møder</a></li>
+                    <li class="sidebar-nav-link"><a href="/calendar"><span class="icon fa fa-calendar"></span>Kalender</a></li>
+                </ul>
+            </li>
+            <!-- End - organisation -->
 
-                    <?php print render($title_prefix); ?>
-                    <?php if (!empty($title)): ?>
-                      <h1 class="page-header"><?php print $title; ?></h1>
-                    <?php endif; ?>
-                    <?php print render($title_suffix); ?>
-                    <?php print $messages; ?>
-                    <?php if (!empty($tabs)): ?>
-                      <?php print render($tabs); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($page['help'])): ?>
-                      <?php print render($page['help']); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($action_links)): ?>
-                      <ul class="action-links"><?php print render($action_links); ?></ul>
-                    <?php endif; ?>
-                    <?php print render($page['content']); ?>
-                  </section>
+            <!-- Begin - contacts -->
+            <li class="sidebar-nav-dropdown">
+                <a href="#">
+                    <span class="icon fa fa-book"></span>
+                    Kontakter
+                </a>
+                <ul class="sidebar-nav-dropdown-menu">
+                    <li class="sidebar-nav-link"><a href="/contacts/members"><span class="icon fa fa-users"></span>Medlemmer</a></li>
+                </ul>
+            </li>
+            <!-- End - contacts -->
+
+            <!-- Begin - administration -->
+            <li class="sidebar-nav-dropdown">
+                <a href="#">
+                    <span class="icon fa fa-tachometer"></span>
+                    Administration
+                </a>
+                <ul class="sidebar-nav-dropdown-menu">
+                    <li class="sidebar-nav-link"><a href="/user"><span class="icon fa fa-user"></span>Min bruger</a></li>
+                    <li class="sidebar-nav-link"><a href="/organisation"><span class="icon fa fa-suitcase"></span>Virksomhed</a></li>
+                    <li class="sidebar-nav-link"><a href="/organisation/users"><span class="icon fa fa-users"></span>Medlemmer</a></li>
+                </ul>
+            </li>
+            <!-- End - administration -->
+
+        </ul>
+    </div>
+    <!-- End - sidebar left -->
+
+    <!-- Begin - sidebar right -->
+    <div class="sidebar sidebar-right"></div>
+    <!-- End - sidebar right -->
+
+    <!-- Begin - sidebar header -->
+    <header class="header header-sidebar header-sticky">
+
+        <!-- Begin - navbar -->
+        <section class="header-navbar">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Begin - content -->
+                    <div class="col-xs-4 header-navbar-content">
+
+                        <!-- Begin - navigation -->
+                        <ul class="header-nav">
+
+                            <!-- Begin - sidebar toggle -->
+                            <li class="header-nav-button"><a class="btn btn-faceless btn-sidebar-toggle" href="#" data-toggle-sidebar="left"><span class="icon fa fa-bars"></span></a></li>
+                            <!-- End - sidebar toggle -->
+
+                        </ul>
+                        <!-- End - navigation -->
+
+                    </div>
+                    <!-- End - content -->
+
+                    <!-- Begin - content -->
+                    <div class="col-xs-4 text-center header-navbar-content">
+
+                        <!-- Begin - logo -->
+                        <a class="header-logo" href="#" data-scroll-to="#banner" data-toggle="tooltip" data-placement="bottom" title="Gå til toppen af siden"></a>
+                        <!-- End - logo -->
+
+                    </div>
+                    <!-- End - content -->
 
                 </div>
             </div>
+        </section>
+        <!-- End - navbar -->
+
+    </header>
+    <!-- End - sidebar header -->
+
+    <!-- Begin - content -->
+    <div id="content">
+        <div class="container">
+
+            <a id="main-content"></a>
+
+            <?php print render($title_prefix); ?>
+            <?php if (!empty($title)): ?>
+                <h1 class="page-header"><?php print $title; ?></h1>
+            <?php endif; ?>
+            <?php print render($title_suffix); ?>
+            <?php print $messages; ?>
+            <?php if (!empty($tabs)): ?>
+                <?php print render($tabs); ?>
+            <?php endif; ?>
+            <?php if (!empty($page['help'])): ?>
+                <?php print render($page['help']); ?>
+            <?php endif; ?>
+            <?php if (!empty($action_links)): ?>
+                <ul class="action-links"><?php print render($action_links); ?></ul>
+            <?php endif; ?>
+            <?php print render($page['content']); ?>
+
         </div>
-      </div>
-      <!-- End - content -->
-
-  </div>
-  <!-- End - content -->
-
-  <!-- Begin - planner -->
-  <div class="sidebar sidebar-right"></div>
-  <!-- End - planner -->
+    </div>
+    <!-- End - content -->
 
 </div>
 <!-- End - wrapper -->

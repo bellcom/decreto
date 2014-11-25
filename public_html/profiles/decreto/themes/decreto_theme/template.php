@@ -8,9 +8,25 @@
  * Implements theme_preprocess_html().
  */
 function decreto_theme_preprocess_html(&$variables) {
+
   drupal_add_js('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('type' => 'external'));
-  drupal_add_css('//fonts.googleapis.com/css?family=Asap:700|Open+Sans:200,300,400,500,600,700', array('type' => 'external'));
-  drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array('type' => 'external'));
+
+  // Paths
+  $variables['vendor_path']       = base_path() . drupal_get_path('theme', 'decreto_theme') . '/vendor/';
+  $variables['image_path']        = base_path() . drupal_get_path('theme', 'decreto_theme') . '/img/';
+  $variables['stylesheet_path']   = base_path() . drupal_get_path('theme', 'decreto_theme') . '/css/';
+
+  // Header
+  $variables['classes_array'][] = 'header-sticky'; // Sticky
+  $variables['classes_array'][] = 'header-sidebar-visible-xs'; // Header sidebar - mobile
+  $variables['classes_array'][] = 'header-sidebar-visible-sm'; // Header sidebar - tablet
+  $variables['classes_array'][] = 'header-sidebar-visible-md'; // Header sidebar - desktop
+  $variables['classes_array'][] = 'header-sidebar-visible-lg'; // Header sidebar - large desktop
+
+  // Sidebar
+  $variables['classes_array'][] = 'sidebar-open'; // Sidebar - open
+  $variables['classes_array'][] = 'sidebar-left-open'; // Sidebar - open - left
+
 }
 
 /**
@@ -21,7 +37,7 @@ function decreto_theme_preprocess_page(&$variables) {
 
   if (user_is_logged_in()) {
     // Frontpage is the dashboard, for users that are logged in.
-    $variables['user_is_logged_in'] = TRUE;
+    $variables['user_is_$logged_in'] = TRUE;
     if ($company = decreto_helper_get_company()) {
       $variables['company_name'] = $company->name;
     }

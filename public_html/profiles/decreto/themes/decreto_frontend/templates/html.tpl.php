@@ -1,3 +1,9 @@
+<?php
+/**
+ * @file
+ * html.tpl.php
+ */
+?>
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie7 no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>><![endif]-->
 <!--[if lte IE 8]><html class="ie8 no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>><![endif]-->
@@ -38,16 +44,16 @@
     <!-- End - internal javascript files -->
 
     <!-- Begin - icons -->
-    <link rel="shortcut icon" href="<?php print base_path() . path_to_theme(); ?>/img/icon/favicon.ico">
+    <link rel="shortcut icon" href="<?php print $image_path . "icon/favicon.ico"; ?>">
 
-    <link rel="apple-touch-icon" href="<?php print base_path() . path_to_theme(); ?>/img/icon/icon-phone.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php print base_path() . path_to_theme(); ?>/img/icon/icon-ipad.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?php print base_path() . path_to_theme(); ?>/img/icon/icon-phone-retina.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?php print base_path() . path_to_theme(); ?>/img/icon/icon-ipad-retina.png">
+    <link rel="apple-touch-icon" href="<?php print $image_path . "icon/icon-phone.png"; ?>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php print $image_path . "icon/icon-ipad.png"; ?>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php print $image_path . "icon/icon-phone-retina.png"; ?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php print $image_path . "icon/icon-ipad-retina.png"; ?>">
     <!-- End - icons -->
 
 </head>
-<body class="footer-behind <?php print $classes; ?>"<?php print $attributes; ?>>
+<body class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
     <!-- Begin - skip link -->
     <div id="skip-link">

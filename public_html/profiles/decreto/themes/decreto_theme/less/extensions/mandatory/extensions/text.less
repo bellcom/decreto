@@ -1,0 +1,324 @@
+// |--------------------------------------------------------------------------
+// | Text
+// |--------------------------------------------------------------------------
+// |
+// | Makes it a breeze to alter text layouts via HTML on the website.
+// | This file contains the following:
+// |
+// | - Paragraph and other textual representations
+// | -- font weight
+// | --- light
+// | --- semi light
+// | --- semi bold
+// | --- bold
+// |
+// | - Headline
+// | -- font weight
+// | --- light
+// | --- semi light
+// | --- semi bold
+// | --- bold
+// | -- letter spacing
+// |
+// | - Colouring
+// | -- white
+// | -- primary
+// | -- secondary
+// | -- tertiary
+// |
+// | - Positioning
+// |
+// | - Smoothing
+// |
+
+    // --------------------------------------------------
+    // Paragraph and other textual representations
+    // --------------------------------------------------
+
+    // Body
+    body {
+        font-weight: @font-weight;
+
+        // Light
+        .light {
+            font-weight: @font-weight-light;
+        }
+
+        // Semi light
+        .semi-light {
+            font-weight: @font-weight-semi-light;
+        }
+
+        // Semi bold
+        .semi-bold {
+            font-weight: @font-weight-semi-bold;
+        }
+
+        // Bold
+        strong,
+        .bold {
+            font-weight: @font-weight-bold;
+        }
+    }
+
+    // --------------------------------------------------
+    // Headlines
+    // --------------------------------------------------
+
+    // Headlines
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: @headings-font-weight;
+
+        // Light
+        &.light {
+            font-weight: @headings-font-weight-light;
+        }
+
+        // Semi light
+        &.semi-light {
+            font-weight: @headings-font-weight-semi-light;
+        }
+
+        // Semi bold
+        &.semi-bold {
+            font-weight: @headings-font-weight-semi-bold;
+        }
+
+        // Bold
+        strong,
+        &.bold {
+            font-weight: @headings-font-weight-bold;
+        }
+    }
+
+    // Headline 1
+    h1 {
+        letter-spacing: @headings-h1-letter-spacing;
+    }
+
+    // Headline 2
+    h2 {
+        letter-spacing: @headings-h2-letter-spacing;
+    }
+
+    // Headline 3
+    h3 {
+        letter-spacing: @headings-h3-letter-spacing;
+    }
+
+    // Headline 4
+    h4 {
+        letter-spacing: @headings-h4-letter-spacing;
+    }
+
+    // Headline 5
+    h5 {
+        letter-spacing: @headings-h5-letter-spacing;
+    }
+
+    // Headline 6
+    h6 {
+        letter-spacing: @headings-h6-letter-spacing;
+    }
+
+    // --------------------------------------------------
+    // Colouring
+    // --------------------------------------------------
+
+    // White
+    .font-color-white {
+
+        // Normal, hover, focus and active state
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            color: #fff;
+        }
+    }
+
+    // Primary
+    .font-color-primary {
+
+        // Normal, hover, focus and active state
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            color: @brand-primary;
+        }
+    }
+
+    // Secondary
+    .font-color-secondary {
+
+        // Normal, hover, focus and active state
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            color: @brand-secondary;
+        }
+    }
+
+    // Tertiary
+    .font-color-tertiary {
+
+        // Normal, hover, focus and active state
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            color: @brand-tertiary;
+        }
+    }
+
+    // --------------------------------------------------
+    // Positioning
+    // --------------------------------------------------
+
+    // Mobile
+    @media @media-query-mobile {
+
+        // Left aligned
+        .text-left-xs {
+            text-align: left;
+        }
+
+        // Right aligned
+        .text-right-xs {
+            text-align: right;
+        }
+
+        // Center aligned
+        .text-center-xs {
+            text-align: center;
+        }
+    }
+
+    // Tablet
+    @media @media-query-tablet {
+
+        // Left aligned
+        .text-left-sm {
+            text-align: left;
+        }
+
+        // Right aligned
+        .text-right-sm {
+            text-align: right;
+        }
+
+        // Center aligned
+        .text-center-sm {
+            text-align: center;
+        }
+    }
+
+    // Desktop
+    @media @media-query-desktop {
+
+        // Left aligned
+        .text-left-md {
+            text-align: left;
+        }
+
+        // Right aligned
+        .text-right-md {
+            text-align: right;
+        }
+
+        // Center aligned
+        .text-center-md {
+            text-align: center;
+        }
+    }
+
+    // Large desktop
+    @media @media-query-large-desktop {
+
+        // Left aligned
+        .text-left-lg {
+            text-align: left;
+        }
+
+        // Right aligned
+        .text-right-lg {
+            text-align: right;
+        }
+
+        // Center aligned
+        .text-center-lg {
+            text-align: center;
+        }
+    }
+
+    // Non touch devices
+    .no-touch {
+
+        // Left aligned
+        .text-left-no-touch {
+            text-align: left;
+        }
+
+        // Right aligned
+        .text-right-no-touch {
+            text-align: right;
+        }
+
+        // Center aligned
+        .text-center-no-touch {
+            text-align: center;
+        }
+    }
+
+    // Touch devices
+    .touch {
+
+        // Left aligned
+        .text-left-touch {
+            text-align: left;
+        }
+
+        // Right aligned
+        .text-right-touch {
+            text-align: right;
+        }
+
+        // Center aligned
+        .text-center-touch {
+            text-align: center;
+        }
+    }
+
+    // --------------------------------------------------
+    // Smoothing
+    // --------------------------------------------------
+
+    // Body
+    body {
+
+        // Body, link, paragraph, span and input
+        &,
+        a,
+        p,
+        span,
+        input {
+            .font-smoothing();
+        }
+
+        // Headlines
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            .font-smoothing();
+        }
+    }

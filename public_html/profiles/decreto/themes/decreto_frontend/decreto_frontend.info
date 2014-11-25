@@ -35,9 +35,9 @@ regions[page_bottom]    = 'Page bottom'
 ; Vendor scripts
 scripts[] = 'vendor/mandatory/vendors.js'
 scripts[] = 'vendor/mandatory/mandatory.js'
-scripts[] = 'vendor/mandatory/header.js'
-scripts[] = 'vendor/mandatory/sidebar.js'
 
+scripts[] = 'vendor/header.js'
+scripts[] = 'vendor/sidebar.js'
 scripts[] = 'vendor/owl.carousel.js'
 scripts[] = 'vendor/scroll-to.js'
 

@@ -1,0 +1,645 @@
+// |--------------------------------------------------------------------------
+// | Styling
+// |--------------------------------------------------------------------------
+// |
+// | This file contains the following:
+// |
+// | Base
+// | Logo
+// | Link & dropdown
+// | Dropdown menu
+// | Toggle (open/close)
+// | Indentation
+// | Transitions
+// |
+
+    // --------------------------------------------------
+    // Base
+    // --------------------------------------------------
+
+    // Sidebar
+    .sidebar {
+        position: fixed;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        background-color: @sidebar-background-color;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        // Un-ordered list
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            // List item
+            li {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        // Left
+        &.sidebar-left {
+            left: -@sidebar-left-width;
+            width: @sidebar-left-width;
+            .box-shadow(inset -15px 0 15px -15px rgba(0, 0, 0, .3));
+        }
+
+        // Right
+        &.sidebar-right {
+            right: -@sidebar-right-width;
+            width: @sidebar-right-width;
+        }
+    }
+
+    // --------------------------------------------------
+    // Logo
+    // --------------------------------------------------
+
+    // Sidebar
+    .sidebar {
+
+        // Logo
+        li.sidebar-logo {
+            text-align: center;
+            overflow: hidden;
+
+            background-color: @sidebar-logo-background-color;
+            background-color: @sidebar-logo-background-color-rgba;
+
+            border-bottom-width: @sidebar-logo-border-width;
+            border-bottom-style: @sidebar-logo-border-style;
+            border-bottom-color: @sidebar-logo-border-color;
+            border-bottom-color: @sidebar-logo-border-color-rgba; // rgba
+
+            // Link
+            a {
+                display: block;
+                padding: @sidebar-logo-spacing 0;
+            }
+
+            // Image representation
+            .sidebar-logo-image {
+                display: block;
+                margin: auto;
+                height: @sidebar-logo-image-height;
+                width: @sidebar-logo-image-width;
+                .img-retina(@sidebar-logo-image-1x-source, @sidebar-logo-image-2x-source, @sidebar-logo-image-width, @sidebar-logo-image-height);
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+
+            // Textual representation
+            .sidebar-logo-text {
+                font-family: @sidebar-logo-textual-font-family;
+                font-size: @sidebar-logo-textual-font-size;
+                font-weight: @sidebar-logo-textual-font-weight;
+                color: @sidebar-logo-textual-font-color;
+                padding: 0;
+                margin: 0;
+            }
+
+            // Slogan
+            .sidebar-logo-slogan {
+                font-family: @sidebar-logo-slogan-font-family;
+                font-size: @sidebar-logo-slogan-font-size;
+                font-weight: @sidebar-logo-slogan-font-weight;
+                color: @sidebar-logo-slogan-font-color;
+                margin-top: 3px;
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Link & dropdown
+    // --------------------------------------------------
+
+    // Sidebar
+    .sidebar {
+
+        // Link and dropdown
+        li.sidebar-nav-link,
+        li.sidebar-nav-dropdown {
+
+            // Link
+            > a {
+                position: relative;
+                display: block;
+                padding-top: 12px;
+                padding-bottom: 12px;
+
+                padding-right: @sidebar-nav-link-indentation;
+
+                font-family: @sidebar-nav-link-font-family;
+                font-weight: @sidebar-nav-link-font-weight;
+                font-size: @sidebar-nav-link-font-size;
+                .line-height(@sidebar-nav-link-font-size);
+                color: @sidebar-nav-link-font-color;
+
+                background-color: @sidebar-nav-link-background-color;
+                background-color: @sidebar-nav-link-background-color-rgba; // rgba
+
+                border-bottom-width: @sidebar-nav-link-border-width;
+                border-bottom-style: @sidebar-nav-link-border-style;
+                border-bottom-color: @sidebar-nav-link-border-color;
+                border-bottom-color: @sidebar-nav-link-border-color-rgba; // rgba
+
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+
+                // Icon
+                .icon {
+                    float: left;
+                    color: @sidebar-nav-link-icon-color;
+                    margin-left: -@sidebar-nav-link-icon-max-width;
+                }
+
+                // Hover and focus state
+                &:hover,
+                &:focus {
+                    color: @sidebar-nav-link-hover-font-color;
+
+                    background-color: @sidebar-nav-link-hover-background-color;
+                    background-color: @sidebar-nav-link-hover-background-color-rgba; // rgba
+
+                    border-bottom-color: @sidebar-nav-link-hover-border-color;
+                    border-bottom-color: @sidebar-nav-link-hover-border-color-rgba; // rgba
+
+                    text-decoration: none;
+
+                    // Icon
+                    .icon {
+                        color: @sidebar-nav-link-hover-icon-color;
+                    }
+                }
+            }
+
+            // Active
+            &.sidebar-nav-active {
+
+                // Link
+                > a {
+
+                    // Normal, hover and focus state
+                    &,
+                    &:hover,
+                    &:focus {
+                        color: @sidebar-nav-link-active-font-color;
+
+                        background-color: @sidebar-nav-link-active-background-color;
+                        background-color: @sidebar-nav-link-active-background-color-rgba; // rgba
+
+                        border-bottom-color: @sidebar-nav-link-active-border-color;
+                        border-bottom-color: @sidebar-nav-link-active-border-color-rgba; // rgba
+                    }
+
+                    // Icon
+                    .icon {
+                        color: @sidebar-nav-link-active-icon-color;
+                    }
+                }
+            }
+        }
+
+        // Dropdown (only)
+        li.sidebar-nav-dropdown {
+
+            // Link
+            > a {
+                color: @sidebar-nav-dropdown-font-color;
+
+                // Before (indicator icon)
+                &:before {
+                    float: right;
+                    padding: 0;
+                    margin: 0;
+                    margin-left: 10px;
+                    line-height: inherit;
+
+                    font-family: @sidebar-nav-dropdown-indicator-font-family;
+                    font-size: @sidebar-nav-dropdown-indicator-font-size;
+                    color: @sidebar-nav-dropdown-indicator-color;
+                    content: @sidebar-nav-dropdown-indicator-icon;
+                }
+
+                // Hover and focus state
+                &:hover,
+                &:focus {
+                    color: @sidebar-nav-dropdown-hover-font-color;
+
+                    // Before (indicator icon)
+                    &:before {
+                        color: @sidebar-nav-dropdown-hover-indicator-color;
+                    }
+                }
+            }
+
+            // Active
+            &.sidebar-nav-active {
+
+                // Link
+                > a {
+
+                    // Before (indicator icon)
+                    &:before {
+                        .rotate(90deg);
+                    }
+
+                    // Normal, hover and focus state
+                    &,
+                    &:hover,
+                    &:focus {
+                        color: @sidebar-nav-dropdown-active-font-color;
+
+                        // Before (indicator icon)
+                        &:before {
+                            color: @sidebar-nav-dropdown-active-indicator-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Dropdown menu
+    // --------------------------------------------------
+
+    // Sidebar
+    .sidebar {
+
+        // Dropdown menu
+        .sidebar-nav-dropdown-menu {
+            position: relative;
+            display: none;
+            overflow: hidden;
+
+            // Active
+            &.sidebar-nav-active {
+                display: block;
+            }
+
+            // Link and dropdown
+            li.sidebar-nav-dropdown,
+            li.sidebar-nav-link {
+                background-color: @sidebar-nav-dropdown-menu-background-color;
+                background-color: @sidebar-nav-dropdown-menu-background-color-rgba;
+
+                // Link
+                > a {
+                    font-family: @sidebar-nav-dropdown-menu-link-font-family;
+                    font-weight: @sidebar-nav-dropdown-menu-link-font-weight;
+                    font-size: @sidebar-nav-dropdown-menu-link-font-size;
+                    .line-height(@sidebar-nav-dropdown-menu-link-font-size);
+                }
+            }
+
+            // Link (only)
+            li.sidebar-nav-link {
+
+                // Link
+                > a {
+                    color: @sidebar-nav-dropdown-menu-link-font-color;
+
+                    // Hover and focus
+                    &:hover,
+                    &:focus {
+                        color: @sidebar-nav-dropdown-menu-link-hover-font-color;
+                    }
+                }
+
+                // Active
+                &.sidebar-nav-active {
+
+                    // Link
+                    > a {
+
+                        // Normal, hover and focus
+                        &,
+                        &:hover,
+                        &:focus {
+                            color: @sidebar-nav-dropdown-menu-link-active-font-color;
+                        }
+                    }
+                }
+            }
+
+            // Dropdown (only)
+            li.sidebar-nav-dropdown {
+
+                // Link
+                > a {
+                    color: @sidebar-nav-dropdown-menu-dropdown-font-color;
+
+                    // Hover and focus
+                    &:hover,
+                    &:focus {
+                        color: @sidebar-nav-dropdown-menu-dropdown-hover-font-color;
+                    }
+                }
+
+                // Active
+                &.sidebar-nav-active {
+
+                    // Link
+                    > a {
+
+                        // Normal, hover and focus
+                        &,
+                        &:hover,
+                        &:focus {
+                            color: @sidebar-nav-dropdown-menu-dropdown-active-font-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Toggle (open/close)
+    // --------------------------------------------------
+
+    // Sidebar is open
+    .sidebar-open {
+
+        // Left
+        &.sidebar-left-open {
+
+            // Sidebar left
+            .sidebar-left {
+                left: 0;
+            }
+
+            // Content
+            #content {
+                margin-left: @sidebar-left-width;
+            }
+
+            // Fixed elements
+            .sidebar-overlay,
+            &.header-sticky .header {
+                left: @sidebar-left-width;
+            }
+        }
+
+        // Right
+        &.sidebar-right-open {
+
+            // Sidebar right
+            .sidebar-right {
+                right: 0;
+            }
+
+            // Content
+            #content {
+                margin-right: @sidebar-right-width;
+            }
+
+            // Fixed elements
+            .sidebar-overlay,
+            &.header-sticky .header {
+                right: @sidebar-right-width;
+            }
+        }
+    }
+
+    // Touch devices
+    .touch {
+
+        // Sidebar is open
+        .sidebar-open {
+
+            // Left
+            &.sidebar-left-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    margin-left: @sidebar-left-width;
+                }
+            }
+
+            // Right
+            &.sidebar-right-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    margin-right: @sidebar-right-width;
+                }
+            }
+        }
+    }
+
+    // Non touch devices
+    .no-touch {
+
+        // Sidebar is open
+        .sidebar-open {
+
+            // Left
+            &.sidebar-left-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    left: @sidebar-left-width;
+                }
+            }
+
+            // Right
+            &.sidebar-right-open {
+
+                // Footer
+                &.footer-behind .footer {
+                    right: @sidebar-right-width;
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Push
+    // --------------------------------------------------
+
+    // Push
+    .sidebar-push {
+
+        // Fixed elements
+        #content,
+        .sidebar-overlay,
+        &.header-sticky .header,
+        &.footer-behind .footer {
+            width: 100%;
+        }
+    }
+
+    // --------------------------------------------------
+    // Overlay
+    // --------------------------------------------------
+
+    // Overlay
+    .sidebar-overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    // Open
+    .sidebar-open {
+
+        // Overlay
+        .sidebar-overlay {
+            display: block;
+        }
+
+        // Left
+        &.sidebar-left-open {
+
+            // Overlay
+            .sidebar-overlay {
+                left: @sidebar-left-width;
+            }
+        }
+
+        // Right
+        &.sidebar-right-open {
+
+            // Overlay
+            .sidebar-overlay {
+                right: @sidebar-right-width;
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Indentation
+    // --------------------------------------------------
+
+    // Sidebar
+    .sidebar {
+
+        // 1st level
+        > ul > li {
+
+            // Link and dropdown
+            &.sidebar-nav-link,
+            &.sidebar-nav-dropdown {
+
+                // Link
+                > a {
+                    .sidebar-nav-link-indentation(1);
+                }
+
+                // 2nd level
+                > ul > li {
+
+                    // Link
+                    > a {
+                        .sidebar-nav-link-indentation(2);
+                    }
+
+                    // 3rd level
+                    > ul > li {
+
+                        // Link
+                        > a {
+                            .sidebar-nav-link-indentation(3);
+                        }
+
+                        // 4th level
+                        > ul > li {
+
+                            // Link
+                            > a {
+                                .sidebar-nav-link-indentation(4);
+                            }
+
+                            // 5th level
+                            > ul > li {
+
+                                // Link
+                                > a {
+                                    .sidebar-nav-link-indentation(5);
+                                }
+
+                                // 6th level
+                                > ul > li {
+
+                                    // Link
+                                    > a {
+                                        .sidebar-nav-link-indentation(6);
+                                    }
+
+                                    // 7th level (LOL)
+                                    > ul > li {
+
+                                        // Link
+                                        > a {
+                                            .sidebar-nav-link-indentation(7);
+                                        }
+
+                                        // 8th level (LOL)
+                                        > ul > li {
+
+                                            // Link
+                                            > a {
+                                                .sidebar-nav-link-indentation(8);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // --------------------------------------------------
+    // Transitions
+    // --------------------------------------------------
+
+    // Non touch devices
+    .no-touch {
+
+        // Sidebar
+        .sidebar {
+
+            // Link and dropdown
+            li.sidebar-nav-link,
+            li.sidebar-nav-dropdown {
+
+                // Link
+                a {
+                    .transition(all @transition-time ease-in-out);
+
+                    // Icon
+                    .icon {
+                        .transition(all @transition-time ease-in-out);
+                    }
+
+                    // Before (indicator icon)
+                    &:before {
+                        .transition(all @transition-time ease-in-out);
+                    }
+                }
+            }
+        }
+    }
+
+    // Content
+    .sidebar,
+    .sidebar-overlay,
+    .header-sticky .header,
+    .footer-behind .footer,
+    #content {
+        .transition(all @transition-time-long cubic-bezier(0.445, 0.05, 0.55, 0.95));
+    }
