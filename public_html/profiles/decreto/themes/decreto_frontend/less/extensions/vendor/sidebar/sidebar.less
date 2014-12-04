@@ -52,11 +52,10 @@
         // Right
         &.sidebar-right {
             width: @sidebar-right-width;
-            .box-shadow(inset -15px 0 15px -15px rgba(0, 0, 0, .3));
         }
     }
 
-    // Non CSS3 3D transform
+    // No CSS3 3D transform
     .no-csstransforms3d {
 
         // Sidebar
@@ -87,7 +86,8 @@
 
             // Right
             &.sidebar-right {
-                right: -@sidebar-right-width;
+                right: 0;
+                .translate3d(@sidebar-right-width, 0, 0);
             }
         }
     }
@@ -397,44 +397,144 @@
     }
 
     // --------------------------------------------------
-    // Toggle (open/close)
+    // Toggle
     // --------------------------------------------------
 
-    // Non CSS3 3D transform
-    .no-csstransforms3d {
+    // Open
+    body.sidebar-open1 {
 
-        // Sidebar is open
-        .sidebar-open {
+        // Left
+        &.sidebar-left-open {
+
+            // Overlay and sticky header
+            .sidebar-overlay,
+            &.header-sticky .header {
+                left: @sidebar-left-width;
+            }
+
+            // Content and attached footer
+            #content,
+            &.footer-attached .footer {
+                margin-left: @sidebar-left-width;
+            }
 
             // Left
-            &.sidebar-left-open {
+            .sidebar-left {
+                left: 0;
+            }
+        }
 
-                // Content
-                #content {
-                    margin-left: @sidebar-left-width;
-                }
+        // Right
+        &.sidebar-right-open {
 
-                // Fixed elements
-                .sidebar-overlay,
-                &.header-sticky .header,
-                &.footer-attached .footer {
-                    left: @sidebar-left-width;
-                }
+            // Overlay and sticky header
+            .sidebar-overlay,
+            &.header-sticky .header {
+                right: @sidebar-right-width;
+            }
+
+            // Content and attached footer
+            #content,
+            &.footer-attached .footer {
+                margin-right: @sidebar-right-width;
             }
 
             // Right
-            &.sidebar-right-open {
+            .sidebar-right {
+                right: 0;
+            }
+        }
+    }
 
-                // Content
-                #content {
-                    margin-right: @sidebar-right-width;
+    // --------------------------------------------------
+    // Push/no push
+    // --------------------------------------------------
+
+    // No CSS3 3D transform
+    .no-csstransforms3d {
+
+        // No push and push
+        .sidebar-no-push,
+        .sidebar-push {
+
+            // Open
+            &.sidebar-open {
+
+                // Left
+                &.sidebar-left-open {
+
+                    // Sidebar
+                    .sidebar-left {
+                        left: 0;
+                    }
+
+                    // Position:fixed content
+                    &.header-sticky .header {
+                        left: @sidebar-left-width;
+                    }
+
+                    // Content and attached footer
+                    #content,
+                    &.footer-attached .footer {
+                        margin-left: @sidebar-left-width;
+                    }
                 }
 
-                // Fixed elements
-                .sidebar-overlay,
-                &.header-sticky .header,
-                &.footer-attached .footer {
-                    right: @sidebar-right-width;
+                // Right
+                &.sidebar-right-open {
+
+                    // Sidebar
+                    .sidebar-right {
+                        right: 0;
+                    }
+
+                    // Position:fixed content
+                    &.header-sticky .header {
+                        right: @sidebar-right-width;
+                    }
+
+                    // Content and attached footer
+                    #content,
+                    &.footer-attached .footer {
+                        margin-right: @sidebar-right-width;
+                    }
+                }
+            }
+        }
+
+        // Push
+        .sidebar-push {
+
+            // Content, sticky header and attached footer
+            #content,
+            &.header-sticky .header,
+            &.footer-attached .footer {
+                width: 100%;
+            }
+
+            // Open
+            &.sidebar-open {
+
+                // Left
+                &.sidebar-left-open {
+
+                    // Content, sticky header and attached footer
+                    #content,
+                    &.header-sticky .header,
+                    &.footer-attached .footer {
+                        margin-right: -@sidebar-left-width;
+                    }
+                }
+
+                // Right
+                &.sidebar-right-open {
+
+                    // Content, sticky header and attached footer
+                    #content,
+                    &.header-sticky .header,
+                    &.footer-attached .footer {
+                        margin-left: -@sidebar-right-width;
+                    }
                 }
             }
         }
@@ -443,90 +543,74 @@
     // CSS3 3D transform
     .csstransforms3d {
 
-        // Sidebar is open
-        .sidebar-open {
+        // No push and push
+        .sidebar-no-push,
+        .sidebar-push {
 
-            // Left
-            &.sidebar-left-open {
+            // Open
+            &.sidebar-open {
 
-                // Content
-                #content,
-                &.header-sticky .header,
-                &.footer-attached .footer {
-                    .translate3d(@sidebar-left-width, 0, 0);
+                // Left
+                &.sidebar-left-open {
+
+                    // Sidebar
+                    .sidebar-left {
+                        .translate3d(0, 0, 0);
+                    }
+
+                    // Content, sticky header and attached footer
+                    #content,
+                    &.header-sticky .header,
+                    &.footer-attached .footer {
+                        .translate3d(@sidebar-left-width, 0, 0);
+                    }
                 }
 
-                // Left sidebar
-                .sidebar-left {
-                    .translate3d(0, 0, 0);
+                // Right
+                &.sidebar-right-open {
+
+                    // Sidebar
+                    .sidebar-right {
+                        .translate3d(0, 0, 0);
+                    }
+
+                    // Content, sticky header and attached footer
+                    #content,
+                    &.header-sticky .header,
+                    &.footer-attached .footer {
+                        .translate3d(-@sidebar-right-width, 0, 0);
+                    }
                 }
-            }
-
-            // Right
-            &.sidebar-right-open {
-
-                // Content
-                #content,
-                &.header-sticky .header,
-                &.footer-attached .footer {
-                    .translate3d(@sidebar-right-width, 0, 0);
-                }
-            }
-        }
-    }
-
-    // --------------------------------------------------
-    // Push
-    // --------------------------------------------------
-
-    // Push
-    .sidebar-push {
-
-        // Fixed elements
-        #content,
-        &.header-sticky .header,
-        &.footer-attached .footer {
-            width: 100%;
-        }
-    }
-
-    // --------------------------------------------------
-    // Overlay
-    // --------------------------------------------------
-
-    // Overlay
-    .sidebar-overlay {
-        display: none;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-
-    // Open
-    .sidebar-open {
-
-        // Overlay
-        .sidebar-overlay {
-            display: block;
-        }
-
-        // Left
-        &.sidebar-left-open {
-
-            // Overlay
-            .sidebar-overlay {
-                left: @sidebar-left-width;
             }
         }
 
-        // Right
-        &.sidebar-right-open {
+        // No push
+        .sidebar-no-push {
 
-            // Overlay
-            .sidebar-overlay {
-                right: @sidebar-right-width;
+            // Open
+            &.sidebar-open {
+
+                // Left
+                &.sidebar-left-open {
+
+                    // Content, sticky header and attached footer
+                    #content,
+                    &.header-sticky .header,
+                    &.footer-attached .footer {
+                        margin-right: @sidebar-left-width;
+                    }
+                }
+
+                // Right
+                &.sidebar-right-open {
+
+                    // Content, sticky header and attached footer
+                    #content,
+                    &.header-sticky .header,
+                    &.footer-attached .footer {
+                        margin-left: @sidebar-right-width;
+                    }
+                }
             }
         }
     }
@@ -648,11 +732,11 @@
         }
     }
 
-    // Content
+    // Content, overlay, sticky header, attached footer and sidebar
+    #content,
     .sidebar-overlay,
     .header-sticky .header,
     .footer-attached .footer,
-    #content,
     .sidebar {
         .transition(all @transition-time-long cubic-bezier(0.445, 0.05, 0.55, 0.95));
     }

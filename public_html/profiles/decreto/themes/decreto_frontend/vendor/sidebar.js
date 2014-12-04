@@ -55,6 +55,30 @@ var sidebar = {
                         },
                     }
                 }
+            },
+            right: {
+                id: {
+                    raw:                    "sidebar-right",
+                    operator:               ".sidebar-right"
+                },
+                body_id: {
+                    open: {
+                        raw:                "sidebar-right-open",
+                        operator:           ".sidebar-right-open"
+                    }
+                },
+                animation_css: {
+                    open: {
+                        content: {
+                            "right":  "280px"
+                        },
+                    },
+                    close: {
+                        content: {
+                            "left":  "0"
+                        },
+                    }
+                }
             }
         }
     },
