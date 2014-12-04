@@ -45,15 +45,50 @@
 
         // Left
         &.sidebar-left {
-            left: 0;
             width: @sidebar-left-width;
             .box-shadow(inset -15px 0 15px -15px rgba(0, 0, 0, .3));
         }
 
         // Right
         &.sidebar-right {
-            right: 0;
             width: @sidebar-right-width;
+            .box-shadow(inset -15px 0 15px -15px rgba(0, 0, 0, .3));
+        }
+    }
+
+    // Non CSS3 3D transform
+    .no-csstransforms3d {
+
+        // Sidebar
+        .sidebar {
+
+            // Left
+            &.sidebar-left {
+                left: -@sidebar-left-width;
+            }
+
+            // Right
+            &.sidebar-right {
+                right: -@sidebar-right-width;
+            }
+        }
+    }
+
+    // CSS3 3D transform
+    .csstransforms3d {
+
+        // Sidebar
+        .sidebar {
+
+            // Left
+            &.sidebar-left {
+                .translate3d(-@sidebar-left-width, 0, 0);
+            }
+
+            // Right
+            &.sidebar-right {
+                right: -@sidebar-right-width;
+            }
         }
     }
 
@@ -365,42 +400,8 @@
     // Toggle (open/close)
     // --------------------------------------------------
 
-    // Sidebar is open
-    .sidebar-open {
-
-        // Left
-        &.sidebar-left-open {
-
-            // Content
-            #content {
-                margin-left: @sidebar-left-width;
-            }
-
-            // Fixed elements
-            .sidebar-overlay,
-            &.header-sticky .header {
-                left: @sidebar-left-width;
-            }
-        }
-
-        // Right
-        &.sidebar-right-open {
-
-            // Content
-            #content {
-                margin-right: @sidebar-right-width;
-            }
-
-            // Fixed elements
-            .sidebar-overlay,
-            &.header-sticky .header {
-                right: @sidebar-right-width;
-            }
-        }
-    }
-
-    // Touch devices
-    .touch {
+    // Non CSS3 3D transform
+    .no-csstransforms3d {
 
         // Sidebar is open
         .sidebar-open {
@@ -408,34 +409,15 @@
             // Left
             &.sidebar-left-open {
 
-                // Footer
-                &.footer-behind .footer {
+                // Content
+                #content {
                     margin-left: @sidebar-left-width;
                 }
-            }
 
-            // Right
-            &.sidebar-right-open {
-
-                // Footer
-                &.footer-behind .footer {
-                    margin-right: @sidebar-right-width;
-                }
-            }
-        }
-    }
-
-    // Non touch devices
-    .no-touch {
-
-        // Sidebar is open
-        .sidebar-open {
-
-            // Left
-            &.sidebar-left-open {
-
-                // Footer
-                &.footer-behind .footer {
+                // Fixed elements
+                .sidebar-overlay,
+                &.header-sticky .header,
+                &.footer-attached .footer {
                     left: @sidebar-left-width;
                 }
             }
@@ -443,9 +425,51 @@
             // Right
             &.sidebar-right-open {
 
-                // Footer
-                &.footer-behind .footer {
+                // Content
+                #content {
+                    margin-right: @sidebar-right-width;
+                }
+
+                // Fixed elements
+                .sidebar-overlay,
+                &.header-sticky .header,
+                &.footer-attached .footer {
                     right: @sidebar-right-width;
+                }
+            }
+        }
+    }
+
+    // CSS3 3D transform
+    .csstransforms3d {
+
+        // Sidebar is open
+        .sidebar-open {
+
+            // Left
+            &.sidebar-left-open {
+
+                // Content
+                #content,
+                &.header-sticky .header,
+                &.footer-attached .footer {
+                    .translate3d(@sidebar-left-width, 0, 0);
+                }
+
+                // Left sidebar
+                .sidebar-left {
+                    .translate3d(0, 0, 0);
+                }
+            }
+
+            // Right
+            &.sidebar-right-open {
+
+                // Content
+                #content,
+                &.header-sticky .header,
+                &.footer-attached .footer {
+                    .translate3d(@sidebar-right-width, 0, 0);
                 }
             }
         }
@@ -460,9 +484,8 @@
 
         // Fixed elements
         #content,
-        .sidebar-overlay,
         &.header-sticky .header,
-        &.footer-behind .footer {
+        &.footer-attached .footer {
             width: 100%;
         }
     }
@@ -628,7 +651,8 @@
     // Content
     .sidebar-overlay,
     .header-sticky .header,
-    .footer-behind .footer,
-    #content {
+    .footer-attached .footer,
+    #content,
+    .sidebar {
         .transition(all @transition-time-long cubic-bezier(0.445, 0.05, 0.55, 0.95));
     }

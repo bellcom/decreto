@@ -17,7 +17,6 @@ jQuery(function($){
         document_height = $(document).height(),
         window_height = $(window).height();
 
-
     // Window height is larger than document height
     if (window_height > document_height) document_height = window_height;
 
@@ -32,13 +31,11 @@ jQuery(function($){
 
     });
 
-
-
     // --------------------------------------------------
     // Sidebar
     // --------------------------------------------------
 
-    // Enable mandatory base
+    // Enable sidebar
     sidebar.init();
 
 });

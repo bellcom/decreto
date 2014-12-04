@@ -60,15 +60,8 @@ jQuery(function($){
     // Sidebar
     // --------------------------------------------------
 
-    // Enable mandatory base
+    // Enable sidebar
     sidebar.init();
-
-    // --------------------------------------------------
-    // Parallax
-    // --------------------------------------------------
-
-    // Enable parallax
-    mandatory.enable_parallax();
 
     // --------------------------------------------------
     // Appear

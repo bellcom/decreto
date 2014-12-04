@@ -10,9 +10,7 @@
 // | Layout
 // | - Footer
 // | -- Attached to bottom
-// | -- Behind content
 // |
-// | - Parallax
 // | - Appear (animation)
 // |
 // | Miscellaneous
@@ -83,18 +81,8 @@ var mandatory = {
         // Validate touch state - only non touch devices
         if (Modernizr.touch) return false;
 
-        // Grab body object
-        var body_object = jQuery("body");
-
         // Footer - attached to bottom
-        if (body_object.hasClass("footer-attached")) {
-            mandatory.footer_attached_to_bottom();
-        }
-
-        // Footer - behind content
-        else if (body_object.hasClass("footer-behind")) {
-            mandatory.footer_behind_content();
-        }
+        mandatory.footer_attached_to_bottom();
 
     },
 
@@ -102,47 +90,12 @@ var mandatory = {
     footer_attached_to_bottom: function() {
 
         // Get configurations
-        var wrapper_object = jQuery("#wrapper"),
+        var content_object = jQuery("#content"),
             footer_object = jQuery(".footer"),
             footer_height = footer_object.outerHeight(true);
 
-        // Apply margin to the contents wrapper
-        wrapper_object.css("margin-bottom", footer_height);
-
-    },
-
-    // Behind content
-    footer_behind_content: function() {
-
-        // Get configurations
-        var wrapper_object = jQuery("#wrapper"),
-            footer_object = jQuery(".footer"),
-            footer_height = footer_object.outerHeight(true);
-
-        // Apply padding to the contents wrapper
-        wrapper_object.css("padding-bottom", footer_height);
-
-    },
-
-    // |-------------------------------------------
-    // | Parallax
-    // |-------------------------------------------
-    // |
-    // | Creates a modal with one button. The
-    // | button closes the modal on click.
-    // |
-
-    // Enable parallax
-    enable_parallax: function(options) {
-
-        // Validate touch state - only non touch devices
-        if (Modernizr.touch) return false;
-
-        // Set default options
-        if( ! options) var options = { verticalOffset: 0, horizontalOffset: "50" };
-
-        // Enable Stellar
-        jQuery.stellar(options);
+        // Apply padding to the content
+        content_object.css("padding-bottom", footer_height);
 
     },
 

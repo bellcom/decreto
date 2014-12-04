@@ -63,7 +63,7 @@ function decreto_frontend_preprocess_html(&$variables) {
     $variables['classes_array'][] = 'sidebar-push';
 
     // Footer
-    $variables['classes_array'][] = 'footer-behind';
+    $variables['classes_array'][] = 'footer-attached';
 
 }
 

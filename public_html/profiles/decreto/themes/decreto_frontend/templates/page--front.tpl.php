@@ -162,7 +162,7 @@
     <div id="content">
 
         <!-- Begin - top banner -->
-        <div class="banner-top background-parallax" id="banner" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="700">
+        <div class="banner-top background-parallax" id="banner">
             <div class="background-overlay-secondary">
                 <div class="container">
                     <div class="row padding-top-l">
@@ -466,7 +466,7 @@
         <!-- End - owl carousel -->
 
         <!-- Begin - banner background -->
-        <div class="banner-background banner-background-1 background-parallax" data-stellar-background-ratio="0.5"></div>
+        <div class="banner-background banner-background-1 background-parallax"></div>
         <!-- End - banner background -->
 
         <!-- Begin - banner buy -->
@@ -632,7 +632,7 @@
         <!-- End - sign up form -->
 
         <!-- Begin - banner background -->
-        <div class="banner-background banner-background-2 background-parallax" data-stellar-background-ratio="0.5"></div>
+        <div class="banner-background banner-background-2 background-parallax"></div>
         <!-- End - banner background -->
 
         <!-- Begin - contact information -->

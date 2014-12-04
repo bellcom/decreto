@@ -9,7 +9,6 @@
 // |
 // | - Footer
 // | -- Attached to bottom
-// | -- Behind content
 // |
 
     // --------------------------------------------------
@@ -45,6 +44,7 @@
                 #content {
                     position: relative;
                     background-color: @body-bg;
+                    padding: 0;
                 }
             }
 
@@ -59,49 +59,22 @@
     // Footer
     // --------------------------------------------------
 
-    // HTML
-    html {
+    // Non touch devices
+    .no-touch {
 
-        // Non touch devices
-        &.no-touch {
+        // Body
+        body {
 
-            // Body
-            body {
+            // Attached to bottom
+            &.footer-attached {
 
-                // Attached to bottom and footer behind
-                &.footer-attached,
-                &.footer-behind {
-
-                    // Footer
-                    .footer {
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        margin: 0;
-                    }
-                }
-
-                // Attached to bottom
-                &.footer-attached {
-
-                    // Footer
-                    .footer {
-                        position: absolute;
-                    }
-                }
-
-                // Footer behind
-                &.footer-behind {
-
-                    // Content
-                    #content {
-                        z-index: 50;
-                    }
-
-                    // Footer
-                    .footer {
-                        position: fixed;
-                    }
+                // Footer
+                .footer {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: 0;
                 }
             }
         }
