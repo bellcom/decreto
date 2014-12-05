@@ -3,6 +3,32 @@ jQuery(function($){
 
     $ = jQuery;
 
+    // Set media query
+    var // Large desktop
+        media_query_lg = {
+            name: "lg",
+            min: 1200,
+            max: false
+        },
+        // Desktop
+        media_query_md = {
+            name: "md",
+            min: 992,
+            max: (media_query_lg.min - 1)
+        },
+        // Tablet
+        media_query_sm = {
+            name: "sm",
+            min: 768,
+            max: (media_query_md.min - 1)
+        },
+        // Mobile
+        media_query_xs = {
+            name: "xs",
+            min: 480,
+            max: (media_query_sm.min - 1)
+        };
+
     // Variables
     var header = $(".header"),
         header_height = header.outerHeight(true),

@@ -8,7 +8,7 @@
 // | Logo
 // | Link & dropdown
 // | Dropdown menu
-// | Toggle (open/close)
+// | Push/no push
 // | Indentation
 // | Transitions
 // |
@@ -392,56 +392,6 @@
                         }
                     }
                 }
-            }
-        }
-    }
-
-    // --------------------------------------------------
-    // Toggle
-    // --------------------------------------------------
-
-    // Open
-    body.sidebar-open1 {
-
-        // Left
-        &.sidebar-left-open {
-
-            // Overlay and sticky header
-            .sidebar-overlay,
-            &.header-sticky .header {
-                left: @sidebar-left-width;
-            }
-
-            // Content and attached footer
-            #content,
-            &.footer-attached .footer {
-                margin-left: @sidebar-left-width;
-            }
-
-            // Left
-            .sidebar-left {
-                left: 0;
-            }
-        }
-
-        // Right
-        &.sidebar-right-open {
-
-            // Overlay and sticky header
-            .sidebar-overlay,
-            &.header-sticky .header {
-                right: @sidebar-right-width;
-            }
-
-            // Content and attached footer
-            #content,
-            &.footer-attached .footer {
-                margin-right: @sidebar-right-width;
-            }
-
-            // Right
-            .sidebar-right {
-                right: 0;
             }
         }
     }
